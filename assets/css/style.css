@@ -898,7 +898,7 @@ blockquote {
 }
 
 .site-title {
-    font-size: 1.125rem !important;
+    font-size: .75rem !important;
 }
 
 @media (min-width: 31.25rem) {
