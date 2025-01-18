@@ -1264,16 +1264,17 @@ body {
     text-transform: uppercase;
     color: #0d070f;
     border-bottom: 1px solid #e3f0df;
+    letter-spacing: 1px;
 
 }
 
 .nav-category {
-    font-size: 0.6875rem !important;
+    font-size: 0.6rem !important;
 }
 
-@media (min-width: 1rem) {
+@media (min-width: 32rem) {
     .nav-category {
-        font-size: 1rem !important;
+        font-size: .75rem !important;
     }
 }
 
@@ -2388,9 +2389,9 @@ pre.highlight {
 */
     color: #5c5962;
 
-    background: #fafff2;
-
-
+    background: #edf3eb;
+    border: 2px solid #e3f0df;
+    border-radius: .5vh;
 }
 
 .highlight pre {
