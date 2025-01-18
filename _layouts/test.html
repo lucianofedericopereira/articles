@@ -8,8 +8,14 @@ nav_enabled: false
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% if page.url == "/" %}{{ site.title }}{% elsif page.collection %}{{ page.collection | capitalize }}: {{
-        page.title }} | {{ site.title }}{% else %}{{ page.title | default: site.title }} | {{ site.title }}{% endif %}
+    <title>
+        {% if page.url == "/" %}
+        {{ site.title }}
+        {% elsif page.collection %}
+        {{ page.collection | upcase }}: {{ page.title | upcase }} | {{ site.title }}
+        {% else %}
+        {{ page.title | upcase | default: site.title }} | {{ site.title }}
+        {% endif %}
     </title>
 </head>
 
