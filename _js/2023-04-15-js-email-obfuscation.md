@@ -1,5 +1,5 @@
 ---
-title: "Email obfuscation using JavaScript"
+title: "Email obfuscation"
 date: 2023-04-15
 categories: JavaScript
 tags: snippets email

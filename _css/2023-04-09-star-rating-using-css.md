@@ -1,5 +1,5 @@
 ---
-title: "Star Rating using CSS"
+title: "Star Rating"
 date: 2023-04-10
 categories: CSS
 tags: snippets rating
