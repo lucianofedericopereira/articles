@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .custom-logo {
-    padding-left: 1rem !important;
+    padding-left: 2rem !important;
 }
 
 .highlight,
@@ -2374,8 +2374,14 @@ code.language-mermaid {
 
 .highlight,
 pre.highlight {
+    /*
     background: #f5f6fa;
+*/
     color: #5c5962;
+
+    background: #f6ffee;
+
+
 }
 
 .highlight pre {
