@@ -15,8 +15,10 @@ nav_enabled: false
 
     {{ content }}
 
-    {%- include components/footer.html -%}
-    {%- include components/mermaid.html -%}
+    {{ _includes/footer.html }}
+
+    {%- include mermaid.html -%}
+
 
 </body>
 
