@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .custom-logo {
-    padding-left: 2rem !important;
+    padding-left: 1.75rem !important;
 }
 
 .highlight,
@@ -1272,7 +1272,7 @@ body {
 
 @media (min-width: 1rem) {
     .nav-category {
-        font-size: 1.25rem !important;
+        font-size: 1rem !important;
     }
 }
 
@@ -2393,7 +2393,7 @@ pre.highlight {
 }
 
 .highlight pre {
-    background: #f5f6fa;
+    /*    background: #f5f6fa;*/
 }
 
 .text-grey-dk-000 {
