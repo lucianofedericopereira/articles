@@ -1,0 +1,4 @@
+{% if file.path == site.favicon_ico or file.path == '/favicon.ico' %}
+{% assign favicon = true %}
+<link rel="icon" href="{{ site.favicon_ico | default: '/favicon.ico' | relative_url }}" type="image/x-icon">
+{% endif %}
