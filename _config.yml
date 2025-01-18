@@ -9,9 +9,9 @@ heading_anchors: true
 nav_enabled: true
 search_enabled: true
 
+footer_content: "Copyright &copy; 2017-2020 Patrick Marsceill."
 
 # `_includes/footer_custom.html`
-
 #last_edit_timestamp: true
 #last_edit_time_format: "%b %e %Y at %I:%M %p" # https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
 
@@ -43,12 +43,6 @@ search_enabled: true
 # You can also adjust the overall level of callouts. The value of callouts_level is either quiet or loud; loud increases # the saturation and lightness of the backgrounds. The default level is quiet when using the light or custom color 
 # # schemes, and loud when using the dark color scheme.
 # https://just-the-docs.github.io/just-the-docs/docs/configuration/
-#  collections:
-#    tests:
-#      name: Tests
-      # nav_exclude: true
-      # nav_fold: true  # note: this option is new in v0.4
-      # search_exclude: true
 
 
 collections:
