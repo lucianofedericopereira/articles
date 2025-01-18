@@ -576,11 +576,7 @@ blockquote {
     z-index: 0;
     display: flex;
     flex-wrap: wrap;
-    /*
-    background-color: #f5f6fa;
-*/
     background-color: #f2f8f0;
-
 }
 
 @media (min-width: 50rem) {
@@ -589,7 +585,13 @@ blockquote {
         position: fixed;
         width: 15.5rem;
         height: 100%;
+/*
         border-right: 1px solid #eeebee;
+*/
+
+        border-right: 1px solid #e3f0df;
+
+
         align-items: flex-end;
     }
 }
@@ -1182,7 +1184,14 @@ body {
 
 .nav-list .nav-list-item .nav-list-link:hover,
 .nav-list .nav-list-item .nav-list-link.active {
+
+/*
     background-image: linear-gradient(-90deg, rgb(234.8, 236.82, 244.9) 0%, rgba(234.8, 236.82, 244.9, 0.8) 80%, rgba(234.8, 236.82, 244.9, 0) 100%);
+*/
+
+background: #e3f0df;
+
+
 }
 
 .nav-list .nav-list-item .nav-list-expander {
