@@ -4,6 +4,8 @@ email: lucianofullstack@duck.com
 description: "a blog about web development"
 copyright: "design﹢code (c) {currentYear} {author}"
 
+color_scheme: test
+
 aux_links_new_tab: false
 heading_anchors: true
 nav_enabled: true
