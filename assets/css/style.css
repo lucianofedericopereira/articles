@@ -576,8 +576,10 @@ blockquote {
     z-index: 0;
     display: flex;
     flex-wrap: wrap;
+/*
     background-color: #f5f6fa;
-    background-color: #e3f0df;
+*/
+    background-color: #f2f8f0;
 
 }
 
