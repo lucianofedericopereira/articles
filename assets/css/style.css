@@ -1195,8 +1195,7 @@ body {
 
 .nav-list .nav-list-item .nav-list-link:hover,
 .nav-list .nav-list-item .nav-list-link.active {
-    background: #e3f0df;
-    color: #0d070f;
+    background: #f2f8f0;
 }
 
 .nav-list .nav-list-item .nav-list-expander {
@@ -1205,7 +1204,7 @@ body {
     width: 3rem;
     height: 3rem;
     padding: 0.75rem;
-    color: #7253ed;
+    color: #e3f0df;
 }
 
 @media (min-width: 50rem) {
