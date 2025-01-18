@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .custom-logo {
-    margin-right: -3rem !important;
+    padding-left: 1rem !important;
 }
 
 .highlight,
