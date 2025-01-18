@@ -6,12 +6,15 @@
 
 .highlight,
 pre.highlight {
-    background: #f9f9f9;
+    /*    background: #f9f9f9;*/
+
+    background: #f2f8f0;
+
     color: #383942;
 }
 
 .highlight pre {
-    background: #f9f9f9;
+    /*    background: #f9f9f9;*/
 }
 
 .highlight .hll {
