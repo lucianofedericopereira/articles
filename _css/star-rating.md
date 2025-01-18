@@ -1,7 +1,7 @@
 ---
 title: "Star Rating"
 date: 2023-04-10
-layout: home
+layout: minimal
 ---
 
 Learn how to create a simple **star rating** look with only CSS and minimum HTML. We are going to use the data attribute and the before and after selectors. Check this step-by-step guide.

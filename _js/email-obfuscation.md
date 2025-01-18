@@ -1,7 +1,7 @@
 ---
 title: "Email obfuscation"
 date: 2023-04-15
-layout: home
+layout: default
 ---
 
 Email harvesters and other bots roam the Internet looking for email addresses to add to lists that target recipients for spam. This trend results in an increasing amount of unwanted email. Learn how to create a simple **{{page.m}}** using JavaScript. 
