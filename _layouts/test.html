@@ -1,14 +1,23 @@
 ---
 nav_enabled: false
 ---
+<!DOCTYPE html>
+<html lang="en-US">
 
-{%- include components/sidebar.html -%}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
-<h2>Test</h2>
+<body>
+    {%- include components/sidebar.html -%}
 
-{%- comment -%}
-{%- endcomment -%}
+    {{ content }}
 
-{{ content }}
+    {%- include footer.html -%}
+    {%- include mermaid.html -%}
 
-{{ _includes/footer.html }}
+</body>
+
+</html>
