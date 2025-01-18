@@ -57,8 +57,8 @@ just_the_docs:
   collections:
     css:
       name: CSS3
-      js:
-        name: JavaScript
+    js:
+      name: JavaScript
 
 
 
