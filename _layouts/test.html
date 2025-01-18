@@ -10,21 +10,43 @@ nav_enabled: false
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Jekyll">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}Home{% endif %}">
     <meta name="author" content="{{ site.author }}">
+    <meta name="description" content="{%- include components/title.html -%}">
+    <meta name="twitter:card" content="summary">
+    <meta property="og:title" content="{%- include components/title.html -%}">
     <meta property="og:locale" content="{{ site.locale | default: " en_US" }}">
-    <meta name="description"
-        content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-    <meta property="og:description"
-        content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta property="og:description" content="{%- include components/title.html -%}">
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     <meta property="og:site_name" content="{{ site.title }}">
     <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary">
-    <meta property="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}Home{% endif %}">
-    {%- include components/window_title.html -%}
+    <meta property="twitter:title" content="{%- include components/title.html -%}">
+    <title>{%- include components/title.html -%}</title>
     <link rel="icon" href="{{ site.favicon_ico | relative_url }}" type="image/x-icon">
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "author": {
+            "@type": "Person",
+            "name": "{{ site.author }}"
+        },
+        "description": "{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}",
+        "headline": "{%- include components/title.html -%}",
+        "name": "{{ site.title }}",
+        "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{{ site.url }}{{ site.logo }}"
+            },
+            "name": "{{ site.author }}"
+        },
+        "url": "{{ site.url }}{{ page.url }}"
+    }
+    </script>
+
+
 
 
 </head>
