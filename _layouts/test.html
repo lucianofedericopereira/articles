@@ -3,14 +3,15 @@ layout: minimal
 nav_enabled: false
 ---
 
-{%- comment -%}
-{%- endcomment -%}
 
 
 <h2>Test</h2>
 
-{{ _includes/sidebar.html }}
+{%- comment -%}
+{%- endcomment -%}
 
+1. {%- include components/sidebar.html -%}
+2. {{ _includes/components/sidebar.html }}
 
 {{ content }}
 
