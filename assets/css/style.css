@@ -1261,16 +1261,18 @@ body {
     font-weight: 600;
     text-align: start;
     text-transform: uppercase;
-    border-bottom: 1px solid #eeebee;
+    color: #0d070f;
+    border-bottom: 1px solid #e3f0df;
+
 }
 
 .nav-category {
     font-size: 0.6875rem !important;
 }
 
-@media (min-width: 31.25rem) {
+@media (min-width: 1rem) {
     .nav-category {
-        font-size: 0.75rem !important;
+        font-size: 1.25rem !important;
     }
 }
 
