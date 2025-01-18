@@ -12,9 +12,9 @@ nav_enabled: false
         {% if page.url == "/" %}
         {{ site.title }}
         {% elsif page.collection %}
-        {{ page.collection | upcase }}: {{ page.title | upcase }} | {{ site.title }}
+        {{ page.collection | upcase }}: {{ page.title | capitalize }} | {{ site.title }}
         {% else %}
-        {{ page.title | upcase | default: site.title }} | {{ site.title }}
+        {{ page.title | capitalize | default: site.title }} | {{ site.title }}
         {% endif %}
     </title>
 </head>
