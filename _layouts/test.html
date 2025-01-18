@@ -2,7 +2,7 @@
 nav_enabled: false
 ---
 <!DOCTYPE html>
-<html lang="{{ site.locale | default: " en_US" }}">
+<html lang="{{ site.locale | default: 'en_US' }}">
 
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,7 @@ nav_enabled: false
     <meta name="description" content="{%- include components/title.html -%}">
     <meta name="twitter:card" content="summary">
     <meta property="og:title" content="{%- include components/title.html -%}">
-    <meta property="og:locale" content="{{ site.locale | default: " en_US" }}">
+    <meta property="og:locale" content="{{ site.locale | default: ''en_US' }}">
     <meta property="og:description" content="{%- include components/title.html -%}">
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     <meta property="og:site_name" content="{{ site.title }}">
@@ -55,6 +55,9 @@ nav_enabled: false
             display: block;
         }
     </style>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <script src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -77,10 +80,6 @@ nav_enabled: false
         "url": "{{ site.url }}{{ page.url }}"
     }
     </script>
-
-
-
-
 </head>
 
 <body>
