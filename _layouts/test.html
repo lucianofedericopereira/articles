@@ -8,32 +8,16 @@ nav_enabled: false
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        {% if page.url == "/" %}
-        {{ site.title }}
-        {% elsif page.collection %}
-        {{ page.collection | upcase }}: {{ page.title | capitalize }} | {{ site.title }}
-        {% else %}
-        {{ page.title | capitalize | default: site.title }} | {{ site.title }}
-        {% endif %}
-    </title>
+    {%- include components/window_title.html -%}
 </head>
 
 <body>
-
-
-
-
-
-
     {%- include components/sidebar.html -%}
 
     {{ content }}
 
     {%- include components/footer.html -%}
     {%- include components/mermaid.html -%}
-
-
 </body>
 
 </html>
