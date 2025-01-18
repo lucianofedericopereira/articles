@@ -533,7 +533,8 @@ a:not([class]) {
 }
 
 a:not([class]):hover {
-    text-decoration-color: rgba(114, 83, 237, 0.45);
+/*    text-decoration-color: rgba(114, 83, 237, 0.45);*/
+    text-decoration-color: #FF7747;
 }
 
 code {
@@ -1947,7 +1948,8 @@ h6,
     width: 1rem;
     height: 1rem;
     margin-right: 0.5rem;
-    color: #7253ed;
+/*    color: #7253ed;*/
+     color: #ff7747;
     flex-shrink: 0;
 }
 
