@@ -9,7 +9,8 @@ nav_enabled: false
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {%- include components/window_title.html -%}
-    {%- include components/favicon.html -%}
+    <link rel="icon" href="{{ site.favicon_ico | relative_url }}" type="image/x-icon">
+    <meta name="generator" content="Jekyll {{ site.jekyll_version }}">
 </head>
 
 <body>
