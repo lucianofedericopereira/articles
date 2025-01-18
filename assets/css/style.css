@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+.custom-logo {
+    display: inline-block;
+    max-width: 10ch;
+
+}
+
 .highlight,
 pre.highlight {
     background: #f9f9f9;
