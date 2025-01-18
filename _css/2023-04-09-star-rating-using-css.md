@@ -1,5 +1,6 @@
 ---
 title: "Star Rating"
+layout: home
 date: 2023-04-10
 categories: CSS
 tags: snippets rating
