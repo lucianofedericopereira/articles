@@ -1,9 +1,7 @@
 @charset "UTF-8";
 
 .custom-logo {
-    display: inline-block;
-    max-width: 10ch;
-
+    margin-right: -3rem !important;
 }
 
 .highlight,
