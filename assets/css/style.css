@@ -1195,6 +1195,7 @@ body {
 .nav-list .nav-list-item .nav-list-link.active {
     font-weight: 600;
     text-decoration: none;
+    color: #0d070f;
 }
 
 .nav-list .nav-list-item .nav-list-link:hover,
