@@ -222,9 +222,22 @@ nav_enabled: false
 
 
         function disableMouseover() {
+
             const translateContainer = document.getElementById('translate');
-            translateContainer.addEventListener('mouseover', function (event) { event.stopPropagation(); }, true);
+            if (translateContainer) {
+                translateContainer.style.userSelect = 'none';
+                translateContainer.style.webkitUserSelect = 'none';
+                translateContainer.style.mozUserSelect = 'none';
+                translateContainer.style.msUserSelect = 'none';
+                translateContainer.style.khtmlUserSelect = 'none';
+            }
+            var style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = ` #translate .goog-te-gadget, #translate .goog-te-gadget:hover, #translate font, #translate font font, #translate font font font, #translate font:hover, #translate font font:hover, #translate font font font:hover { background-color: transparent !important; } `;
+            document.getElementsByTagName('head')[0].appendChild(style);
         }
+
+
 
         function translate() {
             new google.translate.TranslateElement({
