@@ -338,6 +338,7 @@ nav_enabled: false
         window.translate = translate;
 
 
+        /*
         function wrapAllParagraphs() {
             const paragraphs = document.querySelectorAll('p');
             paragraphs.forEach(paragraph => {
@@ -372,6 +373,78 @@ nav_enabled: false
 
             observer.observe(document.body, { childList: true, subtree: true });
         });
+        */
+
+
+        function wrapElements() {
+            const elements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, a');
+            elements.forEach(element => {
+                // Skip wrapping anchors inside other elements
+                if (element.tagName === 'A' && element.parentElement.tagName !== 'BODY') {
+                    return;
+                }
+
+                const container = document.createElement('div');
+                container.className = 'overlay-container';
+                const overlay = document.createElement('div');
+                overlay.className = 'overlay';
+                overlay.style.pointerEvents = 'none'; // Allow clicks to pass through
+                element.parentNode.insertBefore(container, element);
+                container.appendChild(element);
+                container.appendChild(overlay);
+
+                // Increase z-index of standalone anchors
+                if (element.tagName === 'A') {
+                    element.style.position = 'relative';
+                    element.style.zIndex = '1';
+                    element.addEventListener('click', (event) => {
+                        // Allow onClick event
+                        alert('Anchor clicked: ' + element.href);
+                        // You can add any custom logic here
+                    });
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            wrapElements();
+
+            const observer = new MutationObserver(mutations => {
+                mutations.forEach(mutation => {
+                    mutation.addedNodes.forEach(node => {
+                        if (node.nodeType === Node.ELEMENT_NODE && /P|H[1-6]|A/.test(node.tagName)) {
+                            // Skip wrapping anchors inside other elements
+                            if (node.tagName === 'A' && node.parentElement.tagName !== 'BODY') {
+                                return;
+                            }
+
+                            const container = document.createElement('div');
+                            container.className = 'overlay-container';
+                            const overlay = document.createElement('div');
+                            overlay.className = 'overlay';
+                            overlay.style.pointerEvents = 'none'; // Allow clicks to pass through
+                            node.parentNode.insertBefore(container, node);
+                            container.appendChild(node);
+                            container.appendChild(overlay);
+
+                            // Increase z-index of standalone anchors
+                            if (node.tagName === 'A') {
+                                node.style.position = 'relative';
+                                node.style.zIndex = '1';
+                                node.addEventListener('click', (event) => {
+                                    // Allow onClick event
+                                    alert('Anchor clicked: ' + node.href);
+                                    // You can add any custom logic here
+                                });
+                            }
+                        }
+                    });
+                });
+            });
+
+            observer.observe(document.body, { childList: true, subtree: true });
+        });
+
 
 
 
