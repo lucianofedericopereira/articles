@@ -221,7 +221,7 @@ nav_enabled: false
         }
 
 
-        function disableMouseover() {
+        function disableTextSelection() {
 
             const translateContainer = document.getElementById('translate');
             if (translateContainer) {
@@ -278,6 +278,7 @@ nav_enabled: false
             const debouncedChangeLanguage = debounce(function (lang) {
                 googleCombo.value = lang;
                 triggerHtmlEvent(googleCombo, 'change');
+                disableTextSelection();
             }, 1500);
 
             langSelect?.addEventListener('click', function (event) {
@@ -336,7 +337,7 @@ nav_enabled: false
             _tipon = function () { };
             _tipoff = function () { };
 
-            disableMouseover();
+            disableTextSelection();
 
         }
 
