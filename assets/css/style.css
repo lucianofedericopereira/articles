@@ -29,7 +29,7 @@ body {
     border: none;
     cursor: pointer;
     text-transform: capitalize;
-    background: none;
+    background: transparent;
     color: inherit;
     font: inherit;
     text-align: inherit;
