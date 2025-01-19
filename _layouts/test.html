@@ -329,34 +329,6 @@ nav_enabled: false
 
 
 
-        function replaceEventListeners(element) {
-            // Create a clone of the element
-            var clone = element.cloneNode(true);
-            // Replace the old element with the clone
-            element.parentNode.replaceChild(clone, element);
-            return clone;
-        }
-
-        function applyCustomMouseoverHighlight() {
-            const paragraphs = document.querySelectorAll('p');
-            paragraphs.forEach(paragraph => {
-                // Remove existing event listeners by replacing the element
-                const clone = replaceEventListeners(paragraph);
-                // Add a new mouseover event listener
-                clone.addEventListener('mouseover', function (event) {
-                    clone.classList.add('highlighted');
-                });
-                // Add a mouseout event listener to remove the highlight
-                clone.addEventListener('mouseout', function (event) {
-                    clone.classList.remove('highlighted');
-                });
-            });
-        }
-
-        // Call the function after the DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', applyCustomMouseoverHighlight);
-
-
 
 
 
