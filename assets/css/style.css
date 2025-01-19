@@ -2247,7 +2247,7 @@ figure.highlight>button {
 div.highlighter-rouge>button svg,
 div.listingblock>div.content>button svg,
 figure.highlight>button svg {
-    fill: #0d070f;
+    fill: #FF7747;
 }
 
 div.highlighter-rouge>button:active,
