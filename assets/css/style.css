@@ -5,6 +5,15 @@ body {
     top: 0px !important;
 }
 
+
+.side-bar * {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+
 /*
 */
 
@@ -84,6 +93,7 @@ body {
 .dropdown {
     position: relative;
     display: inline-block;
+    z-index: 20;
 }
 
 .dropdown-content,
