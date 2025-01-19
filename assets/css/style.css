@@ -8,41 +8,17 @@ body {
 /*
 */
 
-font {
-    background-color: transparent !important;
-    box-shadow: none !important;
-}
-
-
-body .skiptranslate {
-    background: transparent !important;
-}
-
-body .skiptranslate * {
-    background: transparent !important;
-}
-
-body .skiptranslate:hover {
-    background: transparent !important;
-}
-
-.skiptranslate {
-    display: none !important;
-}
-
-/* If needed, allow pointer events to go through */
 body {
     pointer-events: auto;
-    /* Ensure body can receive mouse events */
 }
 
-/* This will specifically hide just the highlighted translation overlay */
-body>div.skiptranslate {
-    display: none !important;
+a.goog-te-menu-value:hover span {
+    background: none !important;
 }
 
 /*
 */
+
 
 .goog-tooltip {
     display: none !important;
