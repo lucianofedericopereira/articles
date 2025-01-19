@@ -338,7 +338,7 @@ nav_enabled: false
         window.translate = translate;
 
 
-
+        /*
         function wrapAllParagraphs() {
             const paragraphs = document.querySelectorAll('p');
             paragraphs.forEach(paragraph => {
@@ -373,7 +373,44 @@ nav_enabled: false
 
             observer.observe(document.body, { childList: true, subtree: true });
         });
+        */
 
+        function wrapAllParagraphs() {
+            const paragraphs = document.querySelectorAll('p');
+            paragraphs.forEach(paragraph => {
+                const container = document.createElement('div');
+                container.className = 'overlay-container';
+                const overlay = document.createElement('div');
+                overlay.className = 'overlay';
+                overlay.style.pointerEvents = 'none'; // Allow clicks to pass through
+                paragraph.parentNode.insertBefore(container, paragraph);
+                container.appendChild(paragraph);
+                container.appendChild(overlay);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            wrapAllParagraphs();
+
+            const observer = new MutationObserver(mutations => {
+                mutations.forEach(mutation => {
+                    mutation.addedNodes.forEach(node => {
+                        if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'P') {
+                            const container = document.createElement('div');
+                            container.className = 'overlay-container';
+                            const overlay = document.createElement('div');
+                            overlay.className = 'overlay';
+                            overlay.style.pointerEvents = 'none'; // Allow clicks to pass through
+                            node.parentNode.insertBefore(container, node);
+                            container.appendChild(node);
+                            container.appendChild(overlay);
+                        }
+                    });
+                });
+            });
+
+            observer.observe(document.body, { childList: true, subtree: true });
+        });
 
 
 
