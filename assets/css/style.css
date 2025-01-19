@@ -70,7 +70,7 @@ body {
 
 .dropdown-lang a:hover,
 .dropdown-content a:hover {
-    background-color: #f1f1f1
+    background-color: #f2f8f0;
 }
 
 .dropdown:hover .dropdown-lang,
@@ -84,7 +84,7 @@ body {
 }
 
 .dropdown-lang .selected {
-    background-color: #3e8e41;
+    background-color: #e3f0df;
 }
 
 .dropbtn.disabled {
