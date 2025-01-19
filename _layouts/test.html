@@ -321,6 +321,34 @@ nav_enabled: false
 
 
 
+
+        // Function to add custom CSS
+        function addCustomCSS() {
+            var style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = `
+        #google_translate_element .goog-te-gadget {
+            background-color: transparent !important;
+        }
+        #google_translate_element .goog-te-gadget:hover {
+            background-color: transparent !important;
+        }
+    `;
+            document.getElementsByTagName('head')[0].appendChild(style);
+        }
+
+        // Wait for the Google Translate script to load and then apply the custom CSS
+        window.onload = function () {
+            if (typeof google === 'object' && typeof google.translate === 'object') {
+                addCustomCSS();
+            } else {
+                // Add a small delay if the script isn't ready yet
+                setTimeout(addCustomCSS, 500);
+            }
+        };
+
+
+
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=translate"
         async></script>
