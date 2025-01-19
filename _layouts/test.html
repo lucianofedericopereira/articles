@@ -198,13 +198,6 @@ nav_enabled: false
                 <main>
 
 
-                    <div class="overlay-container">
-                        <p class="google-src-text">This text is translated by Google Translate and should not have a
-                            blue highlight on
-                            mouseover.</p>
-                        <div class="overlay"></div>
-                    </div>
-
 
 
 
@@ -337,6 +330,7 @@ nav_enabled: false
 
         window.translate = translate;
 
+        /*
         document.addEventListener('DOMContentLoaded', () => {
             const wrapParagraph = (paragraph) => {
                 const container = document.createElement('div');
@@ -363,6 +357,38 @@ nav_enabled: false
 
             observer.observe(document.body, { childList: true, subtree: true });
         });
+        */
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const wrapParagraph = (paragraph) => {
+                const container = document.createElement('div');
+                container.className = 'overlay-container';
+                const overlay = document.createElement('div');
+                overlay.className = 'overlay';
+                paragraph.parentNode.insertBefore(container, paragraph);
+                container.appendChild(paragraph);
+                container.appendChild(overlay);
+            };
+
+            const mainElement = document.querySelector('main');
+            const paragraphs = mainElement.querySelectorAll('p');
+            paragraphs.forEach(wrapParagraph);
+
+            const observer = new MutationObserver(mutations => {
+                mutations.forEach(mutation => {
+                    mutation.addedNodes.forEach(node => {
+                        if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'P') {
+                            wrapParagraph(node);
+                        }
+                    });
+                });
+            });
+
+            observer.observe(mainElement, { childList: true, subtree: true });
+        });
+
+
+
 
 
     </script>
