@@ -2257,13 +2257,15 @@ figure.highlight {
     margin-top: 0;
     margin-bottom: 0.75rem;
     background-color: #edf3eb;
-    border-radius: 4px;
     box-shadow: none;
     -webkit-overflow-scrolling: touch;
     position: relative;
     padding: 0;
-
-    border-radius: .5vh;
+    /*
+    border-radius: 4px;
+    */
+    border: 2px solid #e3f0df;
+    border-radius: 14vh;
     /*lfp*/
 
 }
