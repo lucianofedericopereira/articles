@@ -20,6 +20,21 @@ body .skiptranslate:hover {
     background: transparent !important;
 }
 
+.skiptranslate {
+    display: none !important;
+}
+
+/* If needed, allow pointer events to go through */
+body {
+    pointer-events: auto;
+    /* Ensure body can receive mouse events */
+}
+
+/* This will specifically hide just the highlighted translation overlay */
+body>div.skiptranslate {
+    display: none !important;
+}
+
 /*
 */
 
