@@ -219,6 +219,16 @@ nav_enabled: false
                 timeout = setTimeout(() => func.apply(this, args), wait);
             };
         }
+
+
+        function addCustomCSS() {
+            var style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = ` #google_translate_element .goog-te-gadget { background-color: transparent !important; } #google_translate_element .goog-te-gadget:hover { background-color: transparent !important; } #google_translate_element font { background-color: transparent !important; } #google_translate_element font:hover { background-color: transparent !important; } `;
+            document.getElementsByTagName('head')[0].appendChild(style);
+        }
+
+
         function translate() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
@@ -324,12 +334,6 @@ nav_enabled: false
 
 
 
-        function addCustomCSS() {
-            var style = document.createElement('style');
-            style.type = 'text/css';
-            style.innerHTML = ` #google_translate_element .goog-te-gadget { background-color: transparent !important; } #google_translate_element .goog-te-gadget:hover { background-color: transparent !important; } `;
-            document.getElementsByTagName('head')[0].appendChild(style);
-        }
 
 
 
