@@ -345,17 +345,9 @@ nav_enabled: false
                 container.className = 'overlay-container';
                 const overlay = document.createElement('div');
                 overlay.className = 'overlay';
-                overlay.style.pointerEvents = 'none'; // Allow clicks to pass through
                 paragraph.parentNode.insertBefore(container, paragraph);
                 container.appendChild(paragraph);
                 container.appendChild(overlay);
-
-                // Increase z-index of anchors
-                const anchors = paragraph.querySelectorAll('a');
-                anchors.forEach(anchor => {
-                    anchor.style.position = 'relative';
-                    anchor.style.zIndex = '1';
-                });
             });
         }
 
@@ -370,17 +362,9 @@ nav_enabled: false
                             container.className = 'overlay-container';
                             const overlay = document.createElement('div');
                             overlay.className = 'overlay';
-                            overlay.style.pointerEvents = 'none'; // Allow clicks to pass through
                             node.parentNode.insertBefore(container, node);
                             container.appendChild(node);
                             container.appendChild(overlay);
-
-                            // Increase z-index of anchors
-                            const anchors = node.querySelectorAll('a');
-                            anchors.forEach(anchor => {
-                                anchor.style.position = 'relative';
-                                anchor.style.zIndex = '1';
-                            });
                         }
                     });
                 });
