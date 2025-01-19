@@ -12,6 +12,9 @@ pre.highlight {
     background: #f2f8f0;
 
     color: #383942;
+
+    padding: .5rem;
+
 }
 
 .highlight pre {
