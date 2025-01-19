@@ -16,6 +16,11 @@ body {
 /*
 */
 
+font {
+    positio: absolute;
+    top: 0;
+    left: 0;
+}
 
 .goog-tooltip {
     display: none !important;
