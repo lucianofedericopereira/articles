@@ -906,6 +906,7 @@ blockquote {
     background: #e3f0df;
 }
 
+.dropbtn:hover,
 .site-button:hover {
     background: #f2f8f0;
     color: #022000;
