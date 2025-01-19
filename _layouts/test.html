@@ -220,6 +220,14 @@ nav_enabled: false
             };
         }
 
+        function disableMouseover() {
+            const translateElements = document.querySelectorAll('#google_translate_element *');
+            translateElements.forEach(element => {
+                element.style.pointerEvents = 'none';
+            });
+        }
+
+
 
         function addCustomCSS() {
             var style = document.createElement('style');
@@ -324,10 +332,12 @@ nav_enabled: false
                 event.preventDefault();
             });
 
+
             _tipon = function () { };
             _tipoff = function () { };
 
             addCustomCSS();
+            disableMouseover();
 
         }
 
