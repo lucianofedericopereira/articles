@@ -376,52 +376,22 @@ nav_enabled: false
         */
 
 
-        function wrapElements() {
-            const elements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, a');
-            elements.forEach(element => {
-                // Skip wrapping anchors inside other elements
-                if (element.tagName === 'A' && element.parentElement.tagName !== 'BODY') {
-                    return;
-                }
 
+        function wrapAllParagraphs() {
+            const paragraphs = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6');
+            paragraphs.forEach(paragraph => {
                 const container = document.createElement('div');
                 container.className = 'overlay-container';
                 const overlay = document.createElement('div');
                 overlay.className = 'overlay';
-                overlay.style.pointerEvents = 'none'; // Allow clicks to pass through
-                element.parentNode.insertBefore(container, element);
-                container.appendChild(element);
-                container.appendChild(overlay);
-
-                // Increase z-index of standalone anchors
-                if (element.tagName === 'A') {
-                    element.style.position = 'relative';
-                    element.style.zIndex = '1';
-                    element.addEventListener('click', (event) => {
-                        // Allow onClick event
-                        alert('Anchor clicked: ' + element.href);
-                        // You can add any custom logic here
-                    });
-                }
-            });
-        }
-
-        function wrapElements() {
-            const elements = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6');
-            elements.forEach(element => {
-                const container = document.createElement('div');
-                container.className = 'overlay-container';
-                const overlay = document.createElement('div');
-                overlay.className = 'overlay';
-                overlay.style.pointerEvents = 'none'; // Allow clicks to pass through
-                element.parentNode.insertBefore(container, element);
-                container.appendChild(element);
+                paragraph.parentNode.insertBefore(container, paragraph);
+                container.appendChild(paragraph);
                 container.appendChild(overlay);
             });
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            wrapElements();
+            wrapAllParagraphs();
 
             const observer = new MutationObserver(mutations => {
                 mutations.forEach(mutation => {
@@ -431,7 +401,6 @@ nav_enabled: false
                             container.className = 'overlay-container';
                             const overlay = document.createElement('div');
                             overlay.className = 'overlay';
-                            overlay.style.pointerEvents = 'none'; // Allow clicks to pass through
                             node.parentNode.insertBefore(container, node);
                             container.appendChild(node);
                             container.appendChild(overlay);
@@ -442,7 +411,6 @@ nav_enabled: false
 
             observer.observe(document.body, { childList: true, subtree: true });
         });
-
 
 
 
