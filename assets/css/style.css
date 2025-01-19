@@ -88,7 +88,8 @@ body {
 }
 
 .dropbtn.disabled {
-    background-color: #cccccc;
+    color: #5c5962;
+    background-color: #fff;
     cursor: not-allowed;
 }
 
