@@ -21,7 +21,8 @@
 
 .custom-slogan {
     font-size: .75rem;
-    color: #43503f;
+    color: #55555f;
+    padding-right: 3.5rem;
 }
 
 .bg-grey-lt-000 {
@@ -1261,8 +1262,9 @@ body {
     font-weight: 600;
     text-align: start;
     text-transform: uppercase;
-    color: #0d070f;
-    border-bottom: 1px solid #e3f0df;
+    /*    color: #0d070f;*/
+    color: #022000;
+    /*    border-bottom: 1px solid #e3f0df;*/
     letter-spacing: 1px;
 
 }
