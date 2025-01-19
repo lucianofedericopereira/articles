@@ -20,7 +20,9 @@
 }
 
 .custom-slogan {
-    font-size: .85rem;
+    font-size: .75rem;
+    color: #e3f0df;
+
 }
 
 
@@ -2260,6 +2262,10 @@ figure.highlight {
     -webkit-overflow-scrolling: touch;
     position: relative;
     padding: 0;
+
+    border-radius: .5vh;
+    /*lfp*/
+
 }
 
 div.highlighter-rouge>button,
