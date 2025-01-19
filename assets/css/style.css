@@ -8,6 +8,12 @@ body {
 /*
 */
 
+font {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+
 body .skiptranslate {
     background: transparent !important;
 }
