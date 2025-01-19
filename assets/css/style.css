@@ -27,6 +27,7 @@ body {
 
 .dropbtn {
     appearance: unset;
+    border: none;
     cursor: pointer;
     user-select: none;
     font-weight: 600;
