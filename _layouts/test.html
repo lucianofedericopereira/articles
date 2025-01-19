@@ -320,6 +320,14 @@ nav_enabled: false
         window.translate = translate;
 
 
+        const iframe = document.querySelector('.utterances-frame');
+        iframe.onload = function () {
+            const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+            const style = iframeDocument.createElement('style');
+            style.textContent = ".timeline-header em {display:none!important}";
+            iframeDocument.head.appendChild(style);
+        };
+
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=translate"
         async></script>
