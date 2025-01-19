@@ -38,6 +38,8 @@ body {
     padding: 1rem;
     align-items: center;
     font-weight: 600;
+    background-color: #fff;
+    color: #FF7747;
     font-family: system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif, "Segoe UI Emoji";
 
 }
