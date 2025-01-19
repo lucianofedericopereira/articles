@@ -2227,13 +2227,7 @@ figure.highlight {
     -webkit-overflow-scrolling: touch;
     position: relative;
     padding: 0;
-    /*
-    border-radius: 4px;
-    */
     border: 2px solid #e3f0df;
-    /*    border-radius: 2vh;*/
-    /*lfp*/
-
 }
 
 div.highlighter-rouge>button,
@@ -2391,13 +2385,9 @@ code.language-mermaid {
 
 .highlight,
 pre.highlight {
-    /*
-lfp
-*/
     color: #5c5962;
     background: #edf3eb;
     border: 2px solid #e3f0df;
-    /*    border-radius: 1.1vh;*/
 }
 
 .highlight pre {
