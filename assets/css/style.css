@@ -5,6 +5,15 @@
     color: #0d070f;
 }
 
+.bg-grey-lt-000 {
+    /*
+    background-color: #f5f6fa !important;
+    */
+    background: #f2f8f0;
+}
+
+
+
 .highlight,
 pre.highlight {
     /*    background: #f9f9f9;*/
@@ -13,7 +22,7 @@ pre.highlight {
 
     color: #383942;
 
-    padding: .5rem;
+    padding: .5rem .75rem;
 
 }
 
@@ -2537,9 +2546,6 @@ pre.highlight {
     background-color: #27262b !important;
 }
 
-.bg-grey-lt-000 {
-    background-color: #f5f6fa !important;
-}
 
 .bg-grey-lt-100 {
     background-color: #eeebee !important;
