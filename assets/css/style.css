@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-/* dropdown */
-
 body {
     top: 0px !important;
 }
@@ -27,8 +25,7 @@ body {
 }
 
 .dropbtn {
-    background-color: #4CAF50;
-    color: white;
+    color: #FF7747;
     font-size: 1rem;
     padding: 16px;
     border: none;
@@ -37,7 +34,7 @@ body {
     user-select: none;
     font-weight: 600;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    text-transform: capitalize;
 }
 
 .dropdown {
