@@ -338,43 +338,6 @@ nav_enabled: false
         window.translate = translate;
 
 
-        /*
-        function wrapAllParagraphs() {
-            const paragraphs = document.querySelectorAll('p');
-            paragraphs.forEach(paragraph => {
-                const container = document.createElement('div');
-                container.className = 'overlay-container';
-                const overlay = document.createElement('div');
-                overlay.className = 'overlay';
-                paragraph.parentNode.insertBefore(container, paragraph);
-                container.appendChild(paragraph);
-                container.appendChild(overlay);
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            wrapAllParagraphs();
-
-            const observer = new MutationObserver(mutations => {
-                mutations.forEach(mutation => {
-                    mutation.addedNodes.forEach(node => {
-                        if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'P') {
-                            const container = document.createElement('div');
-                            container.className = 'overlay-container';
-                            const overlay = document.createElement('div');
-                            overlay.className = 'overlay';
-                            node.parentNode.insertBefore(container, node);
-                            container.appendChild(node);
-                            container.appendChild(overlay);
-                        }
-                    });
-                });
-            });
-
-            observer.observe(document.body, { childList: true, subtree: true });
-        });
-        */
-
         function wrapAllParagraphs() {
             const paragraphs = document.querySelectorAll('p');
             paragraphs.forEach(paragraph => {
@@ -386,6 +349,13 @@ nav_enabled: false
                 paragraph.parentNode.insertBefore(container, paragraph);
                 container.appendChild(paragraph);
                 container.appendChild(overlay);
+
+                // Increase z-index of anchors
+                const anchors = paragraph.querySelectorAll('a');
+                anchors.forEach(anchor => {
+                    anchor.style.position = 'relative';
+                    anchor.style.zIndex = '1';
+                });
             });
         }
 
@@ -404,6 +374,13 @@ nav_enabled: false
                             node.parentNode.insertBefore(container, node);
                             container.appendChild(node);
                             container.appendChild(overlay);
+
+                            // Increase z-index of anchors
+                            const anchors = node.querySelectorAll('a');
+                            anchors.forEach(anchor => {
+                                anchor.style.position = 'relative';
+                                anchor.style.zIndex = '1';
+                            });
                         }
                     });
                 });
@@ -411,8 +388,6 @@ nav_enabled: false
 
             observer.observe(document.body, { childList: true, subtree: true });
         });
-
-
 
 
 
