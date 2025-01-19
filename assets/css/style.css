@@ -2,7 +2,8 @@
 
 .language-plaintext.highlighter-rouge {
     color: #2d272f;
-    font-weight: 600;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 
 .custom-logo {
