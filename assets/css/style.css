@@ -8,7 +8,16 @@
 .custom-logo {
     padding-left: 1.75rem !important;
     color: #0d070f;
+    display: inline-flex;
+    align-items: center;
 }
+
+.custom-logo img {
+    vertical-align: middle;
+}
+
+
+
 
 .bg-grey-lt-000 {
     /*
