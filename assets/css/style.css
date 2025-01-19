@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.language-plaintext .highlighter-rouge {
+    color: #0d070f;
+}
+
 .custom-logo {
     padding-left: 1.75rem !important;
     color: #0d070f;
