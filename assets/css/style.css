@@ -26,12 +26,8 @@ body {
 }
 
 .dropbtn {
-    /*
-    background-color: #4CAF50;
-    color: white;
-*/
+    appearance: unset;
     cursor: pointer;
-    /*    min-width: 150px;*/
     user-select: none;
     font-weight: 600;
     letter-spacing: 1px;
@@ -41,6 +37,7 @@ body {
     padding: 1rem;
     align-items: center;
     font-weight: 600;
+    font-family: system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif, "Segoe UI Emoji";
 
 }
 
