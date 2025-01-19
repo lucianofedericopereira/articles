@@ -329,6 +329,31 @@ nav_enabled: false
 
 
 
+        function replaceEventListeners(element) {
+            // Create a clone of the element
+            var clone = element.cloneNode(true);
+            // Replace the old element with the clone
+            element.parentNode.replaceChild(clone, element);
+            return clone;
+        }
+
+        function disableParagraphMouseover() {
+            const paragraphs = document.querySelectorAll('p');
+            paragraphs.forEach(paragraph => {
+                // Remove existing event listeners by replacing the element
+                const clone = replaceEventListeners(paragraph);
+                // Add a new mouseover event listener
+                clone.addEventListener('mouseover', function (event) {
+                    event.stopPropagation(); // Prevent other mouseover events
+                    // Custom event logic here (for now, it does nothing)
+                });
+            });
+        }
+
+        // Call the function to apply the behavior to all <p> elements
+        disableParagraphMouseover();
+
+
 
 
 
