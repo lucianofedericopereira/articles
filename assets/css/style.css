@@ -5,6 +5,24 @@ body {
     top: 0px !important;
 }
 
+/*
+*/
+
+body .skiptranslate {
+    background: transparent !important;
+}
+
+body .skiptranslate * {
+    background: transparent !important;
+}
+
+body .skiptranslate:hover {
+    background: transparent !important;
+}
+
+/*
+*/
+
 .goog-tooltip {
     display: none !important;
 }
