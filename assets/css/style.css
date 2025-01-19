@@ -1413,11 +1413,14 @@ body {
     overflow-x: auto;
 }
 
+.dropbtn,
 .aux-nav {
     font-size: 0.6875rem !important;
 }
 
 @media (min-width: 31.25rem) {
+
+    .dropbtn,
     .aux-nav {
         font-size: 0.75rem !important;
     }
