@@ -154,6 +154,15 @@ In order to verify the address we use this function that returns `true` or `fals
 
 <div class="notranslate">
 
+<pre class="notranslate prettyprint js"><code>
+function validEmail(email) {
+    const 
+    res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    return res.test(String(email).toLowerCase())
+}
+<code></pre>
+
+
 ```js
 function validEmail(email) {
     const 
