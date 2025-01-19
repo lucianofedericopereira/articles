@@ -25,18 +25,17 @@ body {
 }
 
 .dropbtn {
-    /*
-    color: #FF7747;
-    font-size: 1rem;
-    padding: 16px;
+    user-select: none;
     border: none;
     cursor: pointer;
-    min-width: 150px;
-    user-select: none;
-    font-weight: 600;
-    letter-spacing: 1px;
-*/
     text-transform: capitalize;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: inherit;
+    text-decoration: none;
+    outline: none;
+    display: inline;
 }
 
 .dropdown {
