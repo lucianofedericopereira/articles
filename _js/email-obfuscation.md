@@ -152,8 +152,6 @@ function parseEmail() {
 
 In order to verify the address we use this function that returns `true` or `false` when an address is passed to it.
 
-<div class="notranslate">
-
 <pre class="notranslate prettyprint js"><code>
 function validEmail(email) {
     const 
@@ -169,10 +167,7 @@ function validEmail(email) {
     res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     return res.test(String(email).toLowerCase())
 }
-
 ```
-
-</div>
 
 In terms of design we will use https://simplecss.org a minimal CSS semantic framework.
 
