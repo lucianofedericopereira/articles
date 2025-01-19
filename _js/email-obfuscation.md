@@ -31,17 +31,12 @@ The function will receive two parameters `email` and `key` and returns a `string
 
 First, as `key` is a `decimal` number we have to convert it to `hex` and pad it with a zero in case is smaller than 10<sub>16</sub>
 
-<div class="notranslate">
-
 ```js
 let encodedString = key.toString(16).padStart(2,'0')
 ```
 
-</div>
-
 Then we iterate trough the whole mail address doing a `xor`, padding and concatenating to `encodedString`
 
-<div class="notranslate">
 
 ```js
 for ( let n=0; n < email.length ; n++ ) {
@@ -49,11 +44,9 @@ for ( let n=0; n < email.length ; n++ ) {
   }
 
 ```
-</div>
 
 The whole encoder code so far
 
-<div class="notranslate">
 
 ```js
 function encodeEmail(email, key) {
@@ -75,13 +68,10 @@ function encodeEmail(email, key) {
 }
 ```
 
-</div>
-
 ## Decoder
 
 As we can realize the new length will be `originalLenght*2+2` as every char and the key will be represented by their `hex value`, so we have to pick the first two characters of the encoded string and covert it to decimal. Then we will repeat the operation using that value as `key` and doing `xor` and concatenating the rest. 
 
-<div class="notranslate">
 
 ```js
 const decodeEmail = (encoded) => {
@@ -103,7 +93,6 @@ const decodeEmail = (encoded) => {
 }
 ```
 
-</div>
 
 ## Parser
 
@@ -111,17 +100,14 @@ In order to store our encoded address we will use the `data` attribute and we al
 
 Example Link:
 
-<div class="notranslate">
 
 ```html
 <a href="#" class="eml" data-encoded= "9c...">[contact]</a>
 ```
-</div>
 
 
 Parse Function:
 
-<div class="notranslate">
 
 ```js
 function parseEmail() {
@@ -139,7 +125,6 @@ function parseEmail() {
 } parseEmail()
 ```
 
-</div>
 
 ## The Form Encoder
 
@@ -151,15 +136,6 @@ function parseEmail() {
 </details>
 
 In order to verify the address we use this function that returns `true` or `false` when an address is passed to it.
-
-<pre class="notranslate prettyprint js"><code>
-function validEmail(email) {
-    const 
-    res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    return res.test(String(email).toLowerCase())
-}
-<code></pre>
-
 
 ```js
 function validEmail(email) {
