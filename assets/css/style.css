@@ -77,7 +77,8 @@ body {
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+    background: #f2f8f0;
+    color: #022000;
 }
 
 .dropdown-lang .selected {
