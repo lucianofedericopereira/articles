@@ -21,15 +21,10 @@
 
 .custom-slogan {
     font-size: .75rem;
-    color: #b3c0af;
-
+    color: #43503f;
 }
 
-
 .bg-grey-lt-000 {
-    /*
-    background-color: #f5f6fa !important;
-    */
     background: #f2f8f0;
 }
 
@@ -37,19 +32,13 @@
 
 .highlight,
 pre.highlight {
-    /*    background: #f9f9f9;*/
-
     background: #f2f8f0;
-
     color: #383942;
-
     padding: .5rem .8rem;
 
 }
 
-.highlight pre {
-    /*    background: #f9f9f9;*/
-}
+.highlight pre {}
 
 .highlight .hll {
     background: #f9f9f9;
@@ -623,13 +612,7 @@ blockquote {
         position: fixed;
         width: 15.5rem;
         height: 100%;
-        /*
-        border-right: 1px solid #eeebee;
-*/
-
         border-right: 1px solid #e3f0df;
-
-
         align-items: flex-end;
     }
 }
@@ -804,15 +787,6 @@ blockquote {
     }
 }
 
-.site-logo {
-    width: 100%;
-    height: 100%;
-    background-image: url("/articles/assets/images/favicon.ico");
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: contain;
-}
-
 .site-button {
     display: flex;
     height: 100%;
@@ -832,17 +806,8 @@ blockquote {
 }
 
 .site-button:hover {
-
-    /*
-    background-image: linear-gradient(-90deg, rgb(234.8, 236.82, 244.9) 0%, rgba(234.8, 236.82, 244.9, 0.8) 100%);
-    */
-
     background: #f2f8f0;
     color: #0d070f;
-
-
-
-
 }
 
 body {
@@ -2002,7 +1967,6 @@ h6,
     width: 1rem;
     height: 1rem;
     margin-right: 0.5rem;
-    /*    color: #7253ed;*/
     color: #ff7747;
     flex-shrink: 0;
 }
@@ -2265,7 +2229,7 @@ figure.highlight {
     border-radius: 4px;
     */
     border: 2px solid #e3f0df;
-    border-radius: 3vh;
+    border-radius: 2vh;
     /*lfp*/
 
 }
@@ -2426,7 +2390,7 @@ code.language-mermaid {
 .highlight,
 pre.highlight {
     /*
-    background: #edf3eb;
+lfp
 */
     color: #5c5962;
 
@@ -2574,7 +2538,6 @@ pre.highlight {
 .bg-grey-dk-300 {
     background-color: #27262b !important;
 }
-
 
 .bg-grey-lt-100 {
     background-color: #eeebee !important;
