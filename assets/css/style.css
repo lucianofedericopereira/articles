@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+.timeline-header em {
+    display: none !important
+}
+
+
+
 /* dropdown */
 
 body {
