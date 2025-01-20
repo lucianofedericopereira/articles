@@ -5,6 +5,10 @@ body {
     top: 0px !important;
 }
 
+p {
+    text-align: justify;
+}
+
 
 .side-bar * {
     user-select: none;
