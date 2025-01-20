@@ -84,7 +84,6 @@ nav_enabled: false
 
 <body>
     <div id="translate"></div>
-
     <a class="skip-to-main" href="#main-content">Skip to main content</a>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="svg-link" viewBox="0 0 24 24">
@@ -189,20 +188,13 @@ nav_enabled: false
         <div class="main-content-wrap">
             <div id="main-content" class="main-content">
                 <main>
-
-
-
-
-
                     {{ content }}
                 </main>
-
                 <div class="notranslate">
                     <script src="https://utteranc.es/client.js" theme="github-light" issue-term="title"
                         repo="lucianofedericopereira/comments" crossorigin="anonymous" async>
                         </script>
                 </div>
-
                 {%- include components/footer.html -%}
             </div>
         </div>
@@ -217,9 +209,6 @@ nav_enabled: false
                 timeout = setTimeout(() => func.apply(this, args), wait);
             };
         }
-
-
-
 
         function translate() {
             new google.translate.TranslateElement({

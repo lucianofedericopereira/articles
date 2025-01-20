@@ -189,7 +189,6 @@ pre.highlight {
 
 }
 
-.highlight pre {}
 
 .highlight .hll {
     background: #f9f9f9;
@@ -2543,10 +2542,6 @@ pre.highlight {
     color: #5c5962;
     background: #edf3eb;
     border: 2px solid #e3f0df;
-}
-
-.highlight pre {
-    /*    background: #edf3eb;*/
 }
 
 .text-grey-dk-000 {
