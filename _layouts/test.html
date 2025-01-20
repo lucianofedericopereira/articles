@@ -313,8 +313,6 @@ nav_enabled: false
         window.translate = translate;
 
         /*
-        */
-        /*
         document.addEventListener('DOMContentLoaded', () => {
             const wrapParagraph = (paragraph) => {
                 const containerDiv = document.createElement('div');
@@ -337,18 +335,17 @@ nav_enabled: false
         */
 
         document.addEventListener('DOMContentLoaded', () => {
-            const wrapMainSection = (mainSection) => {
+            const wrapElement = (element) => {
                 const containerDiv = document.createElement('div');
                 containerDiv.className = 'overlay-container';
                 const overlayDiv = document.createElement('div');
                 overlayDiv.className = 'overlay';
-                mainSection.parentNode.insertBefore(containerDiv, mainSection);
-                containerDiv.appendChild(mainSection);
+                element?.parentNode?.insertBefore(containerDiv, element);
+                containerDiv.appendChild(element);
                 containerDiv.appendChild(overlayDiv);
-            }; const mainSection = document.querySelector('main');
-            if (mainSection) {
-                wrapMainSection(mainSection);
-            }
+            };
+
+            document.querySelector('main')?.querySelectorAll('p, h1, h2, h3, h4, h5, h6')?.forEach(wrapElement);
         });
 
 
