@@ -24,7 +24,9 @@ body {
 
 .overlay-container {
     position: relative;
+    /*
     display: inline-block;
+    */
 }
 
 .overlay {
