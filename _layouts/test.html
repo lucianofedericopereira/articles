@@ -3,131 +3,12 @@ nav_enabled: false
 ---
 <!DOCTYPE html>
 <html lang="{{ site.locale | default: 'en_US' }}">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Jekyll">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="{{ site.author }}">
-    <meta name="description" content="{%- include components/title.html -%}">
-    <meta name="twitter:card" content="summary">
-    <meta property="og:title" content="{%- include components/title.html -%}">
-    <meta property="og:locale" content="{{ site.locale | default: en_US' }}">
-    <meta property="og:description" content="{%- include components/title.html -%}">
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-    <meta property="og:site_name" content="{{ site.title }}">
-    <meta property="og:type" content="website">
-    <meta property="twitter:title" content="{%- include components/title.html -%}">
-    <title>{%- include components/title.html -%}</title>
-    <link rel="icon" href="{{ site.favicon_ico | relative_url }}" type="image/x-icon">
-    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-    {%- include components/style.html -%}
-    <script src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "author": {
-            "@type": "Person",
-            "name": "{{ site.author }}"
-        },
-        "description": "{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}",
-        "headline": "{%- include components/title.html -%}",
-        "name": "{{ site.title }}",
-        "publisher": {
-            "@type": "Organization",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "{{ site.url }}{{ site.logo }}"
-            },
-            "name": "{{ site.author }}"
-        },
-        "url": "{{ site.url }}{{ page.url }}"
-    }
-    </script>
-</head>
+{%- include components/head.html -%}
 
 <body>
     <div id="translate"></div>
     <a class="skip-to-main" href="#main-content">Skip to main content</a>
-    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-        <symbol id="svg-link" viewBox="0 0 24 24">
-            <title>Link</title>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-link">
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-            </svg>
-        </symbol>
-        <symbol id="svg-menu" viewBox="0 0 24 24">
-            <title>Menu</title>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-menu">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-        </symbol>
-        <symbol id="svg-arrow-right" viewBox="0 0 24 24">
-            <title>Expand</title>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-chevron-right">
-                <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-        </symbol>
-        <symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
-            <title id="svg-external-link-title">(external link)</title>
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-            <polyline points="15 3 21 3 21 9"></polyline>
-            <line x1="10" y1="14" x2="21" y2="3"></line>
-        </symbol>
-        <symbol id="svg-doc" viewBox="0 0 24 24">
-            <title>Document</title>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-file">
-                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-                <polyline points="13 2 13 9 20 9"></polyline>
-            </svg>
-        </symbol>
-        <symbol id="svg-search" viewBox="0 0 24 24">
-            <title>Search</title>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-search">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-        </symbol>
-        <symbol id="svg-copy" viewBox="0 0 16 16">
-            <title>Copy</title>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard"
-                viewBox="0 0 16 16">
-                <path
-                    d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                <path
-                    d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-            </svg>
-        </symbol>
-        <symbol id="svg-copied" viewBox="0 0 16 16">
-            <title>Copied</title>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
-                <path
-                    d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z" />
-                <path
-                    d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z" />
-            </svg>
-        </symbol>
-    </svg>
+    {%- include components/svg.html -%}
     <div class="side-bar">
         {%- include components/sidebar.html -%}
     </div>
@@ -139,171 +20,22 @@ nav_enabled: false
             <div></div>
             {% endif %}
             {% include header_custom.html %}
-
-            <div class="dropdown notranslate">
-                <button class="dropbtn">Translate</button>
-                <div class="dropdown-lang">
-                    <a href="#" class="lang-select" data-lang="en">English</a>
-                    <a href="#" class="lang-select" data-lang="es">Español</a>
-                    <a href="#" class="lang-select" data-lang="it">Italiano</a>
-                    <a href="#" class="lang-select" data-lang="de">Deutsch</a>
-                    <a href="#" class="lang-select" data-lang="pt">Português</a>
-                    <a href="#" class="lang-select" data-lang="fr">Français</a>
-                </div>
-            </div>
-
+            {% include dropdown.html %}
             {% if site.aux_links %}
             {% include components/aux_nav.html %}
             {% endif %}
-
         </div>
         <div class="main-content-wrap">
             <div id="main-content" class="main-content">
                 <main>
                     {{ content }}
                 </main>
-                <div class="notranslate">
-                    <script src="https://utteranc.es/client.js" theme="github-light" issue-term="title"
-                        repo="lucianofedericopereira/comments" crossorigin="anonymous" async>
-                        </script>
-                </div>
+                {%- include components/comments.html -%}
                 {%- include components/footer.html -%}
             </div>
         </div>
-        <div class="search-overlay">
-        </div>
+        <div class="search-overlay"></div>
     </div>
-    <!--
-    <script>
-        function debounce(func, wait) {
-            let timeout;
-            return function (...args) {
-                clearTimeout(timeout);
-                timeout = setTimeout(() => func.apply(this, args), wait);
-            };
-        }
-
-        function translate() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                autoDisplay: false,
-                layout: google.translate.TranslateElement.InlineLayout.VERTICAL
-            }, 'translate');
-
-            document.querySelector('.goog-logo-link')?.setAttribute('rel', 'noopener');
-            const googleCombo = document.querySelector("select.goog-te-combo");
-            const langSelect = document.querySelector('.dropdown-lang');
-            const dropdownContainer = document.querySelector('.dropdown');
-            const dropbtn = document.querySelector('.dropbtn'); // Define dropbtn here
-
-            function restoreLang() {
-                const iframe = document.querySelector('.goog-te-banner-frame');
-                if (!iframe) return;
-                const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-                const restoreButtons = innerDoc.getElementsByTagName("button");
-                Array.from(restoreButtons).forEach(button => {
-                    if (button.id.includes("restore")) {
-                        button.click();
-                        const closeButton = innerDoc.querySelector(".goog-close-link");
-                        closeButton?.click();
-                    }
-                });
-            }
-
-            function triggerHtmlEvent(element, eventName) {
-                const event = document.createEvent
-                    ? new Event(eventName, { bubbles: true, cancelable: true })
-                    : document.createEventObject();
-                document.createEvent
-                    ? element.dispatchEvent(event)
-                    : element.fireEvent('on' + event.eventType, event);
-            }
-
-            const debouncedChangeLanguage = debounce(function (lang) {
-                googleCombo.value = lang;
-                triggerHtmlEvent(googleCombo, 'change');
-            }, 1500);
-
-            langSelect?.addEventListener('click', function (event) {
-                const { target } = event;
-                if (!target) return;
-                document.querySelector('.lang-select.selected')?.classList.remove('selected');
-                const lang = target.getAttribute('data-lang');
-                if (!lang) return;
-                target.classList.add('selected');
-                langSelect.style.display = 'none';
-                dropbtn.disabled = true;
-                dropbtn.classList.add('disabled'); // Add disabled class
-                debouncedChangeLanguage(lang);
-                setTimeout(() => {
-                    dropbtn.disabled = false;
-                    dropbtn.classList.remove('disabled'); // Remove disabled class
-                }, 2000); // 1500ms (debounce time) + 500ms
-                event.preventDefault();
-            });
-
-            const checkSelectedLangInterval = setInterval(function () {
-                const selectedLang = googleCombo.value;
-                if (selectedLang) {
-                    document.querySelector('.lang-select.selected')?.classList.remove('selected');
-                    const initialLang = document.querySelector(`.lang-select[data-lang="${selectedLang}"]`);
-                    if (initialLang) {
-                        document.querySelector('.lang-select.selected')?.classList.remove('selected');
-                        initialLang.classList.add('selected');
-                    }
-                    clearInterval(checkSelectedLangInterval);
-                }
-            }, 100);
-
-            setTimeout(function () {
-                clearInterval(checkSelectedLangInterval);
-            }, 5000);
-
-            dropdownContainer?.addEventListener('mouseover', function () {
-                langSelect.style.display = 'block';
-            });
-
-            dropdownContainer?.addEventListener('mouseout', function () {
-                langSelect.style.display = 'none';
-            });
-
-            dropbtn?.addEventListener('click', function (event) {
-                if (langSelect.style.display === 'block') {
-                    langSelect.style.display = 'none';
-                } else {
-                    langSelect.style.display = 'block';
-                }
-                event.preventDefault();
-            });
-
-
-            _tipon = function () { };
-            _tipoff = function () { };
-
-
-        }
-
-        window.translate = translate;
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const wrapElement = (element) => {
-                const containerDiv = document.createElement('div');
-                containerDiv.className = 'overlay-container';
-                const overlayDiv = document.createElement('div');
-                overlayDiv.className = 'overlay';
-                element?.parentNode?.insertBefore(containerDiv, element);
-                containerDiv.appendChild(element);
-                containerDiv.appendChild(overlayDiv);
-            };
-            document.querySelector('main')?.querySelectorAll('p, h1, h2, h3, h4, h5, h6')?.forEach(wrapElement);
-        });
-
-
-
-
-    </script>
--->
-
     <script src="{{ '/assets/js/script.js' | relative_url }}" async></script>
     <script src="https://translate.google.com/translate_a/element.js?cb=translate" async></script>
     {%- include components/mermaid.html -%}
