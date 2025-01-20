@@ -14,7 +14,7 @@ nav_enabled: false
     <meta name="description" content="{%- include components/title.html -%}">
     <meta name="twitter:card" content="summary">
     <meta property="og:title" content="{%- include components/title.html -%}">
-    <meta property="og:locale" content="{{ site.locale | default: ''en_US' }}">
+    <meta property="og:locale" content="{{ site.locale | default: en_US' }}">
     <meta property="og:description" content="{%- include components/title.html -%}">
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     <meta property="og:site_name" content="{{ site.title }}">
@@ -24,38 +24,7 @@ nav_enabled: false
     <link rel="icon" href="{{ site.favicon_ico | relative_url }}" type="image/x-icon">
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-    <style id="jtd-head-nav-stylesheet">
-        .site-nav ul li a {
-            background-image: linear-gradient(-90deg, rgb(234.8, 236.82, 244.9) 0%, rgba(234.8, 236.82, 244.9, 0.8) 80%, rgba(234.8, 236.82, 244.9, 0) 100%);
-        }
-    </style>
-    <style id="jtd-nav-activation">
-        .site-nav>ul.nav-list:first-child>li:not(:nth-child(1))>a,
-        .site-nav>ul.nav-list:first-child>li>ul>li a {
-            background-image: none;
-        }
-
-        .site-nav>ul.nav-list:not(:first-child) a,
-        .site-nav li.external a {
-            background-image: none;
-        }
-
-        .site-nav>ul.nav-list:first-child>li:nth-child(1)>a {
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .site-nav>ul.nav-category-list>li>button svg,
-        .site-nav>ul.nav-list:first-child>li:nth-child(1)>button svg {
-            transform: rotate(-90deg);
-        }
-
-        .site-nav>ul.nav-category-list>li.nav-list-item>ul.nav-list,
-        .site-nav>ul.nav-list:first-child>li.nav-list-item:nth-child(1)>ul.nav-list {
-            display: block;
-        }
-    </style>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    {%- include components/style.html -%}
     <script src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
     <script type="application/ld+json">
@@ -204,6 +173,7 @@ nav_enabled: false
         <div class="search-overlay">
         </div>
     </div>
+    <!--
     <script>
         function debounce(func, wait) {
             let timeout;
@@ -332,8 +302,10 @@ nav_enabled: false
 
 
     </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=translate"
-        async></script>
+-->
+
+    <script src="{{ '/assets/jss/script.css' | relative_url }}" async></script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=translate" async></script>
     {%- include components/mermaid.html -%}
 </body>
 
