@@ -772,6 +772,8 @@ blockquote {
     .side-bar {
         width: calc((100% - 66.5rem) / 2 + 16.5rem);
         min-width: 16.5rem;
+        max-width: 280px;
+        ;
     }
 }
 
