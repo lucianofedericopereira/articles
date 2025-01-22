@@ -20,18 +20,12 @@
     <title>{%- include components/title.html -%}</title>
     <link rel="dns-prefetch" href="https://lucianofedericopereira.github.io" crossorigin>
     <link rel="preconnect" href="https://lucianofedericopereira.github.io">
-    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
-    <link rel="icon" href="{{ site.favicon_ico | relative_url }}" type="image/x-icon">
+    <link rel="preload" href="{{ '/assets/fonts/Mona-Sans.woff2' | relative_url }}" type="font/woff2" as="font">
     <link rel="preload" as="style" type="text/css" href="{{ '/assets/css/style.css' | relative_url }}" onload="this.rel='stylesheet'">
-
-
-<!--
-  <link rel="preload" as="script" href="script.js">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-
--->
-
-
+    <link rel="preload" as="script" href="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}">
+    <link rel="preload" as="script" href="{{ '/assets/js/just-the-docs.js' | relative_url }}">
+    <link rel="icon" href="{{ site.favicon_ico | relative_url }}" type="image/x-icon">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
     {%- include components/style.html -%}
     <script src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
