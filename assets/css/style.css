@@ -656,6 +656,7 @@ pre.highlight {
 
 body {
     font-family: "Monaspace Argon","SFMono-Regular", menlo, consolas, monospace;
+    font-variant-ligatures: common-ligatures;
     font-display: swap;
     font-size: inherit;
     line-height: 1.4;
@@ -716,6 +717,7 @@ a:not([class]):hover {
 
 code {
     font-family: "Monaspace Argon", "SFMono-Regular", menlo, consolas, monospace;
+    font-variant-ligatures: common-ligatures;
     font-display: swap;
     font-size: 0.75em;
     line-height: 1.4;
@@ -1651,6 +1653,7 @@ h6,
 
 .text-mono {
     font-family: "Monaspace Argon", "SFMono-Regular", menlo, consolas, monospace;
+    font-variant-ligatures: common-ligatures;
     font-display: swap;
 }
 
