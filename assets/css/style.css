@@ -1,14 +1,57 @@
 @charset "UTF-8";
 
+/*
+Google
+*/
+
+.google-src-text {
+    z-index: 1
+}
+
+.goog-tooltip {
+    display: none !important
+}
+
+.goog-tooltip:hover {
+    display: none !important
+}
+
+.goog-text-highlight {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important
+}
+
+.google-src-text {
+    background-color: transparent !important;
+    text-decoration: none !important
+}
+
+#google_translate_element,
+.skiptranslate,
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
+
+html {
+    scroll-behavior: smooth;
+    font-size: 0.875rem !important;
+    line-height: 1.15;
+    text-size-adjust: 100%;
+}
+
 body {
+    margin: 0;
     top: 0px !important;
     pointer-events: all;
 }
 
-
 p {
     text-align: justify;
 }
+
+
 
 
 .side-bar * {
@@ -33,39 +76,6 @@ p {
     background-color: transparent;
 }
 
-.google-src-text {
-    z-index: 1;
-}
-
-/*
-*/
-
-
-.goog-tooltip {
-    display: none !important;
-}
-
-.goog-tooltip:hover {
-    display: none !important;
-}
-
-.goog-text-highlight {
-    background-color: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-.google-src-text {
-    background-color: transparent !important;
-    text-decoration: none !important;
-}
-
-
-#google_translate_element,
-.skiptranslate,
-.goog-te-banner-frame.skiptranslate {
-    display: none !important;
-}
 
 .dropbtn {
     appearance: unset;
@@ -83,7 +93,6 @@ p {
     background-color: #fff;
     color: #FF7747;
     font-family: system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif, "Segoe UI Emoji";
-
 }
 
 .dropdown {
@@ -448,14 +457,6 @@ pre.highlight {
     color: #0083bb;
 }
 
-html {
-    line-height: 1.15;
-    text-size-adjust: 100%;
-}
-
-body {
-    margin: 0;
-}
 
 main {
     display: block;
@@ -636,13 +637,6 @@ template {
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-html {
-    font-size: 0.875rem !important;
-}
 
 @media (min-width: 31.25rem) {
     html {

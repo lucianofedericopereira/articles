@@ -1,11 +1,14 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=contain">
     <meta name="generator" content="Jekyll">
     <meta name="robots" content="index, follow">
     <meta name="author" content="{{ site.author }}">
     <meta name="description" content="{%- include components/title.html -%}">
+    <meta name="license" content="GPLV2">
+    <meta name="repository" content="https://github.com/lucianofedericopereira">
+    <meta name="robots" content="index, follow">
     <meta name="twitter:card" content="summary">
     <meta property="og:title" content="{%- include components/title.html -%}">
     <meta property="og:locale" content="{{ site.locale | default: en_US' }}">
@@ -15,9 +18,20 @@
     <meta property="og:type" content="website">
     <meta property="twitter:title" content="{%- include components/title.html -%}">
     <title>{%- include components/title.html -%}</title>
-    <link rel="icon" href="{{ site.favicon_ico | relative_url }}" type="image/x-icon">
+    <link rel="dns-prefetch" href="https://lucianofedericopereira.github.io" crossorigin>
+    <link rel="preconnect" href="https://lucianofedericopereira.github.io">
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <link rel="icon" href="{{ site.favicon_ico | relative_url }}" type="image/x-icon">
+    <link rel="preload" as="style" type="text/css" href="{{ '/assets/css/style.css' | relative_url }}" onload="this.rel='stylesheet'">
+
+
+<!--
+  <link rel="preload" as="script" href="script.js">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+-->
+
+
     {%- include components/style.html -%}
     <script src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
