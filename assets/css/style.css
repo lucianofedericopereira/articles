@@ -9,6 +9,16 @@
     font-stretch: 75% 125%;
 }
 
+@font-face {
+    font-family: 'Monaspace Argon';
+    src:
+        url('../fonts/Monaspace-Argon.woff2') format('woff2 supports variations'),
+        url('../fonts/Monaspace-Argon.woff2') format('woff2-variations');
+    font-weight: 200 900;
+    font-stretch: 75% 125%;
+}
+
+
 /*
 Google
 */
@@ -103,6 +113,7 @@ p {
     color: #FF7747;
     font-family: 'Mona Sans', 'Segoe UI', arial, ubuntu, system-ui,-apple-system, BlinkMacSystemFont, 'Helvetica Neue', roboto, sans-serif,
     "Segoe UI Emoji";
+font-display: swap;
 }
 
 .dropdown {
@@ -657,6 +668,7 @@ template {
 body {
     font-family: 'Mona Sans', 'Segoe UI', arial, ubuntu, system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', roboto, sans-serif,
             "Segoe UI Emoji";
+font-display: swap;
     font-size: inherit;
     line-height: 1.4;
     color: #5c5962;
@@ -715,7 +727,7 @@ a:not([class]):hover {
 }
 
 code {
-    font-family: "SFMono-Regular", menlo, consolas, monospace;
+    font-family: "Monaspace Argon","SFMono-Regular", menlo, consolas, monospace;
     font-size: 0.75em;
     line-height: 1.4;
 }
