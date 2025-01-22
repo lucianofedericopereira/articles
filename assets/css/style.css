@@ -101,7 +101,8 @@ p {
     font-weight: 600;
     background-color: #fff;
     color: #FF7747;
-    font-family: system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif, "Segoe UI Emoji";
+    font-family: 'Mona Sans', 'Segoe UI', arial, ubuntu, system-ui,-apple-system, BlinkMacSystemFont, 'Helvetica Neue', roboto, sans-serif,
+    "Segoe UI Emoji";
 }
 
 .dropdown {
@@ -654,7 +655,8 @@ template {
 }
 
 body {
-    font-family: system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif, "Segoe UI Emoji";
+    font-family: 'Mona Sans', 'Segoe UI', arial, ubuntu, system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', roboto, sans-serif,
+            "Segoe UI Emoji";
     font-size: inherit;
     line-height: 1.4;
     color: #5c5962;
