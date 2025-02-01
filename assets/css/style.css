@@ -115,6 +115,13 @@ a:active {
     color: var(--h1);
 }
 
+.side-bar * {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
 .side-bar a {
     text-decoration: none;
 }
