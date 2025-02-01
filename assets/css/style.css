@@ -56,6 +56,14 @@
     --hf: #ffffff;
 }
 
+::-moz-selection,
+::selection,
+code::selection,
+code span::selection {
+    background-color: #a3d9a5;
+    color: var(--h7);
+}
+
 *,
 ::before,
 ::after {
@@ -311,11 +319,6 @@ main>.highlighter-rouge {
         max-width: 80.5ch;
     }
 
-code::selection,
-code span::selection {
-    background-color: #a3d9a5;
-    color:var(--h7);
-}
 
 
 
