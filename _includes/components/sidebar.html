@@ -6,13 +6,6 @@
   </div>
   <p class="custom-slogan">{{site.description}}</p>
 
-        <div id="main-header" class="main-header">
-          {% if site.search_enabled != false %}
-          {% include components/search_header.html %}
-          {% else %}
-          <div></div>
-          {% endif %}
-        </div>
 
 
 
@@ -28,11 +21,8 @@
   {% include components/aux_nav.html %}
   {% endif %}
 
-  {% if nav_footer_custom != "" %}
-  {{ nav_footer_custom }}
-  {% else %}
   <footer class="site-footer">
     {%- include components/footer.html -%}
   </footer>
-  {% endif %}
+
 </div>
