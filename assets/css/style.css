@@ -60,6 +60,7 @@
 ::selection,
 code::selection,
 code span::selection {
+    background-color:transparent;
     color: #a3d9a5;
 }
 
