@@ -13,13 +13,8 @@
   <p class="custom-slogan">{{site.description}}</p>
 
   {% include_cached components/site_nav.html %}
-  {% capture nav_footer_custom %}
-  {%- include nav_footer_custom.html -%}
-  {% endcapture %}
-  {% if nav_footer_custom != "" %}
-  {{ nav_footer_custom }}
-  {% else %}
-  <footer class="site-footer">
-  </footer>
+  {% if site.aux_links %}
+  {% include components/aux_nav.html %}
   {% endif %}
+
 </div>
