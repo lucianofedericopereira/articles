@@ -311,6 +311,15 @@ main>.highlighter-rouge {
         max-width: 80.5ch;
     }
 
+main>.highlighter-rouge::selection {
+    background-color: #a3d9a5;
+    color:var(--h7);
+}
+
+
+
+
+
     main p {
         width: 100%;
         max-width: 65ch;
