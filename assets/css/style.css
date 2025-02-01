@@ -60,9 +60,7 @@
 ::selection,
 code::selection,
 code span::selection {
-    background-color: #a3d9a5;
-    background-color: var(--h1);
-   color: var(--h7);
+    color: #a3d9a5;
 }
 
 *,
