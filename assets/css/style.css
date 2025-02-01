@@ -71,6 +71,7 @@ html {
 body {
     font-family: var(--font-body), var(--font-basic);
     font-display: swap;
+    top: 0px !important;
     color: #010007;
     background-color: var(--hf);
     display: flex;
