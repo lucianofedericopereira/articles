@@ -89,7 +89,9 @@ body {
 }
 
 footer p.text-grey-dk-100 {
+    font-size: .75rem;
     text-align: center;
+    color:var(--h5);
 }
 
 a,
