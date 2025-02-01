@@ -5,7 +5,9 @@
     </a>    
   </div>
   <p class="custom-slogan">{{site.description}}</p>
-
+  {% if site.search_enabled != false %}
+  {% include components/search_header.html %}
+  {% endif %}
   {% include_cached components/site_nav.html %}
   {% capture nav_footer_custom %}
   {%- include nav_footer_custom.html -%}
