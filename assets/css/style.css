@@ -2,6 +2,12 @@
 
 /**/
 
+.dropbtn:hover,
+.site-button:hover {
+    background: var(--cc);
+    color: #022000;
+}
+
 .nav-list {
     padding: 0;
     margin-top: 0;
