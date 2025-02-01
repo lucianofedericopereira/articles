@@ -311,7 +311,8 @@ main>.highlighter-rouge {
         max-width: 80.5ch;
     }
 
-main>.highlighter-rouge::selection {
+code::selection,
+code span::selection {
     background-color: #a3d9a5;
     color:var(--h7);
 }
