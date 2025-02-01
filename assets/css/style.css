@@ -88,6 +88,22 @@ body {
 
 }
 
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: transparent;
+}
+
+.overlay-container {
+    position: relative;
+}
+
+
+
 footer p.text-grey-dk-100 {
     font-size: .75rem;
     text-align: center;
