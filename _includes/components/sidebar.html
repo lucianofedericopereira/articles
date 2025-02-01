@@ -6,6 +6,13 @@
   </div>
   <p class="custom-slogan">{{site.description}}</p>
 
+        <div id="main-header" class="main-header">
+          {% if site.search_enabled != false %}
+          {% include components/search_header.html %}
+          {% else %}
+          <div></div>
+          {% endif %}
+        </div>
 
 
 
