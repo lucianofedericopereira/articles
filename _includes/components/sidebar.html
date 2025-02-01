@@ -5,9 +5,18 @@
     </a>    
   </div>
   <p class="custom-slogan">{{site.description}}</p>
-  {% if site.search_enabled != false %}
-  {% include components/search_header.html %}
-  {% endif %}
+
+        <div id="main-header" class="main-header">
+          {% if site.search_enabled != false %}
+          {% include components/search_header.html %}
+          {% else %}
+          <div></div>
+          {% endif %}
+        </div>
+
+
+
+
   {% include_cached components/site_nav.html %}
   {% capture nav_footer_custom %}
   {%- include nav_footer_custom.html -%}
