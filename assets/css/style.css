@@ -122,6 +122,15 @@ p,.side-bar * {
     -ms-user-select: none;
 }
 
+p::selection {
+    background-color: transparent;
+    color: inherit;
+    border: 1px solid transparent;
+    box-shadow: none;
+}
+
+
+
 .side-bar a {
     text-decoration: none;
 }
