@@ -115,7 +115,7 @@ a:active {
     color: var(--h1);
 }
 
-.side-bar * {
+p,.side-bar * {
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
