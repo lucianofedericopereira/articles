@@ -17,11 +17,11 @@
 
 
   {% include_cached components/site_nav.html %}
+  {%- include components/dropdown.html -%}
   {% if site.aux_links %}
   <div class="nav-category notranslate">Links</div>
   <div class="notranslate">
-  {% include components/aux_nav.html %}
+    {% include components/aux_nav.html %}
   </div>
   {% endif %}
-  {%- include components/dropdown.html -%}
 </div>
