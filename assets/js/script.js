@@ -20,7 +20,7 @@ function translate() {
     const langSelect = $('.dropdown-lang');
 
     const dropdownContainer = $('.dropdown');
-    const dropbtn = $('.dropbtn'); // Define dropbtn here
+    const dropbtn = $('.dropbtn');
 
     function restoreLang() {
         const iframe = $('.goog-te-banner-frame');
