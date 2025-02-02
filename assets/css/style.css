@@ -1060,7 +1060,7 @@ pre.highlight {
 }
 
 
-/*
+
 @media (min-width: 31.25rem) {
     .search-results-list {
         font-size: 1rem !important;
@@ -1097,8 +1097,6 @@ pre.highlight {
         font-size: 0.875rem !important;
     }
 }
-*/
-/*
 @media (min-width: 50rem) {
     .search-active .main-header {
         padding-top: 0;
@@ -1166,7 +1164,7 @@ pre.highlight {
         border-radius: 0;
     }
 }
-*/
+
 
 
 
