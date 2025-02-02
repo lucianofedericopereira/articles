@@ -438,7 +438,7 @@ main>.highlighter-rouge {
 }
 
 .site-button {
-    display: inline-block;
+    display: inline-flex;
 }
 
 .nav-list .nav-list-item .nav-list-expander {
@@ -449,15 +449,9 @@ main>.highlighter-rouge {
     padding: 0.75rem;
 }
 
-.aux-nav-container {
-    display: inline-flex;
-}
 
 @media (min-width: 1280px) {
 
-.aux-nav-container {
-        display: block;
-}
 
 .nav-list .nav-list-item .nav-list-link:hover,
     .nav-list .nav-list-item .nav-list-link.active {
