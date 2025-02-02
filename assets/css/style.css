@@ -6,19 +6,6 @@
     display: none;
 }
 
-.site-button {
-    width:100%;
-    height:100%;
-    display: inline-block;
-    padding: .6rem 0 .5rem 2rem;
-}
-
-
-
-.site-button:hover {
-    background: var(--h2);
-    color: #022000;
-}
 
 .nav-list {
     padding: 0;
@@ -481,7 +468,23 @@ main>.highlighter-rouge {
     display:inline-flex;
 }
 
+.site-button {
+    display: inline-block;
+}
+
 @media (min-width: 1280px) {
+
+.site-button {
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        padding: .6rem 0 .5rem 2rem;
+    }
+
+.site-button:hover {
+        background: var(--h2);
+        color: #022000;
+    }
 
     .aux-nav-list {
         display: block;
