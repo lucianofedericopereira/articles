@@ -450,13 +450,13 @@ main>.highlighter-rouge {
 }
 
 .aux-nav-container {
-    float: left;
+    display: inline-flex;
 }
 
 @media (min-width: 1280px) {
 
 .aux-nav-container {
-        float: none;
+        display: block;
 }
 
 .nav-list .nav-list-item .nav-list-link:hover,
