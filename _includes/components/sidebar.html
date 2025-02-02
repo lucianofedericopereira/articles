@@ -1,4 +1,5 @@
 <div class="side-bar">
+  <div class="side-bar-fixed">
   <div class="site-header" role="banner">
     <a href="{{ '/' | relative_url }}" class="lh-tight fs-3 text-grey-dk-200 custom-logo site-title notranslate">
       <img width="36px" height="36px" src="{{ site.favicon_ico | relative_url }}" alt="logo">{{site.title}}
@@ -10,12 +11,9 @@
 
   <p class="custom-slogan">{{site.description}}</p>
 
-            {% if site.search_enabled != false %}
-            {% include components/search_header.html %}
-            {% endif %}
-
-
-
+  {% if site.search_enabled != false %}
+  {% include components/search_header.html %}
+  {% endif %}
   {% include_cached components/site_nav.html %}
   {%- include components/dropdown.html -%}
   {% if site.aux_links %}
@@ -24,4 +22,5 @@
     {% include components/aux_nav.html %}
   </div>
   {% endif %}
+  </div>
 </div>

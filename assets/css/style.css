@@ -489,6 +489,10 @@ main>.highlighter-rouge {
 
 @media (min-width: 1280px) {
 
+    .side-bar-fixed {
+        position: fixed;
+    }
+
     body {
         flex-direction: row;
     }
