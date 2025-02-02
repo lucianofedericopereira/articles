@@ -4,9 +4,7 @@ function debounce(func, wait) {
         clearTimeout(timeout);
         timeout = setTimeout(() => func.apply(this, args), wait);
     };
-};
-
-const $ = qs => document.querySelector(qs);
+}
 
 function translate() {
     new google.translate.TranslateElement({
@@ -15,15 +13,14 @@ function translate() {
         layout: google.translate.TranslateElement.InlineLayout.VERTICAL
     }, 'translate');
 
-    $('.goog-logo-link')?.setAttribute('rel', 'noopener');
-    const googleCombo = $("select.goog-te-combo");
-    const langSelect = $('.dropdown-lang');
-
-    const dropdownContainer = $('.dropdown');
-    const dropbtn = $('.dropbtn'); // Define dropbtn here
+    document.querySelector('.goog-logo-link')?.setAttribute('rel', 'noopener');
+    const googleCombo = document.querySelector("select.goog-te-combo");
+    const langSelect = document.querySelector('.dropdown-lang');
+    const dropdownContainer = document.querySelector('.dropdown');
+    const dropbtn = document.querySelector('.dropbtn'); // Define dropbtn here
 
     function restoreLang() {
-        const iframe = $('.goog-te-banner-frame');
+        const iframe = document.querySelector('.goog-te-banner-frame');
         if (!iframe) return;
         const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
         const restoreButtons = innerDoc.getElementsByTagName("button");
@@ -53,7 +50,7 @@ function translate() {
     langSelect?.addEventListener('click', function (event) {
         const { target } = event;
         if (!target) return;
-        $('.lang-select.selected')?.classList.remove('selected');
+        document.querySelector('.lang-select.selected')?.classList.remove('selected');
         const lang = target.getAttribute('data-lang');
         if (!lang) return;
         target.classList.add('selected');
@@ -71,10 +68,10 @@ function translate() {
     const checkSelectedLangInterval = setInterval(function () {
         const selectedLang = googleCombo.value;
         if (selectedLang) {
-            $('.lang-select.selected')?.classList.remove('selected');
-            const initialLang = $(`.lang-select[data-lang="${selectedLang}"]`);
+            document.querySelector('.lang-select.selected')?.classList.remove('selected');
+            const initialLang = document.querySelector(`.lang-select[data-lang="${selectedLang}"]`);
             if (initialLang) {
-                $('.lang-select.selected')?.classList.remove('selected');
+                document.querySelector('.lang-select.selected')?.classList.remove('selected');
                 initialLang.classList.add('selected');
             }
             clearInterval(checkSelectedLangInterval);
@@ -85,7 +82,6 @@ function translate() {
         clearInterval(checkSelectedLangInterval);
     }, 5000);
 
-    
     dropdownContainer?.addEventListener('mouseover', function () {
         langSelect.style.display = 'block';
     });
@@ -102,9 +98,11 @@ function translate() {
         }
         event.preventDefault();
     });
-    
+
+
     _tipon = function () { };
     _tipoff = function () { };
+
 
 }
 
@@ -120,5 +118,5 @@ document.addEventListener('DOMContentLoaded', () => {
         containerDiv.appendChild(element);
         containerDiv.appendChild(overlayDiv);
     };
-    $('main')?.querySelectorAll('p, h1, h2, h3, h4, h5, h6')?.forEach(wrapElement);
+    document.querySelector('main')?.querySelectorAll('p, h1, h2, h3, h4, h5, h6')?.forEach(wrapElement);
 });
