@@ -449,7 +449,15 @@ main>.highlighter-rouge {
     padding: 0.75rem;
 }
 
+.aux-nav-container {
+    float: left;
+}
+
 @media (min-width: 1280px) {
+
+.aux-nav-container {
+        float: none;
+}
 
 .nav-list .nav-list-item .nav-list-link:hover,
     .nav-list .nav-list-item .nav-list-link.active {
