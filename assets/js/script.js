@@ -121,6 +121,5 @@ document.addEventListener('DOMContentLoaded', () => {
         containerDiv.appendChild(overlayDiv);
     };
     $('main')?.querySelectorAll('p, h1, h2, h3, h4, h5, h6')?.forEach(wrapElement);
-    $('side-bar')?.querySelectorAll('.active, .no-marker')?.forEach(wrapElement);
     
 });

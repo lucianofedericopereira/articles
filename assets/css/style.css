@@ -32,6 +32,7 @@
 .nav-list .nav-list-item {
     position: relative;
     margin: 0;
+    line-height:0;
 }
 
 .nav-list .nav-list-item {
