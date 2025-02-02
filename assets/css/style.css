@@ -150,9 +150,7 @@
     font-weight: 600;
     text-align: start;
     text-transform: uppercase;
-    /*    color: #0d070f;*/
     color: #022000;
-    /*    border-bottom: 1px solid var(--h2);*/
     letter-spacing: 1px;
     font-size: 0.75rem !important;
 }
