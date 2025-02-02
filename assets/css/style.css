@@ -2,6 +2,18 @@
 
 /**/
 
+.site-button {
+    width:100%;
+    height:100%;
+    display: inline-block;
+}
+
+.site-button:hover {
+    background: var(--h2);
+    color: #022000;
+}
+
+
 .dropbtn:hover,
 .site-button:hover {
     background: var(--cc);
