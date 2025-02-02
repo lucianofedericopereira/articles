@@ -9,8 +9,9 @@
 }
 
 .site-button:hover {
-    background: var(--h2);
+    background: var(--h3);
     color: #022000;
+    
 }
 
 
