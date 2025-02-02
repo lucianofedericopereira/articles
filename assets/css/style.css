@@ -145,6 +145,7 @@
     display: block;
 }
 
+.dropbtn,
 .nav-category {
     padding: 0.5rem 1rem;
     font-weight: 600;
@@ -154,10 +155,6 @@
     color: #022000;
     /*    border-bottom: 1px solid var(--h2);*/
     letter-spacing: 1px;
-
-}
-
-.nav-category {
     font-size: 0.75rem !important;
 }
 
