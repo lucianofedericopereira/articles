@@ -8,16 +8,11 @@
     display: inline-block;
 }
 
-.site-button:hover {
-    background: var(--h3);
-    color: #022000;
-    
-}
 
 
 .dropbtn:hover,
 .site-button:hover {
-    background: var(--cc);
+    background: var(--c4);
     color: #022000;
 }
 
