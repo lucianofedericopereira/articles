@@ -478,7 +478,7 @@ main>.highlighter-rouge {
 
 
 .aux-nav-list {
-    display:flex;
+    display:inline-flex;
 }
 
 @media (min-width: 1280px) {
