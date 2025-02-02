@@ -159,12 +159,14 @@
 }
 
 @media (min-width: 32rem) {
+    .dropbtn,
     .nav-category {
         font-size: .9rem !important;
     }
 }
 
 @media (min-width: 50rem) {
+    .dropbtn,
     .nav-category {
         padding: 0.5rem 2rem;
         margin-top: 1rem;
@@ -184,13 +186,6 @@
     padding: 0;
 }
 
-.nav-list.nav-category-list>.nav-list-item>.nav-list>.nav-list-item>.nav-list-link {
-    color: #7253ed;
-}
-
-.nav-list.nav-category-list>.nav-list-item>.nav-list>.nav-list-item>.nav-list-expander {
-    color: #7253ed;
-}
 
 /**/
 
