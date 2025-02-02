@@ -492,7 +492,6 @@ main>.highlighter-rouge {
     .side-bar-fixed {
         position: fixed;
         left:0;
-        width:100%;
     }
 
     body {
