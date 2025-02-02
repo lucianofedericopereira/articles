@@ -476,7 +476,16 @@ main>.highlighter-rouge {
     white-space: pre-wrap;
 }
 
+
+.aux-nav-list {
+    display:flex;
+}
+
 @media (min-width: 1280px) {
+
+    .aux-nav-list {
+        display: block;
+    }
 
     .side-bar-fixed {
         position: fixed;
