@@ -405,7 +405,8 @@ details:open summary {}
 
 .d-none,
 .skip-to-main {
-    display: none;
+    display: none!important;
+    height:0px!important;
 }
 
 
