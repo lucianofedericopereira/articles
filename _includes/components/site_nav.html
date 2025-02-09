@@ -1,15 +1,15 @@
+<div class="nav-category">Sections</div>
 <nav aria-label="Main" id="site-nav" class="site-nav">
   {% assign home_page = site.html_pages
         | where: "title", "Home"
         | first %}
-  
-  {% if home_page %}
-    <div class="nav-item">
-      <a href="{{ home_page.url }}">{{ home_page.title }}</a>
-    </div>
+<ul class="nav-list">  
+  {% if home_page %} 
+      <li class="nav-list-item">
+        <a href="{{ home_page.url }}/articles">{{ home_page.title }}</a>
+      </li>  
   {% endif %}
-
-  {% assign pages_top = site.html_pages
+   {% assign pages_top = site.html_pages
         | where_exp:"item", "item.title != nil"
         | where_exp:"item", "item.parent == nil"
         | where_exp:"item", "item.nav_exclude != true"
@@ -22,10 +22,11 @@
         | where_exp:"item", "item.parent == nil"
         | where_exp:"item", "item.nav_exclude != true" %}
       {% unless item.title == "Home" %}
-        <div class="nav-item">
-          <a href="{{ item.url }}">{{ item.title }}</a>
-        </div>
+      <li class="nav-list-item">
+          <a href="{{ home_page.url }}/articles{{ item.url }}">{{ item.title }}</a>
+      </li>  
       {% endunless %}
     {% endfor %}
   {% endif %}
+</ul>
 </nav>
