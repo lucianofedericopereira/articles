@@ -1,6 +1,6 @@
 ---
 layout: test
-title: "JavaScript Articles"
+title: "JavaScript"
 ---
 
 <h1>{{ page.title }}</h1>
