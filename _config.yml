@@ -4,7 +4,6 @@ email: lucianofullstack@duck.com
 description: "a blog about development"
 copyright: "design﹢code (c) {currentYear} {author}"
 
-
 aux_links_new_tab: false
 heading_anchors: true
 nav_enabled: true
@@ -12,7 +11,6 @@ search_enabled: true
 
 footer_content: "Copyright &copy; 2017-2020 Patrick Marsceill."
 
-# `_includes/footer_custom.html`
 #last_edit_timestamp: true
 #last_edit_time_format: "%b %e %Y at %I:%M %p" # https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
 
@@ -53,6 +51,15 @@ collections:
   js:
     permalink: "/:collection/:path/"
     output: true
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: category
+    values:
+      layout: "category"
+
 
 just_the_docs:
   collections:
