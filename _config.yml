@@ -52,24 +52,12 @@ collections:
     permalink: "/:collection/:path/"
     output: true
 
-defaults:
-  -
-    scope:
-      path: ""
-      type: category
-    values:
-      layout: "category"
-
-
 just_the_docs:
   collections:
     css:
       name: CSS3
     js:
       name: JavaScript
-
-
-
 
 aux_links:
   "LinkedIn":
