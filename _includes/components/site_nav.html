@@ -6,7 +6,7 @@
 <ul class="nav-list">  
   {% if home_page %} 
       <li class="nav-list-item">
-        <a href="{{ home_page.url }}/articles">{{ home_page.title }}</a>
+        <a class="site-button" href="{{ home_page.url }}/articles">{{ home_page.title }}</a>
       </li>  
   {% endif %}
    {% assign pages_top = site.html_pages
@@ -23,7 +23,7 @@
         | where_exp:"item", "item.nav_exclude != true" %}
       {% unless item.title == "Home" %}
       <li class="nav-list-item">
-          <a href="{{ home_page.url }}/articles{{ item.url }}">{{ item.title }}</a>
+          <a class="site-button" href="{{ home_page.url }}/articles{{ item.url }}">{{ item.title }}</a>
       </li>  
       {% endunless %}
     {% endfor %}
