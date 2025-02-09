@@ -9,7 +9,22 @@
   {% if site.search_enabled != false %}
   {% include components/search_header.html %}
   {% endif %}
+
+  <ul>
+    {% for collection in site.collections %} 
+      {% assign collection_name = collection[0] %} 
+      {% assign collection_info = collection[1] %} 
+      {% if just_the_docs.collections[collection_name] %} 
+        <li>
+          <a href="/category/{{ collection_name }}/">{{ just_the_docs.collections[collection_name].name }}</a>
+        </li>
+       {% endif %}
+    {% endfor %}
+  </ul>
+  
   {% include_cached components/site_nav.html %}
+  
+  
   {%- include components/dropdown.html -%}
   {% if site.aux_links %}
   <div class="nav-category notranslate">Links</div>
