@@ -10,7 +10,11 @@ Check this step-by-step guide.
 
 Let´s Start.
 
+1. TOC
+{:toc}
+
 ## Background
+{:toc}
 
 I like how Cloudflare obfuscate mails, googling around I found an [Andrew Lock](https://andrewlock.net/) article explaining how to use a simple bitwise XOR using a key, and as I knew the technique, I decided to adapt it and do my own implementation. 
 
@@ -22,10 +26,12 @@ the [Encoder Page](https://lucianofullstack.pages.dev/assets/encoder)
 The `XOR` algorithm is basically a simple substitution cipher. In other words, it just replaces each alphanumeric in a string that is fed into it with another number. Crucially, the algorithm is reversible. So if you feed the output string back into the same algorithm, you end up with the original string with the cipher removed. This kind of cipher is also called an additive cipher, and is the simplest kind of cipher there is.
 
 ## Goal
+{:toc}
 
 Create a simple {{page.m}} using just JavaScript for encoding and decoding our address. In order to encode we will need a string representing a valid email address and a numerical key from `0` to `255` (`0` to `FF` in `hex`). Also we have to create a drop-in script that decode our emails, and a form to create the ciphered ones.
 
 ## Encoder
+{:toc}
 
 The function will receive two parameters `email` and `key` and returns a `string` containing the concatenation of the `key` in `hex` and  the result of applying `XOR` to every character of the mail address.
 
@@ -69,6 +75,7 @@ function encodeEmail(email, key) {
 ```
 
 ## Decoder
+{:toc}
 
 As we can realize the new length will be `originalLenght*2+2` as every char and the key will be represented by their `hex value`, so we have to pick the first two characters of the encoded string and covert it to decimal. Then we will repeat the operation using that value as `key` and doing `xor` and concatenating the rest. 
 
@@ -95,6 +102,7 @@ const decodeEmail = (encoded) => {
 
 
 ## Parser
+{:toc}
 
 In order to store our encoded address we will use the `data` attribute and we also will make a function to parse all of our encoded emails that have a certain class for instance `eml` .
 
