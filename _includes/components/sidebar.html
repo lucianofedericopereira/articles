@@ -11,6 +11,12 @@
   {% endif %}
 
 
+  {% if page.has_toc != false %}
+     <nav id="nav-sidebar">
+       {% include components/toc.html id='sidebar' class='nav.nav-stacked' item_class='toc_li' html=content %}
+     </nav>
+  {% endif %}
+
   
   {% include_cached components/site_nav.html %}
   
