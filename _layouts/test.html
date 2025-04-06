@@ -4,34 +4,32 @@ nav_enabled: false
 <!DOCTYPE html>
 <html lang="{{ site.locale | default: 'en_US' }}">
 {%- include components/head.html -%}
-
 <body>
     <div id="translate"></div>
-    <a class="skip-to-main" href="#main-content">Skip to main content</a>
-    {%- include components/svg.html -%}
-    <div class="side-bar">
-        {%- include components/sidebar.html -%}
-    </div>
-    <div class="main" id="top">
-        <div id="main-header" class="main-header">
-
-
-
-        </div>
-        <div class="main-content-wrap">
-            <div id="main-content" class="main-content">
-                <main>
-                    {{ content }}
-                </main>
-                {%- include components/comments.html -%}
-                {%- include components/footer.html -%}
+    <input type="checkbox" aria-expanded="false" id="menu">
+    <header>
+        <a tabindex="0" href="https://lucianofedericopereira.github.io/articles" id="logo-link">
+            <div id="logo" class="notranslate">
+                <img id="logo-pic" width="36px" height="36px"
+                    src="https://lucianofedericopereira.github.io/articles/assets/images/favicon.ico" alt="logo">
+                design﹢code
             </div>
-        </div>
-        <div class="search-overlay"></div>
-    </div>
-    <script src="{{ '/assets/js/script.js' | relative_url }}" async></script>
-    <script src="https://translate.google.com/translate_a/element.js?cb=translate" async></script>
+            <div id="slogan">
+                CodeCraft Chronicles
+            </div>
+        </a>
+    </header>
+    <label for="menu" aria-label="Toggle Menu">
+        <div class="border" aria-hidden="true"></div>
+        <div class="icon icon-menu" aria-hidden="true"></div>
+    </label>
+    <aside>
+        {%- include components/sidebar.html -%}
+    </aside>
+    <main>
+        {{ content }}
+    </main>
+    {%- include components/comments.html -%}
     {%- include components/mermaid.html -%}
 </body>
-
 </html>

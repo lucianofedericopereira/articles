@@ -1,0 +1,37 @@
+---
+nav_enabled: false
+---
+<!DOCTYPE html>
+<html lang="{{ site.locale | default: 'en_US' }}">
+{%- include components/head.html -%}
+
+<body>
+    <div id="translate"></div>
+    <a class="skip-to-main" href="#main-content">Skip to main content</a>
+    {%- include components/svg.html -%}
+    <div class="side-bar">
+        {%- include components/sidebar.html -%}
+    </div>
+    <div class="main" id="top">
+        <div id="main-header" class="main-header">
+
+
+
+        </div>
+        <div class="main-content-wrap">
+            <div id="main-content" class="main-content">
+                <main>
+                    {{ content }}
+                </main>
+                {%- include components/comments.html -%}
+                {%- include components/footer.html -%}
+            </div>
+        </div>
+        <div class="search-overlay"></div>
+    </div>
+    <script src="{{ '/assets/js/script.js' | relative_url }}" async></script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=translate" async></script>
+    {%- include components/mermaid.html -%}
+</body>
+
+</html>
