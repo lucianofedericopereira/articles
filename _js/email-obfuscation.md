@@ -1,22 +1,18 @@
 ---
-title: "Email obfuscation"
+title: "Email Obsfrustration using JS"
 date: 2023-04-15
 layout: test
 ---
 
-Email harvesters and other bots roam the Internet looking for email addresses to add to lists that target recipients for spam. This trend results in an increasing amount of unwanted email. Learn how to create a simple **{{page.m}}** using JavaScript. 
+Email harvesters and other bots roam the Internet looking for email addresses to add to lists that target recipients for spam. This trend results in an increasing amount of unwanted email. Learn how to create a simple page using JavaScript. 
 
 Check this step-by-step guide.
 
 Let´s Start.
 
-1. TOC
-{:toc}
-
 ## Background
-{:toc}
 
-I like how Cloudflare obfuscate mails, googling around I found an [Andrew Lock](https://andrewlock.net/) article explaining how to use a simple bitwise XOR using a key, and as I knew the technique, I decided to adapt it and do my own implementation. 
+I like how Cloudflare obfuscate mails, googling around I found an Andrew Lock<a href="#footnote1"></a> article explaining how to use a simple bitwise XOR using a key, and as I knew the technique, I decided to adapt it and do my own implementation. 
 
 If you want to skip the how-to and just use it you can visit
 the [Encoder Page](https://lucianofullstack.pages.dev/assets/encoder)
@@ -26,12 +22,10 @@ the [Encoder Page](https://lucianofullstack.pages.dev/assets/encoder)
 The `XOR` algorithm is basically a simple substitution cipher. In other words, it just replaces each alphanumeric in a string that is fed into it with another number. Crucially, the algorithm is reversible. So if you feed the output string back into the same algorithm, you end up with the original string with the cipher removed. This kind of cipher is also called an additive cipher, and is the simplest kind of cipher there is.
 
 ## Goal
-{:toc}
 
 Create a simple {{page.m}} using just JavaScript for encoding and decoding our address. In order to encode we will need a string representing a valid email address and a numerical key from `0` to `255` (`0` to `FF` in `hex`). Also we have to create a drop-in script that decode our emails, and a form to create the ciphered ones.
 
 ## Encoder
-{:toc}
 
 The function will receive two parameters `email` and `key` and returns a `string` containing the concatenation of the `key` in `hex` and  the result of applying `XOR` to every character of the mail address.
 
@@ -75,7 +69,6 @@ function encodeEmail(email, key) {
 ```
 
 ## Decoder
-{:toc}
 
 As we can realize the new length will be `originalLenght*2+2` as every char and the key will be represented by their `hex value`, so we have to pick the first two characters of the encoded string and covert it to decimal. Then we will repeat the operation using that value as `key` and doing `xor` and concatenating the rest. 
 
@@ -102,7 +95,6 @@ const decodeEmail = (encoded) => {
 
 
 ## Parser
-{:toc}
 
 In order to store our encoded address we will use the `data` attribute and we also will make a function to parse all of our encoded emails that have a certain class for instance `eml` .
 
@@ -133,15 +125,13 @@ function parseEmail() {
 } parseEmail()
 ```
 
-
 ## The Form Encoder
 
-<details open>
-<summary><strong>What we need</strong></summary>
-<br><br>
+What we need
+
 <p>We will create a very basic form in order to encode and create the links also it will have the instructions that allow users to add the script needed to decode mails.</p>
+
 <p>The form need some validations as we need an email address and a key from 0 to 255. You can check the full source code below. </p>
-</details>
 
 In order to verify the address we use this function that returns `true` or `false` when an address is passed to it.
 
@@ -166,3 +156,8 @@ Or check this pen:
   Email Obfuscation</a> by Luciano Fullstack (<a href="https://codepen.io/lucianofullstack">@lucianofullstack</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h3>Footnotes</h3>    
+<footer>
+  <p id="footnote1"><a href="https://andrewlock.net">Andrew Lock</a>.NET Escapades.</p>
+</footer>
