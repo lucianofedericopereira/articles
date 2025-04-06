@@ -14,9 +14,6 @@ Let´s Start.
 
 I like how Cloudflare obfuscate mails, googling around I found an Andrew Lock<a href="#footnote1"></a> article explaining how to use a simple bitwise XOR using a key, and as I knew the technique, I decided to adapt it and do my own implementation. 
 
-If you want to skip the how-to and just use it you can visit
-the Encoder Page<a href="#footnote2"></a>
-
 `XOR` stands for *exclusive OR*. It is a logical operation that returns a positive or true result when either but not both of its two inputs are true. In other words, the output is true if the inputs are not alike otherwise the output is false.
 
 The `XOR` algorithm is basically a simple substitution cipher. In other words, it just replaces each alphanumeric in a string that is fed into it with another number. Crucially, the algorithm is reversible. So if you feed the output string back into the same algorithm, you end up with the original string with the cipher removed. This kind of cipher is also called an additive cipher, and is the simplest kind of cipher there is.
@@ -143,23 +140,15 @@ function validEmail(email) {
 }
 ```
 
-In terms of design we will use Simple CSS<a href="#footnote3"></a> a minimal CSS semantic framework.
+In terms of design we will use Simple CSS<a href="#footnote2"></a> a minimal CSS semantic framework.
 
 ## Final Code
 
-You can visit the page with the [**final result**](https://lucianofullstack.pages.dev/assets/encoder).
-
-Or check this pen:
-
-<p class="codepen notranslate" data-height="300" data-default-tab="html,result" data-slug-hash="poxyVQb" data-user="lucianofullstack" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-  <span>See the Pen <a href="https://codepen.io/lucianofullstack/pen/poxyVQb">
-  Email Obfuscation</a> by Luciano Fullstack (<a href="https://codepen.io/lucianofullstack">@lucianofullstack</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p><script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+You can visit the page with the final result<a href="#footnote3"></a>.
 
 <h3>Footnotes</h3>    
 <footer>
   <p id="footnote1"><a href="https://andrewlock.net">Andrew Lock</a>.NET Escapades.</p>
-  <p id="footnote2"><a href="https://lucianofullstack.pages.dev/assets/encoder">Encoder Page</a></p>
-  <p id="footnote3"><a href="https://simplecss.org">Simpe CSS</a> A CSS framework that makes semantic HTML look good.</p>
+  <p id="footnote2"><a href="https://simplecss.org">Simpe CSS</a> A CSS framework that makes semantic HTML look good.</p>
+  <p id="footnote3"><a href="https://lucianofullstack.pages.dev/assets/encoder">Encoder Page</a>a self generation link page.</p>
 </footer>
