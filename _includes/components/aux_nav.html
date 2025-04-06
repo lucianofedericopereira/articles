@@ -1,3 +1,5 @@
+{% if site.aux_links %}
+<div class="aside-title">Links</div>
 {% for link in site.aux_links %}
   <a href="{{ link.last }}" 
       class="aside-link"
@@ -6,3 +8,4 @@
       {% endif %}
   >{{ link.first }}</a>
 {% endfor %}
+{% endif %}
