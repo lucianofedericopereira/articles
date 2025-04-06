@@ -15,7 +15,7 @@ Let´s Start.
 I like how Cloudflare obfuscate mails, googling around I found an Andrew Lock<a href="#footnote1"></a> article explaining how to use a simple bitwise XOR using a key, and as I knew the technique, I decided to adapt it and do my own implementation. 
 
 If you want to skip the how-to and just use it you can visit
-the [Encoder Page](https://lucianofullstack.pages.dev/assets/encoder)
+the Encoder Page<a href="#footnote2"></a>
 
 `XOR` stands for *exclusive OR*. It is a logical operation that returns a positive or true result when either but not both of its two inputs are true. In other words, the output is true if the inputs are not alike otherwise the output is false.
 
@@ -143,7 +143,7 @@ function validEmail(email) {
 }
 ```
 
-In terms of design we will use https://simplecss.org a minimal CSS semantic framework.
+In terms of design we will use Simple CSS<a href="#footnote3"></a> a minimal CSS semantic framework.
 
 ## Final Code
 
@@ -160,4 +160,6 @@ Or check this pen:
 <h3>Footnotes</h3>    
 <footer>
   <p id="footnote1"><a href="https://andrewlock.net">Andrew Lock</a>.NET Escapades.</p>
+  <p id="footnote2"><a href="https://lucianofullstack.pages.dev/assets/encoder">Encoder Page</a></p>
+  <p id="footnote3"><a href="https://simplecss.org">Simpe CSS</a> A CSS framework that makes semantic HTML look good.</p>
 </footer>
