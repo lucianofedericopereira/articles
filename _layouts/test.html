@@ -27,7 +27,21 @@ nav_enabled: false
         {%- include components/sidebar.html -%}
     </aside>
     <main>
-        {{ content }}
+
+    <label for="toc">
+        <div class="icon icon-toc" aria-label="Show Table of Contents"></div>
+    </label>
+
+    <input type="checkbox" aria-expanded="false" id="toc">
+    <div id="index">
+        <div id="reading-time"></div>
+        <h3>Table of Contents</h3>
+        <div id="chapters"></div>
+        <hr>
+    </div>
+
+
+     {{ content }}
     </main>
     {%- include components/comments.html -%}
     {%- include components/mermaid.html -%}
