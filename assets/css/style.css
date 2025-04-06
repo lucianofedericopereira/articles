@@ -1127,7 +1127,7 @@ main footer a::before {
 
     .highlight,
     pre.highlight {
-        background: var(--cc);
+        background: var(--c6);
         padding: .5rem .8rem
     }
 
@@ -1135,7 +1135,7 @@ main footer a::before {
     .highlight .nt,
     .highlight .vi,
     .highlight .language-json .w+.s2 {
-        color: var(--c6)
+        color: var(--c2)
     }
 
     .highlight .w {
