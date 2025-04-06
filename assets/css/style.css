@@ -1032,6 +1032,8 @@ main footer a::before {
         margin: 0 auto;
         padding: 1rem;
         font-size: .9rem;
+        max-width: 1200px;
+
     }
 
     .highlight {
