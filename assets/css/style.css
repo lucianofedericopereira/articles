@@ -1157,7 +1157,7 @@ main footer a::before {
     figure.highlight {
         margin-top: 0;
         margin-bottom: 0.75rem;
-        background-color: var(--h3);
+        background-color: var(--c6);
         box-shadow: none;
         -webkit-overflow-scrolling: touch;
         position: relative;
@@ -1174,7 +1174,7 @@ main footer a::before {
         top: 0;
         right: 0;
         border: 1rem solid var(--h3);
-        background-color: var(--h3);
+        background-color: var(--c6);
         color: var(--h1);
         box-sizing: content-box
     }
@@ -1258,7 +1258,7 @@ main footer a::before {
     .highlight .table-wrapper pre {
         min-width: 0;
         padding: 0;
-        background-color: var(--h3);
+        background-color: var(--c6);
         border: 0
     }
 
@@ -1280,7 +1280,7 @@ main footer a::before {
         padding: 0.75rem;
         margin-bottom: 0.75rem;
         overflow: auto;
-        border: 1px solid var(--h6);
+        border: 1px solid var(--c6);
         border-radius: 4px
     }
 
@@ -1294,9 +1294,9 @@ main footer a::before {
     .listingblock>.title+figure.highlight {
         position: relative;
         margin-top: -1rem;
-        border-right: 1px solid var(--h6);
-        border-bottom: 1px solid var(--h6);
-        border-left: 1px solid var(--h6);
+        border-right: 1px solid var(--c6);
+        border-bottom: 1px solid var(--c6);
+        border-left: 1px solid var(--c6);
         border-top-left-radius: 0;
         border-top-right-radius: 0
     }
@@ -1310,7 +1310,7 @@ main footer a::before {
     .highlight,
     pre.highlight {
         color: var(--h5);
-        background: var(--h3);
+        background: var(--c6);
         border: 2px solid var(--h2);
     }
 
