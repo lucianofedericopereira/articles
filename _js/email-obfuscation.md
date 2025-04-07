@@ -46,7 +46,7 @@ The whole encoder code so far
 
 
 ```js
-function encodeEmail(email, key) {
+const encodeEmail = (email, key) => {
   let encodedString = 
       key
       .toString(16)
@@ -71,7 +71,7 @@ As we can realize the new length will be `originalLenght*2+2` as every char and 
 
 
 ```js
-const decodeEmail = (encoded) => {
+const decodeEmail = encoded => {
   let
   decEml   = '' ,
   keyInHex = encoded.substr (0, 2) ,
@@ -107,7 +107,7 @@ Parse Function:
 
 
 ```js
-function parseEmail() {
+const parseEmail = () => {
   const
   eml =
   document.getElementsByClassName("eml")
@@ -119,7 +119,7 @@ function parseEmail() {
     elEml.textContent = decoded
     elEml.href = 'mailto:' + decoded
   }
-} parseEmail()
+}; parseEmail()
 ```
 
 ## The Form Encoder
@@ -133,7 +133,7 @@ What we need
 In order to verify the address we use this function that returns `true` or `false` when an address is passed to it.
 
 ```js
-function validEmail(email) {
+const validEmail = email => {
     const 
     res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     return res.test(String(email).toLowerCase())

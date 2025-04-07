@@ -878,8 +878,8 @@ main footer a::before {
             min-width: 560px;
         }
         main>.highlighter-rouge {
-            width: 77.5%;
-            max-width: 1000px;
+            width: 69%;
+            max-width: 880px;
             min-width: 560px;
         }
 
