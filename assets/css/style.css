@@ -301,7 +301,10 @@ main footer a::before {
         text-align: center;
     }
 
-    main p {
+    main p,
+    main ul,
+    main ol
+    {
         margin: 0 auto;
         font-size: 1.2rem;
         line-height: 1.7rem;
