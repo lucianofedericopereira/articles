@@ -41,11 +41,9 @@ nav_enabled: false
         <div id="chapters"></div>
         <hr>
     </div>
-
-
      {{ content }}
+     {%- include components/comments.html -%}
     </main>
-    {%- include components/comments.html -%}
     {%- include components/mermaid.html -%}
 </body>
 </html>
