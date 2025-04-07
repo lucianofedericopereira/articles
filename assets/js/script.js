@@ -1,4 +1,8 @@
+
+
+
 const $ = qs => document.querySelector(qs);
+
 $('#menu').checked = (window.innerWidth < 1280) ? false : true;
 
 const css = async content => {
