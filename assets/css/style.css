@@ -318,8 +318,8 @@ main footer a::before {
         color: var(--c0);
     }
 
-    main p a[href]:not([href^="#"]), 
-    main p a[href]:not([href^="#"]):visited {
+    main a[href]:not([href^="#"]), 
+    main a[href]:not([href^="#"]):visited {
         text-decoration: none;
         color: var(--c8);
     }
