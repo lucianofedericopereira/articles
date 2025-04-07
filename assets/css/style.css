@@ -82,6 +82,8 @@
 body,
 header,
 main p,
+main ul,
+main ol,
 .search-input {
     font-family: var(--font-body), var(--font-basic);
 }
