@@ -896,7 +896,9 @@ main footer a::before {
         main h4,
         main h5,
         main h6,
-        main p 
+        main p,
+        main ul,
+        main ol
         {
             width: 77.5%;
             max-width: 1200px;
