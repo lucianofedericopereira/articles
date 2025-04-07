@@ -871,11 +871,15 @@ main footer a::before {
         main h4,
         main h5,
         main h6,
-        main p ,
-        main>.highlighter-rouge 
+        main p 
         {
             width: 77.5%;
             max-width: 1200px;
+            min-width: 560px;
+        }
+        main>.highlighter-rouge {
+            width: 77.5%;
+            max-width: 1000px;
             min-width: 560px;
         }
 
