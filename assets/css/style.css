@@ -116,6 +116,10 @@ main footer a::before {
     counter-increment: footnote;
 }
 
+main ul,
+main ol {
+    padding-left: 2rem;
+}
 
 @media screen {
 
