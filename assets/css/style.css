@@ -1217,6 +1217,7 @@ main footer a::before {
     div.highlighter-rouge:hover>button,
     div.listingblock>div.content:hover>button,
     figure.highlight:hover>button {
+        background-color: var(--c6);
         cursor: copy;
         opacity: 1
     }

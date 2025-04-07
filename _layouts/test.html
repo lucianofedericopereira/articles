@@ -27,24 +27,20 @@ nav_enabled: false
         {%- include components/sidebar.html -%}
     </aside>
     <main>
+        <label for="toc">
+            <div class="icon icon-toc" aria-label="Show Table of Contents"></div>
+        </label>
+        <h1>{{ page.title | capitalize }}</h1>
 
-    <label for="toc">
-        <div class="icon icon-toc" aria-label="Show Table of Contents"></div>
-    </label>
-
-    <h1>{{ page.title | capitalize }}</h1>
-
-    <input type="checkbox" aria-expanded="false" id="toc">
-    <div id="index">
-        <div id="reading-time"></div>
-        <h3>Table of Contents</h3>
-        <div id="chapters"></div>
-        <hr>
-    </div>
-     {{ content }}
-
-     {%- include components/comments.html -%}
-
+        <input type="checkbox" aria-expanded="false" id="toc">
+        <div id="index">
+            <div id="reading-time"></div>
+            <h3>Table of Contents</h3>
+            <div id="chapters"></div>
+            <hr>
+        </div>
+        {{ content }}
+        {%- include components/comments.html -%}
     </main>
     {%- include components/mermaid.html -%}
 </body>
