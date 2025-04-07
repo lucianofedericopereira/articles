@@ -871,7 +871,9 @@ main footer a::before {
         main h4,
         main h5,
         main h6,
-        main p {
+        main p ,
+        main>.highlighter-rouge 
+        {
             width: 77.5%;
             max-width: 1200px;
             min-width: 560px;
@@ -1032,8 +1034,6 @@ main footer a::before {
         margin: 0 auto;
         padding: 1rem;
         font-size: .9rem;
-        max-width: 1200px;
-
     }
 
     .highlight {
