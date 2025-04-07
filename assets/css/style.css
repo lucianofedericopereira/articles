@@ -910,8 +910,14 @@ main footer a::before {
         .highlight,
         pre.highlight,
         div.highlighter-rouge,
+        div.highlighter-rouge>button,
         div.listingblock>div.content,
-        figure.highlight {
+        div.listingblock>div.content>button,
+        figure.highlight, 
+        figure.highlight>button,
+        .highlight .table-wrapper td,
+        .highlight .table-wrapper pre
+        {
             background: var(--c6);
         }
 
@@ -1183,7 +1189,6 @@ main footer a::before {
         top: 0;
         right: 0;
         border: 1rem solid var(--h3);
-        background-color: var(--c6);
         color: var(--h1);
         box-sizing: content-box
     }
@@ -1267,7 +1272,6 @@ main footer a::before {
     .highlight .table-wrapper pre {
         min-width: 0;
         padding: 0;
-        background-color: var(--c6);
         border: 0
     }
 
