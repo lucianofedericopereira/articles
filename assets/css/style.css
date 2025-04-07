@@ -1336,12 +1336,11 @@ main footer a::before {
 
 #comments-utteranc {
     padding: 0 1rem;
-    filter: grayscale(50%) sepia(10%);
+    filter: grayscale(50%) sepia(10%) hue-rotate(50deg);
+    opacity: .9;
+    
 }
 
-#comments-utteranc button {
-    filter: grayscale(70%);
-}
 
 
 }
