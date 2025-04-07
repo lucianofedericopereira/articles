@@ -906,6 +906,12 @@ main footer a::before {
         main h3::after {
             margin-left: 40px;
         }
+
+        .highlight,
+        pre.highlight {
+            background: var(--c6);
+        }
+
     }
 
     @media (width >=64rem) {
@@ -1040,12 +1046,6 @@ main footer a::before {
         font-size: .9rem;
     }
 
-    /*
-    .highlight {
-        max-width: 80ch;
-    }
-    */
-
     .highlight pre {
         white-space: pre-wrap;
     }
@@ -1135,7 +1135,6 @@ main footer a::before {
 
     .highlight,
     pre.highlight {
-        background: var(--c6);
         padding: .5rem .8rem
     }
 
@@ -1318,7 +1317,6 @@ main footer a::before {
     .highlight,
     pre.highlight {
         color: var(--h5);
-        background: var(--c6);
         border: 2px solid var(--h2);
     }
 
