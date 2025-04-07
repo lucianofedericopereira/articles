@@ -324,6 +324,12 @@ main footer a::before {
         color: var(--c8);
     }
 
+    main a[href]:not([href^="#"]):hover,
+    main a[href]:not([href^="#"]):visited:hover {
+        text-decoration: none;
+        color: var(--ca);
+    }
+
 
 
     main p a[href^="#"]::before {
