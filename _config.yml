@@ -9,7 +9,7 @@ heading_anchors: true
 nav_enabled: true
 search_enabled: true
 
-footer_content: "Copyright &copy; 2017-2020 Patrick Marsceill."
+footer_content: "Copyright &copy; 2025 Luciano Perera"
 
 #last_edit_timestamp: true
 #last_edit_time_format: "%b %e %Y at %I:%M %p" # https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
