@@ -325,6 +325,10 @@ main ul {
         color: var(--c1);
     }
 
+    main p.highlighter-rouge {
+        font-size: 1rem;
+    }
+
     main p:hover {
         color: var(--c0);
     }
