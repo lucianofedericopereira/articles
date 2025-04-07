@@ -908,7 +908,10 @@ main footer a::before {
         }
 
         .highlight,
-        pre.highlight {
+        pre.highlight,
+        div.highlighter-rouge,
+        div.listingblock>div.content,
+        figure.highlight {
             background: var(--c6);
         }
 
@@ -1164,7 +1167,6 @@ main footer a::before {
     figure.highlight {
         margin-top: 0;
         margin-bottom: 0.75rem;
-        background-color: var(--c6);
         box-shadow: none;
         -webkit-overflow-scrolling: touch;
         position: relative;
