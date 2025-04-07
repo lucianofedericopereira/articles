@@ -321,6 +321,7 @@ main footer a::before {
         color: var(--c0);
     }
 
+/*
     main a[href]:not([href^="#"]), 
     main a[href]:not([href^="#"]):visited {
         text-decoration: none;
@@ -332,6 +333,20 @@ main footer a::before {
         text-decoration: none;
         color: var(--ca);
     }
+*/
+main a[href]:not([href^="#"]):not(main footer a[href]),
+main a[href]:not([href^="#"]):visited:not(main footer a[href]) {
+    text-decoration: none;
+    color: var(--c8);
+}
+
+main a[href]:not([href^="#"]):hover:not(main footer a[href]),
+main a[href]:not([href^="#"]):visited:hover:not(main footer a[href]) {
+    text-decoration: none;
+    color: var(--ca);
+}
+
+
 
 
 
