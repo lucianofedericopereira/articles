@@ -1040,9 +1040,11 @@ main footer a::before {
         font-size: .9rem;
     }
 
+    /*
     .highlight {
         max-width: 80ch;
     }
+    */
 
     .highlight pre {
         white-space: pre-wrap;
