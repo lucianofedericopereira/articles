@@ -122,6 +122,10 @@ main ol {
     list-style-position: inside;
 }
 
+main ul {
+    list-style-type: square;
+}
+
 @media screen {
 
     :root {
@@ -136,9 +140,8 @@ main ol {
         --c5: #E3F0DF;
         --c6: #F1F6E5;
         --c7: #FFFFF8;
-        --c8x: #F0B763;
-        --c8: #FFB783;
-
+        --c8y: #FFB783;
+        --c8: #FF9B67;
         --c9: #FFDEA3;
         
 

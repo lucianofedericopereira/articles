@@ -44,6 +44,11 @@ const translate = () => {
         autoDisplay: false,
         layout: google.translate.TranslateElement.InlineLayout.VERTICAL
     }, 'translate');
+    
+    
+    
+    
+    
     $('.goog-logo-link')?.setAttribute('rel', 'noopener');
     const googleCombo = $("select.goog-te-combo");
     const langSelect = $('.dropdown-lang');
@@ -194,8 +199,6 @@ const updateTitle = () => {
 
 (function (jtd, undefined) {
 
-    // Event handling
-
     jtd.addEvent = function (el, type, handler) {
         if (el.attachEvent) el.attachEvent('on' + type, handler); else el.addEventListener(type, handler);
     }
@@ -205,12 +208,8 @@ const updateTitle = () => {
     }
 
     jtd.onReady = function (ready) {
-        // in case the document is already rendered
         if (document.readyState != 'loading') ready();
-        // modern browsers
         else if (document.addEventListener) document.addEventListener('DOMContentLoaded', ready);
-
-        // IE <= 8
         else document.attachEvent('onreadystatechange', function () {
             if (document.readyState == 'complete') ready();
         });
