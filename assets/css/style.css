@@ -1333,7 +1333,9 @@ main footer a::before {
     }
 
 
-
+#comments {
+    padding-bottom: 2rem;
+}
 #comments-utteranc {
     padding: 0 1rem;
     filter: grayscale(50%) sepia(10%) hue-rotate(50deg);

@@ -187,13 +187,3 @@ const updateTitle = () => {
 }; setInterval(updateTitle, 1000); updateTitle();
 
 
-const restrictZoom = () => {
-    const scale = window.devicePixelRatio * 100;
-    if (scale < 67) {
-        document.body.style.zoom = "67%";
-    } else if (scale > 170) {
-        document.body.style.zoom = "170%";
-    }
-};  window.addEventListener('resize', debounce(restrictZoom, 300));
-restrictZoom();
-
