@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+/*
+#F1F6E6
+*/
+
 #translate,
 #google_translate_element,
 .skiptranslate,
@@ -1328,6 +1332,16 @@ main footer a::before {
         border: 2px solid var(--h2);
     }
 
+
+
+#comments-utteranc {
+    padding: 0 1rem;
+    filter: grayscale(50%) sepia(10%);
+}
+
+#comments-utteranc button {
+    filter: grayscale(70%);
+}
 
 
 }
