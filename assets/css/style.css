@@ -146,42 +146,23 @@ main ul {
         --c8: #FF9B67;
         --c9: #FFDEA3;
 
-
-        --xf: #F1F6E6;
-        --rf: #F4F7EB;
-
-        --h0: #000000;
-        --h1: #ff7747;
-        --h2: #e3f0df;
-        --h3: #edf3eb;
-        --h4: #e94c4c;
-        --h5: #5c5962;
-        --h6: #eeebee;
-        --h7: #010205;
-        --h8: #959396;
-        --hf: #ffffff;
-
-
-        /*  Primary Accents (e.g., buttons, highlights)
-
-        --c8y: #FFB783;
-    Background Colors:
-    Text Colors:
-    Accent
-        --ca: #FF7E4B;
-        --c8: #F0B763;    
-        --c9: #FFDEA3;
-        --cb: #DFF6C3;
-        --c2: #554E45;
-        --c1: #453E35;
-        --c0: #111017;
-        --cc: #E3E7D9;    
-        --c4: #DFDDCA;
-        --c5: #E3F0DF;    
-        --c6: #F1F6E5;
-        --c7: #FFFFF8;
-        --c3: #C2C5A5;
-*/
+        --r0: #005F9E;
+        --r1: #2F6F91;
+        --r2: #333333;
+        --r3: #407A52;
+        --r4: #4287F5;
+        --r5: #4A4A4A;
+        --r6: #6B7FBB;
+        --r7: #888888;
+        --r8: #9366A5;
+        --r9: #A41834;
+        --ra: #A8C079;
+        --rb: #C44D5E;
+        --rc: #C64040;
+        --rd: #D4E6A5;
+        --re: #DFF3C6;
+        --rf: #F6FAEB;
+        --rw: #FFFFFF;
 
     }
 
@@ -1091,286 +1072,292 @@ main ul {
 
     /* Highlight */
 
-    main>.highlighter-rouge {
-        font-family: var(--font-code), var(--font-basic);
-        font-variant-ligatures: common-ligatures;
-        margin: 0 auto;
-        padding: 1rem;
-        font-size: .9rem;
-    }
-
-    .highlight pre {
-        white-space: pre-wrap;
-    }
-
-    .language-plaintext.highlighter-rouge {
-        color: var(--c1);
-        font-weight: 500;
-        letter-spacing: 1px
-    }
-
-    .highlight .k,
-    .highlight .kc,
-    .highlight .kd,
-    .highlight .kn,
-    .highlight .kp,
-    .highlight .kr,
-    .highlight .kt {
-        color: var(--ca)
-    }
-
-    .highlight .m,
-    .highlight .mf,
-    .highlight .mh,
-    .highlight .mo,
-    .highlight .il,
-    .highlight .mi {
-        color: var(--c8)
-    }
-
-    .highlight .bp,
-    .highlight .vc,
-    .highlight .vg,
-    .highlight .na,
-    .highlight .nb,
-    .highlight .nc,
-    .highlight .no,
-    .highlight .nd,
-    .highlight .ni,
-    .highlight .ne,
-    .highlight .nl,
-    .highlight .nv,
-    .highlight .py {
-        color: var(--c9)
-    }
-
-    .highlight .sr,
-    .highlight .ss,
-    .highlight .language-json .kc {
-        color: var(--c3)
-    }
-
-    .highlight .gi {
-        color: var(--c5)
-    }
-
-    .highlight .l,
-    .highlight .ld,
-    .highlight .s,
-    .highlight .sb,
-    .highlight .sc,
-    .highlight .sd,
-    .highlight .s2,
-    .highlight .se,
-    .highlight .sh,
-    .highlight .si,
-    .highlight .sx,
-    .highlight .s1 {
-        color: var(--c4)
-    }
-
-    .highlight .gu {
-        color: var(--c2)
-    }
-
-    .highlight .c,
-    .highlight .cm,
-    .highlight .cp,
-    .highlight .c1,
-    .highlight .cs {
-        color: var(--cb);
-        font-style: italic
-    }
-
-    .highlight .hll {
-        background: var(--ce)
-    }
-
-    .highlight,
-    pre.highlight {
-        padding: .5rem .8rem
-    }
-
-    .highlight .gd,
-    .highlight .nt,
-    .highlight .vi,
-    .highlight .language-json .w+.s2 {
-        color: var(--c2)
-    }
-
-    .highlight .w {
-        color: var(--cd)
-    }
-
-    .highlight .err {
-        color: var(--cf);
-        background-color: var(--c7)
-    }
-
-    .highlight .gs,
-    .highlight .ow {
-        font-weight: 700
-    }
-
-    div.highlighter-rouge,
-    div.listingblock>div.content,
-    figure.highlight {
-        margin-top: 0;
-        margin-bottom: 0.75rem;
-        box-shadow: none;
-        -webkit-overflow-scrolling: touch;
-        position: relative;
-        padding: 0;
-        border: 2px solid var(--h2);
-    }
-
-    div.highlighter-rouge>button,
-    div.listingblock>div.content>button,
-    figure.highlight>button {
-        width: 1rem;
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        right: 0;
-        border: 1rem solid var(--h3);
-        color: var(--h1);
-        box-sizing: content-box
-    }
-
-    div.highlighter-rouge>button svg,
-    div.listingblock>div.content>button svg,
-    figure.highlight>button svg {
-        fill: var(--h1)
-    }
-
-    div.highlighter-rouge>button:active,
-    div.listingblock>div.content>button:active,
-    figure.highlight>button:active {
-        text-decoration: none;
-        outline: none;
-        opacity: 1
-    }
-
-    div.highlighter-rouge>button:focus,
-    div.listingblock>div.content>button:focus,
-    figure.highlight>button:focus {
-        opacity: 1
-    }
-
-    div.highlighter-rouge:hover>button,
-    div.listingblock>div.content:hover>button,
-    figure.highlight:hover>button {
-        background-color: var(--rf);
-        cursor: copy;
-        opacity: 1
-    }
-
-    div.highlighter-rouge div.highlight {
-        overflow-x: auto;
-        padding: 0.75rem;
-        margin: 0;
-        border: 0
-    }
-
-    div.highlighter-rouge pre.highlight,
-    div.highlighter-rouge code {
-        padding: 0;
-        margin: 0;
-        border: 0
-    }
-
-    div.listingblock {
-        margin-top: 0;
-        margin-bottom: 0.75rem
-    }
-
-    div.listingblock div.content {
-        overflow-x: auto;
-        padding: 0.75rem;
-        margin: 0;
-        border: 0
-    }
-
-    div.listingblock div.content>pre,
-    div.listingblock code {
-        padding: 0;
-        margin: 0;
-        border: 0
-    }
-
-    figure.highlight pre,
-    figure.highlight :not(pre)>code {
-        overflow-x: auto;
-        padding: 0.75rem;
-        margin: 0;
-        border: 0
-    }
-
-    .highlight .table-wrapper {
-        padding: 0.75rem 0;
-        margin: 0;
-        border: 0;
-        box-shadow: none
-    }
-
-    .highlight .table-wrapper td,
-    .highlight .table-wrapper pre {
-        min-width: 0;
-        padding: 0;
-        border: 0
-    }
 
 
+main>.highlighter-rouge {
+    font-family: var(--font-code), var(--font-basic);
+    font-variant-ligatures: common-ligatures;
+    margin: 0 auto;
+    padding: 1rem;
+    font-size: .9rem;
+}
 
-    .highlight .table-wrapper td.gl {
-        width: 1em;
-        padding-right: 0.75rem;
-        padding-left: 0.75rem
-    }
+.highlight pre {
+    white-space: pre-wrap;
+}
 
-    .highlight .table-wrapper pre {
-        margin: 0;
-        line-height: 2
-    }
+.language-plaintext.highlighter-rouge {
+    color: var(--r5);
+    font-weight: 500;
+    letter-spacing: 1px
+}
 
-    .code-example,
-    .listingblock>.title {
-        padding: 0.75rem;
-        margin-bottom: 0.75rem;
-        overflow: auto;
-        border: 1px solid var(--c6);
-        border-radius: 4px
-    }
+.highlight .k,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt {
+    color: var(--r0)
+}
 
-    .code-example+.highlighter-rouge,
-    .code-example+.sectionbody .listingblock,
-    .code-example+.content,
-    .code-example+figure.highlight,
-    .listingblock>.title+.highlighter-rouge,
-    .listingblock>.title+.sectionbody .listingblock,
-    .listingblock>.title+.content,
-    .listingblock>.title+figure.highlight {
-        position: relative;
-        margin-top: -1rem;
-        border-right: 1px solid var(--c6);
-        border-bottom: 1px solid var(--c6);
-        border-left: 1px solid var(--c6);
-        border-top-left-radius: 0;
-        border-top-right-radius: 0
-    }
+.highlight .m,
+.highlight .mf,
+.highlight .mh,
+.highlight .mo,
+.highlight .il,
+.highlight .mi {
+    color: var(--r9)
+}
 
-    code.language-mermaid {
-        padding: 0;
-        background-color: inherit;
-        border: 0
-    }
+.highlight .bp,
+.highlight .vc,
+.highlight .vg,
+.highlight .na,
+.highlight .nb,
+.highlight .nc,
+.highlight .no,
+.highlight .nd,
+.highlight .ni,
+.highlight .ne,
+.highlight .nl,
+.highlight .nv,
+.highlight .py {
+    color: var(--r3)
+}
 
-    .highlight,
-    pre.highlight {
-        color: var(--h5);
-        border: 2px solid var(--h2);
-    }
+.highlight .sr,
+.highlight .ss,
+.highlight .language-json .kc {
+    color: var(--rb)
+}
 
+.highlight .gi {
+    color: var(--r4)
+}
+
+.highlight .l,
+.highlight .ld,
+.highlight .s,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .s2,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .s1 {
+    color: var(--r6)
+}
+
+.highlight .gu {
+    color: var(--r8)
+}
+
+.highlight .c,
+.highlight .cm,
+.highlight .cp,
+.highlight .c1,
+.highlight .cs {
+    color: var(--r7);
+    font-style: italic
+}
+
+.highlight .hll {
+    background: var(--re)
+}
+
+.highlight,
+pre.highlight {
+    padding: .5rem .8rem
+}
+
+.highlight .gd,
+.highlight .nt,
+.highlight .vi,
+.highlight .language-json .w+.s2 {
+    color: var(--r8)
+}
+
+.highlight .w {
+    color: var(--r1)
+}
+
+.highlight .err {
+    color: var(--rw);
+    background-color: var(--rc)
+}
+
+.highlight .gs,
+.highlight .ow {
+    font-weight: 700
+}
+
+div.highlighter-rouge,
+div.listingblock>div.content,
+figure.highlight {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    box-shadow: none;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    padding: 0;
+    border: 2px solid var(--ra);
+}
+
+div.highlighter-rouge>button,
+div.listingblock>div.content>button,
+figure.highlight>button {
+    width: 1rem;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1rem solid var(--rd);
+    color: var(--r2);
+    box-sizing: content-box
+}
+
+div.highlighter-rouge>button svg,
+div.listingblock>div.content>button svg,
+figure.highlight>button svg {
+    fill: var(--r2)
+}
+
+div.highlighter-rouge>button:active,
+div.listingblock>div.content>button:active,
+figure.highlight>button:active {
+    text-decoration: none;
+    outline: none;
+    opacity: 1
+}
+
+div.highlighter-rouge>button:focus,
+div.listingblock>div.content>button:focus,
+figure.highlight>button:focus {
+    opacity: 1
+}
+
+div.highlighter-rouge:hover>button,
+div.listingblock>div.content:hover>button,
+figure.highlight:hover>button {
+    background-color: var(--rf);
+    cursor: copy;
+    opacity: 1
+}
+
+div.highlighter-rouge div.highlight {
+    overflow-x: auto;
+    padding: 0.75rem;
+    margin: 0;
+    border: 0
+}
+
+div.highlighter-rouge pre.highlight,
+div.highlighter-rouge code {
+    padding: 0;
+    margin: 0;
+    border: 0
+}
+
+div.listingblock {
+    margin-top: 0;
+    margin-bottom: 0.75rem
+}
+
+div.listingblock div.content {
+    overflow-x: auto;
+    padding: 0.75rem;
+    margin: 0;
+    border: 0
+}
+
+div.listingblock div.content>pre,
+div.listingblock code {
+    padding: 0;
+    margin: 0;
+    border: 0
+}
+
+figure.highlight pre,
+figure.highlight :not(pre)>code {
+    overflow-x: auto;
+    padding: 0.75rem;
+    margin: 0;
+    border: 0
+}
+
+.highlight .table-wrapper {
+    padding: 0.75rem 0;
+    margin: 0;
+    border: 0;
+    box-shadow: none
+}
+
+.highlight .table-wrapper td,
+.highlight .table-wrapper pre {
+    min-width: 0;
+    padding: 0;
+    border: 0
+}
+
+
+
+.highlight .table-wrapper td.gl {
+    width: 1em;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem
+}
+
+.highlight .table-wrapper pre {
+    margin: 0;
+    line-height: 2
+}
+
+.code-example,
+.listingblock>.title {
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    overflow: auto;
+    border: 1px solid var(--c6);
+    border-radius: 4px
+}
+
+.code-example+.highlighter-rouge,
+.code-example+.sectionbody .listingblock,
+.code-example+.content,
+.code-example+figure.highlight,
+.listingblock>.title+.highlighter-rouge,
+.listingblock>.title+.sectionbody .listingblock,
+.listingblock>.title+.content,
+.listingblock>.title+figure.highlight {
+    position: relative;
+    margin-top: -1rem;
+    border-right: 1px solid var(--c6);
+    border-bottom: 1px solid var(--c6);
+    border-left: 1px solid var(--c6);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0
+}
+
+code.language-mermaid {
+    padding: 0;
+    background-color: inherit;
+    border: 0
+}
+
+.highlight,
+pre.highlight {
+    color: var(--h5);
+    border: 2px solid var(--ra);
+}
+
+
+
+
+/**/
 
 #comments {
     padding-bottom: 2rem;
