@@ -260,7 +260,7 @@ main ul {
 
     main h1 {
         margin: 10rem auto 0;
-        padding: 0 .2rem;
+        max-width:93.45%;
         font-size: 3.2rem;
         line-height: 1;
         text-align: center;
