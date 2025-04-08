@@ -140,10 +140,12 @@ main ul {
         --c5: #E3F0DF;
         --c6: #F1F6E5;
         --c7: #FFFFF8;
-        --c8y: #FFB783;
         --c8: #FF9B67;
         --c9: #FFDEA3;
-        
+
+
+         -rf: #F1F6E6;
+
 
         --h0: #000000;
         --h1: #ff7747;
@@ -158,11 +160,11 @@ main ul {
 
 
         /*  Primary Accents (e.g., buttons, highlights)
+
+        --c8y: #FFB783;
     Background Colors:
     Text Colors:
     Accent
-*/
-        /*
         --ca: #FF7E4B;
         --c8: #F0B763;    
         --c9: #FFDEA3;
@@ -333,34 +335,17 @@ main ul {
         color: var(--c0);
     }
 
-/*
-    main a[href]:not([href^="#"]), 
-    main a[href]:not([href^="#"]):visited {
+    main a[href]:not([href^="#"]):not(main footer a[href]),
+    main a[href]:not([href^="#"]):visited:not(main footer a[href]) {
         text-decoration: none;
         color: var(--c8);
     }
 
-    main a[href]:not([href^="#"]):hover,
-    main a[href]:not([href^="#"]):visited:hover {
+    main a[href]:not([href^="#"]):hover:not(main footer a[href]),
+    main a[href]:not([href^="#"]):visited:hover:not(main footer a[href]) {
         text-decoration: none;
         color: var(--ca);
     }
-*/
-main a[href]:not([href^="#"]):not(main footer a[href]),
-main a[href]:not([href^="#"]):visited:not(main footer a[href]) {
-    text-decoration: none;
-    color: var(--c8);
-}
-
-main a[href]:not([href^="#"]):hover:not(main footer a[href]),
-main a[href]:not([href^="#"]):visited:hover:not(main footer a[href]) {
-    text-decoration: none;
-    color: var(--ca);
-}
-
-
-
-
 
     main p a[href^="#"]::before {
         content: counter(a);
@@ -973,7 +958,10 @@ main a[href]:not([href^="#"]):visited:hover:not(main footer a[href]) {
         .highlight .table-wrapper td,
         .highlight .table-wrapper pre
         {
+            /*
             background: var(--c6);
+            */
+            background: var(--rf);            
         }
 
     }
