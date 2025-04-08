@@ -47,21 +47,11 @@ The whole encoder code so far
 
 ```js
 const encodeEmail = (email, key) => {
-  let encodedString = 
-      key
-      .toString(16)
-      .padStart(2,'0')
-  for ( let n=0        ; 
-            n < email.length ; 
-            n++ 
-      ) {
-          encodedString += 
-          ( email
-           .charCodeAt(n) ^ key 
-          ).toString(16)
-           .padStart(2,'0')
-  }
-  return encodedString
+  let encodedString = key.toString(16).padStart(2,'0');
+  for (let n=0; n < email.length ; n++) {
+    encodedString += ( email.charCodeAt(n) ^ key ).toString(16).padStart(2,'0')
+  };
+  return encodedString;
 }
 ```
 
@@ -72,21 +62,16 @@ As we can realize the new length will be `originalLenght*2+2` as every char and 
 
 ```js
 const decodeEmail = encoded => {
-  let
-  decEml   = '' ,
-  keyInHex = encoded.substr (0, 2) ,
-  key      = parseInt (keyInHex, 16)
-  for (let n = 2;
-           n < encoded.length;
-           n += 2
-  ) {
-      let
-      charInHex = encoded.substr (n, 2) ,
-      char      = parseInt (charInHex, 16) ,
-      output    = char ^ key
-      decEml += String.fromCharCode (output)
+  let decEml   = '';
+  let keyInHex = encoded.substr (0, 2);
+  let key      = parseInt (keyInHex, 16);
+  for (let n = 2; n < encoded.length;n += 2) {
+      let charInHex = encoded.substr (n, 2) ;
+      let char      = parseInt (charInHex, 16);
+      let output    = char ^ key;
+      decEml += String.fromCharCode (output);
     }
-    return decEml
+    return decEml;
 }
 ```
 
@@ -108,18 +93,15 @@ Parse Function:
 
 ```js
 const parseEmail = () => {
-  const
-  eml =
-  document.getElementsByClassName("eml")
+  const eml = document.getElementsByClassName("eml");
   for (let i = 0; i < eml.length; i++) {
-    let
-    elEml = eml[i] ,
-    encoded = elEml.dataset.encoded,
-    decoded = decodeEmail(encoded)
+    let elEml = eml[i];
+    let encoded = elEml.dataset.encoded;
+    let decoded = decodeEmail(encoded);
     elEml.textContent = decoded
     elEml.href = 'mailto:' + decoded
-  }
-}; parseEmail()
+  };
+}; parseEmail();
 ```
 
 ## The Form Encoder
@@ -134,10 +116,9 @@ In order to verify the address we use this function that returns `true` or `fals
 
 ```js
 const validEmail = email => {
-    const 
-    res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return res.test(String(email).toLowerCase())
-}
+};
 ```
 
 In terms of design we will use Simple CSS<a href="#footnote2"></a> a minimal CSS semantic framework.
