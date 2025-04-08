@@ -2,6 +2,7 @@
 title: "Email Obsfrustration using JS"
 date: 2023-04-15
 layout: test
+comments: true
 ---
 
 Email harvesters and other bots roam the Internet looking for email addresses to add to lists that target recipients for spam. This trend results in an increasing amount of unwanted email. Learn how to create a simple page using JavaScript. 

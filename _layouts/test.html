@@ -1,5 +1,5 @@
 ---
-nav_enabled: false
+comments: false
 ---
 <!DOCTYPE html>
 <html lang="{{ site.locale | default: 'en_US' }}">
@@ -40,7 +40,9 @@ nav_enabled: false
             <hr>
         </div>
         {{ content }}
-        {%- include components/comments.html -%}
+        {% if site.comments %}
+            {%- include components/comments.html -%}
+        {% endif %}
     </main>
     {%- include components/mermaid.html -%}
 </body>
