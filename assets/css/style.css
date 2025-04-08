@@ -33,6 +33,7 @@
 
 @font-face {
     font-family: 'JetBrains';
+    font-display: swap;
     font-style: normal;
     font-weight: 600;
     src: url('https://lucianofedericopereira.github.io/articles/assets/fonts/JetBrainsMono-Medium.woff2') format('woff2');
@@ -40,6 +41,7 @@
 
 @font-face {
     font-family: 'Visuelt';
+    font-display: swap;
     font-style: normal;
     font-weight: 400;
     src: url('https://lucianofedericopereira.github.io/articles/assets/fonts/VisueltPro-Regular.woff2') format('woff2');
@@ -47,6 +49,7 @@
 
 @font-face {
     font-family: 'Mediaan';
+    font-display: swap;
     font-style: normal;
     font-weight: 400;
     src: url('https://lucianofedericopereira.github.io/articles/assets/fonts/Mediaan-Regular.woff2') format('woff2');
@@ -201,7 +204,6 @@ main ul {
     body {
         color: var(--c0);
         background-color: var(--c7);
-        font-display: swap;
         display: flex;
         position: relative;
         flex-direction: row;
@@ -1094,7 +1096,6 @@ main ul {
     main>.highlighter-rouge {
         font-family: var(--font-code), var(--font-basic);
         font-variant-ligatures: common-ligatures;
-        font-display: swap;
         margin: 0 auto;
         padding: 1rem;
         font-size: .9rem;
@@ -1261,7 +1262,7 @@ main ul {
     div.highlighter-rouge:hover>button,
     div.listingblock>div.content:hover>button,
     figure.highlight:hover>button {
-        background-color: var(--c6);
+        background-color: var(--rf);
         cursor: copy;
         opacity: 1
     }
