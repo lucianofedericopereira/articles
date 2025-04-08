@@ -941,9 +941,6 @@ main ul {
         .highlight .table-wrapper td,
         .highlight .table-wrapper pre
         {
-            /*
-            background: var(--c6);
-            */
             background: var(--rf);            
         }
 
@@ -1204,7 +1201,7 @@ figure.highlight {
     -webkit-overflow-scrolling: touch;
     position: relative;
     padding: 0;
-    border: 2px solid var(--ra);
+    border: 2px solid var(--c3);
 }
 
 div.highlighter-rouge>button,
@@ -1215,7 +1212,7 @@ figure.highlight>button {
     position: absolute;
     top: 0;
     right: 0;
-    border: 1rem solid var(--rd);
+    border: 1rem solid var(--c3);
     color: var(--r2);
     box-sizing: content-box
 }
@@ -1335,9 +1332,9 @@ figure.highlight :not(pre)>code {
 .listingblock>.title+figure.highlight {
     position: relative;
     margin-top: -1rem;
-    border-right: 1px solid var(--c6);
-    border-bottom: 1px solid var(--c6);
-    border-left: 1px solid var(--c6);
+    border-right: 1px solid var(--c3);
+    border-bottom: 1px solid var(--c3);
+    border-left: 1px solid var(--c3);
     border-top-left-radius: 0;
     border-top-right-radius: 0
 }
