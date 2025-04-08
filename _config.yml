@@ -10,36 +10,8 @@ comments: false
 
 #last_edit_timestamp: true
 #last_edit_time_format: "%b %e %Y at %I:%M %p" # https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
-
-#gh_edit_link: true # show or hide edit this page link
-#gh_edit_link_text: "Edit this page on GitHub."
-#gh_edit_repository: "https://github.com/just-the-docs/just-the-docs" # the github URL for your repo
 #gh_edit_branch: "main" # the branch that your docs is served from
 ## gh_edit_source: docs # the source that your files originate from
-#gh_edit_view_mode: "tree" # "tree" or "edit" if you want the user to jump into the editor immediately
-
-#color_scheme: dark
-
-# callouts:
-#   warning:
-#     title: Warning
-#     color: red
-# {: .warning }
-# A paragraph...
-# $pink-000: #f77ef1;
-# $pink-100: #f967f1;
-# $pink-200: #e94ee1;
-# $pink-300: #dd2cd4;
-# callouts:
-#   custom:
-#     color: pink
-#     opacity: 0.3
-# You can change the default opacity (0.2) for all callouts, e.g.:
-# callouts_opacity: 0.3
-# You can also adjust the overall level of callouts. The value of callouts_level is either quiet or loud; loud increases # the saturation and lightness of the backgrounds. The default level is quiet when using the light or custom color 
-# # schemes, and loud when using the dark color scheme.
-# https://just-the-docs.github.io/just-the-docs/docs/configuration/
-
 
 collections:
   css:
@@ -55,7 +27,11 @@ just_the_docs:
       name: CSS3
     js:
       name: JavaScript
-
+defaults:
+  - scope:
+    type: "posts"
+  values:
+    comments: false
 aux_links:
   "LinkedIn":
     - "//github.com/just-the-docs/just-the-docs"
