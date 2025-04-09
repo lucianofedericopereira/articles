@@ -168,7 +168,7 @@ const readingTime = () => {
     const license = $('meta[name="license"]').content;
     const date = $('meta[name="date"]').content;
 
-$('#reading-time').innerHTML = `<b>${author}</b> | ${date} | Read Time: ~<b>${readingTime} minutes</b> | ${license}`;
+    $('#reading-time').innerHTML = `<b>${author}</b> | ${date} | ~<b>${readingTime}</b> min read | ${license}`;
     
 //    $('#reading-time').innerHTML = `<b>${author}</b> ~<b>${readingTime} minutes</b> - <b>${license}</b>`;
 }; readingTime();
