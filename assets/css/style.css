@@ -123,6 +123,7 @@ main ol {
 
 main ul {
     list-style-type: square;
+    color:var(--c2);
 }
 
 @media screen {
