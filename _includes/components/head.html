@@ -8,7 +8,9 @@
     <meta name="description" content="{%- include components/title.html -%}">
     <meta name="license" content="GPLv2">
     <meta name="repository" content="https://github.com/lucianofedericopereira">
-    <meta name="date" content="{{ page.date | date: '%Y-%m-%d' }}">
+
+    <meta name="date" content="{{ page.date | date: '%Y-%m-%d' | default: site.time | date: '%Y-%m-%d' }}">
+
     <meta name="robots" content="index, follow">
     <meta name="twitter:card" content="summary">
     <meta property="og:title" content="{%- include components/title.html -%}">
