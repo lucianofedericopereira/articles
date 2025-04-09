@@ -1,3 +1,8 @@
+document.getElementById('menu').addEventListener('change', function () {
+    if (!this.checked) {
+        document.getElementById('search-input').value = '';
+    }
+});
 
 
 
