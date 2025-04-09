@@ -45,7 +45,7 @@ search:
   preview_words_before: 5
   preview_words_after: 10
   tokenizer_separator: /[\s/]+/
-  rel_url: true
+  rel_url: false
   button: false
   focus_shortcut_key: 'k'
 theme: just-the-docs
