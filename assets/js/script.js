@@ -166,7 +166,11 @@ const readingTime = () => {
     const readingTime = Math.ceil($('main').innerText.replace(/\s+/g, ' ').trim().split(' ').length / 150);
     const author = $('meta[name="author"]').content;
     const license = $('meta[name="license"]').content;
-    $('#reading-time').innerHTML = `<b>${author}</b> ~ <b>${readingTime} minutes</b> - <b>${license}</b>`;
+    const date = $('meta[name="date"]').content;
+
+$('#reading-time').innerHTML = `<b>${author}</b> | ${date} | Read Time: ~<b>${readingTime} minutes</b> | ${license}`;
+    
+//    $('#reading-time').innerHTML = `<b>${author}</b> ~<b>${readingTime} minutes</b> - <b>${license}</b>`;
 }; readingTime();
 
 const createTOC = () => {
