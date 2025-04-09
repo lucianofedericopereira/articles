@@ -173,6 +173,7 @@ const readingTime = () => {
 //    $('#reading-time').innerHTML = `<b>${author}</b> ~<b>${readingTime} minutes</b> - <b>${license}</b>`;
 }; readingTime();
 
+/*
 const createTOC = () => {
     const chaptersContainer = $('#chapters');
     if (!chaptersContainer) return;
@@ -192,6 +193,61 @@ const createTOC = () => {
         targetElement?.scrollIntoView({ behavior: 'smooth' });
     });
 }; createTOC();
+*/
+
+
+const createTOC = () => {
+    const chaptersContainer = document.querySelector('#chapters');
+    if (!chaptersContainer) return;
+
+    const headings = document.querySelectorAll('main h2');
+
+    if (headings.length > 0) {
+        // Create <h3> for "Table of Contents" if not already present
+        let tocHeading = chaptersContainer.previousElementSibling;
+        if (!tocHeading || tocHeading.tagName !== 'H3') {
+            tocHeading = document.createElement('h3');
+            tocHeading.textContent = 'Table of Contents';
+            chaptersContainer.insertAdjacentElement('beforebegin', tocHeading);
+        }
+
+        // Create <hr> if not already present
+        let tocSeparator = chaptersContainer.nextElementSibling;
+        if (!tocSeparator || tocSeparator.tagName !== 'HR') {
+            tocSeparator = document.createElement('hr');
+            chaptersContainer.insertAdjacentElement('afterend', tocSeparator);
+        }
+
+        // Populate the table of contents
+        chaptersContainer.innerHTML = '';
+        headings.forEach((heading, index) => {
+            heading.id = `chapter-${index + 1}`;
+            const link = document.createElement('a');
+            link.href = `#${heading.id}`;
+            link.textContent = heading.textContent;
+            chaptersContainer.appendChild(link);
+        });
+
+        // Smooth scroll for links
+        chaptersContainer.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                const targetElement = document.querySelector(link.getAttribute('href'));
+                targetElement?.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    } else {
+        // Remove <h3> and <hr> if no headings
+        chaptersContainer.previousElementSibling?.tagName === 'H3' && chaptersContainer.previousElementSibling.remove();
+        chaptersContainer.nextElementSibling?.tagName === 'HR' && chaptersContainer.nextElementSibling.remove();
+        chaptersContainer.innerHTML = '';
+    }
+};
+createTOC();
+
+
+
+
 
 const updateTitle = () => {
     const pad = toStr => toStr.toString().padStart(2, '0');
