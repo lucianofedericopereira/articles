@@ -1389,7 +1389,8 @@ main ul {
     #index,
     #comments,
     aside,
-    h3 {
+    h3,
+    button {
         display: none;
     }
 
@@ -1463,4 +1464,6 @@ main ul {
         padding-top: .3rem;
         font-weight: 500;
     }
+
+
 }
