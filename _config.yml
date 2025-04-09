@@ -40,7 +40,7 @@ logo: "/assets/images/favicon.ico"
 mermaid:
   version: "11.4.1"
 search:
-  heading_level: 2 # 1-6
+  heading_level: 1 # 1-6
   previews: 3
   preview_words_before: 5
   preview_words_after: 10
