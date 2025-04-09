@@ -1,6 +1,9 @@
 document.getElementById('menu').addEventListener('change', function () {
     if (!this.checked) {
-        document.getElementById('search-input').value = '';
+        const search = document.getElementById('search-input'); 
+        search.value = '';
+        search.focus();
+        search.blur();
     }
 });
 
