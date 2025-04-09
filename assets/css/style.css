@@ -1391,7 +1391,7 @@ main ul {
     aside,
     h3,
     button {
-        display: none;
+        display: none!important;
     }
 
     h1,
