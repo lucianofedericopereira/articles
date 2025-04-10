@@ -123,8 +123,7 @@ main ol {
 main ul {
     list-style-type: square;
     list-style-position: outside;
-    padding-left: 4ch !important;
-    margin-left: 9ch !important;
+    padding-left: 5ch !important;
 }
 
 main ul::marker {
