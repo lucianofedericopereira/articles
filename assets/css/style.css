@@ -840,7 +840,7 @@ main ol li {
 
 
 
-    main>.highlighter-rouge {
+    div.highlighter-rouge {
         padding-left: 1.5rem;
         line-height: 1.5;
         max-width: 80ch;
@@ -855,8 +855,8 @@ main ol li {
 
 
     main>.highlighter-rouge {
-            padding-left: unset;
-            line-height: 1.2;
+        padding: 1rem!important;
+        line-height: 1.2;
         }
 
 
@@ -1087,7 +1087,6 @@ main ol li {
         font-family: var(--font-code), var(--font-basic);
         font-variant-ligatures: common-ligatures;
         margin: 0 auto;
-        padding: 1rem;
         font-size: .925rem;
     }
 
@@ -1212,7 +1211,6 @@ main ol li {
         box-shadow: none;
         -webkit-overflow-scrolling: touch;
         position: relative;
-        padding: 0;
     }
 
     div.highlighter-rouge>button,
