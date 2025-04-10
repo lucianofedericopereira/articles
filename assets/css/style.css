@@ -205,7 +205,7 @@ main ol li {
         display: none;
     }
 
-    h2 {
+    main h2 {
         padding-left: 2ch;
     }
 
@@ -295,7 +295,7 @@ main ol li {
     }
 
     main h2::before {
-        padding-left: 2.1rem;
+        padding-left: 2.15rem;
         color: var(--c3);
     }
 
@@ -842,8 +842,8 @@ main ol li {
             display: inline-block;
         }
 
-        h2 {
-            padding-left: none!important;
+        main h2 {
+            padding-left: unset!important;
         }
 
 
