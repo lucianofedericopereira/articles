@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+
+
 #translate,
 #google_translate_element,
 .skiptranslate,
@@ -836,7 +838,27 @@ main ol li {
         z-index: 20;
     }
 
+
+
+    main>.highlighter-rouge {
+        padding-left: 1.5rem;
+        line-height: 1.5;
+        max-width: 80ch;
+        overflow-x: auto;
+    }
+
+
+
+
+
     @media (width > 575px) {
+
+
+    main>.highlighter-rouge {
+            padding-left: unset;
+            line-height: 1.2;
+        }
+
 
         h2::before {
             display: inline-block;
@@ -1066,7 +1088,7 @@ main ol li {
         font-variant-ligatures: common-ligatures;
         margin: 0 auto;
         padding: 1rem;
-        font-size: .9rem;
+        font-size: .925rem;
     }
 
     .highlight pre {
