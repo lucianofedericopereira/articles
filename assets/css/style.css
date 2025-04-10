@@ -174,6 +174,8 @@ main ul {
         -webkit-text-size-adjust: 100%;
         text-size-adjust: 100%;
         tab-size: 4;
+        max-width: 100dvw;
+        overflow-x: hidden;
     }
 
     body {
@@ -200,7 +202,7 @@ main ul {
         text-align: center;
         font-size: 1.3rem;
         word-spacing: .01vw;
-        color: var(--c3);
+        color: var(--c2);
     }
 
     ::selection {
@@ -259,9 +261,8 @@ main ul {
     }
 
     main h1 {
+        font-size: 2.8rem;
         margin: 10rem auto 0;
-        max-width: 93.45%;
-        font-size: 3.2rem;
         line-height: 1;
         text-align: center;
         color: var(--c2);
@@ -795,11 +796,11 @@ main ul {
     main li .highlighter-rouge,
     main p .highlighter-rouge {
         font-size: 1rem;
-        letter-spacing: 0;
         padding: 0 .25rem;
         color: var(--cd) !important;
-        font-weight: 600 !important;
-        ;
+        font-weight: 500 !important;
+        text-shadow: 0.5px 0.2px 0.2px var(--cd);
+        letter-spacing: .2px !important;
     }
 
     .search-active #menu:checked~aside .search-results {
@@ -869,6 +870,11 @@ main ul {
             background: var(--rf);
         }
 
+        div.highlighter-rouge,
+        div.listingblock>div.content,
+        figure.highlight {
+            border: 2px solid var(--c5);
+        }
 
 
     }
@@ -877,8 +883,13 @@ main ul {
 
     @media (width >=64rem) {
 
+        #reading-time {
+            margin-top: 0rem!important;
+        }
 
         h1 {
+            max-width: 93.45%;
+            font-size: 3.2rem;
             padding-top: 0;
             padding-bottom: 3rem;
         }
@@ -1141,7 +1152,6 @@ main ul {
         -webkit-overflow-scrolling: touch;
         position: relative;
         padding: 0;
-        border: 2px solid var(--c5);
     }
 
     div.highlighter-rouge>button,
