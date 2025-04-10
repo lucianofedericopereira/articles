@@ -115,7 +115,6 @@ main footer a::before {
     counter-increment: footnote;
 }
 
-main ul,
 main ol {
     padding-left: 2rem;
     list-style-position: inside;
@@ -124,9 +123,8 @@ main ol {
 main ul {
     list-style-type: square;
     list-style-position: outside;
-    margin-left: 4ch;
-    padding-left: 4ch;
-    color:var(--c6f);
+    padding-left: 4ch !important;
+    margin-left: 9ch !important;
 }
 
 main ul::marker {
