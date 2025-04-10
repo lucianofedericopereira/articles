@@ -117,10 +117,13 @@ main footer a::before {
 
 main ol ,
 main ul {
-    list-style-type: square;
     list-style-position: outside;
     padding-left: 5ch !important;
     color: var(--cd);
+}
+
+main ul {
+    list-style-type: square;
 }
 
 main ul li {
@@ -193,6 +196,11 @@ main ul li {
         min-height: 100dvh;
         pointer-events: all;
     }
+
+    h2::before {
+        display: none;
+    }
+
 
     hr,
     #menu:checked~main {
@@ -821,6 +829,11 @@ main ul li {
     }
 
     @media (width > 575px) {
+
+        h2::before {
+            display: inline-block;
+        }
+
 
         div.highlighter-rouge>button,
         div.listingblock>div.content>button,
