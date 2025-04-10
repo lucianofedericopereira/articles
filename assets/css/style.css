@@ -383,9 +383,9 @@ main ul {
     #index {
         position: relative;
         width: 77.5%;
+        min-width:260px;
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 0 0 2.25rem;
     }
 
 
@@ -811,6 +811,10 @@ main ul {
         left: 0;
     }
 
+    header {
+        z-index: 20;
+    }
+
     @media (width > 575px) {
 
         main h1,
@@ -955,7 +959,6 @@ main ul {
             left: 0;
             display: flex;
             justify-content: center;
-            z-index: 20;
         }
 
         #menu~label {
