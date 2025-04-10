@@ -206,7 +206,7 @@ main ol li {
     }
 
     h2 {
-        padding-left: 1ch;
+        padding-left: 2ch;
     }
 
 
@@ -843,7 +843,7 @@ main ol li {
         }
 
         h2 {
-            padding-left: none;
+            padding-left: none!important;
         }
 
 
