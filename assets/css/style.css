@@ -131,7 +131,8 @@ main ul li {
 }
 
 main ol li {
-    padding-left: 4ch;
+    padding-left: 1ch;
+    margin-bottom: .65rem;
 }
 
 @media screen {
@@ -205,7 +206,7 @@ main ol li {
     }
 
     h2 {
-        padding-left: 4ch;
+        padding-left: 1ch;
     }
 
 
