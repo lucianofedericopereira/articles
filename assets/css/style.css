@@ -124,10 +124,11 @@ main ul {
     list-style-type: square;
     list-style-position: outside;
     padding-left: 5ch !important;
+    color: var(--cd);
 }
 
-main ul::marker {
-    color: var(--cd)!important;
+main ul li {
+    color: var(--c1);
 }
 
 
@@ -310,9 +311,12 @@ main ul::marker {
         vertical-align: baseline;
         margin: 1.4rem auto;
         padding: 0 2.25rem;
-        color: var(--c1);
     }
 
+    main p,
+    main ol {
+        color: var(--c1);
+    } 
 
     main p:hover {
         color: var(--c0);
