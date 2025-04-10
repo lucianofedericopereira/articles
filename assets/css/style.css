@@ -823,6 +823,12 @@ main ul::marker {
 
     @media (width > 575px) {
 
+        div.highlighter-rouge>button,
+        div.listingblock>div.content>button,
+        figure.highlight>button {
+            border-color: var(--rf)!important;
+        }
+
         main h1,
         main h2,
         main h4,
@@ -1166,12 +1172,12 @@ main ul::marker {
     div.highlighter-rouge>button,
     div.listingblock>div.content>button,
     figure.highlight>button {
+        border: .9rem solid var(--c7);
         width: 1rem;
         opacity: 0;
         position: absolute;
         top: 0;
         right: 0;
-        border: .9rem solid var(--rf);
         color: var(--r2);
         box-sizing: content-box
     }
