@@ -115,11 +115,7 @@ main footer a::before {
     counter-increment: footnote;
 }
 
-main ol {
-    padding-left: 2rem;
-    list-style-position: inside;
-}
-
+main ol ,
 main ul {
     list-style-type: square;
     list-style-position: outside;
