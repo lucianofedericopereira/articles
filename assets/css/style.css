@@ -123,8 +123,15 @@ main ol {
 
 main ul {
     list-style-type: square;
+    list-style-position: outside;
+    padding-left: 4ch;
     color:var(--c6f);
 }
+
+main ul::marker {
+    color: var(--cd);
+}
+
 
 @media screen {
 
