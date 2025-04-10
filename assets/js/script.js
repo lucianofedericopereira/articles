@@ -1,3 +1,9 @@
+window.onload = () => {
+    document.getElementById("search-input").value = "";
+};
+
+
+
 document.getElementById('menu').addEventListener('change', function () {
     if (!this.checked) {
         const search = document.getElementById('search-input'); 
