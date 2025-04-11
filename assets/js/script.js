@@ -10,7 +10,11 @@ window.onpageshow = event => {
             input.blur();
         }
         if (screenWidth < remToPixels && checkbox.checked) {
-            checkbox.checked = false;
+
+            setTimeout( () => {
+                checkbox.checked = false;
+            }, 50);
+
         } else {
             checkbox.checked = false;
             checkbox.checked = true;        
