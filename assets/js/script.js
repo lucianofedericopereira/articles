@@ -3,6 +3,8 @@ window.onpageshow = event => {
         const input = document.getElementById('search-input');
         if (input) {
             input.value = '';
+            input.focus();
+            input.blur();
         }
     }
 };
