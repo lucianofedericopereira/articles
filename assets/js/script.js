@@ -1,10 +1,19 @@
 window.onpageshow = event => {
     if (event.persisted) {
         const input = document.getElementById('search-input');
+        const checkbox = document.getElementById('menu');
+        const screenWidth = window.innerWidth;
+        const remToPixels = 64 * 16;
         if (input) {
             input.value = '';
             input.focus();
             input.blur();
+        }
+        if (screenWidth < remToPixels && checkbox.checked) {
+            checkbox.checked = false;
+        } else {
+            checkbox.checked = false;
+            checkbox.checked = true;        
         }
     }
 };
