@@ -3,7 +3,7 @@
 {%- include components/head.html -%}
 <body>
     <div id="translate"></div>
-    <input type="checkbox" aria-expanded="false" id="menu">
+    <input type="checkbox" aria-expanded="false" id="menu" autocomplete='off'>
     <header>
         <a tabindex="0" href="https://lucianofedericopereira.github.io/articles" id="logo-link">
             <div id="logo" class="notranslate">
@@ -28,7 +28,7 @@
             <div class="icon icon-toc" aria-label="Show Table of Contents"></div>
         </label>
         <h1>{{ page.title | capitalize }}</h1>
-        <input type="checkbox" aria-expanded="false" id="toc">
+        <input type="checkbox" aria-expanded="false" id="toc" autocomplete='off'>
         <div id="index">
             <div id="reading-time"></div>
             <div id="chapters"></div>
