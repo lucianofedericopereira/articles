@@ -1,3 +1,14 @@
+window.onpageshow = event => {
+    if (event.persisted) {
+        const input = document.getElementById('search-input');
+        if (input) {
+            input.value = '';
+        }
+    }
+};
+
+
+
 
 document.getElementById('menu').addEventListener('change', function () {
     if (!this.checked) {
