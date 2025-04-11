@@ -3,13 +3,12 @@ window.onpageshow = event => {
         const input = document.getElementById('search-input');
         const checkbox = document.getElementById('menu');
         const screenWidth = window.innerWidth;
-        const remToPixels = 64 * 16;
         if (input) {
             input.value = '';
             input.focus();
             input.blur();
         }
-        if (screenWidth < remToPixels && checkbox.checked) {
+        if (screenWidth < 1024 && checkbox.checked) {
 
             setTimeout( () => {
                 checkbox.checked = false;
