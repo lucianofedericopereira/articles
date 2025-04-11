@@ -3,20 +3,15 @@ window.onpageshow = event => {
         const input = document.getElementById('search-input');
         const checkbox = document.getElementById('menu');
         const screenWidth = window.innerWidth;
+        if (screenWidth < 1024 && checkbox.checked) {
+            setTimeout(() => {
+                checkbox.checked = false;
+            }, 50);
+        } 
         if (input) {
             input.value = '';
             input.focus();
             input.blur();
-        }
-        if (screenWidth < 1024 && checkbox.checked) {
-
-            setTimeout( () => {
-                checkbox.checked = false;
-            }, 50);
-
-        } else {
-            checkbox.checked = false;
-            checkbox.checked = true;        
         }
     }
 };
