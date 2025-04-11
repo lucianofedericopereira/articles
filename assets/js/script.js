@@ -1,5 +1,11 @@
 window.onpageshow = event => {
     if (event.persisted) {
+        event.preventDefault();
+        const menuLabel = document.getElementById('menu-label');
+
+        menuLabel.click();
+        
+        
         const input = document.getElementById('search-input');
         const checkbox = document.getElementById('menu');
         const screenWidth = window.innerWidth;
@@ -13,6 +19,7 @@ window.onpageshow = event => {
             input.focus();
             input.blur();
         }
+
     }
 };
 
