@@ -1,6 +1,6 @@
 {% capture _unused %}
 {% assign domain = "https://" | append: site.base.url %}
-{% assign folder = domain | append: append: "/" | append: site.base.folder %}
+{% assign folder = domain | append: "/" | append: site.base.folder %}
 {% assign asset = folder | append: "/assets" %}
 {% assign image = asset | append: "/images" %}
 {% assign icon = image | append: "/favicon.ico" %}
