@@ -1,7 +1,6 @@
 ---
 title: "Email Obsfrustration using JS"
 date: 2023-04-15
-layout: test
 comments: true
 ---
 

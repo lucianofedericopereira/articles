@@ -31,9 +31,11 @@ defaults:
       path: "_css"
     values:
       layout: codecraft
+      comments: false
   - scope:
-      type: "posts"
+      path: "_js"
     values:
+      layout: codecraft
       comments: false
 aux_links:
   "LinkedIn":
