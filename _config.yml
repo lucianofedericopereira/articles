@@ -28,6 +28,10 @@ just_the_docs:
       name: "JavaScript"
 defaults:
   - scope:
+      path: "_css"
+    values:
+      layout: codecraft
+  - scope:
       type: "posts"
     values:
       comments: false
@@ -50,5 +54,3 @@ search:
   focus_shortcut_key: 'k'
 theme: just-the-docs
 url: https://lucianofedericopereira.github.io/articles
-plugins:
-  - jekyll-default-layout
