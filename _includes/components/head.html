@@ -14,21 +14,21 @@
     <meta property="og:title" content="{%- include components/title.html -%}">
     <meta property="og:locale" content="{{ site.locale | default: en_US' }}">
     <meta property="og:description" content="{%- include components/title.html -%}">
-    <meta property="og:url" content="https://{{ site.config.url }}/{{ site.config.folder }}{{ page.url }}">
+    <meta property="og:url" content="https://{{ site.config_domain }}/{{ site.config_folder }}{{ page.url }}">
     <meta property="og:site_name" content="{{ site.title }}">
     <meta property="og:type" content="website">
     <meta property="twitter:title" content="{%- include components/title.html -%}">
     <title>{%- include components/title.html -%}</title>
-    <link href="https://{{ site.config.url }}" rel="dns-prefetch" crossorigin>
-    <link href="https://{{ site.config.url }}" rel="preconnect">
+    <link href="https://{{ site.config_domain }}" rel="dns-prefetch" crossorigin>
+    <link href="https://{{ site.config_domain }}" rel="preconnect">
     <link href="https://translate.google.com" rel="preconnect">
     <link href="https://translate.googleapis.com" rel="preconnect">
-    <link href="https://{{ site.config.url }}/{{ site.config.folder }}/assets/images/favicon.ico" rel="icon" type="image/x-icon">
-    <link rel="preload" href="https://{{ site.config.url }}/{{ site.config.folder }}/assets/fonts/JetBrainsMono-Medium.woff2" type="font/woff2" as="font">
-    <link rel="preload" href="https://{{ site.config.url }}/{{ site.config.folder }}/assets/fonts/Mediaan-Regular.woff2" type="font/woff2" as="font">
-    <link rel="preload" href="https://{{ site.config.url }}/{{ site.config.folder }}/assets/fonts/VisueltPro-Regular.woff2" type="font/woff2" as="font">
-    <link rel="preload" as="style" type="text/css" href="https://{{ site.config.url }}/{{ site.config.folder }}/assets/css/style.css" onload="this.rel='stylesheet'">
-    <link rel="preload" as="script" href="https://{{ site.config.url }}/{{ site.config.folder }}/assets/js/script.js">
+    <link href="https://{{ site.config_domain }}/{{ site.config_folder }}/assets/images/favicon.ico" rel="icon" type="image/x-icon">
+    <link rel="preload" href="https://{{ site.config_domain }}/{{ site.config_folder }}/assets/fonts/JetBrainsMono-Medium.woff2" type="font/woff2" as="font">
+    <link rel="preload" href="https://{{ site.config_domain }}/{{ site.config_folder }}/assets/fonts/Mediaan-Regular.woff2" type="font/woff2" as="font">
+    <link rel="preload" href="https://{{ site.config_domain }}/{{ site.config_folder }}/assets/fonts/VisueltPro-Regular.woff2" type="font/woff2" as="font">
+    <link rel="preload" as="style" type="text/css" href="https://{{ site.config_domain }}/{{ site.config_folder }}/assets/css/style.css" onload="this.rel='stylesheet'">
+    <link rel="preload" as="script" href="https://{{ site.config_domain }}/{{ site.config_folder }}/assets/js/script.js">
 
 
     <link rel="preload" as="script" href="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}">

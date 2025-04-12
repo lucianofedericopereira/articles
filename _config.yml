@@ -1,6 +1,6 @@
-config:
-  url: lucianofedericopereira.github.io
-  folder: articles
+
+config_domain: lucianofedericopereira.github.io
+config_folder: articles
 meta:
   author: Luciano Pereira
   repository: https://github.com/lucianofedericopereira
