@@ -1,4 +1,5 @@
 {% capture _unused %}
+{% meta = site.meta %}
 {% assign domain = "https://" | append: site.base.url %}
 {% assign folder = domain | append: "/" | append: site.base.folder %}
 {% assign asset = folder | append: "/assets" %}

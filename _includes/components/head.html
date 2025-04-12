@@ -4,9 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=contain">
     <meta name="generator" content="Jekyll">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="{{ site.meta.author }}">
+    <meta name="author" content="{{ meta.author }}">
     <meta name="description" content="{%- include components/title.html -%}">
-    <meta name="license" content="GPLv2">
+    <meta name="license" content="meta.license">
     <meta name="repository" content="{{ site.meta.repository }}">
     <meta name="date" content="{{ page.date | date: '%B %d, %Y' | default: site.time | date: '%B %d, %Y' }}">
     <meta name="robots" content="index, follow">
@@ -53,7 +53,7 @@
         "url": "{{ folder }}{{ page.url }}"
     }
     </script>
-    <script src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}" async></script>
+    <script src="{{vendor}}/lunr.min.js" async></script>
     <script src="{{js}}/jtd.js" async></script>
     <script src="{{js}}/script.js" async></script>
 </head>
