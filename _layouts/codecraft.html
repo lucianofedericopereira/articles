@@ -1,14 +1,12 @@
 {% capture _unused %}
 {% assign domain = "https://" | append: site.base.url %}
-{% assign folder = domain | append: site.base.url | append: "/" | append: site.base.folder %}
+{% assign folder = domain | append: append: "/" | append: site.base.folder %}
 {% assign asset = folder | append: "/assets" %}
 {% assign image = asset | append: "/images" %}
 {% assign icon = image | append: "/favicon.ico" %}
-{% endcapture %}
-<!DOCTYPE html>
+{% endcapture %}<!DOCTYPE html>
 <html lang="{{ site.locale | default: 'en_US' }}">
 {%- include components/head.html -%}
-
 <body>
     <div id="translate"></div>
     <input type="checkbox" aria-expanded="false" id="menu" autocomplete='off'>
