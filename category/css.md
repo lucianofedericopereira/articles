@@ -3,8 +3,14 @@ layout: test
 title: "CSS"
 ---
 
-<ul>
-{% for item in site.css %}
-    <li><a href="https://lucianofedericopereira.github.io/articles{{ item.url }}">{{ item.title }}</a></li>
+{% assign grouped_items = site.css | group_by: "date" %}
+{% for year_group in grouped_items %}
+  <h2>{{ year_group.name | date: "%Y" }}</h2>
+    {% for item in year_group.items %}
+      <p>
+        <a href="{{ site.url }}{{ item.url }}">
+          {{ item.date | date: "%Y-%m-%d" }} - {{ item.title }}
+        </a>
+      </p>
+    {% endfor %}
 {% endfor %}
-</ul>
