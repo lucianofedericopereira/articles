@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=contain">
     <meta name="generator" content="Jekyll">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="{{ site.author }}">
+    <meta name="author" content="{{ site.meta.author }}">
     <meta name="description" content="{%- include components/title.html -%}">
     <meta name="license" content="GPLv2">
     <meta name="repository" content="https://github.com/lucianofedericopereira">
@@ -19,7 +19,7 @@
     <meta property="og:type" content="website">
     <meta property="twitter:title" content="{%- include components/title.html -%}">
     <title>{%- include components/title.html -%}</title>
-    <link href="https://lucianofedericopereira.github.io" rel="dns-prefetch" crossorigin>
+    <link href="{%- site.meta.domain -%}" rel="dns-prefetch" crossorigin>
     <link href="https://lucianofedericopereira.github.io" rel="preconnect">
     <link href="https://translate.google.com" rel="preconnect">
     <link href="https://translate.googleapis.com" rel="preconnect">
@@ -42,7 +42,7 @@
         "@type": "WebSite",
         "author": {
             "@type": "Person",
-            "name": "{{ site.author }}"
+            "name": "{{ site.meta.author }}"
         },
         "description": "{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}",
         "headline": "{%- include components/title.html -%}",
@@ -53,7 +53,7 @@
                 "@type": "ImageObject",
                 "url": "{{ site.url }}{{ site.logo }}"
             },
-            "name": "{{ site.author }}"
+            "name": "{{ site.meta.author }}"
         },
         "url": "{{ site.url }}{{ page.url }}"
     }

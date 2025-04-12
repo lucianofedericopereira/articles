@@ -1,7 +1,10 @@
 <div id="main-header" class="main-header">
-  {% include components/search_header.html %}
-  {% include header_custom.html %}
-  {% if site.aux_links %}
-    {% include components/aux_nav.html %}
-  {% endif %}
+{% include components/search_header.html %}
+{% include header_custom.html %}
+{% if site.links %}
+<div class="aside-title">Links</div>
+{% for link in site.links %}
+<a href="{{ link.last }}" class="aside-link" rel="noopener noreferrer">{{ link.first }}</a>
+{% endfor %}
+{% endif %}
 </div>
