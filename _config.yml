@@ -51,3 +51,5 @@ search:
   focus_shortcut_key: 'k'
 theme: just-the-docs
 url: https://lucianofedericopereira.github.io/articles
+plugins:
+  - jekyll-default-layout
