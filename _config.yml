@@ -9,7 +9,6 @@ search_enabled: true
 
 #last_edit_timestamp: true
 #last_edit_time_format: "%b %e %Y at %I:%M %p" # https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
-
 #gh_edit_branch: "main" # the branch that your docs is served from
 ## gh_edit_source: docs # the source that your files originate from
 
@@ -20,25 +19,19 @@ collections:
   js:
     permalink: "/:collection/:path/"
     output: true
+
 just_the_docs:
   collections:
     css:
-      name: CSS3
+      name: "CSS3"
     js:
-      name: JavaScript
+      name: "JavaScript"
 defaults:
- -
-    scope:
-      type: "css"
-    values:
-      layout: codecraft
-      comments: true
-  - 
-    scope:
+  - scope:
       type: "posts"
     values:
-      layout: codecraft
       comments: false
+      layout: "codecraft"
 aux_links:
   "LinkedIn":
     - "//github.com/just-the-docs/just-the-docs"
@@ -48,7 +41,7 @@ logo: "/assets/images/favicon.ico"
 mermaid:
   version: "11.4.1"
 search:
-  heading_level: 1
+  heading_level: 1 # 1-6
   previews: 3
   preview_words_before: 5
   preview_words_after: 10
