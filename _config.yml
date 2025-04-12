@@ -1,5 +1,5 @@
 config:
-  domain: https://lucianofedericopereira.github.io
+  domain: lucianofedericopereira.github.io
   folder: articles
 meta:
   author: Luciano Pereira
