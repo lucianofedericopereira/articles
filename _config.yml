@@ -1,4 +1,6 @@
-
+base:
+  url: lucianofedericopereira.github.io
+  folder: articles
 config_domain: lucianofedericopereira.github.io
 config_folder: articles
 meta:
