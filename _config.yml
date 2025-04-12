@@ -31,7 +31,6 @@ defaults:
       type: "posts"
     values:
       comments: false
-      layout: "codecraft"
 aux_links:
   "LinkedIn":
     - "//github.com/just-the-docs/just-the-docs"
