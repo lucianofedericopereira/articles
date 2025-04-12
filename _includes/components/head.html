@@ -7,28 +7,30 @@
     <meta name="author" content="{{ site.meta.author }}">
     <meta name="description" content="{%- include components/title.html -%}">
     <meta name="license" content="GPLv2">
-    <meta name="repository" content="https://github.com/lucianofedericopereira">
+    <meta name="repository" content="{{ site.meta.repository }}">
     <meta name="date" content="{{ page.date | date: '%B %d, %Y' | default: site.time | date: '%B %d, %Y' }}">
     <meta name="robots" content="index, follow">
     <meta name="twitter:card" content="summary">
     <meta property="og:title" content="{%- include components/title.html -%}">
     <meta property="og:locale" content="{{ site.locale | default: en_US' }}">
     <meta property="og:description" content="{%- include components/title.html -%}">
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:url" content="{{ site.config.domain }}/{{ site.config.folder }}{{ page.url }}">
     <meta property="og:site_name" content="{{ site.title }}">
     <meta property="og:type" content="website">
     <meta property="twitter:title" content="{%- include components/title.html -%}">
     <title>{%- include components/title.html -%}</title>
-    <link href="{%- site.meta.domain -%}" rel="dns-prefetch" crossorigin>
-    <link href="https://lucianofedericopereira.github.io" rel="preconnect">
+    <link href="{{ site.config.domain }}" rel="dns-prefetch" crossorigin>
+    <link href="{{ site.config.domain }}" rel="preconnect">
     <link href="https://translate.google.com" rel="preconnect">
     <link href="https://translate.googleapis.com" rel="preconnect">
-    <link href="{{ 'assets/images/favicon.ico' | relative_url }}" rel="icon" type="image/x-icon">
-    <link rel="preload" href="{{ '/assets/fonts/JetBrainsMono-Medium.woff2' | relative_url }}" type="font/woff2" as="font">
-    <link rel="preload" href="{{ '/assets/fonts/Mediaan-Regular.woff2' | relative_url }}" type="font/woff2" as="font">
-    <link rel="preload" href="{{ '/assets/fonts/VisueltPro-Regular.woff2' | relative_url }}" type="font/woff2" as="font">
-    <link rel="preload" as="style" type="text/css" href="{{ '/assets/css/style.css' | relative_url }}" onload="this.rel='stylesheet'">
-    <link rel="preload" as="script" href="{{ '/assets/js/script.js' | relative_url }}">
+    <link href="{{ site.config.domain }}/{{ site.config.folder }}/assets/images/favicon.ico" rel="icon" type="image/x-icon">
+    <link rel="preload" href="{{ site.config.domain }}/{{ site.config.folder }}/assets/fonts/JetBrainsMono-Medium.woff2" type="font/woff2" as="font">
+    <link rel="preload" href="{{ site.config.domain }}/{{ site.config.folder }}/assets/fonts/Mediaan-Regular.woff2" type="font/woff2" as="font">
+    <link rel="preload" href="{{ site.config.domain }}/{{ site.config.folder }}/assets/fonts/VisueltPro-Regular.woff2" type="font/woff2" as="font">
+    <link rel="preload" as="style" type="text/css" href="{{ site.config.domain }}/{{ site.config.folder }}/assets/css/style.css" onload="this.rel='stylesheet'">
+    <link rel="preload" as="script" href="{{ site.config.domain }}/{{ site.config.folder }}/assets/js/script.js">
+
+
     <link rel="preload" as="script" href="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}">
 
 <!--

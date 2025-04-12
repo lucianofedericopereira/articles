@@ -1,11 +1,9 @@
+config:
+  domain: https://lucianofedericopereira.github.io
+  folder: articles
 meta:
   author: Luciano Pereira
-  domain: https://lucianofedericopereira.github.io
-  url: https://lucianofedericopereira.github.io/articles
-  assets: https://lucianofedericopereira.github.io/articles/assets
-  images: https://lucianofedericopereira.github.io/articles/assets/images
-  icon: https://lucianofedericopereira.github.io/articles/assets/images/favicon.ico
-
+  repository: https://github.com/lucianofedericopereira
 links:
   LinkedIn: https://github.com/just-the-docs/just-the-docs
   GitHub: https://github.com/just-the-docs/just-the-docs-template      
