@@ -4,7 +4,8 @@ base:
   folder: articles
 meta:
   title: design﹢code
-  author: Luciano Pereira
+  tagline: CodeCraft Chronicles
+  author: Luciano Pereira  
   repository: https://github.com/lucianofedericopereira
   license: GPLv2
   locale: en

@@ -15,14 +15,13 @@
     <div id="translate"></div>
     <input type="checkbox" aria-expanded="false" id="menu" autocomplete='off'>
     <header>
-        <a tabindex="0" href="https://lucianofedericopereira.github.io/articles" id="logo-link">
+        <a tabindex="0" href="{{folder}}" id="logo-link">
             <div id="logo" class="notranslate">
-                <img id="logo-pic" width="36px" height="36px"
-                    src="https://lucianofedericopereira.github.io/articles/assets/images/favicon.ico" alt="logo">
-                design﹢code
+                <img id="logo-pic" width="36px" height="36px" src="{{icon}}" alt="logo">
+                {{meta.title}}
             </div>
             <div id="slogan">
-                CodeCraft Chronicles
+                {{meta.tagline}}
             </div>
         </a>
     </header>
@@ -43,8 +42,7 @@
             <div id="reading-time"></div>
             <div id="chapters"></div>
         </div>
-        {{ content }}
-        
+        {{ content }}        
         {% if page.comments %}
         {%- include components/comments.html -%}
         {% endif %}
@@ -53,6 +51,5 @@
     <script src="{{js}}/jtd.js" async></script>
     <script src="{{js}}/script.js" async></script>
     {%- include components/mermaid.html -%}
-
 </body>
 </html>
