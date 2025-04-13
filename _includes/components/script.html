@@ -1,8 +1,17 @@
+<!--
 <script src="https://cdn.jsdelivr.net/npm/lunr@{{ site.version.lunr }}/+esm" async></script>
-
+-->
 <!--
     <script src="{{js}}/jtd.js" async></script>
 -->
+
+
+{% for script in site.scripts %}
+{% if page[script.first] != false %}
+<script src="{{ script.last }}" async></script>
+{% endif %}
+{% endfor %}
+
 
 <script src="{{js}}/script.js" async></script>
 <script>
@@ -185,14 +194,20 @@
     });
 </script>
 
-{% if page.mermaid and site.version.mermaid %}
-<script type="module" defer>
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@{{ site.version.mermaid }}/+esm';
-    mermaid.initialize({ startOnLoad: true });
-    mermaid.run({ querySelector: '.language-mermaid' }).then(() => {
-        document.querySelectorAll('.language-mermaid').forEach(el => {
-            el.classList.add('mermaid-loaded');
-        });
+
+{% if page.mermaid and site.scripts.mermaid %}
+<script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+        if (typeof mermaid !== "undefined") {
+            mermaid.initialize({ startOnLoad: true });
+            mermaid.run({ querySelector: ".language-mermaid" }).then(() => {
+                document.querySelectorAll(".language-mermaid").forEach(el => {
+                    el.classList.add("mermaid-loaded");
+                });
+            });
+        } else {
+            console.error("Mermaid library is not loaded.");
+        }
     });
 </script>
 {% endif %}
