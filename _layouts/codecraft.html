@@ -43,71 +43,13 @@
         </div>
         {% endif %}
     </main>
-    {%- include components/script.html -%}
     <script>
         window.blog = {
-            {% if page.comments and site.utteranc.repo %}
-            comments: {
-                {% for item in site.utteranc %}
-                "{{ item.first }}": "{{ item.last }}"{% if forloop.last == false %}, {% endif %}
-                {% endfor %}
-            }
-            {% endif %}
+            {% if page.comments and site.utteranc.repo %}comments: {
+                {% for item in site.utteranc %}"{{ item.first }}": "{{ item.last }}"{% if forloop.last == false %}, {% endif %}{% endfor %}
+            }{% endif %}
         };
-
-        /*
-        const loadComments = data => {
-            const commentsDiv = document.getElementById("comments-utteranc");
-            if (commentsDiv) {
-                const script = document.createElement("script");
-                const config = {
-                    theme: data.theme || "github-light",
-                    issue: data.issue || "title",
-                    repo: data.repo,
-                    src: data.src
-                };
-            if (!config.repo || !config.src) {
-                console.error("Repository and source are required to load comments.");
-                return;
-            }
-            script.src = config.src;
-            script.setAttribute("theme", config.theme);
-            script.setAttribute("issue-term", config.issue);
-            script.setAttribute("repo", config.repo);
-            script.setAttribute("crossorigin", "anonymous");
-            script.async = true;
-            commentsDiv.appendChild(script);
-        }
-    };
-    */
-
-    const loadComments = ({ theme = "github-light", issue = "title", repo, src }) => {
-        const commentsDiv = document.getElementById("comments-utteranc");
-        if (!commentsDiv) return;
-            if (!repo || !src) {
-                console.error("Repository and source are required to load comments.");
-                return;
-            }
-            const script = Object.assign(document.createElement("script"), {
-                src,
-                async: true,
-                crossorigin: "anonymous"
-            });
-            script.setAttribute("theme", theme);
-            script.setAttribute("issue-term", issue);
-            script.setAttribute("repo", repo);
-            commentsDiv.appendChild(script);
-    };
-
-
-    document.addEventListener("DOMContentLoaded", ()=> {
-        
-        if (window.blog.comments) {
-            loadComments(window.blog.comments);
-        }
-
-        
-    });
   </script>
+  {%- include components/script.html -%}
 </body>
 </html>

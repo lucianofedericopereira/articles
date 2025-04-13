@@ -1,6 +1,191 @@
 <script src="https://cdn.jsdelivr.net/npm/lunr@{{ site.version.lunr }}/+esm" async></script>
-<script src="{{js}}/jtd.js" async></script>
+
+<!--
+    <script src="{{js}}/jtd.js" async></script>
+-->
+
 <script src="{{js}}/script.js" async></script>
+
+<script>
+
+    const clipboardHandler = () => {
+        if (!navigator.clipboard) {
+            console.warn("Clipboard API is not supported or unavailable in this context.");
+            return;
+        }
+        const icons = {
+            copy: `
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>`,
+            copied: `
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+                <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+            </svg>`
+        };
+        document.querySelectorAll(
+            "div.highlighter-rouge, div.listingblock > div.content, figure.highlight"
+        ).forEach((codeBlock) => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.setAttribute("aria-label", "Copy code to clipboard");
+            button.innerHTML = icons.copy;
+            codeBlock.appendChild(button);
+            button.addEventListener("click", () => {
+                const codeElement = codeBlock.querySelector("pre:not(.lineno, .highlight)") || codeBlock.querySelector("code");
+                const codeText = codeElement?.innerText;
+                if (!codeText) {
+                    console.warn("No code content found in this block.");
+                    return;
+                }
+                navigator.clipboard.writeText(codeText)
+                    .then(() => {
+                        button.innerHTML = icons.copied;
+                        setTimeout(() => (button.innerHTML = icons.copy), 4000);
+                    })
+                    .catch((err) => console.error("Failed to copy text:", err));
+            });
+        });
+    };
+    const searchHandler = (
+        searchInputId = "search-input",
+        searchResultsId = "search-results",
+        searchDataUrl,
+        options = {}
+    ) => {
+        const searchInput = document.getElementById(searchInputId);
+        const searchResults = document.getElementById(searchResultsId);
+
+        if (!searchInput || !searchResults) {
+            console.warn("Search input or results container not found.");
+            return;
+        }
+
+        const { debounceDelay = 300, maxResults = 10 } = options;
+
+        const fetchSearchData = async () => {
+            try {
+                const response = await fetch(searchDataUrl);
+                if (!response.ok) throw new Error(`Failed to load search data: ${response.status}`);
+                return await response.json();
+            } catch (error) {
+                console.error(error.message);
+                return null;
+            }
+        };
+
+        const buildIndex = (docs) => {
+            return lunr(function () {
+                this.ref("id");
+                this.field("title", { boost: 200 });
+                this.field("content", { boost: 2 });
+                this.metadataWhitelist = ["position"];
+                docs.forEach((doc, id) => this.add({ id, ...doc }));
+            });
+        };
+
+        const renderSearchResults = (results, docs) => {
+            searchResults.innerHTML = results.length
+                ? results.slice(0, maxResults).map(({ ref, matchData }) => {
+                    const doc = docs[ref];
+                    const highlightedTitle = (matchData.metadata.title?.position || []).reduce((html, [start, length], index, positions) => {
+                        html += doc.title.slice((positions[index - 1]?.[0] || 0) + (positions[index - 1]?.[1] || 0), start);
+                        html += `<span class="search-result-highlight">${doc.title.slice(start, start + length)}</span>`;
+                        return html;
+                    }, "") + doc.title.slice((matchData.metadata.title?.position || []).slice(-1)[0]?.[1] || 0);
+
+                    return `<div class="search-result"><div class="search-result-title">${highlightedTitle}</div></div>`;
+                }).join("")
+                : "<div class='search-no-result'>No results found</div>";
+        };
+
+        const debounce = (func, delay) => {
+            let timeout;
+            return (...args) => {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func(...args), delay);
+            };
+        };
+
+        const updateSearch = debounce((index, docs) => {
+            const query = searchInput.value.trim();
+            const results = query ? index.search(query) : [];
+            renderSearchResults(results, docs);
+        }, debounceDelay);
+
+        const initializeSearch = async () => {
+            const docs = await fetchSearchData();
+            if (!docs) return;
+
+            const index = buildIndex(docs);
+
+            searchInput.addEventListener("input", () => updateSearch(index, docs));
+            searchInput.addEventListener("keydown", (e) => {
+                const active = searchResults.querySelector(".active");
+                let target;
+
+                switch (e.key) {
+                    case "ArrowUp":
+                    case "ArrowDown":
+                        e.preventDefault();
+                        target = e.key === "ArrowUp"
+                            ? (active?.previousElementSibling || searchResults.lastElementChild)
+                            : (active?.nextElementSibling || searchResults.firstElementChild);
+                        active?.classList.remove("active");
+                        target?.classList.add("active");
+                        target?.scrollIntoView({ block: "nearest" });
+                        break;
+                    case "Enter":
+                        e.preventDefault();
+                        active?.click();
+                        break;
+                    case "Escape":
+                        searchInput.value = "";
+                        searchResults.innerHTML = "";
+                        break;
+                }
+            });
+
+            document.addEventListener("click", (e) => {
+                if (!searchInput.contains(e.target)) searchResults.innerHTML = "";
+            });
+        };
+
+        initializeSearch();
+    };
+    const loadComments = ({ theme = "github-light", issue = "title", repo, src }) => {
+        const commentsDiv = document.getElementById("comments-utteranc");
+        if (!commentsDiv) return;
+        if (!repo || !src) {
+            console.error("Repository and source are required to load comments.");
+            return;
+        }
+        const script = Object.assign(document.createElement("script"), {
+            src,
+            async: true,
+            crossorigin: "anonymous"
+        });
+        script.setAttribute("theme", theme);
+        script.setAttribute("issue-term", issue);
+        script.setAttribute("repo", repo);
+        commentsDiv.appendChild(script);
+    };
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+        clipboardHandler();        
+        searchHandler("search-input", "search-results", "/articles/assets/js/search-data.json", {
+             debounceDelay: 300,
+             maxResults: 5
+        });
+        if (window.blog.comments) {
+            loadComments(window.blog.comments);
+        }
+    });
+</script>
+
 {% if page.mermaid and site.version.mermaid %}
 <script type="module" defer>
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@{{ site.version.mermaid }}/+esm';
