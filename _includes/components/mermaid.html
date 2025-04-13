@@ -1,7 +1,6 @@
 <p>mermaid</p>
 {% capture _unused %}
-{% assign has_mermaid = site.pages | where: "classes", "language-mermaid" | size > 0 %}
-{% if site.version.mermaid and has_mermaid %}
+{% if site.version.mermaid and site.pages | where: "classes", "language-mermaid" %}
 <p>mermaid pass</p>
 <script type="module" defer>
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@{{ site.version.mermaid }}/dist/mermaid.esm.min.mjs';
