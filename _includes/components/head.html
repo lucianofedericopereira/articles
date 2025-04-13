@@ -6,7 +6,7 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="{{ page.author | default: meta.author }}">
 
-    <meta name="copyright" content="{{ meta.copyright | replace: '{year}', site.time | date: '%Y' }}">
+    <meta name="copyright" content="{{ meta.copyright }}">
 
     <meta name="description" content="{%- include components/title.html -%}">
     <meta name="license" content="{{ page.license | default: meta.license }}">
