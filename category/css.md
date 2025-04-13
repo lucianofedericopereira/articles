@@ -2,8 +2,7 @@
 title: "CSS"
 ---
 
-{% assign domain = "https://" | append: site.base.url %} 
-{% assign folder = domain | append: "/" | append: site.base.folder %} 
+{% assign url = "https://" | append: site.base.url | append: "/" | append: site.base.folder %} 
 
 
 {% assign grouped_items = site.css | group_by: "date" %}

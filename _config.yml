@@ -6,7 +6,7 @@ meta:
   title: design﹢code
   author: Luciano Pereira
   repository: https://github.com/lucianofedericopereira
-  copyright: "design﹢code © {currentYear} Luciano Pereira"
+  copyright: "design﹢code ©{year} Luciano Pereira"
   license: GPLv2
   locale: en
 fonts:
