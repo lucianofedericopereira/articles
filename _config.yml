@@ -34,16 +34,19 @@ defaults:
     values:
       layout: codecraft
       comments: false
+      mermaid: false
   - scope:
       path: "_css"
     values:
       layout: codecraft
       comments: false
+      mermaid: false
   - scope:
       path: "_js"
     values:
       layout: codecraft
       comments: false
+      mermaid: false
 search:
   heading_level: 2
   previews: 3
