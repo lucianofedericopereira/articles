@@ -54,14 +54,15 @@ search:
   preview_words_before: 5
   preview_words_after: 10
   tokenizer_separator: /[\s/]+/
+scripts:
+  mermaid: https://cdn.jsdelivr.net/npm/mermaid@11.4.1/+esm
+  lunr: https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js
+  utteranc: https://utteranc.es/client.js
 utteranc:
   theme: github-light
   issue: title
   repo: lucianofedericopereira/comments
   src: https://utteranc.es/client.js
-scripts:
-  mermaid: https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js
-  lunr: https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js
 
 
 #gh_edit_branch: "main" # the branch that your docs is served from
