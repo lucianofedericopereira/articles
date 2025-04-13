@@ -1,5 +1,5 @@
 {% capture _unused %}
-{% meta = site.meta %}
+{% assign meta = site.meta %}
 {% assign domain = "https://" | append: site.base.url %}
 {% assign folder = domain | append: "/" | append: site.base.folder %}
 {% assign asset = folder | append: "/assets" %}
@@ -10,7 +10,7 @@
 {% assign vendor = js | append: "/vendor" %}
 {% assign icon = image | append: "/favicon.ico" %}
 {% endcapture %}<!DOCTYPE html>
-<html lang="{{ site.locale | default: 'en_US' }}">
+<html lang="{{ meta.locale | default: 'en' }}">
 {%- include components/head.html -%}
 <body>
     <div id="translate"></div>
@@ -49,7 +49,9 @@
         {%- include components/comments.html -%}
         {% endif %}
     </main>
-    {%- include components/mermaid.html -%}
-</body>
 
+
+    {%- include components/mermaid.html -%}
+
+</body>
 </html>
