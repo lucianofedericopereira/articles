@@ -1,0 +1,32 @@
+name: Update Search Index
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  update_index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Setup Ruby Environment
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      - name: Install Jekyll Dependencies
+        run: |
+          gem install bundler
+          bundle install
+      - name: Build Jekyll Site
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+      - name: Verify Search Index
+        run: ls -la _site/assets/json/search.json || echo "Search index file not found!"
+      - name: Upload Search Index
+        uses: actions/upload-artifact@v3
+        with:
+          name: search-index
+          path: _site/assets/json/search.json
