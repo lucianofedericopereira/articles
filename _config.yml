@@ -55,7 +55,7 @@ search:
   tokenizer_separator: /[\s/]+/
 version:
   mermaid: 11.4.1
-
+  lunr: 2.3.9
 #gh_edit_branch: "main" # the branch that your docs is served from
 ## gh_edit_source: docs # the source that your files originate from
 
