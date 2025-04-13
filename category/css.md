@@ -10,6 +10,6 @@ title: "CSS"
 <h3>{{ year_group.name | date: "%Y" }}</h3>
 {% for item in year_group.items %}
 
-<p><a href="/{{ item.url }}">{{ item.date | date: "%m-%d" }} - {{ item.title }}</a></p>
+<p><a href="{{ item.url }}">{{ item.date | date: "%m-%d" }} - {{ item.title }}</a></p>
 {% endfor %}
 {% endfor %}
