@@ -45,7 +45,7 @@
     </main>
     {%- include components/script.html -%}
     <script>
-        const data = {
+        window.blog = {
             {% if page.comments and site.utteranc.repo %}
             comments: {
                 {% for item in site.utteranc %}
@@ -55,7 +55,8 @@
             {% endif %}
         };
 
-        const loadComments = (data) => {
+        /*
+        const loadComments = data => {
             const commentsDiv = document.getElementById("comments-utteranc");
             if (commentsDiv) {
                 const script = document.createElement("script");
@@ -78,41 +79,33 @@
             commentsDiv.appendChild(script);
         }
     };
+    */
+
+    const loadComments = ({ theme = "github-light", issue = "title", repo, src }) => {
+        const commentsDiv = document.getElementById("comments-utteranc");
+        if (!commentsDiv) return;
+            if (!repo || !src) {
+                console.error("Repository and source are required to load comments.");
+                return;
+            }
+            const script = Object.assign(document.createElement("script"), {
+                src,
+                async: true,
+                crossorigin: "anonymous"
+            });
+            script.setAttribute("theme", theme);
+            script.setAttribute("issue-term", issue);
+            script.setAttribute("repo", repo);
+            commentsDiv.appendChild(script);
+    };
+
 
     document.addEventListener("DOMContentLoaded", ()=> {
         
-        if (data.comments) {
-            loadComments(data.comments);
+        if (window.blog.comments) {
+            loadComments(window.blog.comments);
         }
 
-
-
-        /*
-
-        loadComments({
-            theme: "{{ site.utteranc.theme }}",
-            issue: "{{ site.utteranc.issue }}",
-             repo: "{{ site.utteranc.repo }}",
-              src: "{{ site.utteranc.src }}"
-        });
-
-        const commentsDiv = document.getElementById("comments-utteranc");
-        if (commentsDiv) {
-            const script = document.createElement("script");
-            const config = {
-                theme: "{{ site.utteranc.theme | default: 'github-light' }}",
-                issue: "{{ site.utteranc.issue | default: 'title' }}",
-                 repo: "{{ site.utteranc.repo }}"
-            };
-            script.src = "https://utteranc.es/client.js";
-            script.setAttribute("theme", config.theme);
-            script.setAttribute("issue-term", config.issue);
-            script.setAttribute("repo", config.repo);
-            script.setAttribute("crossorigin", "anonymous");
-            script.async = true;
-            commentsDiv.appendChild(script);
-        }
-        */
         
     });
   </script>
