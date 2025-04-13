@@ -1,9 +1,10 @@
-<p>mermaid</p>
+<script type="module" defer>
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@{{ site.version.mermaid }}/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+  mermaid.run({ querySelector: '.language-mermaid' });
+</script>
+
 {% capture _unused %}
 {% if site.version.mermaid and site.pages | where: "classes", "language-mermaid" %}
 <p>mermaid pass</p>
-<script type="module" defer>
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@{{ site.version.mermaid }}/dist/mermaid.esm.min.mjs';
-           mermaid.initialize({ startOnLoad: true });
-           mermaid.run({ querySelector: '.language-mermaid' });
-</script>{% endif %}{% endcapture %}
+{% endif %}{% endcapture %}
