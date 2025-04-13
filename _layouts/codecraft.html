@@ -39,13 +39,15 @@
         {% if page.comments and site.utteranc.repo %}
         <div id="comments">
             <h3>Comments</h3>
-            <div id="comments-utteranc" class="notranslate">
+            <div id="comments-utteranc" class="notranslate"></div>
         </div>
         {% endif %}
     </main>
     {%- include components/script.html -%}
     {% if page.comments and site.utteranc.repo %}
     <script>
+
+
     document.addEventListener("DOMContentLoaded", function () {
         const commentsDiv = document.getElementById("comments-utteranc");
         if (commentsDiv) {
