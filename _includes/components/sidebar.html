@@ -1,5 +1,44 @@
-{% include components/search_header.html %}
-{% include_cached components/site_nav.html %}
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search design﹢code"
+      aria-label="Search design﹢code" autocomplete="off">
+    <label width="24" height="24" for="search-input" class="search-label">
+      <span class="icon icon-search"></span>
+    </label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+
+
+<div class="aside-title">Sections</div>
+
+{% assign home_page = site.html_pages
+| where: "title", "Home"
+| first %}
+{% if home_page %}
+<a class="aside-link" href="/articles/">{{ home_page.title }}</a>
+{% endif %}
+{% assign pages_top = site.html_pages
+| where_exp:"item", "item.title != nil"
+| where_exp:"item", "item.parent == nil"
+| where_exp:"item", "item.nav_exclude != true"
+| where: "title", "Home"
+| size %}
+
+{% if pages_top > 0 %}
+{% for item in site.html_pages
+| where_exp:"item", "item.title != nil"
+| where_exp:"item", "item.parent == nil"
+| where_exp:"item", "item.nav_exclude != true" %}
+{% unless item.title == "Home" %}
+<a class="aside-link" href="/articles{{ item.url }}">{{ item.title }}</a>
+{% endunless %}
+{% endfor %}
+{% endif %}
+
+
+
 {% if site.links %}
 <div class="aside-title notranslate">Links</div>
 {% for link in site.links %}
