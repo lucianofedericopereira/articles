@@ -2,16 +2,14 @@
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=contain">
-    <meta name="generator" content="Jekyll">
-    <meta name="robots" content="index, follow">
+    <meta name="copyright" content="{{meta.title}} ©{{ page.date | date: '%Y' | default: site.time | date: '%Y' }} {{ page.author | default: meta.author }}">
     <meta name="author" content="{{ page.author | default: meta.author }}">
-
-    <meta name="copyright" content="{{ meta.copyright }}">
-
-    <meta name="description" content="{%- include components/title.html -%}">
-    <meta name="license" content="{{ page.license | default: meta.license }}">
     <meta name="repository" content="{{ page.repository | default: meta.repository }}">
     <meta name="date" content="{{ page.date | date: '%B %d, %Y' | default: site.time | date: '%B %d, %Y' }}">
+    <meta name="robots" content="index, follow">
+    <meta name="generator" content="Jekyll">
+    <meta name="description" content="{%- include components/title.html -%}">
+    <meta name="license" content="{{ page.license | default: meta.license }}">
     <meta name="robots" content="index, follow">
     <meta name="twitter:card" content="summary">
     <meta property="og:title" content="{%- include components/title.html -%}">
