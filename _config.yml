@@ -20,7 +20,7 @@ collections:
     permalink: ":collection/:path/"
     output: true
   js:
-    permalink: "/:collection/:path/"
+    permalink: ":collection/:path/"
     output: true
 defaults:
   - scope:
@@ -34,19 +34,16 @@ defaults:
     values:
       layout: codecraft
       comments: false
-      mermaid: false
   - scope:
       path: "_css"
     values:
       layout: codecraft
       comments: false
-      mermaid: false
   - scope:
       path: "_js"
     values:
       layout: codecraft
       comments: false
-      mermaid: false
 search:
   heading_level: 1
   previews: 3
@@ -57,7 +54,7 @@ search:
   button: false
   focus_shortcut_key: 'k'
 version:
-  mermaid: 11.4.1
+  mermaid: 11.6.0
 
 #gh_edit_branch: "main" # the branch that your docs is served from
 ## gh_edit_source: docs # the source that your files originate from

@@ -4,6 +4,12 @@ title: Home
 
 This is a *bare-minimum* template to create a Jekyll site that uses the [Just the Docs] theme. You can easily set the created site to be published on [GitHub Pages] – the [README] file explains how to do that, along with other details.
 
+<div class="language-mermaid">
+graph TD;
+    A[Hello] --> B[World]
+</div>
+
+
 If [Jekyll] is installed on your computer, you can also build and preview the created site *locally*. This lets you test changes before committing them, and avoids waiting for GitHub Pages. And you will be able to deploy your local build to a different platform than GitHub Pages.
 
 More specifically, the created site:
