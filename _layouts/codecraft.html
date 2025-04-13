@@ -44,11 +44,55 @@
         {% endif %}
     </main>
     {%- include components/script.html -%}
-    {% if page.comments and site.utteranc.repo %}
     <script>
 
+        const data = {
+        {% if page.comments and site.utteranc.repo %}
+            comments: {{{% for item in site.utteranc %}
+                "{{ item.first }}": "{{ item.last }}"{% if forloop.last == false %}, {% endif %}
+        {% endfor %}}},{% endif %}
+        };
+
+        const loadComments = (data) => {
+            const commentsDiv = document.getElementById("comments-utteranc");
+            if (commentsDiv) {
+                const script = document.createElement("script");
+                const config = {
+                    theme: data.theme || "github-light",
+                    issue: data.issue || "title",
+                    repo: data.repo
+                };
+            if (!config.repo) {
+                console.error("Repository is required to load comments.");
+                return;
+            }
+            script.src = "https://utteranc.es/client.js";
+            script.setAttribute("theme", config.theme);
+            script.setAttribute("issue-term", config.issue);
+            script.setAttribute("repo", config.repo);
+            script.setAttribute("crossorigin", "anonymous");
+            script.async = true;
+            commentsDiv.appendChild(script);
+        }
+    };
 
     document.addEventListener("DOMContentLoaded", function () {
+        
+        if (data.comments) {
+            loadComments(data.comments);
+        }
+
+
+
+        /*
+
+        loadComments({
+            theme: "{{ site.utteranc.theme }}",
+            issue: "{{ site.utteranc.issue }}",
+             repo: "{{ site.utteranc.repo }}",
+              src: "{{ site.utteranc.src }}"
+        });
+
         const commentsDiv = document.getElementById("comments-utteranc");
         if (commentsDiv) {
             const script = document.createElement("script");
@@ -65,6 +109,8 @@
             script.async = true;
             commentsDiv.appendChild(script);
         }
+        */
+        
     });
   </script>
   {% endif %}

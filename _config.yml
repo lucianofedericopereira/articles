@@ -58,6 +58,7 @@ utteranc:
   theme: github-light
   issue: title
   repo: lucianofedericopereira/comments
+  src: https://utteranc.es/client.js
 version:
   mermaid: 11.4.1
   lunr: 2.3.9
