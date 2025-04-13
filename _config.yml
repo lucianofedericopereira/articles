@@ -16,9 +16,11 @@ fonts:
 links:
   LinkedIn: https://github.com/just-the-docs/just-the-docs
   GitHub: https://github.com/just-the-docs/just-the-docs-template      
+
+collections_dir: posts
 collections:
   css:
-    permalink: "/:collection/:path/"
+    permalink: ":collection/:path/"
     output: true
   js:
     permalink: ":collection/:path/"
