@@ -1,0 +1,53 @@
+name: Generate Search Index
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual runs
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Setup Ruby Environment
+      - name: Setup Ruby Environment
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      # Step 3: Install Dependencies
+      - name: Install Jekyll Dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      # Step 4: Build the Jekyll Site
+      - name: Build Jekyll Site
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+      # Step 5: Generate Search Index
+      - name: Generate Search Index
+        run: ruby scripts/generate_search_data.rb
+
+      # Step 6: Verify Search Index
+      - name: Verify Search JSON
+        run: ls -la _site/assets/json/search.json || echo "search.json file not found!"
+
+      # Step 7: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
