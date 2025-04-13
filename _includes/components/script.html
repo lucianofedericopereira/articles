@@ -202,7 +202,6 @@
 
 <script type="module" defer>
     import lunr from 'https://cdn.jsdelivr.net/npm/lunr@{{ site.version.lunr }}/+esm';
-
     document.addEventListener("DOMContentLoaded", async () => {
         const searchHandler = async () => {
             const searchInput = document.getElementById('search-input');
@@ -217,14 +216,11 @@
             }
 
             try {
-                // Fetch and process search data
                 const response = await fetch('/articles/assets/js/search-data.json');
                 if (!response.ok) throw new Error(`Failed to load search data: ${response.status}`);
                 const docs = await response.json();
 
-                lunr.tokenizer.separator = /[\s/]+/; // Custom tokenizer for separators
-
-                // Build Lunr index
+                lunr.tokenizer.separator = /[\s/]+/;
                 const index = lunr(function () {
                     this.ref('id');
                     this.field('title', { boost: 200 });
@@ -239,8 +235,6 @@
                         });
                     });
                 });
-
-                // Initialize keyboard shortcut for search input (Ctrl/Cmd + K)
                 document.addEventListener('keydown', (e) => {
                     if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                         e.preventDefault();
@@ -249,18 +243,16 @@
                     }
                 });
 
-                // Show and hide search
                 const showSearch = () => document.documentElement.classList.add('search-active');
                 const hideSearch = () => document.documentElement.classList.remove('search-active');
 
-                // Update search results dynamically
                 searchInput.addEventListener('input', () => {
                     const input = searchInput.value.trim();
-                    if (input === currentInput) return; // Skip if input hasn't changed
+                    if (input === currentInput) return;
                     currentInput = input;
                     currentSearchIndex++;
 
-                    searchResults.innerHTML = ''; // Clear existing results
+                    searchResults.innerHTML = '';
                     if (input === '') {
                         hideSearch();
                         return;
@@ -283,7 +275,6 @@
                         }
                     }
 
-                    // Render results
                     if (results.length === 0) {
                         const noResultsDiv = document.createElement('div');
                         noResultsDiv.classList.add('search-no-result');
@@ -298,7 +289,6 @@
                     }
                 });
 
-                // Helper function to add results in batches
                 const addResults = (resultsList, results, start, batchSize, batchMillis, searchIndex, docs) => {
                     if (searchIndex !== currentSearchIndex) return;
 
@@ -311,7 +301,6 @@
                     }
                 };
 
-                // Add individual result
                 const addResult = (resultsList, result, docs) => {
                     const doc = docs[result.ref];
                     const resultsListItem = document.createElement('li');
@@ -327,17 +316,14 @@
                     resultTitle.classList.add('search-result-title');
                     resultTitle.textContent = doc.title;
                     resultLink.appendChild(resultTitle);
-
-                    // Add content previews if available
                     if (doc.content) {
                         const resultPreviews = document.createElement('div');
                         resultPreviews.classList.add('search-result-previews');
                         resultLink.appendChild(resultPreviews);
-
-                        const previewText = doc.content.slice(0, 100); // Adjust slice length as needed
+                        const previewText = doc.content.slice(0, 100);
                         const resultPreview = document.createElement('div');
                         resultPreview.classList.add('search-result-preview');
-                        resultPreview.textContent = `${previewText}...`;
+                        resultPreview.textContent = `${previewText}…`;
                         resultPreviews.appendChild(resultPreview);
                     }
                 };
