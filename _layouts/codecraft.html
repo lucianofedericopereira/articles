@@ -20,9 +20,7 @@
                 <img id="logo-pic" width="36px" height="36px" src="{{icon}}" alt="logo">
                 {{meta.title}}
             </div>
-            <div id="slogan">
-                {{meta.tagline}}
-            </div>
+            <div id="slogan">{{meta.tagline}}</div>
         </a>
     </header>
     <label for="menu" aria-label="Toggle Menu" id="menu-label">
@@ -33,23 +31,26 @@
         {%- include components/sidebar.html -%}
     </aside>
     <main>
-        <label for="toc">
-            <div class="icon icon-toc" aria-label="Show Table of Contents"></div>
-        </label>
+        <label for="toc"><div class="icon icon-toc" aria-label="Show Table of Contents"></div></label>
         <h1>{{ page.title | capitalize }}</h1>
         <input type="checkbox" aria-expanded="false" id="toc" autocomplete='off'>
-        <div id="index">
-            <div id="reading-time"></div>
-            <div id="chapters"></div>
-        </div>
+        <div id="index"><div id="reading-time"></div><div id="chapters"></div></div>
         {{ content }}        
-        {% if page.comments %}
-        {%- include components/comments.html -%}
-        {% endif %}
+        {% if page.comments %}{%- include components/comments.html -%}{% endif %}
     </main>
     <script src="https://cdn.jsdelivr.net/npm/lunr@{{ site.version.lunr }}/+esm" async></script>
     <script src="{{js}}/jtd.js" async></script>
     <script src="{{js}}/script.js" async></script>
-    {%- include components/mermaid.html -%}
+    {% if page.mermaid and site.version.mermaid %}
+    <script type="module" defer>
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@{{ site.version.mermaid }}/+esm';
+        mermaid.initialize({ startOnLoad: true });
+        mermaid.run({ querySelector: '.language-mermaid' }).then(() => {
+            document.querySelectorAll('.language-mermaid').forEach(el => {
+                el.classList.add('mermaid-loaded');
+            });
+        });
+    </script>
+    {% endif %}
 </body>
 </html>
