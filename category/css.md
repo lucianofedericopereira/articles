@@ -8,6 +8,6 @@ title: "CSS"
 <h3>{{ year_group.name | date: "%Y" }}</h3>
 {% for item in year_group.items %}
 <p>Folder value: {{ folder }}</p>
-<p><a href="{{ folder }}{{ item.url }}">{{ item.date | date: "%M, %d" }} - {{ item.title }}</a></p>
+<p><a href="{{ folder }}{{ item.url }}">{{ item.date | date: "%m-%d" }} - {{ item.title }}</a></p>
 {% endfor %}
 {% endfor %}
