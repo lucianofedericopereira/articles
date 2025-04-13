@@ -54,6 +54,10 @@ search:
   preview_words_before: 5
   preview_words_after: 10
   tokenizer_separator: /[\s/]+/
+utteranc:
+  theme: github-light
+  issue: title
+  repo: lucianofedericopereira/comments
 version:
   mermaid: 11.4.1
   lunr: 2.3.9
