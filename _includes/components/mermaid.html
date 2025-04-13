@@ -1,10 +1,12 @@
 <p>Mermaid: {{ page.mermaid }}</p>
 <p>Version: {{ site.version.mermaid }}</p>
 
-{% capture _unused %}{% if page.mermaid and site.version.mermaid %}
+{% if page.mermaid and site.version.mermaid %}
 <script type="module" defer>
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@{{ site.version.mermaid }}/+esm';
   mermaid.initialize({ startOnLoad: true });
   mermaid.run({ querySelector: '.language-mermaid' });
 </script>
-{% endif %}{% endcapture %}
+{% endif %}
+
+{% capture _unused %}{% endcapture %}
