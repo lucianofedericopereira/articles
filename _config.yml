@@ -17,7 +17,7 @@ links:
   GitHub: https://github.com/just-the-docs/just-the-docs-template      
 collections:
   css:
-    permalink: "/:collection/:path/"
+    permalink: "/articles/:collection/:path/"
     output: true
   js:
     permalink: "/:collection/:path/"
