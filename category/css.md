@@ -1,11 +1,7 @@
 ---
-layout: codecraft
 title: "CSS"
 ---
 
-{% assign domain = "https://" | append: site.base.url %} 
-{% assign folder = domain | append: "/" | append: site.base.folder %} 
-{% assign meta = site.meta %}
 
 {% assign grouped_items = site.css | group_by: "date" %}
 {% for year_group in grouped_items %}
