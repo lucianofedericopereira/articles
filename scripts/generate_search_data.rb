@@ -10,8 +10,8 @@ config = YAML.load_file(config_file)
 # Collections from the Jekyll site configuration
 collections = config['collections'].keys rescue []
 
-# Define output directory and file
-output_dir = File.join('_site', 'assets', 'json')
+# Define output directory and file (within the source folder, not _site)
+output_dir = File.join('assets', 'json')
 output_file = File.join(output_dir, 'search.json')
 
 # Ensure the output directory exists
