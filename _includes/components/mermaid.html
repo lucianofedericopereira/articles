@@ -1,6 +1,6 @@
 {% capture _unused %}{% if page.mermaid and site.version.mermaid %}
 <script type="module" defer>
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@{{ site.version.mermaid }}/+esm';
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@{{ site.version.mermaid }}/dist/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: true });
   mermaid.run({ querySelector: '.language-mermaid' });
 </script>
