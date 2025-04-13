@@ -4,7 +4,7 @@
         | where: "title", "Home"
         | first %}
   {% if home_page %} 
-        <a class="aside-link" href="/articles">{{ home_page.title }}</a>
+        <a class="aside-link" href="/articles/">{{ home_page.title }}</a>
   {% endif %}
    {% assign pages_top = site.html_pages
         | where_exp:"item", "item.title != nil"
