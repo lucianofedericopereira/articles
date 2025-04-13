@@ -203,102 +203,49 @@
 
 <script type="module" defer>
     import lunr from 'https://cdn.jsdelivr.net/npm/lunr@{{ site.version.lunr }}/+esm';
-    document.addEventListener("DOMContentLoaded", async () => {
-        const searchHandler = (searchInputId = "search-input", searchResultsId = "search-results", searchDataUrl) => {
-            const searchInput = document.getElementById(searchInputId);
-            const searchResults = document.getElementById(searchResultsId);
 
+    document.addEventListener("DOMContentLoaded", () => {
+        const searchHandler = async () => {
+            const searchInput = document.getElementById("search-input");
+            const searchResults = document.getElementById("search-results");
             if (!searchInput || !searchResults) {
                 console.warn("Search input or results container not found.");
                 return;
             }
-
-            const fetchSearchData = async () => {
-                try {
-                    const response = await fetch(searchDataUrl);
-                    if (!response.ok) throw new Error(`Failed to load search data: ${response.status}`);
-                    return await response.json();
-                } catch (error) {
-                    console.error(error.message);
-                    return null;
-                }
-            };
-
-            const buildIndex = (docs) => {
-                return lunr(function () {
+            try {
+                const response = await fetch("/articles/assets/js/search-data.json");
+                if (!response.ok) throw new Error(`Failed to load search data: ${response.status}`);
+                const docs = await response.json();
+                const index = lunr(function () {
                     this.ref("id");
                     this.field("title", { boost: 200 });
                     this.field("content", { boost: 2 });
                     this.metadataWhitelist = ["position"];
-                    docs.forEach((doc, id) => this.add({ id, ...doc }));
+                    Object.keys(docs).forEach((key) => {
+                        this.add({ id: key, ...docs[key] });
+                    });
                 });
-            };
-
-            const renderSearchResults = (results, docs) => {
-                searchResults.innerHTML = results.length
-                    ? results.map(({ ref, matchData }) => {
-                        const doc = docs[ref];
-                        const highlightedTitle = (matchData.metadata.title?.position || []).reduce((html, [start, length], index, positions) => {
-                            html += doc.title.slice((positions[index - 1]?.[0] || 0) + (positions[index - 1]?.[1] || 0), start);
-                            html += `<span class="search-result-highlight">${doc.title.slice(start, start + length)}</span>`;
-                            return html;
-                        }, "") + doc.title.slice((matchData.metadata.title?.position || []).slice(-1)[0]?.[1] || 0);
-
-                        return `<div class="search-result"><div class="search-result-title">${highlightedTitle}</div></div>`;
-                    }).join("")
-                    : "<div class='search-no-result'>No results found</div>";
-            };
-
-            const initializeSearch = async () => {
-                const docs = await fetchSearchData();
-                if (!docs) return;
-
-                const index = buildIndex(docs);
-
                 searchInput.addEventListener("input", () => {
                     const query = searchInput.value.trim();
                     const results = query ? index.search(query) : [];
-                    renderSearchResults(results, docs);
+                    searchResults.innerHTML = results.length
+                        ? results.map(({ ref }) => {
+                            const doc = docs[ref];
+                            return `<div class="search-result"><div class="search-result-title">${doc.title}</div></div>`;
+                        }).join("")
+                        : "<div class='search-no-result'>No results found</div>";
                 });
-
-                searchInput.addEventListener("keydown", (e) => {
-                    const active = searchResults.querySelector(".active");
-                    let target;
-
-                    switch (e.key) {
-                        case "ArrowUp":
-                        case "ArrowDown":
-                            e.preventDefault();
-                            target = e.key === "ArrowUp"
-                                ? (active?.previousElementSibling || searchResults.lastElementChild)
-                                : (active?.nextElementSibling || searchResults.firstElementChild);
-                            active?.classList.remove("active");
-                            target?.classList.add("active");
-                            target?.scrollIntoView({ block: "nearest" });
-                            break;
-                        case "Enter":
-                            e.preventDefault();
-                            active?.click();
-                            break;
-                        case "Escape":
-                            searchInput.value = "";
-                            searchResults.innerHTML = "";
-                            break;
-                    }
-                });
-
-                document.addEventListener("click", (e) => {
-                    if (!searchInput.contains(e.target)) searchResults.innerHTML = "";
-                });
-            };
-
-            initializeSearch();
-        };
-
-        // Initialize the search handler with required parameters
-        searchHandler("search-input", "search-results", "/articles/assets/js/search-data.json");
+            } catch (error) {
+                console.error("Error loading search data:", error);
+            }
+        };  searchHandler();
+        //searchHandler("search-input", "search-results", "/articles/assets/js/search-data.json");
     });
 </script>
+
+
+
+
 
 
 
