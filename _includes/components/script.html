@@ -202,10 +202,8 @@
 
 
 <script type="module" defer>
-    import lunr from 'https://cdn.jsdelivr.net/npm/lunr@{{ site.scripts.lunr }}/+esm';
-
+    import lunr from 'https://cdn.jsdelivr.net/npm/lunr@{{ site.version.lunr }}/+esm';
     document.addEventListener("DOMContentLoaded", async () => {
-        // Example searchHandler function using Lunr.js
         const searchHandler = (searchInputId = "search-input", searchResultsId = "search-results", searchDataUrl) => {
             const searchInput = document.getElementById(searchInputId);
             const searchResults = document.getElementById(searchResultsId);
