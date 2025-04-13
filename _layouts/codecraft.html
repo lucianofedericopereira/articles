@@ -50,8 +50,9 @@
         {%- include components/comments.html -%}
         {% endif %}
     </main>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/lunr@{{ site.version.lunr }}/+esm" async></script>
+    <script src="{{js}}/jtd.js" async></script>
+    <script src="{{js}}/script.js" async></script>
     {%- include components/mermaid.html -%}
 
 </body>
