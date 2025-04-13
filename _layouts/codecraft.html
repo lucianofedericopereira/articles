@@ -45,12 +45,14 @@
     </main>
     {%- include components/script.html -%}
     <script>
-
         const data = {
-        {% if page.comments and site.utteranc.repo %}
-            comments: {{{% for item in site.utteranc %}
+            {% if page.comments and site.utteranc.repo %}
+            comments: {
+                {% for item in site.utteranc %}
                 "{{ item.first }}": "{{ item.last }}"{% if forloop.last == false %}, {% endif %}
-        {% endfor %}}},{% endif %}
+                {% endfor %}
+            }
+            {% endif %}
         };
 
         const loadComments = (data) => {
