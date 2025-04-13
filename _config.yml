@@ -1,27 +1,21 @@
+theme: just-the-docs
 base:
   url: lucianofedericopereira.github.io
   folder: articles
-config_domain: lucianofedericopereira.github.io
-config_folder: articles
 meta:
+  title: design﹢code
   author: Luciano Pereira
   repository: https://github.com/lucianofedericopereira
+  copyright: "design﹢code © {currentYear} Luciano Pereira"
   license: GPLv2
+  locale: en
+fonts:
+  text: Mediaan-Regular
+  titles: VisueltPro-Regular
+  code: JetBrainsMono-Medium
 links:
   LinkedIn: https://github.com/just-the-docs/just-the-docs
   GitHub: https://github.com/just-the-docs/just-the-docs-template      
-
-
-title: design﹢code
-description: "CodeCraft Chronicles"
-author: Luciano Pereira
-
-copyright: "design﹢code (c) {currentYear} {meta.author}"
-footer_content: "Copyright &copy; {currentYear} Luciano Perera"
-
-#gh_edit_branch: "main" # the branch that your docs is served from
-## gh_edit_source: docs # the source that your files originate from
-
 collections:
   css:
     permalink: "/:collection/:path/"
@@ -35,17 +29,15 @@ defaults:
     values:
       layout: codecraft
       comments: false
+      mermaid: false
   - scope:
       path: "_js"
     values:
       layout: codecraft
       comments: false
-favicon_ico: "/assets/images/favicon.ico"
-logo: "/assets/images/favicon.ico"
-mermaid:
-  version: "11.4.1"
+      mermaid: false
 search:
-  heading_level: 1 # 1-6
+  heading_level: 1
   previews: 3
   preview_words_before: 5
   preview_words_after: 10
@@ -53,5 +45,9 @@ search:
   rel_url: false
   button: false
   focus_shortcut_key: 'k'
-theme: just-the-docs
-url: https://lucianofedericopereira.github.io/articles
+version:
+  mermaid: 11.4.1
+
+#gh_edit_branch: "main" # the branch that your docs is served from
+## gh_edit_source: docs # the source that your files originate from
+
