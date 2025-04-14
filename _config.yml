@@ -19,10 +19,10 @@ links:
 
 collections:
   css:
-    permalink: ":collection/:path/"
+    permalink: "/:collection/:path/"
     output: true
   js:
-    permalink: ":collection/:path/"
+    permalink: "/:collection/:path/"
     output: true
 
 defaults:
@@ -52,8 +52,8 @@ defaults:
       mermaid: false
 search_enabled: true
 search:
-  heading_level: 3
-  previews: 5
+  heading_level: 2
+  previews: 3
   preview_words_before: 5
   preview_words_after: 10
   tokenizer_separator: /[\s/]+/
