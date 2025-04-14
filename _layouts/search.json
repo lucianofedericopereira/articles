@@ -1,14 +1,11 @@
 [
-  {% for file in site.static_files %}
-  {% if file.extname == ".md" %}    
-  {
+    {% assign filtered_pages = site.pages | where_exp: "page", "page.path endswith '.md'" %}
+    {% for page in filtered_pages %}
+    {
         "doc": "{{ page.title | escape }}",
         "title": "{{ page.title | escape }}",
         "content": "{{ page.content | strip_newlines | strip_html | regex_replace: '[^a-zA-Z0-9.,/:;!?]', '' }}",
         "url": "{{ page.url | prepend: site.baseurl | escape }}",
         "relUrl": "{{ page.url | escape }}"
-  }
-  {% if forloop.last == false %},{% endif %}
-  {% endif %}
-  {% endfor %}
+    }{% if forloop.last == false %},{% endif %}{% endfor %}
 ]
