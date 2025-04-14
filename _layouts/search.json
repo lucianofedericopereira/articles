@@ -1,9 +1,16 @@
-[{% for collection in site.collections %}{% assign doc_count = collection.docs.size %}{% for doc in collection.docs %}
-{
+{% assign json_content = '' %}
+{% for collection in site.collections %}
+{% for doc in collection.docs %}
+{% assign item = '{
     "doc": "{{ doc.title | escape | strip }}",
     "title": "{{ doc.title | escape | strip }}",
     "content": "{{ doc.excerpt | strip_html | strip_newlines | strip }}",
     "url": "{{ doc.url | prepend: site.baseurl | escape }}",
     "relUrl": "{{ doc.url | escape }}"
-}{% if forloop.index < doc_count or forloop.parentloop.index < site.collections.size %},{% endif %}{% endfor %}{% endfor %}
-]
+}' %}{% assign json_content = json_content | append: item %}
+{% if forloop.last == false or forloop.parentloop.last == false %}
+{% assign json_content = json_content | append: ',' %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+[{{json_content}}]
