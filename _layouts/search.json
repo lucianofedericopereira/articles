@@ -8,9 +8,9 @@
     "url": "{{ doc.url | prepend: site.baseurl | escape }}",
     "relUrl": "{{ doc.url | escape }}"
 }' %}{% assign json_content = json_content | append: item %}
-{% if forloop.last == false or forloop.parentloop.last == false %}
+{% unless forloop.last and forloop.parentloop.last %}
 {% assign json_content = json_content | append: ',' %}
-{% endif %}
+{% endunless %}
 {% endfor %}
 {% endfor %}
 [{{json_content}}]
