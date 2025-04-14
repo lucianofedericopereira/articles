@@ -3,7 +3,7 @@
   {
     "doc": "{{ page.title | escape }}",
     "title": "{{ page.title | escape }}",
-    "content": "{{ page.content | strip_newlines | escape }}",
+    "content": "{{ page.content | strip_newlines | remove: '<script>' | remove: '</script>' | remove: '<style>' | remove: '</style>' | replace: '&', 'and' | regex_replace: '[^a-zA-Z0-9.,/\\-:;!?\"\'(){}\\[\\]]', ''}}",
     "url": "{{ page.url | prepend: site.baseurl | escape }}",
     "relUrl": "{{ page.url | escape }}"
   }{% if forloop.last == false %},{% endif %}
