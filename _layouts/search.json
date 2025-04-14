@@ -1,4 +1,4 @@
-{% assign filtered_pages = site.pages | where_exp: "page","page.url does not contain '.js'" %}[{% for page in filtered_pages %}
+{% assign filtered_pages = site.collections %}[{% for page in filtered_pages %}
 {
     "doc": "{{ page.title | escape | strip }}",
     "title": "{{ page.title | escape | strip }}",
