@@ -1,13 +1,14 @@
 [
     {% for file in site.static_files %}
-    {% if file.extname == ".md" %}
+    {% if file.extname == ".md" %}    
     {
-        "doc": "{{ file.name | escape }}",
-        "title": "{{ file.name | escape }}",
-        "content": "{{ file.content | strip_newlines | strip_html | regex_replace: '[^a-zA-Z0-9.,/:;!?]', '' }}",
-        "url": "{{ file.url | prepend: site.baseurl | escape }}",
-        "relUrl": "{{ file.url | escape }}"
-    }{% if forloop.last == false %},{% endif %}
-    {% endif %}
-    {% endfor %}
+        "doc": "{{ page.title | escape }}",
+        "title": "{{ page.title | escape }}",
+        "content": "{{ page.content | strip_newlines | strip_html | regex_replace: '[^a-zA-Z0-9.,/:;!?]', '' }}",
+        "url": "{{ page.url | prepend: site.baseurl | escape }}",
+        "relUrl": "{{ page.url | escape }}"
+    }
+    {% if forloop.last == false %},{% endif %}
+  {% endfor %}
+  {% endif %}
 ]
