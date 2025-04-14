@@ -17,7 +17,6 @@ links:
   LinkedIn: https://github.com/just-the-docs/just-the-docs
   GitHub: https://github.com/just-the-docs/just-the-docs-template      
 
-collections_dir: _articles
 collections:
   css:
     permalink: ":collection/:path/"
@@ -26,19 +25,34 @@ collections:
     permalink: ":collection/:path/"
     output: true
 
-permalink: pretty
-
 defaults:
   - scope:
-      path:
-      type: "pages"
+      path: "index.md"
+    values:
+      layout: codecraft
+      comments: false
+      mermaid: false
+  - scope:
+      path: "category"
+    values:
+      layout: codecraft
+      comments: false
+      mermaid: false
+  - scope:
+      path: "_css"
+    values:
+      layout: codecraft
+      comments: false
+      mermaid: false
+  - scope:
+      path: "_js"
     values:
       layout: codecraft
       comments: false
       mermaid: false
 search:
   heading_level: 3
-  previews: 10
+  previews: 5
   preview_words_before: 5
   preview_words_after: 10
   tokenizer_separator: /[\s/]+/
