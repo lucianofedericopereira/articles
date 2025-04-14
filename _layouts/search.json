@@ -11,5 +11,5 @@
 {% assign json_content = json_content | append: item %}
 {% endfor %}
 {% endfor %}
-{% assign json_cleaned = json_content | replace: ',]', ']' %}
+{% assign json_cleaned = json_content | split: ',' | join: ',' %}
 [{{ json_cleaned}}]
