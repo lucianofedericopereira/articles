@@ -1,9 +1,9 @@
-[{% for page in site.pages %}{% unless page.url endswith '.js' or page.url endswith '.json' or page.url endswith '.css' %}
+[{% for page in site.pages %}
 {
     "doc": "{{ page.title | escape | strip }}",
     "title": "{{ page.title | escape | strip }}",
     "content": "{{ page.content | strip_newlines | strip_html | regex_replace: '[^a-zA-Z0-9.,/:;!?]', '' | strip }}",
     "url": "{{ page.url | prepend: site.baseurl | escape }}",
     "relUrl": "{{ page.url | escape }}"
-}{% if forloop.last == false %},{% endif %}{% endunless %}{% endfor %}
+}{% if forloop.last == false %},{% endif %}{% endfor %}
 ]
