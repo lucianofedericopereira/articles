@@ -1,18 +1,16 @@
-{% assign json_content = '' %}
-{% for collection in site.collections %}
-{% for doc in collection.docs %}
-{% assign item %}{
-  "doc": {{ doc.title | escape | strip | jsonify}},
-  "title": {{ doc.title | escape | strip | jsonify}},
-  "content": {{ doc.excerpt | strip_html | strip_newlines | strip | jsonify}},
-  "url": {{ doc.url | prepend: site.baseurl | escape | jsonify}},
-  "relUrl": {{ doc.url | escape | jsonify}}
-}{% endassign %}
-{% assign json_content = json_content | append: item %}
-{% unless forloop.last and forloop.parentloop.last %}
-{% assign json_content = json_content | append: ',' %}
-{% endunless %}
+{% capture json_content %}
+{% for collection in site.collections %}{% for doc in collection.docs %}
+{
+"doc": "{{ doc.title | escape | strip }}",
+"title": "{{ doc.title | escape | strip }}",
+"content": "{{ doc.excerpt | strip_html | strip_newlines | strip }}",
+"url": "{{ doc.url | prepend: site.baseurl | escape }}",
+"relUrl": "{{ doc.url | escape }}"
+},
 {% endfor %}
 {% endfor %}
-{% assign json_cleaned = json_content | replace: ',]', ']' %}
-[{{ json_cleaned}}]
+{% endcapture %}
+[{%  json_content | remove_last: ',' %}]
+
+
+
