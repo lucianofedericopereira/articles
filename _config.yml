@@ -25,34 +25,20 @@ collections:
   js:
     permalink: ":collection/:path/"
     output: true
+
+permalink: pretty
+
 defaults:
   - scope:
-      path: "index.md"
-    values:
-      layout: codecraft
-      comments: false
-      mermaid: false
-  - scope:
-      path: "category"
-    values:
-      layout: codecraft
-      comments: false
-      mermaid: false
-  - scope:
-      path: "_css"
-    values:
-      layout: codecraft
-      comments: false
-      mermaid: false
-  - scope:
-      path: "_js"
+      path:
+      type: "pages"
     values:
       layout: codecraft
       comments: false
       mermaid: false
 search:
-  heading_level: 2
-  previews: 3
+  heading_level: 3
+  previews: 10
   preview_words_before: 5
   preview_words_after: 10
   tokenizer_separator: /[\s/]+/
