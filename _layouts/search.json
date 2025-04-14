@@ -5,5 +5,5 @@
     "content": "{{ doc.excerpt | strip_html | strip_newlines | strip }}",
     "url": "{{ doc.url | prepend: site.baseurl | escape }}",
     "relUrl": "{{ doc.url | escape }}"
-}{% if forloop.last == false %},{% endif %}{% endfor %}{% endfor %}
+}{% unless forloop.last and forloop.parentloop.last %},{% endunless %}{% endfor %}{% endfor %}
 ]
