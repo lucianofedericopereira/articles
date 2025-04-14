@@ -1,9 +1,9 @@
-{% assign filtered_pages = site.collections %}[{% for collection in filtered_pages %}
+[{% assign filtered_pages = site.collections  %}{% for collection in filtered_pages %}{% for page in collection.docs %}
 {
     "doc": "{{ page.title | escape | strip }}",
     "title": "{{ page.title | escape | strip }}",
     "content": "{{ page.content | strip_newlines | strip_html | regex_replace: '[^a-zA-Z0-9.,/:;!?]', '' | strip }}",
     "url": "{{ page.url | prepend: site.baseurl | escape }}",
     "relUrl": "{{ page.url | escape }}"
-}{% if forloop.last == false %},{% endif %}{% endfor %}
+}{% if forloop.last == false %},{% endfor %}{% endfor %}
 ]
