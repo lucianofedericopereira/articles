@@ -1,4 +1,5 @@
 {% capture json_content %}
+[
 {% for collection in site.collections %}{% for doc in collection.docs %}
 {
 "doc": "{{ doc.title | escape | strip }}",
@@ -9,8 +10,8 @@
 },
 {% endfor %}
 {% endfor %}
+]
 {% endcapture %}
-[{%  json_content | remove_last: ',' %}]
-
+{{ json_content | replace: ',]', ']'}}
 
 
