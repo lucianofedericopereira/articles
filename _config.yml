@@ -17,7 +17,7 @@ links:
   LinkedIn: https://github.com/just-the-docs/just-the-docs
   GitHub: https://github.com/just-the-docs/just-the-docs-template      
 
-collections_dir: posts
+collections_dir: _posts
 collections:
   css:
     permalink: ":collection/:path/"
