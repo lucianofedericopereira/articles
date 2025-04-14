@@ -1,11 +1,11 @@
 [
-  {% for page in site.pages %}
+  {% for page in site.pages | where: "extname", ".md" %}
   {
-    "doc": "{{ page.title }}",
-    "title": "{{ page.title }}",
+    "doc": "{{ page.title | escape }}",
+    "title": "{{ page.title | escape }}",
     "content": "{{ page.content | strip_newlines | escape }}",
-    "url": "{{ page.url | prepend: site.baseurl }}",
-    "relUrl": "{{ page.url }}"
-  }{% if forloop.last == false %},
-  {% endif %}{% endfor %}
+    "url": "{{ page.url | prepend: site.baseurl | escape }}",
+    "relUrl": "{{ page.url | escape }}"
+  }{% if forloop.last == false %},{% endif %}
+  {% endfor %}
 ]
