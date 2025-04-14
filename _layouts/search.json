@@ -1,17 +1,9 @@
-{% capture json_content %}
-[
-{% for collection in site.collections %}{% for doc in collection.docs %}
+{% capture json_content %}[{% for collection in site.collections %}{% for doc in collection.docs %}
 {
-"doc": "{{ doc.title | escape | strip }}",
-"title": "{{ doc.title | escape | strip }}",
-"content": "{{ doc.excerpt | strip_html | strip_newlines | strip }}",
-"url": "{{ doc.url | prepend: site.baseurl | escape }}",
-"relUrl": "{{ doc.url | escape }}"
-},
-{% endfor %}
-{% endfor %}
-]
-{% endcapture %}
+  "doc": "{{ doc.title | escape | strip }}",
+  "title": "{{ doc.title | escape | strip }}",
+  "content": "{{ doc.excerpt | strip_html | strip_newlines | strip }}",
+  "url": "{{ doc.url | prepend: site.baseurl | escape }}",
+  "relUrl": "{{ doc.url | escape }}"
+},{% endfor %}{% endfor %}]{% endcapture %}
 {{ json_content | replace: ',]', ']'}}
-
-
