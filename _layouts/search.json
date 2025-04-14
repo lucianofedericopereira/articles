@@ -2,7 +2,7 @@
 {
     "doc": "{{ doc.title | escape | strip }}",
     "title": "{{ doc.title | escape | strip }}",
-    "content": "{{ doc.content | strip_newlines | regex_replace: '<div[^>]*class=\"[^\"]*highlighter-rouge[^\"]*\"[^>]*>.*?</div>', '' | strip_html | regex_replace: '[^a-zA-Z0-9 ]', '' | replace: '  ', ' ' | strip }}",
+    "content": "{{ doc.excerpt | strip_newlines | strip }}",
     "url": "{{ doc.url | prepend: site.baseurl | escape }}",
     "relUrl": "{{ doc.url | escape }}"
 }{% if forloop.last == false %},{% endif %}{% endfor %}{% endfor %}
