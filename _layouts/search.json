@@ -1,9 +1,9 @@
-[{% for collection in site.collections %}{% for doc in collection.docs %}
+[{% for collection in site.collections %}{% assign doc_count = collection.docs.size %}{% for doc in collection.docs %}
 {
     "doc": "{{ doc.title | escape | strip }}",
     "title": "{{ doc.title | escape | strip }}",
     "content": "{{ doc.excerpt | strip_html | strip_newlines | strip }}",
     "url": "{{ doc.url | prepend: site.baseurl | escape }}",
     "relUrl": "{{ doc.url | escape }}"
-}{% unless forloop.last and forloop.parentloop.last %},{% endunless %}{% endfor %}{% endfor %}
+}{% if forloop.index < doc_count or forloop.parentloop.index < site.collections.size %},{% endif %}{% endfor %}{% endfor %}
 ]
