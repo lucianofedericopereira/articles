@@ -1,0 +1,11 @@
+[
+  {% for page in site.pages %}
+  {
+    "doc": "{{ page.title }}",
+    "title": "{{ page.title }}",
+    "content": "{{ page.content | strip_newlines | escape }}",
+    "url": "{{ page.url | prepend: site.baseurl }}",
+    "relUrl": "{{ page.url }}"
+  }{% if forloop.last == false %},
+  {% endif %}{% endfor %}
+]
