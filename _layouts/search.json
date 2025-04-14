@@ -1,14 +1,9 @@
-{% assign all_docs = "" %}
-{% for collection in site.collections %}
-{% assign all_docs = all_docs | append: collection.docs | join: ',' %}
-{% endfor %}
-{% assign documents = site.collections | map: "docs" | flatten %}
-[{% for doc in documents %}
- {
-    "doc": "{{ doc.title | escape | strip }}",
-    "title": "{{ doc.title | escape | strip }}",
-    "content": "{{ doc.excerpt | strip_html | strip_newlines | strip }}",
-    "url": "{{ doc.url | prepend: site.baseurl | escape }}",
-    "relUrl": "{{ doc.url | escape }}"
-  }{% unless forloop.last %},{% endunless %}{% endfor %}
+[{% for collection in site.collections %}{% for doc in collection.docs %}
+{
+"doc": "{{ doc.title | escape | strip }}",
+"title": "{{ doc.title | escape | strip }}",
+"content": "{{ doc.excerpt | strip_html | strip_newlines | strip }}",
+"url": "{{ doc.url | prepend: site.baseurl | escape }}",
+"relUrl": "{{ doc.url | escape }}"
+}{% unless forloop.last %},{% endunless %}{% endfor %}{% endfor %}
 ]
