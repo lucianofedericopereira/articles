@@ -1,11 +1,12 @@
 [
-  {% for page in site.pages | where: "extname", ".md" %}
-  {
-    "doc": "{{ page.title | escape }}",
-    "title": "{{ page.title | escape }}",
-    "content": "{{ page.content | strip_newlines | remove: '<script>' | remove: '</script>' | remove: '<style>' | remove: '</style>' | replace: '&', 'and' | regex_replace: '[^a-zA-Z0-9.,/\\-:;!?\"\'(){}\\[\\]]', ''}}",
-    "url": "{{ page.url | prepend: site.baseurl | escape }}",
-    "relUrl": "{{ page.url | escape }}"
-  }{% if forloop.last == false %},{% endif %}
+    {% for page in site.pages | where: "extname",".md" %}
+    {
+        "doc": "{{ page.title | escape }}",
+        "title": "{{ page.title | escape }}",
+        "content": "{{ page.content | strip_newlines | strip_html | regex_replace: '[^a-zA-Z0-9.,/:;!?]', '' }}",
+        "url": "{{ page.url | prepend: site.baseurl | escape }}",
+        "relUrl": "{{ page.url | escape }}"
+    }
+    {% if forloop.last == false %},{% endif %}
   {% endfor %}
 ]
