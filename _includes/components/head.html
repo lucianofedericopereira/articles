@@ -38,15 +38,13 @@
     <base href="{{folder}}/">
     <style>
 
-{% for font_map in site.fonts %}
-  {% assign key = font_map | keys | first %}
-  {% assign fnt = font_map[key] %}
+{% for font in site.fonts %}
 @font-face {
-    font-family: '{{ fnt.name }}';
+    font-family: '{{ font.name }}';
     font-display: swap;
     font-style: normal;
-    font-weight: {% if fnt.weight == "Regular" %}400{% elsif fnt.weight == "Medium" %}600{% else %}400{% endif %};
-    src: url('/assets/fonts/{{ fnt.name }}-{{ fnt.weight }}.{{ fnt.extension }}') format('{{ fnt.extension }}');
+    font-weight: {% if font.weight == "Regular" %}400{% elsif font.weight == "Medium" %}600{% else %}400{% endif %};
+    src: url('/assets/fonts/{{ font.name }}-{{ font.weight }}.{{ font.extension }}') format('{{ font.extension }}');
 }
 {% endfor %}
 
