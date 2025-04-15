@@ -141,15 +141,16 @@ main ol li {
 
     :root {
         --ca: #FF7E4B;
-        --cb: #DFF6C3;
-        --cc: #E3E7D9;
         --c0: #111017;
+        --ce: #4D7A77;
         --c1: #453E35;
         --c2: #554E45;
         --cd: #A5A983;
         --c3: #C2C5A5;
         --c4: #DFDDCA;
+        --cb: #DFF6C3;
         --c5: #E3F0DF;
+        --cc: #E3E7D9;
         --c6: #F1F6E5;
         --c7: #FFFFF8;
         --c8: #FF9B67;
@@ -285,7 +286,7 @@ main ol li {
         margin: 10rem auto 0;
         line-height: 1;
         text-align: center;
-        color: var(--c2);
+        color: var(--ce);
     }
 
     main h2 {
