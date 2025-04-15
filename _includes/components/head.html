@@ -48,8 +48,7 @@
             --font-basic:
             system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto,
             "Helvetica Neue", arial, sans-serif, "Segoe UI Emoji";
-            {% for fnt in site.fonts %}--font-{{ fnt.type }}: '{{ fnt.name }}';
-            {% endfor %}
+            {% for fnt in site.fonts %}--font-{{ fnt.type }}: '{{ fnt.name }}';{% endfor %}
         }
 
         .language-mermaid {
