@@ -23,45 +23,7 @@
     z-index: 1;
 }
 
-#menu,
-#toc,
-.hidden {
-    display: none
-}
-/*
-@font-face {
-    font-family: 'JetBrains';
-    font-display: swap;
-    font-style: normal;
-    font-weight: 600;
-    src: url('https://lucianofedericopereira.github.io/articles/assets/fonts/JetBrainsMono-Medium.woff2') format('woff2');
-}
-
-@font-face {
-    font-family: 'Visuelt';
-    font-display: swap;
-    font-style: normal;
-    font-weight: 400;
-    src: url('https://lucianofedericopereira.github.io/articles/assets/fonts/VisueltPro-Regular.woff2') format('woff2');
-}
-
-@font-face {
-    font-family: 'Mediaan';
-    font-display: swap;
-    font-style: normal;
-    font-weight: 400;
-    src: url('https://lucianofedericopereira.github.io/articles/assets/fonts/Mediaan-Regular.woff2') format('woff2');
-}
-*/
 :root {
-/*
-    --font-basic:
-        system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto,
-        "Helvetica Neue", arial, sans-serif, "Segoe UI Emoji";
-    --font-body: 'Visuelt';
-    --font-title: 'Mediaan';
-    --font-code: 'JetBrains';
-*/
     counter-reset: a;
 }
 
@@ -82,17 +44,7 @@
     font-size: 1rem;
 }
 
-body,
-header,
-main p,
-main ul,
-main ol,
-.search-input {
-    font-family: var(--font-body), var(--font-basic);
-}
-
 main {
-    font-family: var(--font-title), var(--font-basic);
     counter-reset: h2;
     counter-reset: footnote;
 }
@@ -140,7 +92,7 @@ main ol li {
 }
 
 @media screen {
-
+/*
     :root {
         --ca: #FF7E4B;
         --c0: #111017;
@@ -173,24 +125,9 @@ main ol li {
         --rd: #D4E6A5;
         --re: #DFF3C6;
         --rf: #F6FAEB;
-
     }
+*/
 
-    *,
-    ::before,
-    ::after {
-        box-sizing: border-box
-    }
-
-    html {
-        font-size: clamp(17px, 15px + 0.3756vw, 22px);
-        scroll-behavior: smooth;
-        -webkit-text-size-adjust: 100%;
-        text-size-adjust: 100%;
-        tab-size: 4;
-        max-width: 100dvw;
-        overflow-x: hidden;
-    }
 
     body {
         color: var(--c0);

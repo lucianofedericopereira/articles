@@ -51,12 +51,53 @@
             {% for fnt in site.fonts %}--font-{{ fnt.type }}: '{{ fnt.name }}';{% endfor %}
         }
 
+        body,
+        header,
+        main p,
+        main ul,
+        main ol,
+        .search-input {
+            font-family: var(--font-body), var(--font-basic);
+        }
+        main {
+            font-family: var(--font-title), var(--font-basic);
+        }
+
+        #menu,
+        #toc,
+        .hidden,
         .language-mermaid {
             visibility: hidden;
         }
         .language-mermaid.mermaid-loaded {
             visibility: visible;
         }
+
+        @media screen {
+
+            html {
+                font-size: clamp(17px, 15px + 0.3756vw, 22px);
+                scroll-behavior: smooth;
+                -webkit-text-size-adjust: 100%;
+                text-size-adjust: 100%;
+                tab-size: 4;
+                max-width: 100dvw;
+                overflow-x: hidden;
+            }
+
+            *,
+            ::before,
+            ::after {
+                box-sizing: border-box
+            }
+
+            :root {
+                {% for key in site.colors %}--{{ key }}: #{{ site.colors[key] }};
+                {% endfor %}
+            }
+
+        }
+
     </style>
     <script type="application/ld+json">
     {
