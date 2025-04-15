@@ -37,8 +37,8 @@
     <link rel="canonical" href="{{ folder }}{{ page.url }}">
     <base href="{{folder}}/">
     <style>
-{% for key in site.fonts %}
-{% assign fnt = site.fonts[key] %}
+
+{% for key, fnt in site.fonts %}
 @font-face {
     font-family: '{{ fnt.name }}';
     font-display: swap;
@@ -47,6 +47,8 @@
     src: url('{{ font }}/{{ fnt.name }}-{{ fnt.weight }}.{{ fnt.extension }}') format('{{ fnt.extension }}');
 }
 {% endfor %}
+
+
 
         :root {
             --font-basic:
