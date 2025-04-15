@@ -91,9 +91,10 @@
                 box-sizing: border-box
             }
 
-            :root {
-                {% for key in site.colors %}--{{ key }}: #{{ site.colors[key] }};
-                {% endfor %}
+
+            :root {{% assign color_keys = site.colors | keys %}
+                {% for key in color_keys %}{% assign value = site.colors[key] %}--{{ key }}: #{{ value }};
+            {% endfor %}
             }
 
         }
