@@ -38,7 +38,8 @@
     <base href="{{folder}}/">
     <style>
 
-{% for key, fnt in site.fonts %}
+{% for key in site.fonts %}
+{% assign fnt = site.fonts[key] %}
 @font-face {
     font-family: '{{ fnt.name }}';
     font-display: swap;
