@@ -11,18 +11,18 @@ meta:
   license: GPLv2
   locale: en
 fonts:
-  title:
-    name: Mediaan
-    weight: Regular
-    extension: woff2
-  body:
-    name: VisueltPro
-    weight: Regular
-    extension: woff2
-  code:
-    name: JetBrainsMono
-    weight: Medium
-    extension: woff2
+  - title:
+      name: Mediaan
+      weight: Regular
+      extension: woff2
+  - body:
+      name: VisueltPro
+      weight: Regular
+      extension: woff2
+  - code:
+      name: JetBrainsMono
+      weight: Medium
+      extension: woff2
 
 
 
