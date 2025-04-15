@@ -37,12 +37,12 @@
     <link rel="canonical" href="{{ folder }}{{ page.url }}">
     <base href="{{folder}}/">
     <style>
-        {% for fnt in site.fonts %}@font-face {
+        {% for key, fnt in site.fonts %}@font-face {
             font-family: '{{ fnt.name }}';
             font-display: swap;
             font-style: normal;
             font-weight: {% if fnt.weight == "Regular" %}400{% elsif fnt.weight == "Medium" %}600{% else %}400{% endif %};
-            src: url('{{font}}/{{ fnt.name }}-{{ fnt.weight }}.{{ fnt.extension }}') format('{{ fnt.extension }}');
+            src: url('{{font}}{{ fnt.name }}-{{ fnt.weight }}.{{ fnt.extension }}') format('{{ fnt.extension }}');
         }{% endfor %}
 
         :root {
