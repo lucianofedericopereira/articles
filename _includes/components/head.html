@@ -75,6 +75,10 @@
 
         @media screen {
 
+            :root {
+                {%- include components/colors.html -%}
+            }
+
             html {
                 font-size: clamp(17px, 15px + 0.3756vw, 22px);
                 scroll-behavior: smooth;
@@ -85,19 +89,25 @@
                 overflow-x: hidden;
             }
 
+            body {
+                color: var(--c0);
+                background-color: var(--c7);
+                display: flex;
+                position: relative;
+                flex-direction: row;
+                margin: 0;
+                top: 0 !important;
+                max-width: 100dvw;
+                overflow-x: hidden;
+                min-height: 100dvh;
+                pointer-events: all;
+            }
+
             *,
             ::before,
             ::after {
                 box-sizing: border-box
             }
-
-{% assign color_keys = site.colors | keys %}
-:root {
-  {% for key in color_keys %}
-    {% assign value = site.colors[key] %}
-    --{{ key }}: #{{ value }};
-  {% endfor %}
-}
 
         }
 

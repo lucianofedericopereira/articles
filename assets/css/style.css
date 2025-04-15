@@ -126,7 +126,6 @@ main ol li {
         --re: #DFF3C6;
         --rf: #F6FAEB;
     }
-*/
 
 
     body {
@@ -142,7 +141,7 @@ main ol li {
         min-height: 100dvh;
         pointer-events: all;
     }
-
+*/
     h2::before {
         display: none;
     }
