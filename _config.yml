@@ -11,9 +11,22 @@ meta:
   license: GPLv2
   locale: en
 fonts:
-  text: Mediaan-Regular
-  titles: VisueltPro-Regular
-  code: JetBrainsMono-Medium
+  title:
+    name: Mediaan
+    weight: Regular
+    extension: woff2
+  body:
+    name: VisueltPro
+    weight: Regular
+    extension: woff2
+  code:
+    name: JetBrainsMono
+    weight: Medium
+    extension: woff2
+
+
+
+
 links:
   LinkedIn: https://github.com/just-the-docs/just-the-docs
   GitHub: https://github.com/just-the-docs/just-the-docs-template      
@@ -51,12 +64,6 @@ defaults:
       layout: codecraft
       comments: false
       mermaid: false
-#search:
-#  heading_level: 2
-#  previews: 3
-#  preview_words_before: 5
-#  preview_words_after: 10
-#  tokenizer_separator: /[\s/]+/
 utteranc:
   theme: github-light
   issue: title

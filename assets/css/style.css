@@ -28,7 +28,7 @@
 .hidden {
     display: none
 }
-
+/*
 @font-face {
     font-family: 'JetBrains';
     font-display: swap;
@@ -52,14 +52,16 @@
     font-weight: 400;
     src: url('https://lucianofedericopereira.github.io/articles/assets/fonts/Mediaan-Regular.woff2') format('woff2');
 }
-
+*/
 :root {
+/*
     --font-basic:
         system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto,
         "Helvetica Neue", arial, sans-serif, "Segoe UI Emoji";
     --font-body: 'Visuelt';
     --font-title: 'Mediaan';
     --font-code: 'JetBrains';
+*/
     counter-reset: a;
 }
 
