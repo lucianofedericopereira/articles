@@ -44,15 +44,12 @@
             font-weight: {% if fontface.weight == "Regular" %}400{% elsif fontface.weight == "Medium" %}600{% else %}400{% endif %};
             src: url('{{ font }}/{{ fontface.name }}-{{ fontface.weight }}.{{ fontface.extension }}') format('{{ fontface.extension }}');
         }{% endfor %}
-
-
         :root {
             --font-basic:
             system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto,
             "Helvetica Neue", arial, sans-serif, "Segoe UI Emoji";
-            --font-body: '{{ site.fonts.body.name }}';
-            --font-title: '{{ site.fonts.title.name }}';
-            --font-code: '{{ site.fonts.code.name }}';
+            {% for fnt in site.fonts %}--font-{{ fnt.type }}: '{{ fnt.name }}';
+            {% endfor %}
         }
 
         .language-mermaid {
