@@ -38,7 +38,7 @@
     <base href="{{folder}}/">
     <style>
         {% for fnt in site.fonts %}@font-face {
-            font-family: '{{ font.name }}';
+            font-family: '{{ fnt.name }}';
             font-display: swap;
             font-style: normal;
             font-weight: {% if fnt.weight == "Regular" %}400{% elsif fnt.weight == "Medium" %}600{% else %}400{% endif %};
