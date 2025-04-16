@@ -340,14 +340,14 @@ main ol li {
     }
 
     main footer p:hover a::before {
-        color: var(--c1);
+        color: var(--ce);
     }
 
     main footer p a {
         border-radius: none;
         background: none;
         text-decoration: none;
-        color: var(--c2);
+        color: var(--ce);
         font-weight: bold;
         text-decoration: underline;
         text-decoration-style: dotted;
