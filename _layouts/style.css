@@ -158,13 +158,13 @@ main {
     main a[href]:not([href^="#"]):not(main footer a[href]),
     main a[href]:not([href^="#"]):visited:not(main footer a[href]) {
         text-decoration: none;
-        color: var(--c8);
+        color: var(--ce);
     }
     
     main a[href]:not([href^="#"]):hover:not(main footer a[href]),
     main a[href]:not([href^="#"]):visited:hover:not(main footer a[href]) {
         text-decoration: none;
-        color: var(--ca);
+        color: var(--cd);
     }
 
 }

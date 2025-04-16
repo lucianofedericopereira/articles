@@ -661,12 +661,14 @@ main ol li {
 
     main li .highlighter-rouge,
     main p .highlighter-rouge {
-        font-size: 1rem;
-        padding: 0 .25rem;
-        color: var(--cd) !important;
+        font-size: 1.054rem;
+        padding: 0 .3rem;
+        color: var(--c0) !important;
         font-weight: 500 !important;
-        text-shadow: 0.5px 0.2px 0.2px var(--cd);
+        text-shadow: 0.5px 0.3px 0.3px var(--c0);
         letter-spacing: .2px !important;
+        background: var(--cb);
+        border-radius: .5vh;    
     }
 
     .search-active #menu:checked~aside .search-results {
@@ -1184,8 +1186,10 @@ main ol li {
 
     code.language-mermaid {
         padding: 0;
+        border: 0;
         background-color: inherit;
-        border: 0
+        margin:0 auto;
+        opacity:.9;
     }
 
     .highlight,
