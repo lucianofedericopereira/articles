@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-
-
 #translate,
 #google_translate_element,
 .skiptranslate,
@@ -10,18 +8,18 @@
 .goog-tooltip:hover {
     display: none !important
 }
-
 .goog-text-highlight {
     background-color: transparent !important;
     border: none !important;
     box-shadow: none !important
 }
-
 .google-src-text {
     background-color: transparent !important;
     text-decoration: none !important;
     z-index: 1;
 }
+
+
 
 :root {
     counter-reset: a;
