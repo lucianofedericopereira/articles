@@ -308,7 +308,7 @@ main ol li {
 
     #chapters a:hover::after,
     #chapters a:hover span {
-        color: var(--ca);
+        color: var(--ce);
     }
 
 
