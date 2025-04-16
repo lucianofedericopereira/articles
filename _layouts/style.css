@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 main a {
     text-decoration: none;
 }
@@ -130,6 +132,14 @@ main {
 
     main a {
         text-decoration: none;
+    }
+
+    .aside-link {
+        display: block;
+        width: 100%;
+        padding: .6rem 11.75%;
+        text-decoration: none;
+        color: var(--c1);
     }
 
     *,

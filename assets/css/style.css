@@ -462,10 +462,7 @@ main ol li {
         content: "\2197";
         font-size: .75rem;
         padding-left: 1ch;
-        font-weight: main a {
-    text-decoration: none;
-}
-700;
+        font-weight: 700;
         color: var(--ca);
     }
 
