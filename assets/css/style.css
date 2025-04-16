@@ -25,23 +25,6 @@
     counter-reset: a;
 }
 
-#logo-link {
-    text-decoration: none;
-    display: inline-flex;
-    width: fit-content;
-    padding: .5rem;
-    row-gap: .45rem;
-    align-items: center;
-    font-weight: 500;
-}
-
-#logo {
-    display: flex;
-    align-items: center;
-    column-gap: .3rem;
-    font-size: 1rem;
-}
-
 main {
     counter-reset: h2;
     counter-reset: footnote;
@@ -55,10 +38,6 @@ h2::before {
     content: counter(h2, upper-roman) ". ";
     display: inline-block;
     padding: 0 1rem 0 0;
-}
-
-main a {
-    text-decoration: none;
 }
 
 main p a[href^="#"]::before {
@@ -483,7 +462,10 @@ main ol li {
         content: "\2197";
         font-size: .75rem;
         padding-left: 1ch;
-        font-weight: 700;
+        font-weight: main a {
+    text-decoration: none;
+}
+700;
         color: var(--ca);
     }
 
@@ -698,18 +680,12 @@ main ol li {
         left: 0;
     }
 
-
-
-
     div.highlighter-rouge {
         padding-left: 1.5rem;
         line-height: 1.5;
         max-width: 80ch;
         overflow-x: auto;
     }
-
-
-
 
 
     @media (width > 575px) {
@@ -1220,10 +1196,6 @@ main ol li {
         border: 2px solid var(--ra);
     }
 
-
-
-
-    /**/
 
     #comments {
         padding-bottom: 2rem;
