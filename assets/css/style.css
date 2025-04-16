@@ -872,7 +872,8 @@ main ol li {
         }
 
         .aside-link:hover {
-            background-color: var(--c9);
+            background-color: var(--ce);
+            color: var(--c7);
             text-decoration: none;
         }
 
