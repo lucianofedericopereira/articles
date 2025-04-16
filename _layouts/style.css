@@ -30,6 +30,11 @@ main a {
 
 .language-mermaid.mermaid-loaded {
     visibility: visible;
+    display: grid;
+    justify-items: center;
+    margin: 0 auto;
+    width: 70%;
+    opacity: .9;
 }
 
 {% capture _unused %}
@@ -164,7 +169,7 @@ main {
     main a[href]:not([href^="#"]):hover:not(main footer a[href]),
     main a[href]:not([href^="#"]):visited:hover:not(main footer a[href]) {
         text-decoration: none;
-        color: var(--cd);
+        color: var(--ca);
     }
 
 }
