@@ -687,6 +687,55 @@ main ol li {
     }
 
 
+                table {
+                    border-collapse: collapse;
+                    font-size: 0.9em;
+                    min-width: 280px;
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+                    border-radius: 5px;
+                    overflow: hidden;
+                    max-width: 70%;
+                    margin: 0 auto;
+                }
+        
+                table thead tr {
+                    background-color: var(--ce);
+                    color: var(--c7);
+                    text-align: left;
+                    font-weight: bold;
+                }
+        
+                table th,
+                table td {
+                    padding: 12px 15px;
+                }
+        
+                table tbody tr {
+                    border-bottom: 1px solid var(--c5);
+                }
+        
+                table tbody tr:nth-of-type(even) {
+                    background-color: var(--c6);
+                }
+        
+                table tbody tr:last-of-type {
+                    border-bottom: 2px solid var(--ce);
+                }
+        
+                table tbody tr:hover {
+                    background-color: var(--cb);
+                    color: var(--c0);
+                    cursor: pointer;
+                }
+        
+                table caption {
+                    font-size: 1.2em;
+                    margin-bottom: 10px;
+                    font-weight: bold;
+                    color: var(--c2);
+                }
+
+
     @media (width > 575px) {
 
 
