@@ -101,9 +101,27 @@ main {
         pointer-events: all;
     }
 
+    main {
+        width: 100%;
+        position: relative;
+    }
+
     *,
     ::before,
     ::after {
         box-sizing: border-box
     }
+
+    #menu:checked~aside {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 15;
+    }
+
+    @media (width >=64rem) {
+        
+    }
+
+
 }

@@ -90,56 +90,7 @@ main ol li {
 }
 
 @media screen {
-/*
-    :root {
-        --ca: #FF7E4B;
-        --c0: #111017;
-        --ce: #4D7A77;
-        --c1: #453E35;
-        --c2: #554E45;
-        --cd: #A5A983;
-        --c3: #C2C5A5;
-        --c4: #DFDDCA;
-        --cb: #DFF6C3;
-        --c5: #E3F0DF;
-        --cc: #E3E7D9;
-        --c6: #F1F6E5;
-        --c7: #FFFFF8;
-        --c8: #FF9B67;
-        --c9: #FFDEA3;
-        --r0: #005F9E;
-        --r1: #2F6F91;
-        --r2: #333333;
-        --r3: #407A52;
-        --r4: #4287F5;
-        --r5: #4A4A4A;
-        --r6: #6B7FBB;
-        --r7: #888888;
-        --r8: #9366A5;
-        --r9: #A41834;
-        --ra: #A8C079;
-        --rb: #C44D5E;
-        --rc: #C64040;
-        --rd: #D4E6A5;
-        --re: #DFF3C6;
-        --rf: #F6FAEB;
-    }
 
-
-    body {
-        color: var(--c0);
-        background-color: var(--c7);
-        display: flex;
-        position: relative;
-        flex-direction: row;
-        margin: 0;
-        top: 0 !important;
-        max-width: 100dvw;
-        overflow-x: hidden;
-        min-height: 100dvh;
-        pointer-events: all;
-    }
-*/
     h2::before {
         display: none;
     }
@@ -181,9 +132,11 @@ main ol li {
         position: absolute;
         top: 1rem;
         left: 1.75rem;
-        z-index: 3;
+        z-index: 20;
         width: 100%;
     }
+
+
 
     #logo {
         user-select: none;
@@ -212,10 +165,6 @@ main ol li {
 
 
 
-    main {
-        width: 100%;
-        position: relative;
-    }
 
     main h1 {
         font-size: 2.8rem;
@@ -530,12 +479,6 @@ main ol li {
         padding: .5rem 0 .5rem 2.75rem;
     }
 
-    #menu:checked~aside {
-        position: relative;
-        top: 0;
-        left: 0;
-        z-index: 15;
-    }
 
     .aside-link {
         display: block;
@@ -577,11 +520,6 @@ main ol li {
     #menu:checked~header {
         position: fixed;
     }
-
-    #menu:checked~aside {
-        position: fixed;
-    }
-
 
     button,
     [type='button'],
@@ -771,9 +709,6 @@ main ol li {
         left: 0;
     }
 
-    header {
-        z-index: 20;
-    }
 
 
 
