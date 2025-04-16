@@ -1,4 +1,11 @@
-{% for fontface in site.fonts %}@font-face {
+{% capture _unused %}
+{% assign domain="https://" | append: site.base.url %}
+{% assign folder=domain | append: "/" | append: site.base.folder %}
+{% assign asset=folder | append: "/assets" %}
+{% assign image=asset | append: "/images" %}
+{% assign font=asset | append: "/fonts" %}
+{% assign icon=image | append: "/favicon.ico" %}
+{% endcapture %}{% for fontface in site.fonts %}@font-face {
     font-family: '{{ fontface.name }}';
     font-display: swap;
     font-style: normal;
