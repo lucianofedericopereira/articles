@@ -169,7 +169,7 @@ main {
     main a[href]:not([href^="#"]):hover:not(main footer a[href]),
     main a[href]:not([href^="#"]):visited:hover:not(main footer a[href]) {
         text-decoration: none;
-        color: var(--ca);
+        color: var(--r0);
     }
 
 }
