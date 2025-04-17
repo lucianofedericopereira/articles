@@ -249,7 +249,7 @@ createTOC();
 
 
 
-
+/*
 const updateTitle = () => {
     const pad = toStr => toStr.toString().padStart(2, '0');
     const now = new Date();
@@ -258,5 +258,5 @@ const updateTitle = () => {
     const separator = now.getSeconds() % 2 === 0 ? ':' : '\u200A\u2005';
     document.title = `design﹢code \u203A ${hours}${separator}${minutes}`;
 }; setInterval(updateTitle, 1000); updateTitle();
-
+*/
 
