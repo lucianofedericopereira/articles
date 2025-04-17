@@ -960,12 +960,12 @@ main ol li {
     .dropbtn:focus,
     p a:focus {
         outline: none;
-        color: var(--cd);
+        color: var(--r0);
     }
 
     main p a[href^="#"]:focus::before {
         border-color: var(--ce);
-        color: var(--cd);
+        color: var(--r0);
     }
 
 
