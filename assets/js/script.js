@@ -35,33 +35,7 @@ document.getElementById('menu').addEventListener('change', function () {
     }
 });
 
-
-
-/*
-$('#menu').checked = (window.innerWidth < 1280) ? false : true;
-*/
-/*
-const css = async content => {
-    const style = document.createElement("style");
-    style.textContent = content;
-    document.head.appendChild(style);
-};
-css(`main footer p:hover{cursor:pointer;color:var(--c0)}
-     main footer p:hover::before{color: var(--c2)} .dropbtn{cursor:pointer}
-     main footer p:hover a{text-decoration-style:solid;text-decoration-color:var(--c3)}    
-`);
-setTimeout(() => css('aside {transition: all 300ms ease-in-out}'), 10);
-*/
-
-
-//$('.dropbtn').classList.remove('hidden');
-
-
-
-
-
-
-document.querySelectorAll("main footer p").forEach(p => {
+$$("main footer p").forEach(p => {
     p.addEventListener("click", () => {
         const link = p.querySelector("a");
         if (link) {
@@ -163,7 +137,7 @@ const translate = () => {
 }; window.translate = translate;
 
 
-
+/*
 const removeFontTags = () => {
     document.querySelectorAll('font').forEach(fontTag => {
         while (fontTag.firstChild) {
@@ -179,7 +153,7 @@ const observer = new MutationObserver(mutationsList => {
         };
     });
 }); observer.observe(document.body, { childList: true, subtree: true });
-
+*/
 js('https://translate.google.com/translate_a/element.js?cb=translate');
 
 

@@ -1,4 +1,5 @@
-const $ = qs => document.querySelector(qs);
+const $  = qs => document.querySelector(qs);
+const $$ = qs => document.querySelectorAll(qs);
 
 const js = async src => {
     const script = document.createElement('script');
@@ -17,9 +18,10 @@ const debounce = (func, wait) => {
 
 const codeCraft = {
     init: async function () {
+        setInterval(() => this.clock(), 1000);
         this.setupEventListeners();
         this.addStyles();
-        setInterval(() => this.clock(), 1000);
+        this.startObserver(() => this.removeFontTags());
     },    
     dom: async function (){
         this.prepareMenu();
@@ -79,16 +81,16 @@ const codeCraft = {
         document.head.appendChild(style);
     },
     readingTime: function () {
-        const readingTime = Math.ceil(document.querySelector('main').innerText.replace(/\s+/g, ' ').trim().split(' ').length / 150);
-        const author = document.querySelector('meta[name="author"]').content;
-        const license = document.querySelector('meta[name="license"]').content;
-        const date = document.querySelector('meta[name="date"]').content;
-        document.querySelector('#reading-time').innerHTML = `<b>${author}</b> | ${date} | ~<b>${readingTime}</b> min read | ${license}`;
+        const readingTime = Math.ceil($('main').innerText.replace(/\s+/g, ' ').trim().split(' ').length / 150);
+        const author = $('meta[name="author"]').content;
+        const license = $('meta[name="license"]').content;
+        const date = $('meta[name="date"]').content;
+        $('#reading-time').innerHTML = `<b>${author}</b> | ${date} | ~<b>${readingTime}</b> min read | ${license}`;
     },    
     createTOC: function () {
-        const chaptersContainer = document.querySelector('#chapters');
+        const chaptersContainer = $('#chapters');
         if (!chaptersContainer) return;
-        const headings = document.querySelectorAll('main h2');
+        const headings = $$('main h2');
         if (headings.length > 0) {
             let tocHeading = chaptersContainer.previousElementSibling;
             if (!tocHeading || tocHeading.tagName !== 'H3') {
@@ -113,7 +115,7 @@ const codeCraft = {
                 link.addEventListener('click', event => {
                     event.preventDefault();
                     const targetId = link.getAttribute('href').substring(1);
-                    const targetElement = document.querySelector(`#${targetId}`);
+                    const targetElement = $(`#${targetId}`);
                     targetElement?.scrollIntoView({ behavior: 'smooth' });
                 });
             });
@@ -123,6 +125,28 @@ const codeCraft = {
             chaptersContainer.innerHTML = '';
         };
     },
+
+    removeFontTags: function () {
+        $$('font').forEach(fontTag => {
+            while (fontTag.firstChild) {
+                fontTag.parentNode.insertBefore(fontTag.firstChild, fontTag);
+            }
+            fontTag.remove();
+        });
+    },
+    
+    startObserver: function (task) {
+        const observer = new MutationObserver(mutationsList => {
+            mutationsList.forEach(mutation => {
+                if (mutation.addedNodes.length) {
+                    task();
+                }
+            });
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+        task();
+    },    
+    
     
 }; codeCraft.init();
 
