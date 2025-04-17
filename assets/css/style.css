@@ -979,9 +979,17 @@ main ol li {
         outline-offset: -3px;
     }
 
+
+
+    .aside-link {
+        font-weight: normal;
+        transition: font-weight 0.3s ease, transform 0.3s ease;
+    }
+
     .aside-link:focus
     {
         font-weight:bold;
+        transform: scale(1.1);
     }
 
     .dropbtn:focus,
@@ -1279,16 +1287,18 @@ main ol li {
         size: A4;
         margin: 2.5cm 2cm 1cm 2cm;
 
-        /*
-
         @top-left {
             content: attr(data-author) " (" attr(data-license) ")";
             font-size: 8pt;
         }
+
         @bottom-center {
             content: "· " counter(page) "/" counter(pages) " ·";
             font-size: 8pt;
-        }    
+        }
+
+        /*
+
         @top-left-corner {
             content: none;
         }    
@@ -1371,7 +1381,7 @@ main ol li {
         border-top: 1px solid #bbbbbb;
     }
 
-    p {
+    main p:not(.language-mermaid .mermaid-loaded p)  {
         text-align: justify;
         hyphens: auto;
     }
@@ -1430,6 +1440,17 @@ main ol li {
         padding-top: .3rem;
         font-weight: 500;
     }
+
+
+
+    .language-mermaid.mermaid-loaded {
+        opacity:1!important;
+        color: black !important;
+        background: white !important;
+        fill: black !important;
+        stroke: black !important;
+    }
+
 
 
 }
