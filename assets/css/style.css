@@ -181,14 +181,14 @@ main ol li {
     main p,
     main ul,
     main ol {
-        margin: 0 auto;
+        margin: 1.4rem auto;
         font-size: 1.2rem;
         line-height: 1.7rem;
         word-spacing: .01vw;
         hyphens: auto;
         text-wrap: pretty;
         vertical-align: baseline;
-        padding: 0 2.25rem;
+        padding: 0 .25rem;
     }
 
     main p,
@@ -740,7 +740,7 @@ main ol li {
         main p,
         main ul,
         main ol {
-            margin: 1.4rem auto;
+            padding: 0 2.25rem;
         }
 
     main>.highlighter-rouge {
