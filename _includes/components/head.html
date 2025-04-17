@@ -36,6 +36,7 @@
     <link rel="preconnect"   crossorigin="anonymous" href="https://translate.google.com">
     <link rel="preconnect"   crossorigin="anonymous" href="https://translate.googleapis.com">
     <link rel="canonical" href="{{ folder }}{{ page.url }}">
+    {% if page.comments and site.utteranc.repo %}<meta name="comments-config" content="{% for item in site.utteranc %}{{ item.first }}={{ item.last }}{% if forloop.last == false %}|{% endif %}{% endfor %}">{% endif %}
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
