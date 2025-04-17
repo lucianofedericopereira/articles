@@ -30,6 +30,7 @@ main a {
 
 .language-mermaid.mermaid-loaded {
     visibility: visible;
+    text-align: unset;
     display: grid;
     justify-items: center;
     margin: 0 auto;
