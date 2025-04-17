@@ -1,6 +1,9 @@
 <script src="{{js}}/codecraft.js" async></script>
 <script>
-    const clipboardHandler = () => {
+   
+
+/*
+ const clipboardHandler = () => {
         if (!navigator.clipboard) {
             console.warn("Clipboard API is not supported or unavailable in this context.");
             return;
@@ -41,7 +44,9 @@
             });
         });
     };
-    const loadComments = ({ theme = "github-light", issue = "title", repo, src }) => {
+    */
+
+const loadComments = ({ theme = "github-light", issue = "title", repo, src }) => {
         const commentsDiv = document.getElementById("comments-utteranc");
         if (!commentsDiv) return;
         if (!repo || !src) {
@@ -84,6 +89,7 @@
 <script type="module" defer>
     import lunr from 'https://cdn.jsdelivr.net/npm/lunr@{{ site.version.lunr }}/+esm';
     document.addEventListener("DOMContentLoaded", async () => {
+        
         const searchHandler = async () => {
             const searchInput = document.getElementById('search-input');
             const searchResults = document.getElementById('search-results');

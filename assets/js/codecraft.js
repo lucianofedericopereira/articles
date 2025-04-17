@@ -1,15 +1,6 @@
 const $  = qs => document.querySelector(qs);
 const $$ = qs => document.querySelectorAll(qs);
 
-/*
-const js = async src => {
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = true;
-    document.head.appendChild(script);
-};
-*/
-
 const debounce = (func, wait) => {
     let timeout;
     return function (...args) {
@@ -28,6 +19,7 @@ const codeCraft = {
         this.addStyles();
         this.createTOC();
         this.readingTime();
+        this.clipboardHandler();
         
         window.translate = this.translate;
         this.js('https://translate.google.com/translate_a/element.js?cb=translate');
@@ -39,6 +31,55 @@ const codeCraft = {
         script.async = true;
         document.head.appendChild(script);
     },
+    
+    clipboardHandler: function () {
+        if (!navigator.clipboard) {
+            console.warn("Clipboard API is not supported or unavailable in this context.");
+            return;
+        }
+        const icons = {
+            copy: `
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+            </svg>`,
+            copied: `
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+                <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+            </svg>`
+        };
+        $$("div.highlighter-rouge, div.listingblock > div.content, figure.highlight").forEach(codeBlock => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.setAttribute("aria-label", "Copy code to clipboard");
+            button.innerHTML = icons.copy;
+            codeBlock.appendChild(button);
+            button.addEventListener("click", () => {
+                const codeElement = codeBlock.querySelector("pre:not(.lineno, .highlight)") || codeBlock.querySelector("code");
+                const codeText = codeElement?.innerText;
+                if (!codeText) {
+                    console.warn("No code content found in this block.");
+                    return;
+                }
+                navigator.clipboard.writeText(codeText)
+                    .then(() => {
+                        button.innerHTML = icons.copied;
+                        setTimeout(() => (button.innerHTML = icons.copy), 4000);
+                    })
+                    .catch((err) => console.error("Failed to copy text:", err));
+            });
+        });
+
+    },
+    
+    
+    
+    
+    
+    
+    
+    
     
     setupEventListeners: function () {
         document.addEventListener('DOMContentLoaded', async () => {
