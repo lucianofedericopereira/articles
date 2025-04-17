@@ -989,7 +989,7 @@ main ol li {
     .aside-link:focus
     {
         font-weight:bold;
-        transform: scale(1.05);
+        transform: scale(1.025);
     }
 
     .dropbtn:focus,
@@ -1445,13 +1445,12 @@ main ol li {
 
 
     .language-mermaid * {
-        opacity:1!important;
+        opacity:1 !important;
+        filter: none !important;
         color: black !important;
         background: white !important;
-        fill: black !important;
+        fill: white !important;
         stroke: black !important;
     }
-
-
 
 }
