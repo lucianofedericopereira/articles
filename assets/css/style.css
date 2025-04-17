@@ -963,7 +963,11 @@ main ol li {
         outline-offset: -3px;
     }
 
-    .aside-link:focus,
+    .aside-link:focus
+    {
+        color:#fff;
+    }
+
     .dropbtn:focus,
     p a:focus {
         outline: none;
