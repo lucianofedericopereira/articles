@@ -1,3 +1,5 @@
+const $ = qs => document.querySelector(qs);
+
 const codeCraft = {
     init: async function () {
         this.setupEventListeners();
@@ -15,11 +17,8 @@ const codeCraft = {
         });
     },
     prepareMenu: function(){
-        this.$('#menu').checked = (window.innerWidth < 1280) ? false : true;
-        this.$('.dropbtn').classList.remove('hidden');
-    },
-    $: function (qs) {
-        document.querySelector(qs);
+        $('#menu').checked = (window.innerWidth < 1280) ? false : true;
+        $('.dropbtn').classList.remove('hidden');
     },
     addStyles: function () {
         const styles = `
