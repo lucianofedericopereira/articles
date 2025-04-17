@@ -1,7 +1,7 @@
 <script>
 
     function parseMetaConfig(name, delimiter = "|", pairDelimiter = "=") {
-        let metaTag = $(`meta[name="${name}"]`);
+        let metaTag = document.querySelector(`meta[name="${name}"]`);
         if (!metaTag) return {};
         return Object.fromEntries(
             metaTag.content.split(delimiter).map(pair => pair.split(pairDelimiter))
