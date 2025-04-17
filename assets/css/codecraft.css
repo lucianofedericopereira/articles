@@ -591,7 +591,7 @@ main ol li {
         overflow: auto;
         font-size: 1.4rem;
         font-family: var(--font-title), var(--font-basic);
-        color: var(--r1);
+        color: var(--ce);
     }
 
     .search-result-doc {
@@ -612,10 +612,9 @@ main ol li {
     .search-result-previews {
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
-        padding-left: 1rem;
-        margin-left: 0.5rem;
         word-wrap: break-word;
-        font-size: 0.75rem;
+        font-size: .96rem;
+        color: var(--c2);
     }
 
     .search-result-preview+.search-result-preview {
@@ -648,7 +647,7 @@ main ol li {
     }
 
     .search-result:hover .search-result-title {
-        color: var(--ca);
+        color: var(--r0);
     }
 
     main li .highlighter-rouge,

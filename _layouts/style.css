@@ -35,7 +35,7 @@ main a {
     margin: 0 auto;
     width: 70%;
     opacity: .9;
-    filter:grayscale(20%);
+    filter:grayscale(50%);
 }
 
 {% capture _unused %}

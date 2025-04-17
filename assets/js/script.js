@@ -189,7 +189,7 @@ const observer = new MutationObserver(mutationsList => {
 
 js('https://translate.google.com/translate_a/element.js?cb=translate');
 
-
+/*
 const readingTime = () => {
     const readingTime = Math.ceil($('main').innerText.replace(/\s+/g, ' ').trim().split(' ').length / 150);
     const author = $('meta[name="author"]').content;
@@ -245,18 +245,6 @@ const createTOC = () => {
     }
 };
 createTOC();
-
-
-
-
-/*
-const updateTitle = () => {
-    const pad = toStr => toStr.toString().padStart(2, '0');
-    const now = new Date();
-    const hours = pad(now.getHours());
-    const minutes = pad(now.getMinutes());
-    const separator = now.getSeconds() % 2 === 0 ? ':' : '\u200A\u2005';
-    document.title = `design﹢code \u203A ${hours}${separator}${minutes}`;
-}; setInterval(updateTitle, 1000); updateTitle();
 */
+
 
