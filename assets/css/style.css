@@ -188,7 +188,9 @@ main ol li {
         hyphens: auto;
         text-wrap: pretty;
         vertical-align: baseline;
-        padding: 0 .25rem;
+        padding: 0 1.5rem 0 .25rem;
+        text-align: justify;
+    
     }
 
     main p,
@@ -741,6 +743,7 @@ main ol li {
         main ul,
         main ol {
             padding: 0 2.25rem;
+            text-align: unset;
         }
 
     main>.highlighter-rouge {
