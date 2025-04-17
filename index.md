@@ -8,7 +8,7 @@ This is a *bare-minimum* template to create a Jekyll site that uses the [Just th
 
 <div class="language-mermaid">
 graph TD;
-    A[Hello] --> B[World]
+    A[<div style="text-align:center;">HELLO</div>] --> B[<div style="text-align:center;">WORLD</div>]
 </div>
 
 
