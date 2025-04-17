@@ -873,7 +873,6 @@ main ol li {
         .aside-link {
             text-decoration: none;
             font-weight: 500;
-            color: var(--b3);
             letter-spacing: .005rem;
             padding: .75rem 8.5% .5rem 8.5%;
         }
@@ -962,7 +961,7 @@ main ol li {
     .dropbtn:focus,
     p a:focus {
         outline: none;
-        color: var(--ca);
+        color: var(--cd);
     }
 
     main p a[href^="#"]:focus::before {
