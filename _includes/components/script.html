@@ -1,5 +1,5 @@
 <script>
-
+/*
     function parseMetaConfig(name, delimiter = "|", pairDelimiter = "=") {
         let metaTag = document.querySelector(`meta[name="${name}"]`);
         if (!metaTag) return {};
@@ -12,9 +12,6 @@
     if (commentsConfig) {
         console.log(commentsConfig);
     }
-
-
-
 const loadComments = ({ theme = "github-light", issue = "title", repo, src }) => {
         const commentsDiv = document.getElementById("comments-utteranc");
         if (!commentsDiv) return;
@@ -32,14 +29,67 @@ const loadComments = ({ theme = "github-light", issue = "title", repo, src }) =>
         script.setAttribute("repo", repo);
         commentsDiv.appendChild(script);
     };
-    
-
     document.addEventListener("DOMContentLoaded", () => {
         if (window.blog.comments) {
             loadComments(window.blog.comments);
         }
     });
+
+*/
+
+    function parseMetaConfig(name, delimiter = "|", pairDelimiter = "=") {
+        let metaTag = document.querySelector(`meta[name="${name}"]`);
+        if (!metaTag) {
+            console.warn(`Meta tag "${name}" not found.`);
+            return null;
+        }
+
+        return Object.fromEntries(
+            metaTag.content.split(delimiter).map(pair => pair.split(pairDelimiter))
+        );
+    }
+
+    function loadComments(config) {
+        if (!config) {
+            console.error("Configuration missing. Unable to load comments.");
+            return;
+        }
+
+        const { theme = "github-light", issue = "title", repo, src } = config;
+        const commentsDiv = document.getElementById("comments-utteranc");
+
+        if (!commentsDiv) return;
+        if (!repo || !src) {
+            console.error("Repository and source are required to load comments.");
+            return;
+        }
+
+        const script = Object.assign(document.createElement("script"), {
+            src,
+            async: true,
+            crossorigin: "anonymous"
+        });
+
+        script.setAttribute("theme", theme);
+        script.setAttribute("issue-term", issue);
+        script.setAttribute("repo", repo);
+
+        commentsDiv.appendChild(script);
+    }
+
+
+
+
+    const commentsConfig = parseMetaConfig("comments-config");
+    if (commentsConfig) {
+        loadComments(commentsConfig);
+    } 
+
 </script>
+
+
+
+
 
 {% if page.mermaid and site.version.mermaid %}
 <script type="module" defer>
