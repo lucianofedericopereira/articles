@@ -188,7 +188,6 @@ main ol li {
         hyphens: auto;
         text-wrap: pretty;
         vertical-align: baseline;
-        margin: 1.4rem auto;
         padding: 0 2.25rem;
     }
 
@@ -738,6 +737,11 @@ main ol li {
 
     @media (width > 575px) {
 
+        main p,
+        main ul,
+        main ol {
+            margin: 1.4rem auto;
+        }
 
     main>.highlighter-rouge {
         padding: 1rem!important;
