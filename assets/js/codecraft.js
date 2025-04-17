@@ -1,10 +1,51 @@
 const codeCraft = {
-    init: function () {
-          setInterval(() => this.clock(), 1000);
+    init: async function () {
+        this.setupEventListeners();
+        this.addStyles();
+        setInterval(() => this.clock(), 1000);
     },    
-    dom: function (){
+    dom: async function (){
+        this.prepareMenu();
         this.createTOC();
         this.readingTime();
+    },
+    setupEventListeners: function () {
+        document.addEventListener('DOMContentLoaded', async () => {
+            await this.dom();
+        });
+    },
+    prepareMenu: function(){
+        this.$('#menu').checked = (window.innerWidth < 1280) ? false : true;
+        this.$('.dropbtn').classList.remove('hidden');
+    },
+    $: function (qs) {
+        document.querySelector(qs);
+    },
+    addStyles: function () {
+        const styles = `
+        main footer p:hover {
+            cursor: pointer;
+            color: var(--c0);
+        }
+        main footer p:hover::before {
+            color: var(--c2);
+        }
+        .dropbtn {
+            cursor: pointer;
+        }
+        main footer p:hover a {
+            text-decoration-style: solid;
+            text-decoration-color: var(--c3);
+        }
+        `;
+        this.css(styles);
+        setTimeout(() => {
+            this.css(`
+            aside {
+                transition: all 300ms ease-in-out;
+            }
+        `);
+        }, 10);
     },
     clock: function () {
         const now = new Date();
@@ -15,6 +56,13 @@ const codeCraft = {
     },
     pad: function (num) {
         return num.toString().padStart(2, '0');
+    },
+    css: function (content) {
+        if (!content) return;
+        const style = document.createElement('style');
+        style.type = 'text/css';
+        style.appendChild(document.createTextNode(content));
+        document.head.appendChild(style);
     },
     readingTime: function () {
         const readingTime = Math.ceil(document.querySelector('main').innerText.replace(/\s+/g, ' ').trim().split(' ').length / 150);
@@ -62,5 +110,5 @@ const codeCraft = {
         };
     },
     
-}; document.addEventListener('DOMContentLoaded', () => codeCraft.dom()); codeCraft.init();
+}; codeCraft.init();
 

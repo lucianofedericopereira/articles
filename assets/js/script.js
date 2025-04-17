@@ -38,21 +38,24 @@ document.getElementById('menu').addEventListener('change', function () {
 
 
 const $ = qs => document.querySelector(qs);
-
+/*
 $('#menu').checked = (window.innerWidth < 1280) ? false : true;
-
+*/
+/*
 const css = async content => {
     const style = document.createElement("style");
     style.textContent = content;
     document.head.appendChild(style);
 };
-
 css(`main footer p:hover{cursor:pointer;color:var(--c0)}
      main footer p:hover::before{color: var(--c2)} .dropbtn{cursor:pointer}
      main footer p:hover a{text-decoration-style:solid;text-decoration-color:var(--c3)}    
-`); setTimeout(() => css('aside {transition: all 300ms ease-in-out}'), 10);
+`);
+setTimeout(() => css('aside {transition: all 300ms ease-in-out}'), 10);
+*/
 
-$('.dropbtn').classList.remove('hidden');
+
+//$('.dropbtn').classList.remove('hidden');
 
 const js = async src => {
     const script = document.createElement('script');
@@ -170,6 +173,8 @@ const translate = () => {
     _tipoff = function () { };
 }; window.translate = translate;
 
+
+
 const removeFontTags = () => {
     document.querySelectorAll('font').forEach(fontTag => {
         while (fontTag.firstChild) {
@@ -178,7 +183,6 @@ const removeFontTags = () => {
         fontTag.remove();
     });
 }; removeFontTags();
-
 const observer = new MutationObserver(mutationsList => {
     mutationsList.forEach(mutation => {
         if (mutation.addedNodes.length) {
@@ -188,63 +192,5 @@ const observer = new MutationObserver(mutationsList => {
 }); observer.observe(document.body, { childList: true, subtree: true });
 
 js('https://translate.google.com/translate_a/element.js?cb=translate');
-
-/*
-const readingTime = () => {
-    const readingTime = Math.ceil($('main').innerText.replace(/\s+/g, ' ').trim().split(' ').length / 150);
-    const author = $('meta[name="author"]').content;
-    const license = $('meta[name="license"]').content;
-    const date = $('meta[name="date"]').content;
-    $('#reading-time').innerHTML = `<b>${author}</b> | ${date} | ~<b>${readingTime}</b> min read | ${license}`;    
-}; readingTime();
-
-const createTOC = () => {
-    const chaptersContainer = document.querySelector('#chapters');
-    if (!chaptersContainer) return;
-    const headings = document.querySelectorAll('main h2');
-    if (headings.length > 0) {
-        // Ensure <h3> for Table of Contents exists
-        let tocHeading = chaptersContainer.previousElementSibling;
-        if (!tocHeading || tocHeading.tagName !== 'H3') {
-            tocHeading = document.createElement('h3');
-            tocHeading.textContent = 'Table of Contents';
-            chaptersContainer.insertAdjacentElement('beforebegin', tocHeading);
-        }
-
-        // Ensure <hr> exists
-        let tocSeparator = chaptersContainer.nextElementSibling;
-        if (!tocSeparator || tocSeparator.tagName !== 'HR') {
-            tocSeparator = document.createElement('hr');
-            chaptersContainer.insertAdjacentElement('afterend', tocSeparator);
-        }
-
-        // Populate the TOC
-        chaptersContainer.innerHTML = '';
-        headings.forEach((heading, index) => {
-            heading.id = `chapter-${index + 1}`;
-            const link = document.createElement('a');
-            link.href = `#${heading.id}`;
-            link.innerHTML = `<span>${heading.textContent}</span>`; // Maintain <span>
-            chaptersContainer.appendChild(link);
-        });
-
-        // Smooth scroll functionality
-        chaptersContainer.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', event => {
-                event.preventDefault();
-                const targetId = link.getAttribute('href').substring(1);
-                const targetElement = document.querySelector(`#${targetId}`);
-                targetElement?.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    } else {
-        // Remove <h3> and <hr> if no headings exist
-        chaptersContainer.previousElementSibling?.tagName === 'H3' && chaptersContainer.previousElementSibling.remove();
-        chaptersContainer.nextElementSibling?.tagName === 'HR' && chaptersContainer.nextElementSibling.remove();
-        chaptersContainer.innerHTML = '';
-    }
-};
-createTOC();
-*/
 
 
