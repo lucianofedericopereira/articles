@@ -195,91 +195,13 @@ const readingTime = () => {
     const author = $('meta[name="author"]').content;
     const license = $('meta[name="license"]').content;
     const date = $('meta[name="date"]').content;
-
-    $('#reading-time').innerHTML = `<b>${author}</b> | ${date} | ~<b>${readingTime}</b> min read | ${license}`;
-    
-//    $('#reading-time').innerHTML = `<b>${author}</b> ~<b>${readingTime} minutes</b> - <b>${license}</b>`;
+    $('#reading-time').innerHTML = `<b>${author}</b> | ${date} | ~<b>${readingTime}</b> min read | ${license}`;    
 }; readingTime();
 
-/*
-const createTOC = () => {
-    const chaptersContainer = $('#chapters');
-    if (!chaptersContainer) return;
-    const headings = document.querySelectorAll('main h2');
-    chaptersContainer.innerHTML = '';
-    headings.forEach((heading, index) => {
-        heading.id = `chapter-${index + 1}`;
-        const link = document.createElement('a');
-        link.href = `#${heading.id}`;
-        link.innerHTML = `<span>${heading.textContent}</span>`;
-        chaptersContainer.appendChild(link);
-    });
-    $('#chapters a')?.addEventListener('click', event => {
-        event.preventDefault();
-        const targetId = event.target.getAttribute('href').substring(1);
-        const targetElement = $(`#${targetId}`);
-        targetElement?.scrollIntoView({ behavior: 'smooth' });
-    });
-}; createTOC();
-*/
-
-/*
 const createTOC = () => {
     const chaptersContainer = document.querySelector('#chapters');
     if (!chaptersContainer) return;
-
     const headings = document.querySelectorAll('main h2');
-
-    if (headings.length > 0) {
-        // Create <h3> for "Table of Contents" if not already present
-        let tocHeading = chaptersContainer.previousElementSibling;
-        if (!tocHeading || tocHeading.tagName !== 'H3') {
-            tocHeading = document.createElement('h3');
-            tocHeading.textContent = 'Table of Contents';
-            chaptersContainer.insertAdjacentElement('beforebegin', tocHeading);
-        }
-
-        // Create <hr> if not already present
-        let tocSeparator = chaptersContainer.nextElementSibling;
-        if (!tocSeparator || tocSeparator.tagName !== 'HR') {
-            tocSeparator = document.createElement('hr');
-            chaptersContainer.insertAdjacentElement('afterend', tocSeparator);
-        }
-
-        // Populate the table of contents
-        chaptersContainer.innerHTML = '';
-        headings.forEach((heading, index) => {
-            heading.id = `chapter-${index + 1}`;
-            const link = document.createElement('a');
-            link.href = `#${heading.id}`;
-            link.textContent = heading.textContent;
-            chaptersContainer.appendChild(link);
-        });
-
-        // Smooth scroll for links
-        chaptersContainer.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', event => {
-                event.preventDefault();
-                const targetElement = document.querySelector(link.getAttribute('href'));
-                targetElement?.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    } else {
-        // Remove <h3> and <hr> if no headings
-        chaptersContainer.previousElementSibling?.tagName === 'H3' && chaptersContainer.previousElementSibling.remove();
-        chaptersContainer.nextElementSibling?.tagName === 'HR' && chaptersContainer.nextElementSibling.remove();
-        chaptersContainer.innerHTML = '';
-    }
-};
-createTOC();
-*/
-
-const createTOC = () => {
-    const chaptersContainer = document.querySelector('#chapters');
-    if (!chaptersContainer) return;
-
-    const headings = document.querySelectorAll('main h2');
-
     if (headings.length > 0) {
         // Ensure <h3> for Table of Contents exists
         let tocHeading = chaptersContainer.previousElementSibling;
