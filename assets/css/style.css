@@ -186,11 +186,18 @@ main ol li {
         line-height: 1.7rem;
         word-spacing: .01vw;
         hyphens: auto;
-        text-wrap: pretty;
         vertical-align: baseline;
         padding: 0 2.5rem 0 .25rem;
-        text-align: justify;    
     }
+
+        @supports (text-wrap: pretty) {
+    main p,
+        main ul,
+        main ol {
+            text-wrap: pretty;
+        }
+        }
+
 
     main p,
     main ol {
