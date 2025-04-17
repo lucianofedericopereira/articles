@@ -20,24 +20,34 @@ const codeCraft = {
     init: async function () {
         setInterval(() => this.clock(), 1000);
         this.setupEventListeners();
-        this.addStyles();
         this.startObserver(() => this.removeFontTags());
     },    
     dom: async function (){
-        this.prepareMenu();
+        this.addStyles();
         this.createTOC();
         this.readingTime();
+        
+        window.translate = this.translate;
+        js('https://translate.google.com/translate_a/element.js?cb=translate');
+
+        
     },
     setupEventListeners: function () {
         document.addEventListener('DOMContentLoaded', async () => {
             await this.dom();
         });
     },
-    prepareMenu: function(){
+    addStyles: function () {
         $('#menu').checked = (window.innerWidth < 1280) ? false : true;
         $('.dropbtn').classList.remove('hidden');
-    },
-    addStyles: function () {
+        $$("main footer p").forEach(p => {
+            p.addEventListener("click", () => {
+                const link = p.querySelector("a");
+                if (link) {
+                    link.click();
+                };
+            });
+        });
         const styles = `
         main footer p:hover {
             cursor: pointer;
@@ -145,21 +155,105 @@ const codeCraft = {
         });
         observer.observe(document.body, { childList: true, subtree: true });
         task();
-    },    
-    
+    }, 
+    translate: function () {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            autoDisplay: false,
+            layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+        }, 'translate');
+        $('.goog-logo-link')?.setAttribute('rel', 'noopener');
+        const googleCombo = $("select.goog-te-combo");
+        const langSelect = $('.dropdown-lang');
+        const dropdownContainer = $('.dropdown');
+        const dropbtn = $('.dropbtn');
+        const mobile = window.innerWidth < 1280;
+        const menu = $('#menu');
+        function restoreLang() {
+            const iframe = $('.goog-te-banner-frame');
+            if (!iframe) return;
+            const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+            const restoreButtons = innerDoc.getElementsByTagName("button");
+            Array.from(restoreButtons).forEach(button => {
+                if (button.id.includes("restore")) {
+                    button.click();
+                    const closeButton = innerDoc.querySelector(".goog-close-link");
+                    closeButton?.click();
+                };
+            });
+        };
+        function triggerHtmlEvent(element, eventName) {
+            const event = document.createEvent
+                ? new Event(eventName, { bubbles: true, cancelable: true })
+                : document.createEventObject();
+            document.createEvent
+                ? element.dispatchEvent(event)
+                : element.fireEvent('on' + event.eventType, event);
+        };
+        const debouncedChangeLanguage = debounce(function (lang) {
+            googleCombo.value = lang;
+            triggerHtmlEvent(googleCombo, 'change');
+        }, 1500);
+
+        langSelect?.addEventListener('click', function (event) {
+            const { target } = event;
+            if (!target) return;
+            $('.lang-select.aside-selected')?.classList.remove('aside-selected');
+            const lang = target.getAttribute('hreflang');
+            if (!lang) return;
+            target.classList.add('aside-selected');
+            langSelect.style.display = 'none';
+            dropbtn.disabled = true;
+            dropbtn.classList.add('disabled');
+            debouncedChangeLanguage(lang);
+            setTimeout(() => {
+                dropbtn.disabled = false;
+                dropbtn.classList.remove('disabled');
+                if (mobile) {
+                    menu.checked = false;
+                }
+            }, 2000);
+            event.preventDefault();
+        });
+        const checkSelectedLangInterval = setInterval(function () {
+            const selectedLang = googleCombo.value;
+            if (selectedLang) {
+                $('.lang-select.aside-selected')?.classList.remove('aside-selected');
+                const initialLang = $(`.lang-select[hreflang="${selectedLang}"]`);
+                if (initialLang) {
+                    $('.lang-select.aside-selected')?.classList.remove('aside-selected');
+                    initialLang.classList.add('aside-selected');
+                };
+                clearInterval(checkSelectedLangInterval);
+            };
+        }, 100);
+        setTimeout(function () {
+            clearInterval(checkSelectedLangInterval);
+        }, 5000);
+        dropdownContainer?.addEventListener('mouseover', function () {
+            langSelect.style.display = 'block';
+        });
+        dropdownContainer?.addEventListener('mouseout', function () {
+            langSelect.style.display = 'none';
+        });
+        dropbtn?.addEventListener('click', function (event) {
+            if (langSelect.style.display === 'block') {
+                langSelect.style.display = 'none';
+            } else {
+                langSelect.style.display = 'block';
+            }
+            event.preventDefault();
+        });
+        _tipon = function () { };
+        _tipoff = function () { };
+    },
+
+
     
 }; codeCraft.init();
 
 
 
-$$("main footer p").forEach(p => {
-    p.addEventListener("click", () => {
-        const link = p.querySelector("a");
-        if (link) {
-            link.click();
-        };
-    });
-});
 
 window.onpageshow = event => {
     if (event.persisted) {
@@ -192,7 +286,7 @@ document.getElementById('menu').addEventListener('change', function () {
 });
 
 
-
+/*
 const translate = () => {
     new google.translate.TranslateElement({
         pageLanguage: 'en',
@@ -283,9 +377,10 @@ const translate = () => {
     });
     _tipon = function () { };
     _tipoff = function () { };
-}; window.translate = translate;
+};
 
+window.translate = translate;
+*/
 
-js('https://translate.google.com/translate_a/element.js?cb=translate');
 
 
