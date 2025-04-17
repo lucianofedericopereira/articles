@@ -2,7 +2,7 @@ const codeCraft = {
     init: function () {
           setInterval(() => this.clock(), 1000);
     },    
-    dom: function {
+    dom: function (){
         this.createTOC();
         this.readingTime();
     },
