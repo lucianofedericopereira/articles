@@ -1381,10 +1381,11 @@ main ol li {
         border-top: 1px solid #bbbbbb;
     }
 
-    main p:not(.language-mermaid .mermaid-loaded p)  {
+    main > p  {
         text-align: justify;
         hyphens: auto;
     }
+
 
     main p a[href^="#"]::before {
         content: " (" counter(a) ") ";
@@ -1443,7 +1444,7 @@ main ol li {
 
 
 
-    .language-mermaid.mermaid-loaded {
+    .language-mermaid * {
         opacity:1!important;
         color: black !important;
         background: white !important;
