@@ -1,20 +1,18 @@
 <script>
 
+    function parseMetaConfig(name, delimiter = "|", pairDelimiter = "=") {
+        let metaTag = $(`meta[name="${name}"]`);
+        if (!metaTag) return {};
+        return Object.fromEntries(
+            metaTag.content.split(delimiter).map(pair => pair.split(pairDelimiter))
+        );
+    }
 
-/*
-function parseMetaConfig(name, delimiter = "|", pairDelimiter = "=") {
-    let metaTag = document.querySelector(`meta[name="${name}"]`);
-    if (!metaTag) return {};
-    return Object.fromEntries(
-        metaTag.content.split(delimiter).map(pair => pair.split(pairDelimiter))
-    );
-}
+    const commentsConfig = parseMetaConfig("comments-config");
+    if (commentsConfig) {
+        console.log(commentsConfig);
+    }
 
-let commentsConfig = parseMetaConfig("comments-config");
-console.log(commentsConfig);
-
-
-*/
 
 
 const loadComments = ({ theme = "github-light", issue = "title", repo, src }) => {
