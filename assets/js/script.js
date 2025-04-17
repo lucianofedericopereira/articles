@@ -37,7 +37,6 @@ document.getElementById('menu').addEventListener('change', function () {
 
 
 
-const $ = qs => document.querySelector(qs);
 /*
 $('#menu').checked = (window.innerWidth < 1280) ? false : true;
 */
@@ -61,20 +60,6 @@ setTimeout(() => css('aside {transition: all 300ms ease-in-out}'), 10);
 
 
 
-const js = async src => {
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = true;
-    document.head.appendChild(script);
-};
-
-const debounce = (func, wait) => {
-    let timeout;
-    return function (...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), wait);
-    };
-};
 
 document.querySelectorAll("main footer p").forEach(p => {
     p.addEventListener("click", () => {
