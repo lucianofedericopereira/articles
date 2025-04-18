@@ -17,8 +17,8 @@
     <meta name="generator" content="Jekyll">
     <meta name="description" content="{%- include components/title.html -%}">
     <meta name="license" content="{{ page.license | default: meta.license }}">
-    <meta name="robots" content="index, follow">
-    <meta name="search" content="version=@{{ site.version.lunr }}|source=@{{ site.search_file }}">{% if page.toc %}
+    <meta name="search" content="{{ site.search_file }}">
+    <meta name="robots" content="index, follow">{% if page.toc %}
     <meta name="toc" content="enabled">{% endif %}
     <meta name="twitter:card" content="summary">{% if page.mermaid %}
     <meta name="mermaid" content="version={{ site.version.mermaid }}">{% endif %}{% if page.comments and site.utteranc.repo %}
@@ -34,7 +34,8 @@
     <link rel="preload" type="text/css" href="{{css}}/codecraft.css" as="style" onload="this.rel='stylesheet'">{% for fontface in site.fonts %}
     <link rel="preload" as="font" type="font/{{ fontface.extension }}" href="{{ font }}/{{ fontface.name }}-{{ fontface.weight }}.{{ fontface.extension }}" crossorigin="anonymous">{% endfor %}
     <link rel="preload" as="script" href="{{js}}/codecraft.js">
-    {% for item in site.version %}{% if page[item.first] != false %}<link rel="preload" href="https://cdn.jsdelivr.net/npm/{{ item.first }}@{{ item.last }}/+esm" as="script">{% endif %}{% endfor %}
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/lunr@{{ site.version.lunr }}/lunr.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/mermaid@{{ site.version.mermaid }}/+esm" as="script">
     <link rel="dns-prefetch" href="https://translate.google.com">
     <link rel="dns-prefetch" href="https://translate.googleapis.com">
     <link rel="preconnect"   crossorigin="anonymous" href="https://translate.google.com">
