@@ -36,14 +36,11 @@
         <input type="checkbox" aria-expanded="false" id="toc" autocomplete='off'>
         <div id="index"><div id="reading-time"></div><div id="chapters"></div></div>
         {{ content }}
-        {% if page.comments and site.utteranc.repo %}
-        <div id="comments">
+        {% if page.comments and site.utteranc.repo %}<div id="comments">
             <h3>Comments</h3>
             <div id="comments-utteranc" class="notranslate"></div>
-        </div>
-        {% endif %}
+        </div>{% endif %}
     </main>
     <script src="{{js}}/codecraft.js" async></script>
-  {%- include components/script.html -%}
 </body>
 </html>
