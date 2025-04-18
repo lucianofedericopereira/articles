@@ -43,24 +43,28 @@ defaults:
       path: "index.md"
     values:
       layout: codecraft
+      toc: false
       comments: false
       mermaid: false
   - scope:
       path: "category"
     values:
       layout: codecraft
+      toc: false
       comments: false
       mermaid: false
   - scope:
       path: "_css"
     values:
       layout: codecraft
+      toc: true
       comments: false
       mermaid: false
   - scope:
       path: "_js"
     values:
       layout: codecraft
+      toc: true
       comments: false
       mermaid: false
 utteranc:
