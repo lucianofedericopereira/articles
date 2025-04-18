@@ -1,20 +1,4 @@
 <!--
-{% if page.mermaid and site.version.mermaid %}
-<script type="module" defer>
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@{{ site.version.mermaid }}/+esm';
-    mermaid.initialize({ 
-        startOnLoad: true,
-        theme: 'forest'
-    });
-    mermaid.run({ querySelector: '.language-mermaid' }).then(() => {
-        document.querySelectorAll('.language-mermaid').forEach(el => {
-            el.classList.add('mermaid-loaded');
-        });
-    });
-</script>
-{% endif %}
--->
-
 <script type="module" defer>
     import lunr from 'https://cdn.jsdelivr.net/npm/lunr@{{ site.version.lunr }}/+esm';
     document.addEventListener("DOMContentLoaded", async () => {
@@ -132,3 +116,4 @@
         };  searchHandler();
     });
 </script>
+-->

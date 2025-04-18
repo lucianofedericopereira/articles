@@ -18,9 +18,10 @@
     <meta name="description" content="{%- include components/title.html -%}">
     <meta name="license" content="{{ page.license | default: meta.license }}">
     <meta name="robots" content="index, follow">
-    <meta name="twitter:card" content="summary">
-    {% if page.mermaid %}<meta name="mermaid" content="version={{ site.version.mermaid }}">{% endif %}
-    {% if page.comments and site.utteranc.repo %}<meta name="comments-config" content="{% for item in site.utteranc %}{{ item.first }}={{ item.last }}{% if forloop.last == false %}|{% endif %}{% endfor %}">{% endif %}
+    <meta name="search" content="version=@{{ site.version.lunr }}|source=@{{ site.search_file }}">
+    <meta name="twitter:card" content="summary">{% if page.mermaid %}
+    <meta name="mermaid" content="version={{ site.version.mermaid }}">{% endif %}{% if page.comments and site.utteranc.repo %}
+    <meta name="comments-config" content="{% for item in site.utteranc %}{{ item.first }}={{ item.last }}{% if forloop.last == false %}|{% endif %}{% endfor %}">{% endif %}
     <meta property="og:title" content="{%- include components/title.html -%}">
     <meta property="og:locale" content="{{ meta.locale | default: 'en' }}">
     <meta property="og:url" content="{{ folder }}{{ page.url }}">

@@ -18,14 +18,135 @@ const codeCraft = {
     dom: async function (){
         this.addStyles();
         this.mermaidModule();
+        this.searchModule();
         this.createTOC();
-        this.readingTime();
+        this.readingTime();      
         this.clipboardHandler();
         this.checkComments();
         window.translate = this.translate;
         this.js('https://translate.google.com/translate_a/element.js?cb=translate');
     },
-    
+    searchModule: function () {
+        const config = this.parseMetaConfig("search");
+        if (!config) return;
+        const script = document.createElement("script");
+        script.type = "module";
+        script.defer = true;
+        script.innerHTML = `import lunr from 'https://cdn.jsdelivr.net/npm/lunr@${config.version}/+esm';
+        document.addEventListener("DOMContentLoaded", async () => {
+            const searchHandler = async () => {
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+            const mainHeader = document.getElementById('main-header');
+            let currentInput = '';
+            let currentSearchIndex = 0;
+            if (!searchInput || !searchResults) {
+                console.warn("Search input or results container not found.");
+                return;
+            }
+            try {
+                const response = await fetch('${config.source}');
+                if (!response.ok) throw new Error('Failed to load search data: '+response.status);
+                const docs = await response.json();
+                lunr.tokenizer.separator = /[\s/]+/;
+                const index = lunr(function () {
+                    this.ref('id');
+                    this.field('title', { boost: 200 });
+                    this.field('content', { boost: 2 });
+                    this.metadataWhitelist = ['position'];
+                    Object.keys(docs).forEach((key) => {
+                        this.add({
+                            id: key,
+                            title: docs[key].title,
+                            content: docs[key].content,
+                        });
+                    });
+                });
+                document.addEventListener('keydown', (e) => {
+                    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                        e.preventDefault();
+                        mainHeader?.classList.add('nav-open');
+                        searchInput.focus();
+                    }
+                });
+                const showSearch = () => document.documentElement.classList.add('search-active');
+                const hideSearch = () => document.documentElement.classList.remove('search-active');
+                searchInput.addEventListener('input', () => {
+                    const input = searchInput.value.trim();
+                    if (input === currentInput) return;
+                    currentInput = input;
+                    currentSearchIndex++;
+                    searchResults.innerHTML = '';
+                    if (input === '') {
+                        hideSearch();
+                        return;
+                    }
+                    showSearch();
+                    let results = index.query((query) => {
+                        const tokens = lunr.tokenizer(input);
+                        query.term(tokens, { boost: 10 });
+                        query.term(tokens, { wildcard: lunr.Query.wildcard.TRAILING });
+                    });
+                    if (!results.length && input.length > 2) {
+                        const tokens = lunr.tokenizer(input).filter((token) => token.str.length < 20);
+                        if (tokens.length) {
+                            results.push(...index.query((query) => {
+                                query.term(tokens, { editDistance: Math.round(Math.sqrt(input.length / 2 - 1)) });
+                            }));
+                        }
+                    }
+                    if (results.length === 0) {
+                        const noResultsDiv = document.createElement('div');
+                        noResultsDiv.classList.add('search-no-result');
+                        noResultsDiv.textContent = 'No results found';
+                        searchResults.appendChild(noResultsDiv);
+                    } else {
+                        const resultsList = document.createElement('ul');
+                        resultsList.classList.add('search-results-list');
+                        searchResults.appendChild(resultsList);
+                        addResults(resultsList, results, 0, 10, 100, currentSearchIndex, docs);
+                    }
+                });
+                const addResults = (resultsList, results, start, batchSize, batchMillis, searchIndex, docs) => {
+                    if (searchIndex !== currentSearchIndex) return; // Abort if search index changed
+                    for (let i = start; i < Math.min(start + batchSize, results.length); i++) {
+                        addResult(resultsList, results[i], docs);
+                    }
+                    if (start + batchSize < results.length) {
+                        setTimeout(() => addResults(resultsList, results, start + batchSize, batchSize, batchMillis, searchIndex, docs), batchMillis);
+                    }
+                };
+                const addResult = (resultsList, result, docs) => {
+                    const doc = docs[result.ref];
+                    const resultsListItem = document.createElement('li');
+                    resultsListItem.classList.add('search-results-list-item');
+                    resultsList.appendChild(resultsListItem);
+                    const resultLink = document.createElement('a');
+                    resultLink.classList.add('search-result');
+                    resultLink.href = doc.url;
+                    resultsListItem.appendChild(resultLink);
+                    const resultTitle = document.createElement('div');
+                    resultTitle.classList.add('search-result-title');
+                    resultTitle.textContent = doc.title;
+                    resultLink.appendChild(resultTitle);
+                    if (doc.content) {
+                        const resultPreviews = document.createElement('div');
+                        resultPreviews.classList.add('search-result-previews');
+                        resultLink.appendChild(resultPreviews);
+                        const previewText = doc.content.slice(0, 100);
+                        const resultPreview = document.createElement('div');
+                        resultPreview.classList.add('search-result-preview');
+                        resultPreview.textContent = previewText+'…';
+                        resultPreviews.appendChild(resultPreview);
+                    }
+                };
+            } catch (error) {
+                console.error('Error loading search data:', error);
+                alert('Search functionality is currently unavailable. Please try again later.');
+            }
+        };  searchHandler();
+    });`; document.body.appendChild(script);
+    },
     mermaidModule: function () {
         const config = this.parseMetaConfig("mermaid");
         if (!config) return;
@@ -33,13 +154,13 @@ const codeCraft = {
         script.type = "module";
         script.defer = true;
         script.innerHTML = `import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@${config.version}/+esm';
-        mermaid.initialize();mermaid.run({ querySelector: '.language-mermaid' }).then(() => {
+        mermaid.initialize({startOnLoad: true,theme: 'forest'});
+        mermaid.run({ querySelector: '.language-mermaid'}).then(() => {
             document.querySelectorAll('.language-mermaid').forEach(el => {
                 el.classList.add('mermaid-loaded');
             });
         });`; document.body.appendChild(script);
     },
-
     checkComments: function () {
         const commentsConfig = this.parseMetaConfig("comments-config");
         if(commentsConfig) {
