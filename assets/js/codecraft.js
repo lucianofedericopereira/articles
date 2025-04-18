@@ -17,6 +17,7 @@ const codeCraft = {
     },    
     dom: async function (){
         this.addStyles();
+        this.mermaidModule();
         this.createTOC();
         this.readingTime();
         this.clipboardHandler();
@@ -25,6 +26,20 @@ const codeCraft = {
         this.js('https://translate.google.com/translate_a/element.js?cb=translate');
     },
     
+    mermaidModule: function () {
+        const config = this.parseMetaConfig("mermaid");
+        if (!config) return;
+        const script = document.createElement("script");
+        script.type = "module";
+        script.defer = true;
+        script.innerHTML = `import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@${config.version}/+esm';
+        mermaid.initialize();mermaid.run({ querySelector: '.language-mermaid' }).then(() => {
+            document.querySelectorAll('.language-mermaid').forEach(el => {
+                el.classList.add('mermaid-loaded');
+            });
+        });`; document.body.appendChild(script);
+    },
+
     checkComments: function () {
         const commentsConfig = this.parseMetaConfig("comments-config");
         if(commentsConfig) {

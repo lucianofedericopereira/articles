@@ -19,6 +19,8 @@
     <meta name="license" content="{{ page.license | default: meta.license }}">
     <meta name="robots" content="index, follow">
     <meta name="twitter:card" content="summary">
+    {% if page.mermaid %}<meta name="mermaid" content="version={{ site.version.mermaid }}">{% endif %}
+    {% if page.comments and site.utteranc.repo %}<meta name="comments-config" content="{% for item in site.utteranc %}{{ item.first }}={{ item.last }}{% if forloop.last == false %}|{% endif %}{% endfor %}">{% endif %}
     <meta property="og:title" content="{%- include components/title.html -%}">
     <meta property="og:locale" content="{{ meta.locale | default: 'en' }}">
     <meta property="og:url" content="{{ folder }}{{ page.url }}">
@@ -26,7 +28,6 @@
     <meta property="og:site_name" content="{{ meta.title }}">
     <meta property="og:type" content="website">
     <meta property="twitter:title" content="{%- include components/title.html -%}">
-    {% if page.mermaid %}<meta name="mermaid" content="enabled=true|version={{ site.version.mermaid }}">{% endif %}
     <link rel="icon" type="image/x-icon" href="{{ icon }}">
     <link rel="preload" type="text/css" href="{{css}}/codecraft.css" as="style" onload="this.rel='stylesheet'">{% for fontface in site.fonts %}
     <link rel="preload" as="font" type="font/{{ fontface.extension }}" href="{{ font }}/{{ fontface.name }}-{{ fontface.weight }}.{{ fontface.extension }}" crossorigin="anonymous">{% endfor %}
@@ -37,7 +38,6 @@
     <link rel="preconnect"   crossorigin="anonymous" href="https://translate.google.com">
     <link rel="preconnect"   crossorigin="anonymous" href="https://translate.googleapis.com">
     <link rel="canonical" href="{{ folder }}{{ page.url }}">
-    {% if page.comments and site.utteranc.repo %}<meta name="comments-config" content="{% for item in site.utteranc %}{{ item.first }}={{ item.last }}{% if forloop.last == false %}|{% endif %}{% endfor %}">{% endif %}
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
