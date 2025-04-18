@@ -89,7 +89,7 @@ const codeCraft = {
         } catch (error) {
             console.error("Error loading search data:", error);
         }
-    }
+    },
 
 
 
