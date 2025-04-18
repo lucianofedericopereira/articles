@@ -1,42 +1,5 @@
+<!--
 <script>
-/*
-    function parseMetaConfig(name, delimiter = "|", pairDelimiter = "=") {
-        let metaTag = document.querySelector(`meta[name="${name}"]`);
-        if (!metaTag) return {};
-        return Object.fromEntries(
-            metaTag.content.split(delimiter).map(pair => pair.split(pairDelimiter))
-        );
-    }
-
-    const commentsConfig = parseMetaConfig("comments-config");
-    if (commentsConfig) {
-        console.log(commentsConfig);
-    }
-const loadComments = ({ theme = "github-light", issue = "title", repo, src }) => {
-        const commentsDiv = document.getElementById("comments-utteranc");
-        if (!commentsDiv) return;
-        if (!repo || !src) {
-            console.error("Repository and source are required to load comments.");
-            return;
-        }
-        const script = Object.assign(document.createElement("script"), {
-            src,
-            async: true,
-            crossorigin: "anonymous"
-        });
-        script.setAttribute("theme", theme);
-        script.setAttribute("issue-term", issue);
-        script.setAttribute("repo", repo);
-        commentsDiv.appendChild(script);
-    };
-    document.addEventListener("DOMContentLoaded", () => {
-        if (window.blog.comments) {
-            loadComments(window.blog.comments);
-        }
-    });
-
-*/
-
     function parseMetaConfig(name, delimiter = "|", pairDelimiter = "=") {
         let metaTag = document.querySelector(`meta[name="${name}"]`);
         if (!metaTag) {
@@ -86,7 +49,7 @@ const loadComments = ({ theme = "github-light", issue = "title", repo, src }) =>
     } 
 
 </script>
-
+-->
 
 
 

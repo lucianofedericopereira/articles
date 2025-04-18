@@ -20,9 +20,47 @@ const codeCraft = {
         this.createTOC();
         this.readingTime();
         this.clipboardHandler();
-        
+        this.checkComments();
         window.translate = this.translate;
         this.js('https://translate.google.com/translate_a/element.js?cb=translate');
+    },
+    
+    checkComments: function () {
+        const commentsConfig = this.parseMetaConfig("comments-config");
+        if(commentsConfig) {
+            this.loadComments(commentsConfig);
+        }; 
+    },
+    
+    parseMetaConfig: function (name, delimiter = "|", pairDelimiter = "=") {
+        const metaTag = document.querySelector(`meta[name="${name}"]`);
+        if (!metaTag) {
+            return null;
+        }
+        return Object.fromEntries(
+            metaTag.content.split(delimiter).map(pair => pair.split(pairDelimiter))
+        );
+    },
+    
+    loadComments: function (config) {
+        if (!config) {
+            return;
+        };
+        const { theme = "github-light", issue = "title", repo, src } = config;
+        const commentsDiv = document.getElementById("comments-utteranc");
+        if (!commentsDiv) return;
+        if (!repo || !src) {
+            return;
+        }
+        const script = Object.assign(document.createElement("script"), {
+            src,
+            async: true,
+            crossorigin: "anonymous"
+        });
+        script.setAttribute("theme", theme);
+        script.setAttribute("issue-term", issue);
+        script.setAttribute("repo", repo);
+        commentsDiv.appendChild(script);
     },
     
     js: async function (src) {
