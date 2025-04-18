@@ -15,56 +15,81 @@ const codeCraft = {
 
     search: async function () {
         const metaTag = codeCraft.$('meta[name="search"]');
-        if (!(metaTag && typeof lunr !== "undefined")) return;
-            try {
-                const response = await fetch(metaTag.content);
-                if (!response.ok) throw new Error("Failed to load search data");
-                const docs = await response.json();
-                lunr.tokenizer.separator = /[\s/]+/;
-                const index = lunr(function () {
-                    this.ref("id");
-                    this.field("title", { boost: 200 });
-                    this.field("content", { boost: 2 });
-                    this.metadataWhitelist = ["position"];
-                    Object.keys(docs).forEach((key) => {
-                        this.add({
-                            id: key,
-                            title: docs[key].title,
-                            content: docs[key].content,
-                        });
-                    });
-                });
-                const searchInput = document.getElementById("search-input");
-                const searchResults = document.getElementById("search-results");
-                if (!searchInput || !searchResults) {
-                    console.warn("Search input or results container not found.");
-                    return;
-                }
-                searchInput.addEventListener("input", () => {
-                    const input = searchInput.value.trim();
-                    searchResults.innerHTML = "";
-                    if (!input) return;
-                    let results = index.search(input);
-                    if (results.length === 0) {
-                        searchResults.innerHTML = `<div class="search-no-result">No results found</div>`;
-                    } else {
-                        const resultsList = document.createElement("ul");
-                        resultsList.classList.add("search-results-list");
-                        searchResults.appendChild(resultsList);
-                        results.forEach((result) => {
-                            const doc = docs[result.ref];
-                            const listItem = document.createElement("li");
-                            listItem.innerHTML = `<a href="${doc.url}" class="search-result">
-                            <div class="search-result-title">${doc.title}</div>
-                        </a>`;
-                            resultsList.appendChild(listItem);
-                        });
-                    }
-                });
-            } catch (error) {
-                console.error("Error loading search data:", error);
+
+        // Ensure meta tag and Lunr.js are available
+        if (!metaTag?.content || typeof lunr === "undefined") {
+            console.warn("Missing search meta tag or Lunr.js is not loaded.");
+            return;
+        }
+
+        try {
+            // Fetch search data
+            const response = await fetch(metaTag.content);
+            if (!response.ok) throw new Error(`Failed to load search data: ${response.status}`);
+
+            const docs = await response.json();
+            if (!docs || Object.keys(docs).length === 0) {
+                console.warn("Search data is empty or not properly formatted.");
+                return;
             }
-    },
+
+            // Initialize Lunr search index
+            lunr.tokenizer.separator = /[\s/]+/;
+            const index = lunr(function () {
+                this.ref("id");
+                this.field("title", { boost: 200 });
+                this.field("content", { boost: 2 });
+                this.metadataWhitelist = ["position"];
+
+                Object.entries(docs).forEach(([key, doc]) => {
+                    this.add({ id: key, title: doc.title, content: doc.content });
+                });
+            });
+
+            console.log("Search index initialized successfully.");
+
+            // Get search input and results container
+            const searchInput = document.getElementById("search-input");
+            const searchResults = document.getElementById("search-results");
+
+            if (!searchInput || !searchResults) {
+                console.warn("Search input or results container not found.");
+                return;
+            }
+
+            // Handle user search input
+            searchInput.addEventListener("input", () => {
+                const input = searchInput.value.trim();
+                searchResults.innerHTML = "";
+
+                if (!input) return;
+
+                const results = index.search(input);
+
+                if (results.length === 0) {
+                    searchResults.innerHTML = `<div class="search-no-result">No results found</div>`;
+                } else {
+                    const resultsList = document.createElement("ul");
+                    resultsList.classList.add("search-results-list");
+                    searchResults.appendChild(resultsList);
+
+                    results.forEach((result) => {
+                        const doc = docs[result.ref];
+                        const listItem = document.createElement("li");
+                        listItem.innerHTML = `
+                        <a href="${doc.url}" class="search-result">
+                            <div class="search-result-title">${doc.title}</div>
+                        </a>
+                    `;
+                        resultsList.appendChild(listItem);
+                    });
+                }
+            });
+
+        } catch (error) {
+            console.error("Error loading search data:", error);
+        }
+    }
 
 
 
