@@ -13,7 +13,7 @@ const codeCraft = {
         this.search();
     },
 
-    search: function () {
+    search: async function () {
         const metaTag = codeCraft.$('meta[name="search"]');
         if (!(metaTag && typeof lunr !== "undefined")) return;
             try {
