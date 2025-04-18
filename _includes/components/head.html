@@ -6,6 +6,7 @@
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" crossorigin="anonymous" href="https://cdn.jsdelivr.net">
     <link rel="dns-prefetch" href="https://utteranc.es">
+    <title>{%- include components/title.html -%}</title>
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=contain">
     <meta name="copyright" content="{{meta.title}} ©{{ page.date | date: '%Y' | default: site.time | date: '%Y' }} {{ page.author | default: meta.author }}">
@@ -25,7 +26,7 @@
     <meta property="og:site_name" content="{{ meta.title }}">
     <meta property="og:type" content="website">
     <meta property="twitter:title" content="{%- include components/title.html -%}">
-    <title>{%- include components/title.html -%}</title>
+    {% if page.mermaid %}<meta name="mermaid" content="enabled=true|version={{ site.version.mermaid }}">{% endif %}
     <link rel="icon" type="image/x-icon" href="{{ icon }}">
     <link rel="preload" type="text/css" href="{{css}}/codecraft.css" as="style" onload="this.rel='stylesheet'">{% for fontface in site.fonts %}
     <link rel="preload" as="font" type="font/{{ fontface.extension }}" href="{{ font }}/{{ fontface.name }}-{{ fontface.weight }}.{{ fontface.extension }}" crossorigin="anonymous">{% endfor %}
