@@ -1,8 +1,10 @@
 const codeCraft = {
     init: async function () {
         this.addStyles();
-        this.loadComments();
+        this.mermaidModule();
+        this.createTOC();
         this.clipboardHandler();
+        this.loadComments();
         this.startObserver(() => this.removeFontTags());
         document.addEventListener('DOMContentLoaded', () => this.dom());
     },
@@ -16,6 +18,82 @@ const codeCraft = {
         const separator = now.getSeconds() & 1 ? '\u200A\u2005' : ':';
         document.title = `design﹢code \u203A ${hours}${separator}${minutes}`;
     },
+
+    mermaidModule: function () {
+        const config = this.parseMetaConfig("mermaid");
+        if (!config?.version) return;
+        const script = document.createElement("script");
+        script.type = "module";
+        script.defer = true;
+        script.innerHTML = `import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@${config.version}/+esm';
+        mermaid.initialize({startOnLoad: true,theme: 'forest'});
+        mermaid.run({ querySelector: '.language-mermaid'}).then(() => {
+            document.querySelectorAll('.language-mermaid').forEach(el => {
+                el.classList.add('mermaid-loaded');
+            });
+        });`; document.body.appendChild(script);
+    },
+
+
+    createTOC: function () {
+        const metaTag = codeCraft.$('meta[name="toc"]');
+        if (!metaTag || metaTag.content !== "enabled") {
+            return;
+        }
+        this.readingTime();
+        const chaptersContainer = codeCraft.$('#chapters');
+        if (!chaptersContainer) return;
+        const headings = codeCraft.$$('main h2');
+        if (headings.length > 0) {
+            let tocHeading = chaptersContainer.previousElementSibling;
+            if (!tocHeading || tocHeading.tagName !== 'H3') {
+                tocHeading = document.createElement('h3');
+                tocHeading.textContent = 'Table of Contents';
+                chaptersContainer.insertAdjacentElement('beforebegin', tocHeading);
+            }
+            let tocSeparator = chaptersContainer.nextElementSibling;
+            if (!tocSeparator || tocSeparator.tagName !== 'HR') {
+                tocSeparator = document.createElement('hr');
+                chaptersContainer.insertAdjacentElement('afterend', tocSeparator);
+            };
+            chaptersContainer.innerHTML = '';
+            headings.forEach((heading, index) => {
+                heading.id = `chapter-${index + 1}`;
+                const link = document.createElement('a');
+                link.href = `#${heading.id}`;
+                link.innerHTML = `<span>${heading.textContent}</span>`;
+                chaptersContainer.appendChild(link);
+            });
+            chaptersContainer.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', event => {
+                    event.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetElement = codeCraft.$(`#${targetId}`);
+                    targetElement?.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        } else {
+            chaptersContainer.previousElementSibling?.tagName === 'H3' && chaptersContainer.previousElementSibling.remove();
+            chaptersContainer.nextElementSibling?.tagName === 'HR' && chaptersContainer.nextElementSibling.remove();
+            chaptersContainer.innerHTML = '';
+        };
+    },
+
+
+
+
+
+    readingTime: function () {
+        const readingTime = Math.ceil(codeCraft.$('main').innerText.replace(/\s+/g, ' ').trim().split(' ').length / 150);
+        const author = codeCraft.$('meta[name="author"]').content;
+        const license = codeCraft.$('meta[name="license"]').content;
+        const date = codeCraft.$('meta[name="date"]').content;
+        codeCraft.$('#reading-time').innerHTML = `<b>${author}</b> | ${date} | ~<b>${readingTime}</b> min read | ${license}`;
+    },
+
+
+
+
     loadComments: function () {
         const commentsConfig = this.parseMetaConfig("comments-config");
         if (!commentsConfig) {
@@ -32,7 +110,6 @@ const codeCraft = {
             async: true,
             crossorigin: "anonymous"
         });
-
         script.setAttribute("theme", theme);
         script.setAttribute("issue-term", issue);
         script.setAttribute("repo", repo);
@@ -78,9 +155,9 @@ const codeCraft = {
         });
     },
     addStyles: function () {
-        this.$('#menu').checked = (window.innerWidth < 1280) ? false : true;
-        this.$('.dropbtn').classList.remove('hidden');
-        this.$$("main footer p").forEach(p => {
+        codeCraft.$('#menu').checked = (window.innerWidth < 1280) ? false : true;
+        codeCraft.$('.dropbtn').classList.remove('hidden');
+        codeCraft.$$("main footer p").forEach(p => {
             p.addEventListener("click", () => {
                 const link = p.querySelector("a");
                 if (link) {
@@ -114,7 +191,7 @@ const codeCraft = {
         }, 10);
     },
     removeFontTags: function () {
-        this.$$('font').forEach(fontTag => {
+        codeCraft.$$('font').forEach(fontTag => {
             while (fontTag.firstChild) {
                 fontTag.parentNode.insertBefore(fontTag.firstChild, fontTag);
             }
@@ -142,7 +219,7 @@ const codeCraft = {
         task();
     },
     parseMetaConfig: function (name, delimiter = "|", pairDelimiter = "=") {
-        const metaTag = this.$(`meta[name="${name}"]`);
+        const metaTag = codeCraft.$(`meta[name="${name}"]`);
         if (!metaTag) {
             return null;
         }
