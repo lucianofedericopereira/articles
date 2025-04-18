@@ -1,211 +1,43 @@
-const $  = qs => document.querySelector(qs);
-const $$ = qs => document.querySelectorAll(qs);
-
-const debounce = (func, wait) => {
-    let timeout;
-    return function (...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), wait);
-    };
-};
-
 const codeCraft = {
     init: async function () {
-        setInterval(() => this.clock(), 1000);
-        this.setupEventListeners();
-        this.startObserver(() => this.removeFontTags());
-    },    
-    dom: async function (){
         this.addStyles();
-        this.mermaidModule();
-        this.searchModule();
-        this.createTOC();
-        this.readingTime();      
+        this.loadComments();
         this.clipboardHandler();
-        this.checkComments();
-        window.translate = this.translate;
-        this.js('https://translate.google.com/translate_a/element.js?cb=translate');
+        this.startObserver(() => this.removeFontTags());
+        document.addEventListener('DOMContentLoaded', () => this.dom());
     },
-    searchModule: function () {
-        const config = this.parseMetaConfig("search");
-        if (!config) return;
-        const script = document.createElement("script");
-        script.type = "module";
-        script.defer = true;
-        script.innerHTML = `import lunr from 'https://cdn.jsdelivr.net/npm/lunr@${config.version}/+esm';
-        document.addEventListener("DOMContentLoaded", async () => {
-            const searchHandler = async () => {
-            const searchInput = document.getElementById('search-input');
-            const searchResults = document.getElementById('search-results');
-            const mainHeader = document.getElementById('main-header');
-            let currentInput = '';
-            let currentSearchIndex = 0;
-            if (!searchInput || !searchResults) {
-                console.warn("Search input or results container not found.");
-                return;
-            }
-            try {
-                const response = await fetch('${config.source}');
-                if (!response.ok) throw new Error('Failed to load search data: '+response.status);
-                const docs = await response.json();
-                lunr.tokenizer.separator = /[\s/]+/;
-                const index = lunr(function () {
-                    this.ref('id');
-                    this.field('title', { boost: 200 });
-                    this.field('content', { boost: 2 });
-                    this.metadataWhitelist = ['position'];
-                    Object.keys(docs).forEach((key) => {
-                        this.add({
-                            id: key,
-                            title: docs[key].title,
-                            content: docs[key].content,
-                        });
-                    });
-                });
-                document.addEventListener('keydown', (e) => {
-                    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-                        e.preventDefault();
-                        mainHeader?.classList.add('nav-open');
-                        searchInput.focus();
-                    }
-                });
-                const showSearch = () => document.documentElement.classList.add('search-active');
-                const hideSearch = () => document.documentElement.classList.remove('search-active');
-                searchInput.addEventListener('input', () => {
-                    const input = searchInput.value.trim();
-                    if (input === currentInput) return;
-                    currentInput = input;
-                    currentSearchIndex++;
-                    searchResults.innerHTML = '';
-                    if (input === '') {
-                        hideSearch();
-                        return;
-                    }
-                    showSearch();
-                    let results = index.query((query) => {
-                        const tokens = lunr.tokenizer(input);
-                        query.term(tokens, { boost: 10 });
-                        query.term(tokens, { wildcard: lunr.Query.wildcard.TRAILING });
-                    });
-                    if (!results.length && input.length > 2) {
-                        const tokens = lunr.tokenizer(input).filter((token) => token.str.length < 20);
-                        if (tokens.length) {
-                            results.push(...index.query((query) => {
-                                query.term(tokens, { editDistance: Math.round(Math.sqrt(input.length / 2 - 1)) });
-                            }));
-                        }
-                    }
-                    if (results.length === 0) {
-                        const noResultsDiv = document.createElement('div');
-                        noResultsDiv.classList.add('search-no-result');
-                        noResultsDiv.textContent = 'No results found';
-                        searchResults.appendChild(noResultsDiv);
-                    } else {
-                        const resultsList = document.createElement('ul');
-                        resultsList.classList.add('search-results-list');
-                        searchResults.appendChild(resultsList);
-                        addResults(resultsList, results, 0, 10, 100, currentSearchIndex, docs);
-                    }
-                });
-                const addResults = (resultsList, results, start, batchSize, batchMillis, searchIndex, docs) => {
-                    if (searchIndex !== currentSearchIndex) return; // Abort if search index changed
-                    for (let i = start; i < Math.min(start + batchSize, results.length); i++) {
-                        addResult(resultsList, results[i], docs);
-                    }
-                    if (start + batchSize < results.length) {
-                        setTimeout(() => addResults(resultsList, results, start + batchSize, batchSize, batchMillis, searchIndex, docs), batchMillis);
-                    }
-                };
-                const addResult = (resultsList, result, docs) => {
-                    const doc = docs[result.ref];
-                    const resultsListItem = document.createElement('li');
-                    resultsListItem.classList.add('search-results-list-item');
-                    resultsList.appendChild(resultsListItem);
-                    const resultLink = document.createElement('a');
-                    resultLink.classList.add('search-result');
-                    resultLink.href = doc.url;
-                    resultsListItem.appendChild(resultLink);
-                    const resultTitle = document.createElement('div');
-                    resultTitle.classList.add('search-result-title');
-                    resultTitle.textContent = doc.title;
-                    resultLink.appendChild(resultTitle);
-                    if (doc.content) {
-                        const resultPreviews = document.createElement('div');
-                        resultPreviews.classList.add('search-result-previews');
-                        resultLink.appendChild(resultPreviews);
-                        const previewText = doc.content.slice(0, 100);
-                        const resultPreview = document.createElement('div');
-                        resultPreview.classList.add('search-result-preview');
-                        resultPreview.textContent = previewText+'…';
-                        resultPreviews.appendChild(resultPreview);
-                    }
-                };
-            } catch (error) {
-                console.error('Error loading search data:', error);
-                alert('Search functionality is currently unavailable. Please try again later.');
-            }
-        };  searchHandler();
-    });`; document.body.appendChild(script);
+    dom: async function () {
+        setInterval(() => this.clock(), 1000);
     },
-    mermaidModule: function () {
-        const config = this.parseMetaConfig("mermaid");
-        if (!config) return;
-        const script = document.createElement("script");
-        script.type = "module";
-        script.defer = true;
-        script.innerHTML = `import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@${config.version}/+esm';
-        mermaid.initialize({startOnLoad: true,theme: 'forest'});
-        mermaid.run({ querySelector: '.language-mermaid'}).then(() => {
-            document.querySelectorAll('.language-mermaid').forEach(el => {
-                el.classList.add('mermaid-loaded');
-            });
-        });`; document.body.appendChild(script);
+    clock: function () {
+        const now = new Date();
+        const hours = this.pad(now.getHours());
+        const minutes = this.pad(now.getMinutes());
+        const separator = now.getSeconds() & 1 ? '\u200A\u2005' : ':';
+        document.title = `design﹢code \u203A ${hours}${separator}${minutes}`;
     },
-    checkComments: function () {
+    loadComments: function () {
         const commentsConfig = this.parseMetaConfig("comments-config");
-        if(commentsConfig) {
-            this.loadComments(commentsConfig);
-        }; 
-    },
-    
-    parseMetaConfig: function (name, delimiter = "|", pairDelimiter = "=") {
-        const metaTag = document.querySelector(`meta[name="${name}"]`);
-        if (!metaTag) {
-            return null;
-        }
-        return Object.fromEntries(
-            metaTag.content.split(delimiter).map(pair => pair.split(pairDelimiter))
-        );
-    },
-    
-    loadComments: function (config) {
-        if (!config) {
+        if (!commentsConfig) {
             return;
         };
-        const { theme = "github-light", issue = "title", repo, src } = config;
-        const commentsDiv = document.getElementById("comments-utteranc");
+        const { theme = "github-light", issue = "title", repo, src } = commentsConfig;
+        const commentsDiv = codeCraft.$("#comments-utteranc");
         if (!commentsDiv) return;
         if (!repo || !src) {
             return;
-        }
+        };
         const script = Object.assign(document.createElement("script"), {
             src,
             async: true,
             crossorigin: "anonymous"
         });
+
         script.setAttribute("theme", theme);
         script.setAttribute("issue-term", issue);
         script.setAttribute("repo", repo);
         commentsDiv.appendChild(script);
     },
-    
-    js: async function (src) {
-        const script = document.createElement('script');
-        script.src = src;
-        script.async = true;
-        document.head.appendChild(script);
-    },
-    
     clipboardHandler: function () {
         if (!navigator.clipboard) {
             console.warn("Clipboard API is not supported or unavailable in this context.");
@@ -223,7 +55,7 @@ const codeCraft = {
                 <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
             </svg>`
         };
-        $$("div.highlighter-rouge, div.listingblock > div.content, figure.highlight").forEach(codeBlock => {
+        codeCraft.$$("div.highlighter-rouge, div.listingblock > div.content, figure.highlight").forEach(codeBlock => {
             const button = document.createElement("button");
             button.type = "button";
             button.setAttribute("aria-label", "Copy code to clipboard");
@@ -244,26 +76,11 @@ const codeCraft = {
                     .catch((err) => console.error("Failed to copy text:", err));
             });
         });
-
-    },
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    setupEventListeners: function () {
-        document.addEventListener('DOMContentLoaded', async () => {
-            await this.dom();
-        });
     },
     addStyles: function () {
-        $('#menu').checked = (window.innerWidth < 1280) ? false : true;
-        $('.dropbtn').classList.remove('hidden');
-        $$("main footer p").forEach(p => {
+        this.$('#menu').checked = (window.innerWidth < 1280) ? false : true;
+        this.$('.dropbtn').classList.remove('hidden');
+        this.$$("main footer p").forEach(p => {
             p.addEventListener("click", () => {
                 const link = p.querySelector("a");
                 if (link) {
@@ -296,78 +113,23 @@ const codeCraft = {
         `);
         }, 10);
     },
-    clock: function () {
-        const now = new Date();
-        const hours = this.pad(now.getHours());
-        const minutes = this.pad(now.getMinutes());
-        const separator = now.getSeconds() & 1 ? '\u200A\u2005' : ':';
-        document.title = `design﹢code \u203A ${hours}${separator}${minutes}`;
-    },
-    pad: function (num) {
-        return num.toString().padStart(2, '0');
-    },
-    css: function (content) {
-        if (!content) return;
-        const style = document.createElement('style');
-        style.type = 'text/css';
-        style.appendChild(document.createTextNode(content));
-        document.head.appendChild(style);
-    },
-    readingTime: function () {
-        const readingTime = Math.ceil($('main').innerText.replace(/\s+/g, ' ').trim().split(' ').length / 150);
-        const author = $('meta[name="author"]').content;
-        const license = $('meta[name="license"]').content;
-        const date = $('meta[name="date"]').content;
-        $('#reading-time').innerHTML = `<b>${author}</b> | ${date} | ~<b>${readingTime}</b> min read | ${license}`;
-    },    
-    createTOC: function () {
-        const chaptersContainer = $('#chapters');
-        if (!chaptersContainer) return;
-        const headings = $$('main h2');
-        if (headings.length > 0) {
-            let tocHeading = chaptersContainer.previousElementSibling;
-            if (!tocHeading || tocHeading.tagName !== 'H3') {
-                tocHeading = document.createElement('h3');
-                tocHeading.textContent = 'Table of Contents';
-                chaptersContainer.insertAdjacentElement('beforebegin', tocHeading);
-            }
-            let tocSeparator = chaptersContainer.nextElementSibling;
-            if (!tocSeparator || tocSeparator.tagName !== 'HR') {
-                tocSeparator = document.createElement('hr');
-                chaptersContainer.insertAdjacentElement('afterend', tocSeparator);
-            };
-            chaptersContainer.innerHTML = '';
-            headings.forEach((heading, index) => {
-                heading.id = `chapter-${index + 1}`;
-                const link = document.createElement('a');
-                link.href = `#${heading.id}`;
-                link.innerHTML = `<span>${heading.textContent}</span>`;
-                chaptersContainer.appendChild(link);
-            });
-            chaptersContainer.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', event => {
-                    event.preventDefault();
-                    const targetId = link.getAttribute('href').substring(1);
-                    const targetElement = $(`#${targetId}`);
-                    targetElement?.scrollIntoView({ behavior: 'smooth' });
-                });
-            });
-        } else {
-            chaptersContainer.previousElementSibling?.tagName === 'H3' && chaptersContainer.previousElementSibling.remove();
-            chaptersContainer.nextElementSibling?.tagName === 'HR' && chaptersContainer.nextElementSibling.remove();
-            chaptersContainer.innerHTML = '';
-        };
-    },
-
     removeFontTags: function () {
-        $$('font').forEach(fontTag => {
+        this.$$('font').forEach(fontTag => {
             while (fontTag.firstChild) {
                 fontTag.parentNode.insertBefore(fontTag.firstChild, fontTag);
             }
             fontTag.remove();
         });
     },
-    
+    $: function (qs) { return document.querySelector(qs); },
+    $$: function (qs) { return document.querySelectorAll(qs); },
+    debounce: function (func, wait) {
+        let timeout;
+        return function (...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    },
     startObserver: function (task) {
         const observer = new MutationObserver(mutationsList => {
             mutationsList.forEach(mutation => {
@@ -378,134 +140,24 @@ const codeCraft = {
         });
         observer.observe(document.body, { childList: true, subtree: true });
         task();
-    }, 
-    translate: function () {
-        new google.translate.TranslateElement({
-            pageLanguage: 'en',
-            autoDisplay: false,
-            layout: google.translate.TranslateElement.InlineLayout.VERTICAL
-        }, 'translate');
-        $('.goog-logo-link')?.setAttribute('rel', 'noopener');
-        const googleCombo = $("select.goog-te-combo");
-        const langSelect = $('.dropdown-lang');
-        const dropdownContainer = $('.dropdown');
-        const dropbtn = $('.dropbtn');
-        const mobile = window.innerWidth < 1280;
-        const menu = $('#menu');
-        function restoreLang() {
-            const iframe = $('.goog-te-banner-frame');
-            if (!iframe) return;
-            const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-            const restoreButtons = innerDoc.getElementsByTagName("button");
-            Array.from(restoreButtons).forEach(button => {
-                if (button.id.includes("restore")) {
-                    button.click();
-                    const closeButton = innerDoc.querySelector(".goog-close-link");
-                    closeButton?.click();
-                };
-            });
-        };
-        function triggerHtmlEvent(element, eventName) {
-            const event = document.createEvent
-                ? new Event(eventName, { bubbles: true, cancelable: true })
-                : document.createEventObject();
-            document.createEvent
-                ? element.dispatchEvent(event)
-                : element.fireEvent('on' + event.eventType, event);
-        };
-        const debouncedChangeLanguage = debounce(function (lang) {
-            googleCombo.value = lang;
-            triggerHtmlEvent(googleCombo, 'change');
-        }, 1500);
-
-        langSelect?.addEventListener('click', function (event) {
-            const { target } = event;
-            if (!target) return;
-            $('.lang-select.aside-selected')?.classList.remove('aside-selected');
-            const lang = target.getAttribute('hreflang');
-            if (!lang) return;
-            target.classList.add('aside-selected');
-            langSelect.style.display = 'none';
-            dropbtn.disabled = true;
-            dropbtn.classList.add('disabled');
-            debouncedChangeLanguage(lang);
-            setTimeout(() => {
-                dropbtn.disabled = false;
-                dropbtn.classList.remove('disabled');
-                if (mobile) {
-                    menu.checked = false;
-                }
-            }, 2000);
-            event.preventDefault();
-        });
-        const checkSelectedLangInterval = setInterval(function () {
-            const selectedLang = googleCombo.value;
-            if (selectedLang) {
-                $('.lang-select.aside-selected')?.classList.remove('aside-selected');
-                const initialLang = $(`.lang-select[hreflang="${selectedLang}"]`);
-                if (initialLang) {
-                    $('.lang-select.aside-selected')?.classList.remove('aside-selected');
-                    initialLang.classList.add('aside-selected');
-                };
-                clearInterval(checkSelectedLangInterval);
-            };
-        }, 100);
-        setTimeout(function () {
-            clearInterval(checkSelectedLangInterval);
-        }, 5000);
-        dropdownContainer?.addEventListener('mouseover', function () {
-            langSelect.style.display = 'block';
-        });
-        dropdownContainer?.addEventListener('mouseout', function () {
-            langSelect.style.display = 'none';
-        });
-        dropbtn?.addEventListener('click', function (event) {
-            if (langSelect.style.display === 'block') {
-                langSelect.style.display = 'none';
-            } else {
-                langSelect.style.display = 'block';
-            }
-            event.preventDefault();
-        });
-        _tipon = function () { };
-        _tipoff = function () { };
     },
-
-
-    
+    parseMetaConfig: function (name, delimiter = "|", pairDelimiter = "=") {
+        const metaTag = this.$(`meta[name="${name}"]`);
+        if (!metaTag) {
+            return null;
+        }
+        return Object.fromEntries(
+            metaTag.content.split(delimiter).map(pair => pair.split(pairDelimiter))
+        );
+    },
+    pad: function (num) {
+        return num.toString().padStart(2, '0');
+    },
+    css: function (content) {
+        if (!content) return;
+        const style = document.createElement('style');
+        style.type = 'text/css';
+        style.appendChild(document.createTextNode(content));
+        document.head.appendChild(style);
+    }
 }; codeCraft.init();
-
-
-
-
-window.onpageshow = event => {
-    if (event.persisted) {
-        event.preventDefault();
-        const menuLabel = document.getElementById('menu-label');
-        menuLabel.click();
-        const input = document.getElementById('search-input');
-        const checkbox = document.getElementById('menu');
-        const screenWidth = window.innerWidth;
-        if (screenWidth < 1024 && checkbox.checked) {
-            setTimeout(() => {
-                checkbox.checked = false;
-            }, 50);
-        }
-        if (input) {
-            input.value = '';
-            input.focus();
-            input.blur();
-        }
-    }
-};
-
-document.getElementById('menu').addEventListener('change', function () {
-    if (!this.checked) {
-        const search = document.getElementById('search-input');
-        search.value = '';
-        search.focus();
-        search.blur();
-    }
-});
-
-
