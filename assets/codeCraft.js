@@ -101,8 +101,8 @@ export const codeCraft = {
             }
             event.preventDefault();
         });
-        _tipon = function () { };
         _tipoff = function () { };
+        _tipon = function () { };
     },
 
 
