@@ -156,7 +156,7 @@
                 if (e.key === 'Escape') {
                     hideSearch(); // ✅ Clears input and search results when pressing ESC
                     searchInput.blur();
-                    mainHeader.checked = true;
+                    mainHeader.checked = false;
 
                 }
             });
@@ -179,7 +179,7 @@
 
                 const resultLink = document.createElement('a');
                 resultLink.classList.add('search-result');
-                resultLink.addEventListener('click', () => hideSearch()); 
+                resultLink.addEventListener('click', () => searchInput.value = ''); 
                 resultLink.href = doc.url;
                 resultsListItem.appendChild(resultLink);
 
