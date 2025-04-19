@@ -6,7 +6,7 @@
 {% assign image = asset | append: "/images" %}
 {% assign font = asset | append: "/fonts" %}
 {% assign css = asset | append: "/css" %}
-{% assign js = asset | append: "/js" %}
+{% assign js = asset | append: "/codeCraft.js" %}
 {% assign icon = image | append: "/favicon.ico" %}
 {% endcapture %}<!DOCTYPE html>
 <html lang="{{ meta.locale | default: 'en' }}">
@@ -44,6 +44,8 @@
 
 <script type="module" defer>
     import lunr from 'https://cdn.jsdelivr.net/npm/lunr@{{ site.version.lunr }}/+esm';
+    import { codeCraft } from '{{ js }}';
+    codeCraft.init(lunr);
 
 /*
     async function searchHandler(lunrInstance) {
@@ -52,16 +54,13 @@
         const metaTag = document.querySelector('meta[name="search"]');
         const menu = document.getElementById('menu');
         if (!searchInput || !searchResults || !metaTag?.content) return;
-
         let currentInput = '';
         let currentSearchIndex = 0;
-
         try {
             const response = await fetch(metaTag.content);
             if (!response.ok) throw new Error(`Failed to load search data: ${response.status}`);
             const docs = await response.json();
             lunrInstance.tokenizer.separator = /[\s/]+/;
-
             const index = lunrInstance(function () {
                 this.ref('id');
                 this.field('title', { boost: 200 });
@@ -75,219 +74,42 @@
                     });
                 });
             });
-
             document.addEventListener('keydown', (e) => {
                 if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                     e.preventDefault();
-                    
                     menu.checked = true;
                     searchInput.focus();
                 }
             });
-
             const showSearch = () => document.documentElement.classList.add('search-active');
             const hideSearch = () => {
                 document.documentElement.classList.remove('search-active');
-                searchInput.value = ''; // ✅ Clears input field
-                searchResults.innerHTML = ''; // ✅ Clears results
-                searchResults.style.display = 'none'; // ✅ Prevents overlay issues
-            };
-
-            searchInput.addEventListener('input', () => {
-                const input = searchInput.value.trim();
-
-                if (input.length === 0) { // 🔥 Clears results completely when empty
-                    hideSearch();
-                    return;
-                }
-
-                if (input.length < 2) { // 🔥 Prevent showing results before two keystrokes
-                    searchResults.innerHTML = ''; // ✅ Clears previous results
-                    searchResults.style.display = 'none'; // ✅ Hide results
-                    return;
-                }
-
-                if (input === currentInput) return;
-                currentInput = input;
-                currentSearchIndex++;
+                searchInput.value = '';
                 searchResults.innerHTML = '';
-                searchResults.style.display = 'block'; // ✅ Show results container when needed
-
-                showSearch();
-
-                let results = index.query((query) => {
-                    const tokens = lunrInstance.tokenizer(input);
-                    query.term(tokens, { boost: 10 });
-                    query.term(tokens, { wildcard: lunrInstance.Query.wildcard.TRAILING });
-                });
-
-                if (!results.length && input.length > 2) {
-                    const tokens = lunrInstance.tokenizer(input).filter((token) => token.str.length < 20);
-                    if (tokens.length) {
-                        results.push(...index.query((query) => {
-                            query.term(tokens, { editDistance: Math.round(Math.sqrt(input.length / 2 - 1)) });
-                        }));
-                    }
-                }
-
-                if (results.length === 0) {
-                    searchResults.innerHTML = `<div class="search-no-result">No results found</div>`;
-                } else {
-                    const resultsList = document.createElement('ul');
-                    resultsList.classList.add('search-results-list');
-                    searchResults.appendChild(resultsList);
-                    addResults(resultsList, results, 0, 10, 100, currentSearchIndex, docs);
-                }
-            });
-
-            // ✅ Ensure input & results clear when search-input becomes hidden
-            const observer = new MutationObserver(() => {
-                if (window.getComputedStyle(searchInput).display === 'none') {
-                    hideSearch(); // ✅ Clears input & results
-                }
-            });
-            observer.observe(searchInput, { attributes: true, attributeFilter: ['style'] });
-
-            // ✅ Also clear search when focus is lost
-            searchInput.addEventListener('focusout', () => hideSearch());
-
-            // ✅ ESC key now properly clears search-input & results
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    hideSearch(); // ✅ Clears input and search results when pressing ESC
-                    searchInput.blur();
-                    menu.checked = false;
-
-                }
-            });
-
-            const addResults = (resultsList, results, start, batchSize, batchMillis, searchIndex, docs) => {
-                if (searchIndex !== currentSearchIndex) return; // Abort if search index changed
-                for (let i = start; i < Math.min(start + batchSize, results.length); i++) {
-                    addResult(resultsList, results[i], docs);
-                }
-                if (start + batchSize < results.length) {
-                    setTimeout(() => addResults(resultsList, results, start + batchSize, batchSize, batchMillis, searchIndex, docs), batchMillis);
-                }
+                searchResults.style.display = 'none';
             };
-
-            const addResult = (resultsList, result, docs) => {
-                const doc = docs[result.ref];
-                const resultsListItem = document.createElement('li');
-                resultsListItem.classList.add('search-results-list-item');
-                resultsList.appendChild(resultsListItem);
-
-                const resultLink = document.createElement('a');
-                resultLink.classList.add('search-result');
-                resultLink.href = doc.url;
-                resultLink.addEventListener('click', event => {
-                    searchInput.value = ''; // ✅ Clears search input field
-                });
-
-
-                resultsListItem.appendChild(resultLink);
-
-                const resultTitle = document.createElement('div');
-                resultTitle.classList.add('search-result-title');
-                resultTitle.textContent = doc.title;
-                resultLink.appendChild(resultTitle);
-
-                // ✅ Correctly nested result preview inside `.search-result`
-                if (doc.content) {
-                    const resultPreviews = document.createElement('div');
-                    resultPreviews.classList.add('search-result-previews');
-                    resultLink.appendChild(resultPreviews);
-
-                    const previewText = doc.content.slice(0, 100);
-                    const resultPreview = document.createElement('div');
-                    resultPreview.classList.add('search-result-preview');
-                    resultPreview.textContent = `${previewText}…`;
-                    resultPreviews.appendChild(resultPreview);
-                }
-            };
-
-        } catch (error) {
-            console.error('Error loading search data:', error);
-        }
-    }
-*/
-
-
-
-    async function searchHandler(lunrInstance) {
-        const searchInput = document.getElementById('search-input');
-        const searchResults = document.getElementById('search-results');
-        const metaTag = document.querySelector('meta[name="search"]');
-        const menu = document.getElementById('menu');
-        if (!searchInput || !searchResults || !metaTag?.content) return;
-
-        let currentInput = '';
-        let currentSearchIndex = 0;
-
-        try {
-            const response = await fetch(metaTag.content);
-            if (!response.ok) throw new Error(`Failed to load search data: ${response.status}`);
-            const docs = await response.json();
-            lunrInstance.tokenizer.separator = /[\s/]+/;
-
-            const index = lunrInstance(function () {
-                this.ref('id');
-                this.field('title', { boost: 200 });
-                this.field('content', { boost: 2 });
-                this.metadataWhitelist = ['position'];
-                Object.keys(docs).forEach((key) => {
-                    this.add({
-                        id: key,
-                        title: docs[key].title,
-                        content: docs[key].content,
-                    });
-                });
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-                    e.preventDefault();
-                    menu.checked = true;
-                    searchInput.focus();
-                }
-            });
-
-            const showSearch = () => document.documentElement.classList.add('search-active');
-            const hideSearch = () => {
-                document.documentElement.classList.remove('search-active');
-                searchInput.value = ''; // ✅ Clears input field
-                searchResults.innerHTML = ''; // ✅ Clears results
-                searchResults.style.display = 'none'; // ✅ Prevents overlay issues
-            };
-
             searchInput.addEventListener('input', () => {
                 const input = searchInput.value.trim();
-
                 if (input.length === 0) {
                     hideSearch();
                     return;
                 }
-
                 if (input.length < 2) {
                     searchResults.innerHTML = '';
                     searchResults.style.display = 'none';
                     return;
                 }
-
                 if (input === currentInput) return;
                 currentInput = input;
                 currentSearchIndex++;
                 searchResults.innerHTML = '';
                 searchResults.style.display = 'block';
-
                 showSearch();
-
                 let results = index.query((query) => {
                     const tokens = lunrInstance.tokenizer(input);
                     query.term(tokens, { boost: 10 });
                     query.term(tokens, { wildcard: lunrInstance.Query.wildcard.TRAILING });
                 });
-
                 if (!results.length && input.length > 2) {
                     const tokens = lunrInstance.tokenizer(input).filter((token) => token.str.length < 20);
                     if (tokens.length) {
@@ -296,7 +118,6 @@
                         }));
                     }
                 }
-
                 if (results.length === 0) {
                     searchResults.innerHTML = `<div class="search-no-result">No results found</div>`;
                 } else {
@@ -306,23 +127,17 @@
                     addResults(resultsList, results, 0, 10, 100, currentSearchIndex, docs);
                 }
             });
-
-            // ✅ Prevent results from disappearing when tabbing out (fix focus loss issue)
             searchInput.addEventListener('blur', (event) => {
                 if (!searchResults.contains(event.relatedTarget)) {
                     hideSearch();
                 }
             });
-
-            // ✅ Ensure input & results clear when search-input becomes hidden
             const observer = new MutationObserver(() => {
                 if (window.getComputedStyle(searchInput).display === 'none') {
                     hideSearch();
                 }
             });
             observer.observe(searchInput, { attributes: true, attributeFilter: ['style'] });
-
-            // ✅ ESC key now properly clears search-input & results
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     hideSearch();
@@ -330,7 +145,6 @@
                     menu.checked = false;
                 }
             });
-
             const addResults = (resultsList, results, start, batchSize, batchMillis, searchIndex, docs) => {
                 if (searchIndex !== currentSearchIndex) return;
                 for (let i = start; i < Math.min(start + batchSize, results.length); i++) {
@@ -340,36 +154,30 @@
                     setTimeout(() => addResults(resultsList, results, start + batchSize, batchSize, batchMillis, searchIndex, docs), batchMillis);
                 }
             };
-
             const addResult = (resultsList, result, docs) => {
                 const doc = docs[result.ref];
                 const resultsListItem = document.createElement('li');
                 resultsListItem.classList.add('search-results-list-item');
                 resultsList.appendChild(resultsListItem);
-
                 const resultLink = document.createElement('a');
                 resultLink.classList.add('search-result');
                 resultLink.href = doc.url;
                 resultLink.addEventListener('click', (event) => {
-                    event.preventDefault(); // ✅ Prevent default navigation
-                    searchInput.value = ''; // ✅ Clears search input field
+                    event.preventDefault();
+                    searchInput.value = '';
                     setTimeout(() => {
-                        window.location.href = resultLink.href; // 🔥 Follow link after clearing
+                        window.location.href = resultLink.href;
                     }, 10);
                 });
-
                 resultsListItem.appendChild(resultLink);
-
                 const resultTitle = document.createElement('div');
                 resultTitle.classList.add('search-result-title');
                 resultTitle.textContent = doc.title;
                 resultLink.appendChild(resultTitle);
-
                 if (doc.content) {
                     const resultPreviews = document.createElement('div');
                     resultPreviews.classList.add('search-result-previews');
                     resultLink.appendChild(resultPreviews);
-
                     const previewText = doc.content.slice(0, 100);
                     const resultPreview = document.createElement('div');
                     resultPreview.classList.add('search-result-preview');
@@ -377,22 +185,22 @@
                     resultPreviews.appendChild(resultPreview);
                 }
             };
-
         } catch (error) {
             console.error('Error loading search data:', error);
         }
     }
-
-
-
-
     searchHandler(lunr);
+
+*/
+
+
 
 
 </script>
 
 
-
+<!--
     <script  src="{{js}}/codecraft.js" async></script>
+-->
 </body>
 </html>
