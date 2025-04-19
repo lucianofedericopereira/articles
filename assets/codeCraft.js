@@ -8,7 +8,7 @@ export const codeCraft = {
         this.loadComments();
         this.startObserver(() => this.removeFontTags());
 
-        window.translate = codeCraft.translate();
+        window.translate = codeCraft.translate;
         codeCraft.js('https://translate.google.com/translate_a/element.js?cb=translate');
 
         this.clock();
