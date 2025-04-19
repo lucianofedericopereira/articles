@@ -7,8 +7,105 @@ export const codeCraft = {
         this.search(lunrInstance);
         this.loadComments();
         this.startObserver(() => this.removeFontTags());
+
+        window.translate = codeCraft.translate();
+        codeCraft.js('https://translate.google.com/translate_a/element.js?cb=translate');
+
         this.clock();
     },
+
+    translate: function () {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            autoDisplay: false,
+            layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+        }, 'translate');
+        $('.goog-logo-link')?.setAttribute('rel', 'noopener');
+        const googleCombo = codeCraft.$("select.goog-te-combo");
+        const langSelect = codeCraft.$('.dropdown-lang');
+        const dropdownContainer = codeCraft.$('.dropdown');
+        const dropbtn = codeCraft.$('.dropbtn');
+        const mobile = window.innerWidth < 1280;
+        const menu = codeCraft.$('#menu');
+        function restoreLang() {
+            const iframe = $('.goog-te-banner-frame');
+            if (!iframe) return;
+            const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+            const restoreButtons = innerDoc.getElementsByTagName("button");
+            Array.from(restoreButtons).forEach(button => {
+                if (button.id.includes("restore")) {
+                    button.click();
+                    const closeButton = innerDoc.querySelector(".goog-close-link");
+                    closeButton?.click();
+                };
+            });
+        };
+        function triggerHtmlEvent(element, eventName) {
+            const event = document.createEvent
+                ? new Event(eventName, { bubbles: true, cancelable: true })
+                : document.createEventObject();
+            document.createEvent
+                ? element.dispatchEvent(event)
+                : element.fireEvent('on' + event.eventType, event);
+        };
+        const debouncedChangeLanguage = codeCraft.debounce(function (lang) {
+            googleCombo.value = lang;
+            triggerHtmlEvent(googleCombo, 'change');
+        }, 1500);
+        langSelect?.addEventListener('click', function (event) {
+            const { target } = event;
+            if (!target) return;
+            codeCraft.$('.lang-select.aside-selected')?.classList.remove('aside-selected');
+            const lang = target.getAttribute('hreflang');
+            if (!lang) return;
+            target.classList.add('aside-selected');
+            langSelect.style.display = 'none';
+            dropbtn.disabled = true;
+            dropbtn.classList.add('disabled');
+            debouncedChangeLanguage(lang);
+            setTimeout(() => {
+                dropbtn.disabled = false;
+                dropbtn.classList.remove('disabled');
+                if (mobile) {
+                    menu.checked = false;
+                }
+            }, 2000);
+            event.preventDefault();
+        });
+        const checkSelectedLangInterval = setInterval(function () {
+            const selectedLang = googleCombo.value;
+            if (selectedLang) {
+                codeCraft.$('.lang-select.aside-selected')?.classList.remove('aside-selected');
+                const initialLang = codeCraft.$(`.lang-select[hreflang="${selectedLang}"]`);
+                if (initialLang) {
+                    codeCraft.$('.lang-select.aside-selected')?.classList.remove('aside-selected');
+                    initialLang.classList.add('aside-selected');
+                };
+                clearInterval(checkSelectedLangInterval);
+            };
+        }, 100);
+        setTimeout(function () {
+            clearInterval(checkSelectedLangInterval);
+        }, 5000);
+        dropdownContainer?.addEventListener('mouseover', function () {
+            langSelect.style.display = 'block';
+        });
+        dropdownContainer?.addEventListener('mouseout', function () {
+            langSelect.style.display = 'none';
+        });
+        dropbtn?.addEventListener('click', function (event) {
+            if (langSelect.style.display === 'block') {
+                langSelect.style.display = 'none';
+            } else {
+                langSelect.style.display = 'block';
+            }
+            event.preventDefault();
+        });
+        _tipon = function () { };
+        _tipoff = function () { };
+    },
+
+
     search: async function (lunrInstance) {
         const searchInput = document.getElementById('search-input');
         const searchResults = document.getElementById('search-results');
@@ -150,8 +247,6 @@ export const codeCraft = {
             console.error('Error loading search data:', error);
         }        
     },
-
-
     clock: function () {
         const now = new Date();
         const hours = this.pad(now.getHours());
@@ -365,5 +460,11 @@ export const codeCraft = {
         style.type = 'text/css';
         style.appendChild(document.createTextNode(content));
         document.head.appendChild(style);
-    }
+    },
+    js: async function (src) {
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        document.head.appendChild(script);
+    },
 };
