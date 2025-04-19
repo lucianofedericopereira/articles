@@ -4,6 +4,9 @@ title: "CSS"
 
 <p>Collection: {{ page.collection }}</p>
 
+{{ site.collections | inspect }}
+
+
 {% assign grouped_items = site.css | group_by: "date" %}
 {% for year_group in grouped_items %}
 <h3>{{ year_group.name | date: "%Y" }}</h3>
