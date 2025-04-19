@@ -8,13 +8,7 @@ export const codeCraft = {
         this.loadComments();
         this.startObserver(() => this.removeFontTags());
         this.clock();
-        // document.addEventListener('DOMContentLoaded', async () => this.dom());
     },
-/*
-    dom: async function () {
-    },
-*/
-
     search: async function (lunrInstance) {
         const searchInput = document.getElementById('search-input');
         const searchResults = document.getElementById('search-results');

@@ -42,15 +42,13 @@ main a {
 {% assign domain="https://" | append: site.base.url %}
 {% assign folder=domain | append: "/" | append: site.base.folder %}
 {% assign asset=folder | append: "/assets" %}
-{% assign image=asset | append: "/images" %}
-{% assign font=asset | append: "/fonts" %}
-{% assign icon=image | append: "/favicon.ico" %}
+{% assign icon=asset | append: "/codeCraft.ico" %}
 {% endcapture %}{% for fontface in site.fonts %}@font-face {
     font-family: '{{ fontface.name }}';
     font-display: swap;
     font-style: normal;
     font-weight: {% if fontface.weight=="Regular" %}400{% elsif fontface.weight=="Medium" %}600 {% else %}400 {% endif %};
-    src: url('{{ font }}/{{ fontface.name }}-{{ fontface.weight }}.{{ fontface.extension }}') format('{{ fontface.extension }}');
+    src: url('{{ asset }}/{{ fontface.name }}-{{ fontface.weight }}.{{ fontface.extension }}') format('{{ fontface.extension }}');
 }{% endfor %}
 
 :root {

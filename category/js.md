@@ -1,5 +1,4 @@
 ---
-layout: codecraft
 title: "JavaScript"
 ---
 
