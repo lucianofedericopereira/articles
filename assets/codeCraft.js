@@ -20,7 +20,7 @@ export const codeCraft = {
             autoDisplay: false,
             layout: google.translate.TranslateElement.InlineLayout.VERTICAL
         }, 'translate');
-        $('.goog-logo-link')?.setAttribute('rel', 'noopener');
+        codeCraft.$('.goog-logo-link')?.setAttribute('rel', 'noopener');
         const googleCombo = codeCraft.$("select.goog-te-combo");
         const langSelect = codeCraft.$('.dropdown-lang');
         const dropdownContainer = codeCraft.$('.dropdown');
