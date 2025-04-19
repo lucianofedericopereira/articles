@@ -45,7 +45,9 @@
 <script type="module" defer>
     import lunr from 'https://cdn.jsdelivr.net/npm/lunr@{{ site.version.lunr }}/+esm';
     
-    async function searchHandler(lunrInstance) {
+
+
+     async function searchHandler(lunrInstance) {
         const searchInput = document.getElementById('search-input');
         const searchResults = document.getElementById('search-results');
         const metaTag = document.querySelector('meta[name="search"]');
@@ -86,16 +88,21 @@
             const showSearch = () => document.documentElement.classList.add('search-active');
             const hideSearch = () => {
                 document.documentElement.classList.remove('search-active');
-                searchInput.value = ''; // ✅ Clear input field when hiding search
-                searchResults.innerHTML = ''; // ✅ Clear results
-                searchResults.style.display = 'none'; // 🔥 Prevent blocking the page when empty
+                searchResults.innerHTML = ''; // ✅ Clears results
+                searchResults.style.display = 'none'; // ✅ Prevents overlay issues
             };
 
             searchInput.addEventListener('input', () => {
                 const input = searchInput.value.trim();
 
-                if (input.length < 2) { // 🔥 Ensures at least two characters before triggering search
+                if (input.length === 0) { // 🔥 Ensures full reset when empty
                     hideSearch();
+                    return;
+                }
+
+                if (input.length < 2) { // 🔥 Prevent showing results before two keystrokes
+                    searchResults.innerHTML = ''; // ✅ Clears previous results
+                    searchResults.style.display = 'none'; // ✅ Hide results
                     return;
                 }
 
@@ -103,7 +110,7 @@
                 currentInput = input;
                 currentSearchIndex++;
                 searchResults.innerHTML = '';
-                searchResults.style.display = 'block'; // ✅ Make results visible when needed
+                searchResults.style.display = 'block'; // ✅ Show results container when needed
 
                 showSearch();
 
@@ -132,35 +139,32 @@
                 }
             });
 
-            // ✅ Improved search reset when input field is hidden
-            const resetSearch = () => {
-                searchInput.value = ''; // ✅ Clears input field
-                searchResults.innerHTML = ''; // ✅ Clears search results
-                searchResults.style.display = 'none'; // ✅ Prevent results from blocking page
-            };
-
+            // ✅ Ensure search resumes when input box becomes visible again
             const observer = new MutationObserver(() => {
-                if (window.getComputedStyle(searchInput).display === 'none') {
-                    resetSearch(); // ✅ Clears input when hidden
+                if (window.getComputedStyle(searchInput).display !== 'none') {
+                    searchResults.style.display = 'block'; // ✅ Restore results container visibility
+                } else {
+                    hideSearch(); // ✅ Reset when hidden
                 }
             });
             observer.observe(searchInput, { attributes: true, attributeFilter: ['style'] });
 
             // ✅ Also clear search when focus is lost
-            searchInput.addEventListener('focusout', () => resetSearch());
+            searchInput.addEventListener('focusout', () => hideSearch());
 
-            // ✅ Clear search when a result is clicked
+            // ✅ Fix: Clicking search results now follows the link correctly
             document.addEventListener('click', (e) => {
-                if (e.target.closest('.search-result')) {
-                    resetSearch(); // ✅ Clears search results after clicking a result
+                const resultLink = e.target.closest('.search-result');
+                if (resultLink) {
+                    hideSearch(); // ✅ Clears search results
+                    window.location.href = resultLink.href; // 🔥 Follow the clicked link
                 }
             });
 
-            // ✅ ESC key support to clear search properly
+            // ✅ ESC key support to properly clear search and results
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
-                    resetSearch(); // ✅ Clears input and search results when pressing ESC
-                    hideSearch(); // ✅ Removes `.search-active` class properly
+                    hideSearch(); // ✅ Removes results and input field properly
                 }
             });
 
