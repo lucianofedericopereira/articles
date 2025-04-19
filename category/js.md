@@ -1,9 +1,5 @@
 ---
 title: "JavaScript"
+category: js
 ---
-
-<ul>
-{% for item in site.js %}
-     <li><a href="https://lucianofedericopereira.github.io/articles{{ item.url }}">{{ item.title }}</a></li>
-{% endfor %}
-</ul>
+{%- include components/category.html -%}
