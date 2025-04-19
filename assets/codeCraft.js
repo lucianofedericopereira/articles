@@ -101,8 +101,21 @@ export const codeCraft = {
             }
             event.preventDefault();
         });
-        _tipoff = function () { };
-        _tipon = function () { };
+
+        (function waitForFunctions(retries = 20, interval = 150) {
+            let attempts = 0;
+            const checkAndOverride = () => {
+                if (typeof _tipoff === 'function' && typeof _tipon === 'function') {
+                    _tipoff = function () { };
+                    _tipon = function () { };
+                    clearInterval(timer);
+                } else if (++attempts >= retries) {
+                    clearInterval(timer);
+                }
+            };
+            let timer = setInterval(checkAndOverride, interval);
+        })();
+
     },
 
 
