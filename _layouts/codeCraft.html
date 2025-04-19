@@ -30,7 +30,7 @@
     </aside>
     <main>
         {% if page.toc %}<label for="toc"><div class="icon icon-toc" aria-label="Show Table of Contents"></div></label>{% endif %}
-        <h1>{{ page.title | capitalize }}</h1>
+        <h1>{{ page.title }}</h1>
         <input type="checkbox" aria-expanded="false" id="toc" autocomplete='off'>
         <div id="index"><div id="reading-time"></div><div id="chapters"></div></div>
         {{ content }}
