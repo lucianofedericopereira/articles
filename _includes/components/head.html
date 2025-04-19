@@ -31,8 +31,8 @@
     <meta property="og:type" content="website">
     <meta property="twitter:title" content="{%- include components/title.html -%}">
     <link rel="icon" type="image/x-icon" href="{{ icon }}">
-    <link rel="preload" type="text/css" href="{{ css }}" as="style" onload="this.rel='stylesheet'">{% for fontface in site.fonts %}
-    <link rel="preload" as="font" type="font/{{ fontface.extension }}" href="{{ asset }}/{{ fontface.name }}-{{ fontface.weight }}.{{ fontface.extension }}" crossorigin="anonymous">{% endfor %}
+    <link rel="preload" type="text/css" href="{{ css }}" as="style" onload="this.rel='stylesheet'">{% for fontface in site.fonts %}{% if fontface.type != "code" %}
+    <link rel="preload" as="font" type="font/{{ fontface.extension }}" href="{{ asset }}/{{ fontface.name }}-{{ fontface.weight }}.{{ fontface.extension }}" crossorigin="anonymous">{% endif %}{% endfor %}
     <link rel="dns-prefetch" href="https://translate.google.com">
     <link rel="dns-prefetch" href="https://translate.googleapis.com">
     <link rel="preconnect"   crossorigin="anonymous" href="https://translate.google.com">
