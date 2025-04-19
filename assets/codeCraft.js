@@ -93,6 +93,8 @@ export const codeCraft = {
         dropdownContainer?.addEventListener('mouseout', function () {
             langSelect.style.display = 'none';
         });
+
+        /*
         dropbtn?.addEventListener('click', function (event) {
             if (langSelect.style.display === 'block') {
                 langSelect.style.display = 'none';
@@ -101,7 +103,14 @@ export const codeCraft = {
             }
             event.preventDefault();
         });
+        */
+        dropbtn?.addEventListener('click', function (event) {
+            langSelect.style.display = langSelect.style.display !== 'block' ? 'block' : 'none';
+            event.preventDefault();
+        });
 
+        
+        
         (function waitForFunctions(retries = 20, interval = 150) {
             let attempts = 0;
             const checkAndOverride = () => {
