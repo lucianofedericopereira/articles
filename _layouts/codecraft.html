@@ -44,167 +44,170 @@
 
 <script type="module" defer>
     import lunr from 'https://cdn.jsdelivr.net/npm/lunr@{{ site.version.lunr }}/+esm';
-
-
+    
     async function searchHandler(lunrInstance) {
-            const searchInput = document.getElementById('search-input');
-            const searchResults = document.getElementById('search-results');
-            const metaTag = document.querySelector('meta[name="search"]');
-            const mainHeader = document.getElementById('main-header');
-            if (!searchInput || !searchResults || !metaTag?.content) return;
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        const metaTag = document.querySelector('meta[name="search"]');
+        const mainHeader = document.getElementById('main-header');
+        if (!searchInput || !searchResults || !metaTag?.content) return;
 
-            let currentInput = '';
-            let currentSearchIndex = 0;
+        let currentInput = '';
+        let currentSearchIndex = 0;
 
-            try {
-                const response = await fetch(metaTag.content);
-                if (!response.ok) throw new Error(`Failed to load search data: ${response.status}`);
-                const docs = await response.json();
-                lunrInstance.tokenizer.separator = /[\s/]+/;
+        try {
+            const response = await fetch(metaTag.content);
+            if (!response.ok) throw new Error(`Failed to load search data: ${response.status}`);
+            const docs = await response.json();
+            lunrInstance.tokenizer.separator = /[\s/]+/;
 
-                const index = lunrInstance(function () {
-                    this.ref('id');
-                    this.field('title', { boost: 200 });
-                    this.field('content', { boost: 2 });
-                    this.metadataWhitelist = ['position'];
-                    Object.keys(docs).forEach((key) => {
-                        this.add({
-                            id: key,
-                            title: docs[key].title,
-                            content: docs[key].content,
-                        });
+            const index = lunrInstance(function () {
+                this.ref('id');
+                this.field('title', { boost: 200 });
+                this.field('content', { boost: 2 });
+                this.metadataWhitelist = ['position'];
+                Object.keys(docs).forEach((key) => {
+                    this.add({
+                        id: key,
+                        title: docs[key].title,
+                        content: docs[key].content,
                     });
                 });
+            });
 
-                document.addEventListener('keydown', (e) => {
-                    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-                        e.preventDefault();
-                        mainHeader?.classList.add('nav-open');
-                        searchInput.focus();
-                    }
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    mainHeader?.classList.add('nav-open');
+                    searchInput.focus();
+                }
+            });
+
+            const showSearch = () => document.documentElement.classList.add('search-active');
+            const hideSearch = () => {
+                document.documentElement.classList.remove('search-active');
+                searchInput.value = ''; // ✅ Clear input field when hiding search
+                searchResults.innerHTML = ''; // ✅ Clear results
+                searchResults.style.display = 'none'; // 🔥 Prevent blocking the page when empty
+            };
+
+            searchInput.addEventListener('input', () => {
+                const input = searchInput.value.trim();
+
+                if (input.length < 2) { // 🔥 Ensures at least two characters before triggering search
+                    hideSearch();
+                    return;
+                }
+
+                if (input === currentInput) return;
+                currentInput = input;
+                currentSearchIndex++;
+                searchResults.innerHTML = '';
+                searchResults.style.display = 'block'; // ✅ Make results visible when needed
+
+                showSearch();
+
+                let results = index.query((query) => {
+                    const tokens = lunrInstance.tokenizer(input);
+                    query.term(tokens, { boost: 10 });
+                    query.term(tokens, { wildcard: lunrInstance.Query.wildcard.TRAILING });
                 });
 
-                const showSearch = () => document.documentElement.classList.add('search-active');
-                const hideSearch = () => {
-                    document.documentElement.classList.remove('search-active');
-                    searchInput.value = ''; // ✅ Clear input field when hiding search
-                    searchResults.innerHTML = ''; // ✅ Clear results
-                };
-
-                searchInput.addEventListener('input', () => {
-                    const input = searchInput.value.trim();
-
-                    if (input.length === 0) { // ✅ Clears results only when empty, not when typing single chars
-                        hideSearch();
-                        return;
+                if (!results.length && input.length > 2) {
+                    const tokens = lunrInstance.tokenizer(input).filter((token) => token.str.length < 20);
+                    if (tokens.length) {
+                        results.push(...index.query((query) => {
+                            query.term(tokens, { editDistance: Math.round(Math.sqrt(input.length / 2 - 1)) });
+                        }));
                     }
+                }
 
-                    if (input === currentInput) return;
-                    currentInput = input;
-                    currentSearchIndex++;
-                    searchResults.innerHTML = '';
+                if (results.length === 0) {
+                    searchResults.innerHTML = `<div class="search-no-result">No results found</div>`;
+                } else {
+                    const resultsList = document.createElement('ul');
+                    resultsList.classList.add('search-results-list');
+                    searchResults.appendChild(resultsList);
+                    addResults(resultsList, results, 0, 10, 100, currentSearchIndex, docs);
+                }
+            });
 
-                    showSearch();
+            // ✅ Improved search reset when input field is hidden
+            const resetSearch = () => {
+                searchInput.value = ''; // ✅ Clears input field
+                searchResults.innerHTML = ''; // ✅ Clears search results
+                searchResults.style.display = 'none'; // ✅ Prevent results from blocking page
+            };
 
-                    let results = index.query((query) => {
-                        const tokens = lunrInstance.tokenizer(input);
-                        query.term(tokens, { boost: 10 });
-                        query.term(tokens, { wildcard: lunrInstance.Query.wildcard.TRAILING });
-                    });
+            const observer = new MutationObserver(() => {
+                if (window.getComputedStyle(searchInput).display === 'none') {
+                    resetSearch(); // ✅ Clears input when hidden
+                }
+            });
+            observer.observe(searchInput, { attributes: true, attributeFilter: ['style'] });
 
-                    if (!results.length && input.length > 2) {
-                        const tokens = lunrInstance.tokenizer(input).filter((token) => token.str.length < 20);
-                        if (tokens.length) {
-                            results.push(...index.query((query) => {
-                                query.term(tokens, { editDistance: Math.round(Math.sqrt(input.length / 2 - 1)) });
-                            }));
-                        }
-                    }
+            // ✅ Also clear search when focus is lost
+            searchInput.addEventListener('focusout', () => resetSearch());
 
-                    if (results.length === 0) {
-                        searchResults.innerHTML = `<div class="search-no-result">No results found</div>`;
-                    } else {
-                        const resultsList = document.createElement('ul');
-                        resultsList.classList.add('search-results-list');
-                        searchResults.appendChild(resultsList);
-                        addResults(resultsList, results, 0, 10, 100, currentSearchIndex, docs);
-                    }
-                });
+            // ✅ Clear search when a result is clicked
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.search-result')) {
+                    resetSearch(); // ✅ Clears search results after clicking a result
+                }
+            });
 
-                // ✅ Improved search reset when input field is hidden
-                const resetSearch = () => {
-                    searchInput.value = ''; // ✅ Clears input field
-                    searchResults.innerHTML = ''; // ✅ Clears search results
-                };
+            // ✅ ESC key support to clear search properly
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    resetSearch(); // ✅ Clears input and search results when pressing ESC
+                    hideSearch(); // ✅ Removes `.search-active` class properly
+                }
+            });
 
-                const observer = new MutationObserver(() => {
-                    if (window.getComputedStyle(searchInput).display === 'none') {
-                        resetSearch(); // ✅ Clears input when hidden
-                    }
-                });
-                observer.observe(searchInput, { attributes: true, attributeFilter: ['style'] });
+            const addResults = (resultsList, results, start, batchSize, batchMillis, searchIndex, docs) => {
+                if (searchIndex !== currentSearchIndex) return; // Abort if search index changed
+                for (let i = start; i < Math.min(start + batchSize, results.length); i++) {
+                    addResult(resultsList, results[i], docs);
+                }
+                if (start + batchSize < results.length) {
+                    setTimeout(() => addResults(resultsList, results, start + batchSize, batchSize, batchMillis, searchIndex, docs), batchMillis);
+                }
+            };
 
-                // ✅ Also clear search when focus is lost
-                searchInput.addEventListener('focusout', () => resetSearch());
+            const addResult = (resultsList, result, docs) => {
+                const doc = docs[result.ref];
+                const resultsListItem = document.createElement('li');
+                resultsListItem.classList.add('search-results-list-item');
+                resultsList.appendChild(resultsListItem);
 
-                // ✅ Clear search when a result is clicked
-                document.addEventListener('click', (e) => {
-                    if (e.target.closest('.search-result')) {
-                        resetSearch(); // ✅ Clears search results after clicking a result
-                    }
-                });
+                const resultLink = document.createElement('a');
+                resultLink.classList.add('search-result');
+                resultLink.href = doc.url;
+                resultsListItem.appendChild(resultLink);
 
-                // ✅ ESC key support to clear search
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape') {
-                        resetSearch(); // ✅ Clears input and search results when pressing ESC
-                    }
-                });
+                const resultTitle = document.createElement('div');
+                resultTitle.classList.add('search-result-title');
+                resultTitle.textContent = doc.title;
+                resultLink.appendChild(resultTitle);
 
-                const addResults = (resultsList, results, start, batchSize, batchMillis, searchIndex, docs) => {
-                    if (searchIndex !== currentSearchIndex) return; // Abort if search index changed
-                    for (let i = start; i < Math.min(start + batchSize, results.length); i++) {
-                        addResult(resultsList, results[i], docs);
-                    }
-                    if (start + batchSize < results.length) {
-                        setTimeout(() => addResults(resultsList, results, start + batchSize, batchSize, batchMillis, searchIndex, docs), batchMillis);
-                    }
-                };
+                // ✅ Correctly nested result preview inside `.search-result`
+                if (doc.content) {
+                    const resultPreviews = document.createElement('div');
+                    resultPreviews.classList.add('search-result-previews');
+                    resultLink.appendChild(resultPreviews);
 
-                const addResult = (resultsList, result, docs) => {
-                    const doc = docs[result.ref];
-                    const resultsListItem = document.createElement('li');
-                    resultsListItem.classList.add('search-results-list-item');
-                    resultsList.appendChild(resultsListItem);
+                    const previewText = doc.content.slice(0, 100);
+                    const resultPreview = document.createElement('div');
+                    resultPreview.classList.add('search-result-preview');
+                    resultPreview.textContent = `${previewText}…`;
+                    resultPreviews.appendChild(resultPreview);
+                }
+            };
 
-                    const resultLink = document.createElement('a');
-                    resultLink.classList.add('search-result');
-                    resultLink.href = doc.url;
-                    resultsListItem.appendChild(resultLink);
-
-                    const resultTitle = document.createElement('div');
-                    resultTitle.classList.add('search-result-title');
-                    resultTitle.textContent = doc.title;
-                    resultLink.appendChild(resultTitle);
-
-                    // ✅ Correctly nested result preview inside `.search-result`
-                    if (doc.content) {
-                        const resultPreviews = document.createElement('div');
-                        resultPreviews.classList.add('search-result-previews');
-                        resultLink.appendChild(resultPreviews);
-
-                        const previewText = doc.content.slice(0, 100);
-                        const resultPreview = document.createElement('div');
-                        resultPreview.classList.add('search-result-preview');
-                        resultPreview.textContent = `${previewText}…`;
-                        resultPreviews.appendChild(resultPreview);
-                    }
-                };
-
-            } catch (error) {
-                console.error('Error loading search data:', error);
-            }
+        } catch (error) {
+            console.error('Error loading search data:', error);
         }
+    }
 
 
 /*
