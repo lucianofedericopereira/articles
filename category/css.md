@@ -1,4 +1,4 @@
 ---
 title: "CSS"
 ---
-{%- include components/category.html -%}
+{% assign collection_items = site[page.collection] %}{%- include components/category.html -%}
