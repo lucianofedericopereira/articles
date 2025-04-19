@@ -1,4 +1,5 @@
 theme: just-the-docs
+permalink: pretty
 search_enabled: false
 search_file: https://lucianofedericopereira.github.io/articles/search.json
 base:
@@ -32,10 +33,10 @@ links:
 
 collections:
   css:
-    permalink: "/:collection/:path/"
+    permalink: "/:collection/:name/"
     output: true
   js:
-    permalink: "/:collection/:path/"
+    permalink: "/:collection/:name/"
     output: true
 
 defaults:
