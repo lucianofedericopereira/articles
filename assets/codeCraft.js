@@ -13,7 +13,6 @@ export const codeCraft = {
 
         this.clock();
     },
-
     translate: function () {
         new google.translate.TranslateElement({
             pageLanguage: 'en',
@@ -93,24 +92,10 @@ export const codeCraft = {
         dropdownContainer?.addEventListener('mouseout', function () {
             langSelect.style.display = 'none';
         });
-
-        /*
-        dropbtn?.addEventListener('click', function (event) {
-            if (langSelect.style.display === 'block') {
-                langSelect.style.display = 'none';
-            } else {
-                langSelect.style.display = 'block';
-            }
-            event.preventDefault();
-        });
-        */
         dropbtn?.addEventListener('click', function (event) {
             langSelect.style.display = langSelect.style.display !== 'block' ? 'block' : 'none';
             event.preventDefault();
         });
-
-        
-        
         (function waitForFunctions(retries = 20, interval = 150) {
             let attempts = 0;
             const checkAndOverride = () => {
@@ -124,10 +109,7 @@ export const codeCraft = {
             };
             let timer = setInterval(checkAndOverride, interval);
         })();
-
     },
-
-
     search: async function (lunrInstance) {
         const searchInput = document.getElementById('search-input');
         const searchResults = document.getElementById('search-results');
@@ -443,6 +425,14 @@ export const codeCraft = {
             }
             fontTag.remove();
         });
+        
+        
+        codeCraft.$$('[class^="VI"]').forEach(element => {
+            element.style.display = 'none';
+        });
+
+        
+        
     },
     $: function (qs) { return document.querySelector(qs); },
     $$: function (qs) { return document.querySelectorAll(qs); },
