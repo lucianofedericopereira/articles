@@ -2,8 +2,7 @@
 title: "CSS"
 ---
 
-
-{% assign collection_items = site[page.collection] %}{%- include components/category.html -%}
+{% site[collection] %}
 
 {% assign grouped_items = site.css | group_by: "date" %}
 {% for year_group in grouped_items %}
