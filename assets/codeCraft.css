@@ -20,8 +20,6 @@
     z-index: 1;
 }
 
-
-
 :root {
     counter-reset: a;
 }
@@ -79,7 +77,6 @@ main ol li {
         padding-left: 2ch;
     }
 
-
     hr,
     #menu:checked~main {
         display: none
@@ -116,8 +113,6 @@ main ol li {
         width: 100%;
     }
 
-
-
     #logo {
         user-select: none;
     }
@@ -142,9 +137,6 @@ main ol li {
         color: var(--c0);
         font-size: .68rem;
     }
-
-
-
 
     main h1 {
         font-size: 2.8rem;
@@ -191,14 +183,13 @@ main ol li {
         padding: 0 2.5rem 0 .25rem;
     }
 
-        @supports (text-wrap: pretty) {
-    main p,
+    @supports (text-wrap: pretty) {
+        main p,
         main ul,
         main ol {
             text-wrap: pretty;
         }
-        }
-
+    }
 
     main p,
     main ol {
@@ -208,7 +199,6 @@ main ol li {
     main p:hover {
         color: var(--c0);
     }
-
 
     main p a[href^="#"]::before {
         content: counter(a);
@@ -273,7 +263,6 @@ main ol li {
         margin: 0 auto;
     }
 
-
     #chapters {
         padding: 0 1rem;
         counter-reset: heading;
@@ -318,7 +307,6 @@ main ol li {
     #chapters a:hover span {
         color: var(--ce);
     }
-
 
     main footer p {
         color: var(--c1);
@@ -455,7 +443,6 @@ main ol li {
         padding: .5rem 0 .5rem 2.75rem;
     }
 
-
     .aside-link {
         display: block;
         width: 100%;
@@ -509,8 +496,6 @@ main ol li {
         padding: 0;
         margin: 0;
     }
-
-    /* Search */
 
     .search {
         position: relative;
@@ -678,73 +663,69 @@ main ol li {
         overflow-x: auto;
     }
 
+    table {
+        border-collapse: collapse;
+        font-size: 0.9em;
+        min-width: 280px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        border-radius: 5px;
+        overflow: hidden;
+        max-width: 70%;
+        margin: 0 auto;
+    }
+        
+    table thead tr {
+        background-color: var(--ce);
+        color: var(--c7);
+        text-align: left;
+        font-weight: bold;
+    }
+        
+    table th,
+    table td {
+        padding: 12px 15px;
+    }
+        
+    table tbody tr {
+        border-bottom: 1px solid var(--c5);
+    }
+        
+    table tbody tr:nth-of-type(even) {
+        background-color: var(--c6);
+    }
+        
+    table tbody tr:last-of-type {
+        border-bottom: 2px solid var(--ce);
+    }
+        
+    table tbody tr:hover {
+        background-color: var(--cb);
+        color: var(--c0);
+        cursor: pointer;
+    }
+        
+    table caption {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: var(--c2);
+    }
 
-                table {
-                    border-collapse: collapse;
-                    font-size: 0.9em;
-                    min-width: 280px;
-                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-                    border-radius: 5px;
-                    overflow: hidden;
-                    max-width: 70%;
-                    margin: 0 auto;
-                }
-        
-                table thead tr {
-                    background-color: var(--ce);
-                    color: var(--c7);
-                    text-align: left;
-                    font-weight: bold;
-                }
-        
-                table th,
-                table td {
-                    padding: 12px 15px;
-                }
-        
-                table tbody tr {
-                    border-bottom: 1px solid var(--c5);
-                }
-        
-                table tbody tr:nth-of-type(even) {
-                    background-color: var(--c6);
-                }
-        
-                table tbody tr:last-of-type {
-                    border-bottom: 2px solid var(--ce);
-                }
-        
-                table tbody tr:hover {
-                    background-color: var(--cb);
-                    color: var(--c0);
-                    cursor: pointer;
-                }
-        
-                table caption {
-                    font-size: 1.2em;
-                    margin-bottom: 10px;
-                    font-weight: bold;
-                    color: var(--c2);
-                }
-
-        #comments {
-            padding-bottom: 2rem;
-        }
+    #comments {
+        padding-bottom: 2rem;
+    }
     
-        #comments-utteranc {
-            padding-left: .1rem;
-            filter: grayscale(50%) sepia(10%) hue-rotate(50deg);
-            opacity: .9;
-        }
+    #comments-utteranc {
+        padding-left: .1rem;
+        filter: grayscale(50%) sepia(10%) hue-rotate(50deg);
+        opacity: .9;
+    }
 
     @media (width > 575px) {
 
-
         #comments-utteranc {
-            padding: 0 1rem;        
-            
+            padding: 0 1rem;                    
         }
-
 
         main p,
         main ul,
@@ -753,11 +734,10 @@ main ol li {
             text-align: unset;
         }
 
-    main>.highlighter-rouge {
-        padding: 1rem!important;
-        line-height: 1.2;
+        main>.highlighter-rouge {
+            padding: 1rem!important;
+            line-height: 1.2;
         }
-
 
         h2::before {
             display: inline-block;
@@ -836,11 +816,7 @@ main ol li {
         figure.highlight {
             border: 2px solid var(--c5);
         }
-
-
     }
-
-
 
     @media (width >=64rem) {
 
@@ -954,7 +930,6 @@ main ol li {
             height: 100dvh!important;
             top: 0!important;
             left: 17rem!important;
-
         }
 
     }
@@ -964,15 +939,12 @@ main ol li {
         outline-offset: -3px;
     }
 
-
-
     .aside-link {
         font-weight: normal;
         transition: font-weight 0.3s ease, transform 0.3s ease;
     }
 
-    .aside-link:focus
-    {
+    .aside-link:focus {
         font-weight:bold;
         transform: scale(1.025);
     }
@@ -987,12 +959,6 @@ main ol li {
         border-color: var(--ce);
         color: var(--r0);
     }
-
-
-
-    /* Highlight */
-
-
 
     main>.highlighter-rouge {
         font-family: var(--font-code), var(--font-basic);
@@ -1220,8 +1186,6 @@ main ol li {
         border: 0
     }
 
-
-
     .highlight .table-wrapper td.gl {
         width: 1em;
         padding-right: 0.75rem;
@@ -1263,7 +1227,6 @@ main ol li {
     pre.highlight {
         border: 2px solid var(--ra);
     }
-
 }
 
 @media print {

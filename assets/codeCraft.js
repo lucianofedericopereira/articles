@@ -1,5 +1,7 @@
 export const codeCraft = {
     init: async function (lunrInstance) {
+        console.warn  = function(){};
+        console.error = function(){};
         this.addStyles();
         this.mermaidModule();
         this.createTOC();
@@ -7,10 +9,8 @@ export const codeCraft = {
         this.search(lunrInstance);
         this.loadComments();
         this.startObserver(() => this.removeFontTags());
-
         window.translate = codeCraft.translate;
         codeCraft.js('https://translate.google.com/translate_a/element.js?cb=translate');
-
         this.clock();
     },
     translate: function () {
