@@ -2,8 +2,7 @@
     <meta charset="UTF-8">
     <link rel="preconnect" href="{{ domain }}">
     <link rel="preconnect" href="https://github.com">
-    <link rel="preload" href="{{folder}}/style.css" as="style" onload="this.rel='stylesheet'">{% for fontface in site.fonts %}
-    <link rel="preload" as="font" type="font/{{ fontface.extension }}" href="{{ asset }}/{{ fontface.name }}-{{ fontface.weight }}.{{ fontface.extension }}" crossorigin="anonymous">{% endfor %}
+    <link rel="preload" href="{{folder}}/style.css" as="style" onload="this.rel='stylesheet'">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" crossorigin="anonymous" href="https://cdn.jsdelivr.net">
     <link rel="dns-prefetch" href="https://utteranc.es">
@@ -37,7 +36,8 @@
     <meta property="og:site_name" content="{{ meta.title }}">
     <meta property="og:type" content="website">
     <meta property="twitter:title" content="{%- include components/title.html -%}">
-    <link rel="preload" type="text/css" href="{{ css }}" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" type="text/css" href="{{ css }}" as="style" onload="this.rel='stylesheet'">{% for fontface in site.fonts %}
+    <link rel="preload" as="font" type="font/{{ fontface.extension }}" href="{{ asset }}/{{ fontface.name }}-{{ fontface.weight }}.{{ fontface.extension }}" crossorigin="anonymous">{% endfor %}
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
