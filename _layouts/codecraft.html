@@ -50,7 +50,7 @@
         const searchInput = document.getElementById('search-input');
         const searchResults = document.getElementById('search-results');
         const metaTag = document.querySelector('meta[name="search"]');
-        const mainHeader = document.getElementById('main-header');
+        const mainHeader = document.getElementById('menu');
         if (!searchInput || !searchResults || !metaTag?.content) return;
 
         let currentInput = '';
@@ -79,7 +79,8 @@
             document.addEventListener('keydown', (e) => {
                 if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                     e.preventDefault();
-                    mainHeader?.classList.add('nav-open');
+                    
+                    mainHeader.checked = true;
                     searchInput.focus();
                 }
             });
@@ -150,20 +151,13 @@
             // ✅ Also clear search when focus is lost
             searchInput.addEventListener('focusout', () => hideSearch());
 
-            // ✅ Fix: Clicking search results now follows the link correctly
-            document.addEventListener('click', (e) => {
-                const resultLink = e.target.closest('.search-result');
-                if (resultLink) {
-                    e.preventDefault(); // ✅ Prevent default navigation
-                    hideSearch(); // ✅ Clears search results after clicking a result
-                    window.location.href = resultLink.href; // 🔥 Manually follow the link
-                }
-            });
-
             // ✅ ESC key now properly clears search-input & results
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     hideSearch(); // ✅ Clears input and search results when pressing ESC
+                    searchInput.blur();
+                    mainHeader.checked = true;
+
                 }
             });
 
@@ -185,6 +179,7 @@
 
                 const resultLink = document.createElement('a');
                 resultLink.classList.add('search-result');
+                resultLink.addEventListener('click', () => hideSearch()); 
                 resultLink.href = doc.url;
                 resultsListItem.appendChild(resultLink);
 
