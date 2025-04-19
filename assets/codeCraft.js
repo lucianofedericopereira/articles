@@ -425,14 +425,6 @@ export const codeCraft = {
             }
             fontTag.remove();
         });
-        
-        
-        codeCraft.$$('[class^="VI"]').forEach(element => {
-            element.style.display = 'none';
-        });
-
-        
-        
     },
     $: function (qs) { return document.querySelector(qs); },
     $$: function (qs) { return document.querySelectorAll(qs); },
