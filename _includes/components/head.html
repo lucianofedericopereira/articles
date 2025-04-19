@@ -30,10 +30,9 @@
     <meta property="og:site_name" content="{{ meta.title }}">
     <meta property="og:type" content="website">
     <meta property="twitter:title" content="{%- include components/title.html -%}">
-    <link rel="icon" type="image/x-icon" href="{{ icon }}">
-    <link rel="preload" type="text/css" href="{{ css }}" as="style" onload="this.rel='stylesheet'">{% for fontface in site.fonts %}
+    <link rel="icon" type="image/x-icon" href="{{ icon }}">{% for fontface in site.fonts %}
     <link rel="preload" as="font" type="font/{{ fontface.extension }}" href="{{ asset }}/{{ fontface.name }}-{{ fontface.weight }}.{{ fontface.extension }}" crossorigin="anonymous">{% endfor %}
-    <link rel="preload" as="script" href="{{ js }}">{% for item in site.version %}{% if page[item.first] != false %}
+    {% for item in site.version %}{% if page[item.first] != false %}
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/{{ item.first }}@{{ item.last }}/+esm" as="script">{% endif %}{% endfor %}
     <link rel="dns-prefetch" href="https://translate.google.com">
     <link rel="dns-prefetch" href="https://translate.googleapis.com">
@@ -62,4 +61,5 @@
         "url": "{{ folder }}{{ page.url }}"
     }
     </script>
+    <link rel="preload" as="script" href="{{ js }}">
 </head>

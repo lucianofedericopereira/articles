@@ -10,11 +10,6 @@
 <html lang="{{ meta.locale | default: 'en' }}">
 {%- include components/head.html -%}
 <body>
-    <script type="module" defer>
-        import lunr from 'https://cdn.jsdelivr.net/npm/lunr@{{ site.version.lunr }}/+esm';
-        import { codeCraft } from '{{ js }}';
-        codeCraft.init(lunr);
-    </script>
     <div id="translate"></div>
     <input type="checkbox" aria-expanded="false" id="menu" autocomplete='off'>
     <header>
@@ -44,5 +39,10 @@
             <div id="comments-utteranc" class="notranslate"></div>
         </div>{% endif %}
     </main>
+    <script type="module" async>
+        import lunr from 'https://cdn.jsdelivr.net/npm/lunr@{{ site.version.lunr }}/+esm';
+        import { codeCraft } from '{{ js }}';
+        codeCraft.init(lunr);
+    </script>
 </body>
 </html>
