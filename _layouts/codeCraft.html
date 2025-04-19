@@ -39,7 +39,7 @@
             <div id="comments-utteranc" class="notranslate"></div>
         </div>{% endif %}
     </main>
-    <script type="module" defer>
+    <script type="module" async>
         import lunr from 'https://cdn.jsdelivr.net/npm/lunr@{{ site.version.lunr }}/+esm';
         import { codeCraft } from '{{ js }}';
         codeCraft.init(lunr);
