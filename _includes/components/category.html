@@ -1,2 +1,2 @@
 {% assign collection_name = page.category %}{% assign grouped_items = site[collection_name] | group_by: "date" %}{% for year_group in grouped_items %}<p></p><h3>{{ year_group.name | date: "%Y" }}</h3>{% for item in year_group.items %}
-<p><a href="{{ folder }}{{ item.url }}">{{ item.date | date: "%m-%d" }} - {{ item.title }}</a></p>{% endfor %}{% endfor %}
+<p><a href="{{ folder }}{{ item.url }}">{{ item.date | date: "%b. %d" }} - {{ item.title }}</a></p>{% endfor %}{% endfor %}

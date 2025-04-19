@@ -51,6 +51,7 @@ defaults:
       path: "category"
     values:
       layout: codeCraft
+      banner: true
       toc: false
       comments: false
       mermaid: false
