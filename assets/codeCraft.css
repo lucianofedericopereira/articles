@@ -730,31 +730,46 @@ main ol li {
     }
     .list {
         font-family: var(--font-code);
+        font-size: 1rem;
+        text-indent: -8ch;
+        padding-left: 8ch;
     }
+    
     .list span {
-        padding-left: 1ch;
         margin-right: 1ch;
-        display: inline-block;
-        width: 8ch;
-        border-right: 2px solid var(--c4);
-        color: var(--c3);
-        transition: 100ms color;
-    }
-    .list:hover {
-        text-decoration: underline var(--c4);
-        text-decoration-thickness: 2px;
-        text-underline-offset: 6px;
-    }
-    .list:hover span {
-        background-color: var(--c4);
-        color: var(--r0);
-        text-decoration: none;
     }
 
     @media (width > 575px) {
 
         .banner {
             margin-top: 2.3rem !important;
+        }
+
+        .list {
+            font-size: 1.2rem;
+            text-indent: 0;
+            padding-left: .25rem;
+        }
+
+        .list span {
+            padding-left: 1ch;
+            display: inline-block;
+            width: 8ch;
+            border-right: 2px solid var(--c4);
+            color: var(--c3);
+            transition: 100ms color;
+        }
+
+        .list:hover {
+            text-decoration: underline var(--c4);
+            text-decoration-thickness: 2px;
+            text-underline-offset: 6px;
+        }
+    
+        .list:hover span {
+            background-color: var(--c4);
+            color: var(--r0);
+            text-decoration: none;
         }
 
         #comments-utteranc {
