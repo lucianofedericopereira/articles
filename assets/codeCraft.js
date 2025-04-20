@@ -227,6 +227,7 @@ export const codeCraft = {
                 resultLink.addEventListener('click', (event) => {
                     event.preventDefault();
                     searchInput.value = '';
+                    searchResults.remove();
                     setTimeout(() => {
                         window.location.href = resultLink.href;
                     }, 10);
