@@ -731,7 +731,7 @@ main ol li {
     .list {
         font-family: var(--font-code);
         font-size: 1rem;
-        text-indent: -8ch;
+        text-indent: -7.2ch;
         padding-left: 8ch;
     }
     
