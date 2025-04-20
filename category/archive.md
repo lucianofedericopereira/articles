@@ -3,10 +3,7 @@ title: "Archive"
 ---
 
 <div class="entries-by-year">
-  {% assign all_docs = "" %}
-  {% for collection in site.collections %}
-    {% assign all_docs = all_docs | append: collection.docs %}
-  {% endfor %}
+  {% assign all_docs = site.collections | map: "docs" | flatten %}
   {% assign sorted_docs = all_docs | sort: "date" | reverse %}
   {% assign grouped_docs = sorted_docs | group_by_exp: "doc", "doc.date | date: '%Y'" %}
 
