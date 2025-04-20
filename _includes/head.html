@@ -16,7 +16,7 @@
     <meta name="date" content="{{ page.date | date: '%B %d, %Y' | default: site.time | date: '%B %d, %Y' }}">
     <meta name="robots" content="index, follow">
     <meta name="generator" content="Jekyll">
-    <meta name="description" content="{%- include components/title.html -%}">
+    <meta name="description" content="{%- include title.html -%}">
     <meta name="license" content="{{ page.license | default: meta.license }}">
     <meta name="search" content="{{ site.search_file }}">
     <meta name="robots" content="index, follow">{% if page.toc %}
@@ -24,13 +24,13 @@
     <meta name="twitter:card" content="summary">{% if page.mermaid %}
     <meta name="mermaid" content="version={{ site.version.mermaid }}">{% endif %}{% if page.comments and site.utteranc.repo %}
     <meta name="comments-config" content="{% for item in site.utteranc %}{{ item.first }}={{ item.last }}{% if forloop.last == false %}|{% endif %}{% endfor %}">{% endif %}
-    <meta property="og:title" content="{%- include components/title.html -%}">
+    <meta property="og:title" content="{%- include title.html -%}">
     <meta property="og:locale" content="{{ meta.locale | default: 'en' }}">
     <meta property="og:url" content="{{ folder }}{{ page.url }}">
-    <meta property="og:description" content="{%- include components/title.html -%}">
+    <meta property="og:description" content="{%- include title.html -%}">
     <meta property="og:site_name" content="{{ meta.title }}">
     <meta property="og:type" content="website">
-    <meta property="twitter:title" content="{%- include components/title.html -%}">
+    <meta property="twitter:title" content="{%- include title.html -%}">
     <link rel="icon" type="image/x-icon" href="{{ icon }}">
     <link rel="preload" type="text/css" href="{{ css }}" as="style" onload="this.rel='stylesheet'">{% for fontface in site.fonts %}{% if fontface.type != "code" %}
     <link rel="preload" as="font" type="font/{{ fontface.extension }}" href="{{ asset }}/{{ fontface.name }}-{{ fontface.weight }}.{{ fontface.extension }}" crossorigin="anonymous">{% endif %}{% endfor %}
@@ -48,7 +48,7 @@
             "name": "{{ meta.author }}"
         },
         "description": "{% if page.description %}{{ page.description }}{% else %}{{ meta.description }}{% endif %}",
-        "headline": "{%- include components/title.html -%}",
+        "headline": "{%- include title.html -%}",
         "name": "{{ meta.title }}",
         "publisher": {
             "@type": "Organization",
