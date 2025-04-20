@@ -4,7 +4,6 @@ title: "Archive"
 
 
 
-
 {% assign all_items = "" | split: "," %}
 
 {% for collection in site.collections %}
@@ -12,8 +11,9 @@ title: "Archive"
   {% if items.size > 0 %}
     {% for item in items %}
       {% if item.title and item.date %}
+        {% assign collection_name = item.url | split: "/" | slice: 3 %}
         {% assign all_items = all_items | push: item %}
-        {% assign all_items = all_items | push: collection.label %}
+        {% assign all_items = all_items | push: collection_name %}
       {% endif %}
     {% endfor %}
   {% endif %}
@@ -24,9 +24,10 @@ title: "Archive"
 <h2>All Items</h2>
 <ul>
   {% for item in sorted_items %}
+    {% assign collection_name = item.url | split: "/" | slice: 3 %}
     <li>
       <a href="{{ item.url }}">{{ item.title }}</a> - {{ item.date | date: "%Y-%m-%d" }}
-      <span>(Collection: {{ item.collection_name }})</span>
+      <span>(Collection: {{ collection_name }})</span>
     </li>
   {% endfor %}
 </ul>
