@@ -2,15 +2,11 @@
 title: "Archive"
 ---
 
-<div class="entries-by-year">
-  {% assign all_docs = "" %}
-  {% for collection in site.collections %}
-    {% for doc in collection.docs %}
-      {% if all_docs == "" %}
-        {% assign all_docs = doc %}
-      {% else %}
-        {% assign all_docs = all_docs | append: "," | append: doc %}
-      {% endif %}
+{% for collection in site.collections %}
+  <h2>Items from {{ collection.label }}</h2>
+  <ul>
+    {% for item in site[collection.label] %}
+      <li><a href="{{ item.url }}">{{ item.title }}</a></li>
     {% endfor %}
-  {% endfor %}
-</div>
+  </ul>
+{% endfor %}
