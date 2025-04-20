@@ -8,7 +8,7 @@
 {% assign icon = asset | append: "/codeCraft.ico" %}
 {% endcapture %}<!DOCTYPE html>
 <html lang="{{ meta.locale | default: 'en' }}">
-{%- include components/head.html -%}
+{%- include head.html -%}
 <body>
     <div id="translate"></div>
     <input type="checkbox" aria-expanded="false" id="menu" autocomplete='off'>
@@ -26,7 +26,7 @@
         <div class="icon icon-menu" aria-hidden="true"></div>
     </label>
     <aside>
-        {%- include components/aside.html -%}
+        {%- include aside.html -%}
     </aside>
     <main>
         {% if page.toc %}<label for="toc"><div class="icon icon-toc" aria-label="Show Table of Contents"></div></label>{% endif %}
