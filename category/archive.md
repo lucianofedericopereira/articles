@@ -2,7 +2,7 @@
 title: "Archive"
 ---
 
-{% assign all_items = [] %}
+{% assign all_items = "" | split: "," %}
 
 {% for collection in site.collections %}
   {% assign items = site[collection.label] | sort: "date" %}
@@ -24,7 +24,7 @@ title: "Archive"
   {% endfor %}
 </ul>
 
-
+---
 
 
 
