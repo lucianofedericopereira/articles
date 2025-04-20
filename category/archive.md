@@ -2,20 +2,22 @@
 title: "Archive"
 ---
 
-{% assign collections = site.collections | where_exp: "collection", collection.label != 'posts' %}
-{% assign all_entries = collections | map: "docs" | flatten | sort: "date" | reverse %}
-
-{% assign grouped_entries = all_entries | group_by_exp: "entry", "entry.date | date: '%Y'" %}
-
 <div class="entries-by-year">
-  {% for group in grouped_entries %}
+  {% assign all_docs = "" %}
+  {% for collection in site.collections %}
+    {% assign all_docs = all_docs | append: collection.docs %}
+  {% endfor %}
+  {% assign sorted_docs = all_docs | sort: "date" | reverse %}
+  {% assign grouped_docs = sorted_docs | group_by_exp: "doc", "doc.date | date: '%Y'" %}
+
+  {% for group in grouped_docs %}
     <h2>{{ group.name }}</h2>
     <ul>
-      {% for entry in group.items %}
+      {% for doc in group.items %}
         <li>
-          <a href="{{ entry.url }}">{{ entry.title }}</a>
-          - {{ entry.date | date: "%Y-%m-%d" }}
-          (Collection: {{ entry.collection.label }})
+          <a href="{{ doc.url }}">{{ doc.title }}</a>
+          - {{ doc.date | date: "%Y-%m-%d" }}
+          (Collection: {{ doc.collection.label }})
         </li>
       {% endfor %}
     </ul>
