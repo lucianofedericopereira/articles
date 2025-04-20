@@ -2,4 +2,4 @@
 title: "JavaScript"
 category: js
 ---
-{%- include components/category.html -%}
+{%- include category.html -%}
