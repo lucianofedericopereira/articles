@@ -3,6 +3,8 @@ title: "Archive"
 ---
 
 
+
+
 {% assign all_items = "" | split: "," %}
 
 {% for collection in site.collections %}
@@ -10,8 +12,8 @@ title: "Archive"
   {% if items.size > 0 %}
     {% for item in items %}
       {% if item.title and item.date %}
-        {% assign item.collection_name = collection.label %}
         {% assign all_items = all_items | push: item %}
+        {% assign all_items = all_items | push: collection.label %}
       {% endif %}
     {% endfor %}
   {% endif %}
@@ -28,6 +30,9 @@ title: "Archive"
     </li>
   {% endfor %}
 </ul>
+
+
+
 
 
 
