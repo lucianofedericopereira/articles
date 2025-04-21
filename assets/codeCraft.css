@@ -755,10 +755,8 @@ main ol li {
         border-radius: .8vh;
         text-align: center;
         padding: .4rem 1ch;
-    }
-
-    .controllers label:not(:last-child) {
-        padding-right: .5rem;
+        padding: 1.1rem 1ch .9rem;
+        line-height: 0;
     }
 
     .controllers label:hover {
@@ -797,7 +795,7 @@ main ol li {
         .controllers label {
             min-width: 10ch;
             border-radius: 4vh;
-            padding: .4rem .8rem;
+            padding: 1.1rem .8rem .9rem;
         }
 
         .banner {
