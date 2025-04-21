@@ -24,10 +24,10 @@ title: "Archive"
 {% for item in sorted_items %}
   {% assign year = item.date | date: "%Y" %}
   
-  {% if year != current_year %}
-    <h3>{{ year }}</h3>
-    {% assign current_year = year %}
-  {% endif %}
+{% if year != current_year %}
+<h3>{{ year }}</h3>
+{% assign current_year = year %}
+{% endif %}
   {% assign collection_name = item.url | split: "/" | slice: 1, 1 %}
   <p class="list {{ collection_name }}">
     <a href="{{ item.url }}"><span>{{ item.date | date: "%b %d" }}</span> {{ item.title }}</a>
