@@ -744,6 +744,7 @@ main ol li {
         gap: .5rem;
         display: flex;
         justify-content: center;
+        font-family: var(--font-body),var(--font-basic);
     }
 
     .controllers label {
