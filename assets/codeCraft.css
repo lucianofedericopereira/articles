@@ -1417,6 +1417,7 @@ main ol li {
         width: 1.25rem;
     }
 
+    main p.list a::after,
     main footer p a::after {
         content: " \21A9  (" attr(href) "). ";
         font-weight: normal;
