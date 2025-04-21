@@ -17,7 +17,7 @@ title: "Archive"
 {% endfor %}
 
 {% assign sorted_items = all_items | sort: "date" | reverse %}
-{% assign grouped_by_year = sorted_items | group_by: "date | date: '%Y'" %}
+{% assign grouped_by_year = sorted_items | group_by: "date" %}
 
 
 {% for year_group in grouped_by_year %}
