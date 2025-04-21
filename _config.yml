@@ -1,5 +1,6 @@
 theme: just-the-docs
 permalink: pretty
+sidebar_collections: false
 search_enabled: false
 search_file: https://lucianofedericopereira.github.io/articles/search.json
 base:
