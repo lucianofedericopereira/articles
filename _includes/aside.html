@@ -10,7 +10,7 @@
 </div>
 <div class="aside-title">Sections</div>
 {% assign home_page = site.html_pages | where: "title", "Home" | first %}{% if home_page %}<a class="aside-link" href="{{ folder }}/">{{ home_page.title }}</a>{% endif %}
-{% assign archive_page = site.html_pages | where: "title", "Archive" | first %}{% if archive_page %}<a class="aside-link" href="{{ folder }}/{{ archive_page.url }}">{{ archive_page.title }}</a>{% endif %}
+{% assign archive_page = site.html_pages | where: "title", "Archive" | first %}{% if archive_page %}<a class="aside-link" href="{{ folder }}{{ archive_page.url }}">{{ archive_page.title }}</a>{% endif %}
 {% if site.sidebar_collections != false %}
 {% assign pages_top = site.html_pages | where_exp:"item", "item.title != nil" | where_exp:"item", "item.parent == nil" |
 where_exp:"item", "item.nav_exclude != true" | size %}
