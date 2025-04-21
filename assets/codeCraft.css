@@ -777,13 +777,9 @@ main ol li {
         display: none;
     }
 
-    .items:has(#all:checked) .list,
-    .items:has(#projects:checked) .list.projects,
-    .items:has(#code:checked) .list.code,
-    .items:has(#design:checked) .list.design {
+    .items:has(#all:checked) .list {
         display: block;
     }
-
 
     @media (width > 575px) {
 
@@ -1367,6 +1363,7 @@ main ol li {
         width: 100%;
     }
 
+    .controllers,
     #index,
     #comments,
     aside,

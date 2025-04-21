@@ -171,4 +171,7 @@ main {
         color: var(--r0);
     }
 
+    {% for collection in site.collections %}{% assign items=site[collection.label] %}{% if items.size>0 %}
+        .items:has(#{{collection.label}}:checked) .list.{{collection.label}} {display: block}{% endif %}{% endfor %}
+
 }
