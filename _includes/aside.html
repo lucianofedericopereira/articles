@@ -9,8 +9,19 @@
   <div id="search-results" class="search-results"></div>
 </div>
 <div class="aside-title">Sections</div>
-{% assign home_page = site.html_pages | where: "title", "Home" | first %}{% if home_page %}<a class="aside-link" href="{{ folder }}/">{{ home_page.title }}</a>{% endif %}
-{% assign pages_top = site.html_pages | where_exp:"item", "item.title != nil" | where_exp:"item", "item.parent == nil" | where_exp:"item", "item.nav_exclude != true" | where: "title", "Home" | size %}{% if pages_top > 0 %} {% for item in site.html_pages | where_exp:"item", "item.title != nil" | where_exp:"item", "item.parent == nil" | where_exp:"item", "item.nav_exclude != true" %}{% unless item.title == "Home" %}<a class="aside-link" href="{{ folder }}{{ item.url }}">{{ item.title }}</a>{% endunless %}{% endfor %}{% endif %}
+{% assign archive_page = site.html_pages | where: "title", "Archive" | first %}
+{% assign home_page = site.html_pages | where: "title", "Home" | first %}
+{% assign pages_top = site.html_pages | where_exp:"item", "item.title != nil" | where_exp:"item", "item.parent == nil" | where_exp:"item", "item.nav_exclude != true" | size %}
+{% if pages_top > 0 %}
+{% for item in site.html_pages | where_exp:"item", "item.title != nil" | where_exp:"item", "item.parent == nil" | where_exp:"item", "item.nav_exclude != true" %}
+{% unless item.title == "Home" or item.title == "Archive" %}
+<a class="aside-link" href="{{ folder }}{{ item.url }}">{{ item.title }}</a>
+{% endunless %}
+{% endfor %}
+{% endif %}
+
+
+
 {% if site.links %}{% for link in site.links %}<a href="{{ link.last }}" class="aside-link" rel="noopener noreferrer">{{ link.first }}</a>{% endfor %}{% endif %}
 <div class="dropdown">
   <button class="dropbtn aside-title hidden">Translate &rsaquo;</button>
