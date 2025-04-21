@@ -21,7 +21,7 @@ comments: false
 <div class="latest-items">
     {% for item in latest_items %}
         <div class="entry">
-            <p><a href="{{ item.url }}">{{ item.title }}</a></p>
+            <p><a href="{{ item.url }}">{{ item.collection }} {{ item.title }}</a></p>
             <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
         </div>
     {% endfor %}
