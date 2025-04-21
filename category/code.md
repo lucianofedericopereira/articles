@@ -1,5 +1,5 @@
 ---
-title: "Code Articles"
+title: "Code"
 category: code
 ---
 {%- include category.html -%}

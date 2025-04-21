@@ -1,5 +1,5 @@
 ---
-title: "Design"
-category: design
+title: "Projects"
+category: projects
 ---
 {%- include category.html -%}

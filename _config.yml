@@ -12,6 +12,9 @@ meta:
   repository: https://github.com/lucianofedericopereira
   license: GPLv2
   locale: en
+links:
+  LinkedIn: https://github.com/just-the-docs/just-the-docs
+  GitHub: https://github.com/just-the-docs/just-the-docs-template      
 fonts:
   - type: title
     name: Mediaan
@@ -25,12 +28,6 @@ fonts:
     name: JetBrainsMono
     weight: Medium
     extension: woff2
-
-
-links:
-  LinkedIn: https://github.com/just-the-docs/just-the-docs
-  GitHub: https://github.com/just-the-docs/just-the-docs-template      
-
 collections:
   design:
     permalink: "/:collection/:name/"
@@ -38,7 +35,9 @@ collections:
   code:
     permalink: "/:collection/:name/"
     output: true
-
+  projects:
+    permalink: "/:collection/:name/"
+    output: true
 defaults:
   - scope:
       path: "index.md"
@@ -64,6 +63,13 @@ defaults:
       mermaid: false
   - scope:
       path: "_code"
+    values:
+      layout: codeCraft
+      toc: true
+      comments: false
+      mermaid: false
+  - scope:
+      path: "_project"
     values:
       layout: codeCraft
       toc: true
