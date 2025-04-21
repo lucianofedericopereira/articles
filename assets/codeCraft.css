@@ -739,7 +739,65 @@ main ol li {
         margin-right: 1ch;
     }
 
+    .controllers {
+        margin-top: 2rem;
+        gap: 1.5rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .controllers label {
+        font-size: 1.1rem;
+        border: 2px solid var(--c4);
+        cursor: pointer;
+        display: inline-block;
+        border-radius: .8vh;
+        text-align: center;
+        padding: .4rem 1ch;
+    }
+
+    .controllers label:not(:last-child) {
+        padding-right: .5rem;
+    }
+
+    .controllers label:hover {
+        background-color: var(--cb);
+    }
+
+    .controllers label:has(input:checked) {
+        background-color: var(--c4);
+        color: var(--bg);
+        cursor: default;
+    }
+
+    .controllers input {
+        display: none;
+    }
+
+    .items p {
+        display: none;
+    }
+
+    .items:has(#all:checked) .list,
+    .items:has(#projects:checked) .list.projects,
+    .items:has(#code:checked) .list.code,
+    .items:has(#design:checked) .list.design {
+        display: block;
+    }
+
+
     @media (width > 575px) {
+
+        .controllers {
+            margin-top: 0!important;
+            gap: .5rem!important;
+        }
+
+        .controllers label {
+            min-width: 10ch;
+            border-radius: 4vh;
+            padding: .4rem .8rem;
+        }
 
         .banner {
             margin-top: 2.3rem !important;
