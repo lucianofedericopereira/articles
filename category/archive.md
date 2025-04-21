@@ -27,7 +27,7 @@ title: "Archive"
 <ul>
   {% for item in sorted_items %}
   {% assign collection_name = item.url | split: "/" %}
-  {% assign collection_name = collection_name[3] %}
+  {% assign collection_name = collection_name[2] %}
   <li><a href="{{ item.url }}">{{ item.title }}</a> {{ collection_name }} - {{ item.date | date: "%Y-%m-%d" }}</li>
   {% endfor %}
 </ul>
