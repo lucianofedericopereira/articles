@@ -4,6 +4,31 @@ mermaid: true
 comments: false
 ---
 
+{% assign all_items = "" | split: "," %}
+{% for collection in site.collections %}
+    {% assign items = site[collection.label] | sort: "date" | reverse %}
+    {% if items.size > 0 %}
+        {% for item in items %}
+            {% if item.title and item.date %}
+                {% assign all_items = all_items | push: item %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+{% assign sorted_items = all_items | sort: "date" | reverse %}
+{% assign latest_items = sorted_items | slice: 0, 10 %}
+
+<div class="latest-items">
+    {% for item in latest_items %}
+        <div class="entry">
+            <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+            <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+
+
 This is a *bare-minimum* template to create a Jekyll site that uses the [Just the Docs] theme. You can easily set the created site to be published on [GitHub Pages] – the [README] file explains how to do that, along with other details.
 
 <div class="language-mermaid">
