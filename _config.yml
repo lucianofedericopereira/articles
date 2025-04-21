@@ -32,10 +32,10 @@ links:
   GitHub: https://github.com/just-the-docs/just-the-docs-template      
 
 collections:
-  css:
+  design:
     permalink: "/:collection/:name/"
     output: true
-  js:
+  code:
     permalink: "/:collection/:name/"
     output: true
 
@@ -56,14 +56,14 @@ defaults:
       comments: false
       mermaid: false
   - scope:
-      path: "_css"
+      path: "_design"
     values:
       layout: codeCraft
       toc: true
       comments: false
       mermaid: false
   - scope:
-      path: "_js"
+      path: "_code"
     values:
       layout: codeCraft
       toc: true
