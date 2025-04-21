@@ -21,10 +21,21 @@ comments: false
 <div class="latest-items">
     {% for item in latest_items %}
         <div class="entry">
-            <p><a href="{{ item.url }}">{{ item.collection }} {{ item.title }}</a></p>
-            <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
-        </div>
-    {% endfor %}
+            <p><a href="{{ item.url }}">{{ item.date | date: "%b %d %Y"}}    {{ item.collection }} {{ item.title }}</a>
+</p>
+            
+{% assign words = item.content | strip_html | split: " " %}
+{% assign excerpt = "" %}
+{% for word in words %}
+    {% assign excerpt = excerpt | append: word | append: " " %}
+    {% if word contains "." and forloop.index >= 50 %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+<p>{{ excerpt }}</p>
+
+</div>
+{% endfor %}
 </div>
 
 
