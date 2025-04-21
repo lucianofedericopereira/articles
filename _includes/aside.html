@@ -11,7 +11,7 @@
 <div class="aside-title">Sections</div>
 {% assign home_page = site.html_pages | where: "title", "Home" | first %}{% if home_page %}<a class="aside-link" href="{{ folder }}/">{{ home_page.title }}</a>{% endif %}
 {% assign archive_page = site.html_pages | where: "title", "Archive" | first %}{% if archive_page %}<a class="aside-link" href="{{ folder }}/">{{ archive_page.title }}</a>{% endif %}
-
+{% if site.sidebar_collections %}
 {% assign pages_top = site.html_pages | where_exp:"item", "item.title != nil" | where_exp:"item", "item.parent == nil" |
 where_exp:"item", "item.nav_exclude != true" | size %}
 {% if pages_top > 0 %}
@@ -22,7 +22,7 @@ where_exp:"item", "item.nav_exclude != true" %}
 {% endunless %}
 {% endfor %}
 {% endif %}
-
+{% endif %}
 {% if site.links %}{% for link in site.links %}<a href="{{ link.last }}" class="aside-link" rel="noopener noreferrer">{{ link.first }}</a>{% endfor %}{% endif %}
 <div class="dropdown">
   <button class="dropbtn aside-title hidden">Translate &rsaquo;</button>
