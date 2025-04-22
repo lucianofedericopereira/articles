@@ -21,34 +21,9 @@ export const codeCraft = {
         }, 'translate');
         codeCraft.$('.goog-logo-link')?.setAttribute('rel', 'noopener');
         const googleCombo = codeCraft.$("select.goog-te-combo");
-        //const langSelect = codeCraft.$('.dropdown-lang');
-        
-        /*
-        const dropdownContainer = codeCraft.$('.dropdown');
-        const dropbtn = codeCraft.$('.dropbtn');
-        */
         const translateDropdown = codeCraft.$('#translate-dropdown');
-
-
         const mobile = window.innerWidth < 1280;
         const menu = codeCraft.$('#menu');
-        
-        /*
-        function restoreLang() {
-            const iframe = codeCraft.$('.goog-te-banner-frame');
-            if (!iframe) return;
-            const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-            const restoreButtons = innerDoc.getElementsByTagName("button");
-            Array.from(restoreButtons).forEach(button => {
-                if (button.id.includes("restore")) {
-                    button.click();
-                    const closeButton = innerDoc.querySelector(".goog-close-link");
-                    closeButton?.click();
-                };
-            });
-        };
-        */
-        
         function triggerHtmlEvent(element, eventName) {
             const event = document.createEvent
                 ? new Event(eventName, { bubbles: true, cancelable: true })
@@ -61,7 +36,6 @@ export const codeCraft = {
             googleCombo.value = lang;
             triggerHtmlEvent(googleCombo, 'change');
         }, 1500);
-
         codeCraft.$$(".lang-select").forEach(link => {
             link.addEventListener('click', function (event) {
                 const { target } = event;
@@ -69,58 +43,17 @@ export const codeCraft = {
                 const lang = target.getAttribute('hreflang');
                 if (!lang) return;
                 codeCraft.$('.lang-select.aside-selected')?.classList.remove('aside-selected');
-
                 target.classList.add('aside-selected');
-                
-//                langSelect.style.display = 'none';
-
-                    debouncedChangeLanguage(lang);
-
-                
-                
-                
+                debouncedChangeLanguage(lang);
                 setTimeout(() => {
-//                    langSelect
-//                    dropbtn.disabled = false;
-//                    dropbtn.classList.remove('disabled');
                     translateDropdown.checked = false;
                     if (mobile) {
                         menu.checked = false;
                     }
                 }, 2000);
                 event.preventDefault();
-
-            
-            
             });
-        
         });
-
-
-
-        /*
-        langSelect?.addEventListener('click', function (event) {
-            const { target } = event;
-            if (!target) return;
-            codeCraft.$('.lang-select.aside-selected')?.classList.remove('aside-selected');
-            const lang = target.getAttribute('hreflang');
-            if (!lang) return;
-            target.classList.add('aside-selected');
-            langSelect.style.display = 'none';
-            dropbtn.disabled = true;
-            dropbtn.classList.add('disabled');
-            debouncedChangeLanguage(lang);
-            setTimeout(() => {
-                langSelect
-                dropbtn.disabled = false;
-                dropbtn.classList.remove('disabled');
-                if (mobile) {
-                    menu.checked = false;
-                }
-            }, 2000);
-            event.preventDefault();
-        });
-        */
         const checkSelectedLangInterval = setInterval(function () {
             const selectedLang = googleCombo.value;
             if (selectedLang) {
@@ -135,21 +68,7 @@ export const codeCraft = {
         }, 100);
         setTimeout(function () {
             clearInterval(checkSelectedLangInterval);
-        }, 5000);
-        
-        /*
-        dropdownContainer?.addEventListener('mouseover', function () {
-            langSelect.style.display = 'block';
-        });
-        dropdownContainer?.addEventListener('mouseout', function () {
-            langSelect.style.display = 'none';
-        });
-        dropbtn?.addEventListener('click', function (event) {
-            langSelect.style.display = langSelect.style.display !== 'block' ? 'block' : 'none';
-            event.preventDefault();
-        });
-        */
-        
+        }, 5000);        
         (function waitForFunctions(retries = 20, interval = 150) {
             let attempts = 0;
             const checkAndOverride = () => {
@@ -439,7 +358,6 @@ export const codeCraft = {
     },
     addStyles: function () {
         codeCraft.$('#menu').checked = (window.innerWidth < 1280) ? false : true;
-   //     codeCraft.$('.dropbtn').classList.remove('hidden');
         codeCraft.$$("main footer p").forEach(p => {
             p.addEventListener("click", () => {
                 const link = p.querySelector("a");

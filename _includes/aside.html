@@ -24,30 +24,15 @@ where_exp:"item", "item.nav_exclude != true" %}
 {% endif %}
 {% endif %}
 {% if site.links %}{% for link in site.links %}<a href="{{ link.last }}" class="aside-link" rel="noopener noreferrer">{{ link.first }}</a>{% endfor %}{% endif %}
-
-    <input type="checkbox" aria-expanded="false" id="translate-dropdown" autocomplete='off'>
-    <label for="translate-dropdown" aria-label="Toggle Transpalete" id="translate-dropdown-label" class="aside-title">
-      Translate &rsaquo;
-    </label>
-    <div class="dropdown">
-      <a href="#" hreflang="en" class="notranslate lang-select aside-link aside-selected">English</a>
-      <a href="#" hreflang="es" class="notranslate lang-select aside-link">Español</a>
-      <a href="#" hreflang="it" class="notranslate lang-select aside-link">Italiano</a>
-      <a href="#" hreflang="de" class="notranslate lang-select aside-link">Deutsch</a>
-      <a href="#" hreflang="pt" class="notranslate lang-select aside-link">Português</a>
-      <a href="#" hreflang="fr" class="notranslate lang-select aside-link">Français</a>
-    </div>
-
-<!--
+<input type="checkbox" aria-expanded="false" id="translate-dropdown" autocomplete='off'>
+<label for="translate-dropdown" aria-label="Toggle Transpalete" id="translate-dropdown-label" class="aside-title">
+    Translate &rsaquo;
+</label>
 <div class="dropdown">
-  <button class="dropbtn aside-title hidden">Translate &rsaquo;</button>
-  <div class="dropdown-lang" style="display:none">
-    <a href="#" hreflang="en" class="notranslate lang-select aside-link aside-selected">English</a>
-    <a href="#" hreflang="es" class="notranslate lang-select aside-link">Español</a>
-    <a href="#" hreflang="it" class="notranslate lang-select aside-link">Italiano</a>
-    <a href="#" hreflang="de" class="notranslate lang-select aside-link">Deutsch</a>
-    <a href="#" hreflang="pt" class="notranslate lang-select aside-link">Português</a>
-    <a href="#" hreflang="fr" class="notranslate lang-select aside-link">Français</a>
-  </div>
+  <a href="#" hreflang="en" class="notranslate lang-select aside-link aside-selected">English</a>
+  <a href="#" hreflang="es" class="notranslate lang-select aside-link">Español</a>
+  <a href="#" hreflang="it" class="notranslate lang-select aside-link">Italiano</a>
+  <a href="#" hreflang="de" class="notranslate lang-select aside-link">Deutsch</a>
+  <a href="#" hreflang="pt" class="notranslate lang-select aside-link">Português</a>
+  <a href="#" hreflang="fr" class="notranslate lang-select aside-link">Français</a>
 </div>
--->
