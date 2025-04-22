@@ -32,6 +32,8 @@ export const codeCraft = {
 
         const mobile = window.innerWidth < 1280;
         const menu = codeCraft.$('#menu');
+        
+        /*
         function restoreLang() {
             const iframe = codeCraft.$('.goog-te-banner-frame');
             if (!iframe) return;
@@ -45,6 +47,8 @@ export const codeCraft = {
                 };
             });
         };
+        */
+        
         function triggerHtmlEvent(element, eventName) {
             const event = document.createEvent
                 ? new Event(eventName, { bubbles: true, cancelable: true })
@@ -70,12 +74,7 @@ export const codeCraft = {
                 
 //                langSelect.style.display = 'none';
 
-                if (lang === 'en') {
-                    restoreLang();
-                } else {
                     debouncedChangeLanguage(lang);
-                
-                }
 
                 
                 
