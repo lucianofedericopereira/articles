@@ -381,10 +381,6 @@ export const codeCraft = {
             text-decoration-style: solid;
             text-decoration-color: var(--c3);
         }
-        .entry:hover {
-            border-color: var(--c3);
-            background-color: var(--c5);
-        }
         .entry:hover .title a b {
             color: var(--r0);
         }
