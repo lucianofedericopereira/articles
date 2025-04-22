@@ -439,7 +439,7 @@ export const codeCraft = {
     },
     addStyles: function () {
         codeCraft.$('#menu').checked = (window.innerWidth < 1280) ? false : true;
-        codeCraft.$('.dropbtn').classList.remove('hidden');
+   //     codeCraft.$('.dropbtn').classList.remove('hidden');
         codeCraft.$$("main footer p").forEach(p => {
             p.addEventListener("click", () => {
                 const link = p.querySelector("a");
