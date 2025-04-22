@@ -381,6 +381,20 @@ export const codeCraft = {
             text-decoration-style: solid;
             text-decoration-color: var(--c3);
         }
+        .entry:hover {
+            border-color: var(--c3);
+            background-color: var(--c5);
+        }
+        .entry:hover .title a b {
+            color: var(--r0);
+        }
+        .entry:hover p .collection-tag {
+            background-color: var(--r0);
+            color: var(--c7);
+        }
+        .entry:hover .date-tag {
+            color: var(--c1);
+        }
         `;
         this.css(styles);
         setTimeout(() => {

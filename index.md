@@ -18,12 +18,16 @@ comments: false
 {% assign sorted_items = all_items | sort: "date" | reverse %}
 {% assign latest_items = sorted_items | slice: 0, 10 %}
 
-<div class="news">
-    {% for item in latest_items %}
-        <div class="entry">
-            <p><a href="{{ item.url }}">{{ item.date | date: "%b %d, %Y"}}    {{ item.collection }} {{ item.title }}</a>
+<div class="latest-items">
+{% for item in latest_items %}
+<div class="entry" onclick="window.location.href = this.querySelector('a').href;">
+<p class="title">
+  <a href="{{ item.url }}">
+    <b>{{ item.title }}</b>
+  </a>
+  <br>
+  <i class="date-tag">{{ item.date | date: "%b %d, %Y"}}</i>
 </p>
-            
 {% assign words = item.content | strip_html | split: " " %}
 {% assign excerpt = "" %}
 {% for word in words %}
@@ -32,13 +36,10 @@ comments: false
         {% break %}
     {% endif %}
 {% endfor %}
-<p>{{ excerpt }}</p>
-
+<p>{{ excerpt }}<span class="collection-tag">{{ item.collection }}</span></p>
 </div>
 {% endfor %}
 </div>
-
-
 
 This is a *bare-minimum* template to create a Jekyll site that uses the [Just the Docs] theme. You can easily set the created site to be published on [GitHub Pages] – the [README] file explains how to do that, along with other details.
 

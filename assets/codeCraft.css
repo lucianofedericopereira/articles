@@ -801,6 +801,38 @@ main ol li {
         display: block;
     }
 
+    main p.title {
+        font-size: 1.5rem;
+    }
+    
+    .collection-tag {
+        background-color: var(--c5);
+        padding: 0 .9ch 0 .85ch;
+        border-radius: 4vh;
+        font-family: var(--font-code);
+        margin-left: .5ch;
+        font-size: 1.05rem;
+    }
+    
+    .collection-tag:hover {
+        background-color: var(--r0);
+        color: var(--c7);
+    }
+    
+    .date-tag {
+        color: var(--cd);
+        font-size: 1.1rem;
+        padding-left: .15rem;
+    }
+    
+    .entry {
+        cursor: pointer;
+        max-width: fit-content;
+        margin: 0 auto;
+        border: 2px solid transparent;
+        border-radius: .4vh;
+    }
+
     @media (width > 575px) {
 
         .controllers {
