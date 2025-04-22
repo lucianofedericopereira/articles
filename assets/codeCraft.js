@@ -27,7 +27,7 @@ export const codeCraft = {
         const dropdownContainer = codeCraft.$('.dropdown');
         const dropbtn = codeCraft.$('.dropbtn');
         */
-        const translateDropdown = $('#translate-dropdown');
+        const translateDropdown = codeCraft.$('#translate-dropdown');
 
 
         const mobile = window.innerWidth < 1280;
