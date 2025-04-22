@@ -36,7 +36,7 @@ comments: false
         {% break %}
     {% endif %}
 {% endfor %}
-<p>{{ excerpt }}<a href="#"><span class="collection-tag">{{ item.collection }}</span></a></p>
+<p>{{ excerpt }}<span class="collection-tag" onclick="window.location.href='https://google.com.ar'">{{ item.collection }}</span></p>
 </div>
 {% endfor %}
 </div>
