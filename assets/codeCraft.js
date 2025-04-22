@@ -33,7 +33,7 @@ export const codeCraft = {
         const mobile = window.innerWidth < 1280;
         const menu = codeCraft.$('#menu');
         function restoreLang() {
-            const iframe = $('.goog-te-banner-frame');
+            const iframe = codeCraft.$('.goog-te-banner-frame');
             if (!iframe) return;
             const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
             const restoreButtons = innerDoc.getElementsByTagName("button");
@@ -62,9 +62,10 @@ export const codeCraft = {
             link.addEventListener('click', function (event) {
                 const { target } = event;
                 if (!target) return;
-                codeCraft.$('.lang-select.aside-selected')?.classList.remove('aside-selected');
                 const lang = target.getAttribute('hreflang');
                 if (!lang) return;
+                codeCraft.$('.lang-select.aside-selected')?.classList.remove('aside-selected');
+
                 target.classList.add('aside-selected');
                 
 //                langSelect.style.display = 'none';
