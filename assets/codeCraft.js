@@ -21,9 +21,15 @@ export const codeCraft = {
         }, 'translate');
         codeCraft.$('.goog-logo-link')?.setAttribute('rel', 'noopener');
         const googleCombo = codeCraft.$("select.goog-te-combo");
-        const langSelect = codeCraft.$('.dropdown-lang');
+        //const langSelect = codeCraft.$('.dropdown-lang');
+        
+        /*
         const dropdownContainer = codeCraft.$('.dropdown');
         const dropbtn = codeCraft.$('.dropbtn');
+        */
+        const translateDropdown = $('#translate-dropdown');
+
+
         const mobile = window.innerWidth < 1280;
         const menu = codeCraft.$('#menu');
         function restoreLang() {
@@ -51,6 +57,48 @@ export const codeCraft = {
             googleCombo.value = lang;
             triggerHtmlEvent(googleCombo, 'change');
         }, 1500);
+
+        codeCraft.$$(".lang-select").forEach(link => {
+            link.addEventListener('click', function (event) {
+                const { target } = event;
+                if (!target) return;
+                codeCraft.$('.lang-select.aside-selected')?.classList.remove('aside-selected');
+                const lang = target.getAttribute('hreflang');
+                if (!lang) return;
+                target.classList.add('aside-selected');
+                
+//                langSelect.style.display = 'none';
+
+                if (lang === 'en') {
+                    restoreLang();
+                } else {
+                    debouncedChangeLanguage(lang);
+                
+                }
+
+                
+                
+                
+                setTimeout(() => {
+//                    langSelect
+//                    dropbtn.disabled = false;
+//                    dropbtn.classList.remove('disabled');
+                    translateDropdown.checked = false;
+                    if (mobile) {
+                        menu.checked = false;
+                    }
+                }, 2000);
+                event.preventDefault();
+
+            
+            
+            });
+        
+        });
+
+
+
+        /*
         langSelect?.addEventListener('click', function (event) {
             const { target } = event;
             if (!target) return;
@@ -63,6 +111,7 @@ export const codeCraft = {
             dropbtn.classList.add('disabled');
             debouncedChangeLanguage(lang);
             setTimeout(() => {
+                langSelect
                 dropbtn.disabled = false;
                 dropbtn.classList.remove('disabled');
                 if (mobile) {
@@ -71,6 +120,7 @@ export const codeCraft = {
             }, 2000);
             event.preventDefault();
         });
+        */
         const checkSelectedLangInterval = setInterval(function () {
             const selectedLang = googleCombo.value;
             if (selectedLang) {
@@ -86,6 +136,8 @@ export const codeCraft = {
         setTimeout(function () {
             clearInterval(checkSelectedLangInterval);
         }, 5000);
+        
+        /*
         dropdownContainer?.addEventListener('mouseover', function () {
             langSelect.style.display = 'block';
         });
@@ -96,6 +148,8 @@ export const codeCraft = {
             langSelect.style.display = langSelect.style.display !== 'block' ? 'block' : 'none';
             event.preventDefault();
         });
+        */
+        
         (function waitForFunctions(retries = 20, interval = 150) {
             let attempts = 0;
             const checkAndOverride = () => {

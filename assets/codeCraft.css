@@ -67,6 +67,25 @@ main ol li {
     margin-bottom: .65rem;
 }
 
+#translate-dropdown:checked~.dropdown {
+    display: block;
+}
+
+#translate-dropdown:not(:checked)~.dropdown {
+    display: none;
+}
+
+#translate-dropdown-label {
+    display: block;
+    min-width: 100%;
+    cursor: pointer;
+}
+
+#translate-dropdown:checked~#translate-dropdown-label,
+#translate-dropdown-label:hover {
+    color: var(--r0);
+}
+
 @media screen {
 
     h2::before {
@@ -170,6 +189,7 @@ main ol li {
         color: var(--c2);
         text-align: center;
     }
+
 
     main p,
     main ul,

@@ -18,10 +18,10 @@ comments: false
 {% assign sorted_items = all_items | sort: "date" | reverse %}
 {% assign latest_items = sorted_items | slice: 0, 10 %}
 
-<div class="latest-items">
+<div class="news">
     {% for item in latest_items %}
         <div class="entry">
-            <p><a href="{{ item.url }}">{{ item.date | date: "%b %d %Y"}}    {{ item.collection }} {{ item.title }}</a>
+            <p><a href="{{ item.url }}">{{ item.date | date: "%b %d, %Y"}}    {{ item.collection }} {{ item.title }}</a>
 </p>
             
 {% assign words = item.content | strip_html | split: " " %}
