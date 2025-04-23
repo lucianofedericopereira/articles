@@ -4,15 +4,7 @@ mermaid: true
 comments: false
 ---
 
-{% assign domain = "https://" | append: site.base.url %}{% assign folder = domain | append: "/" | append: site.base.folder %}{% assign all_items = "" | split: "," %}{% for collection in site.collections %}{% assign items = site[collection.label] | sort: "date" | reverse %}{% if items.size > 0 %}{% for item in items %}{% if item.title and item.date %}{% assign all_items = all_items | push: item %}{% endif %}{% endfor %}{% endif %}{% endfor %}{% assign sorted_items = all_items | sort: "date" | reverse %}
-
-{% assign latest_items = sorted_items | slice: 0, 10 %}
-
-<div class="latest-items">{% for item in latest_items %}<div class="entry" onclick="window.location.href = this.querySelector('a').href;"><p class="title"><a href="{{folder}}{{ item.url }}"><b>{{ item.title }}</b></a><br><i class="date-tag">{{ item.date | date: "%b %d, %Y"}}</i></p>{% assign words = item.content | strip_html | split: " " %}{% assign excerpt = "" %}{% for word in words %}{% assign excerpt = excerpt | append: word | append: " " %}{% if word contains "." and forloop.index >= 50 %}{% break %}{% endif %}{% endfor %}<p>{{ excerpt }}
-
-<span class="collection-tag" onclick="event.stopPropagation();window.location.href='{{folder}}/category/{{ item.collection }}'">{{ item.collection }}</span></p></div>{% endfor %}</div>
-
-
+{%- include posts.html -%}
 
 This is a *bare-minimum* template to create a Jekyll site that uses the [Just the Docs] theme. You can easily set the created site to be published on [GitHub Pages] – the [README] file explains how to do that, along with other details.
 
