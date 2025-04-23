@@ -10,7 +10,7 @@ comments: false
 
 <div class="latest-items">{% for item in latest_items %}<div class="entry" onclick="window.location.href = this.querySelector('a').href;"><p class="title"><a href="{{folder}}{{ item.url }}"><b>{{ item.title }}</b></a><br><i class="date-tag">{{ item.date | date: "%b %d, %Y"}}</i></p>{% assign words = item.content | strip_html | split: " " %}{% assign excerpt = "" %}{% for word in words %}{% assign excerpt = excerpt | append: word | append: " " %}{% if word contains "." and forloop.index >= 50 %}{% break %}{% endif %}{% endfor %}<p>{{ excerpt }}
 
-<span class="collection-tag" onclick="event.stopPropagation();window.location.href='{{folder}}category/{{ item.collection }}'">{{ item.collection }}</span></p></div>{% endfor %}</div>
+<span class="collection-tag" onclick="event.stopPropagation();window.location.href='{{folder}}/category/{{ item.collection }}'">{{ item.collection }}</span></p></div>{% endfor %}</div>
 
 
 
