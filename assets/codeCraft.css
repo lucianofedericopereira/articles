@@ -173,11 +173,6 @@ main ol li {
         color: var(--c2);
     }
 
-    main h2::before {
-        padding-left: 2.15rem;
-        color: var(--c3);
-    }
-
     main h3 {
         display: flex;
         align-items: center;
@@ -834,6 +829,11 @@ main ol li {
     }
 
     @media (width > 575px) {
+
+        main h2::before {
+            padding-left: 2.15rem;
+            color: var(--c3);
+        }
 
         .controllers {
             margin-top: 0!important;
