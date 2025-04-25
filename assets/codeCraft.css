@@ -672,7 +672,7 @@ main ol li {
 
     div.highlighter-rouge {
         line-height: 1.5;
-        max-width: 80ch;
+        max-width: min(80ch, 86%);
         overflow-x: auto;
     }
 
@@ -828,7 +828,16 @@ main ol li {
         border-radius: .4vh;
     }
 
+    main h1 {
+        padding-right: 2rem;
+    }
+
     @media (width > 575px) {
+
+        main h1 {
+            padding-right: 0;
+        }
+
 
         #index {
             margin: 0 auto;
