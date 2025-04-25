@@ -1,5 +1,5 @@
 ---
-title: "Email Obsfrustration using JS"
+title: "Js: Email Obsfrustration"
 date: 2023-04-15
 comments: true
 ---
