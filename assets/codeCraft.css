@@ -93,7 +93,7 @@ main ol li {
     }
 
     main h2 {
-        padding-left: 2ch;
+        padding-left: .2rem;
     }
 
     hr,
@@ -830,6 +830,10 @@ main ol li {
 
     @media (width > 575px) {
 
+        main h2 {
+            padding-left: 2ch;
+        }
+        
         main h2::before {
             padding-left: 2.15rem;
             color: var(--c3);
