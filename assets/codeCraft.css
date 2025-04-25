@@ -848,10 +848,6 @@ main ol li {
             width: 77.5%;
         }
 
-        div.highlighter-rouge {
-            padding-left: 1.5rem;
-        }
-
         #comments {
             margin-left: 0;
             scale: 1;
@@ -1004,6 +1000,10 @@ main ol li {
     }
 
     @media (width >=64rem) {
+
+        div.highlighter-rouge {
+            padding-left: 1.5rem;
+        }
 
         #reading-time {
             margin-top: 0rem!important;
