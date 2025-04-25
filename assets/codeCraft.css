@@ -672,7 +672,6 @@ main ol li {
     }
 
     div.highlighter-rouge {
-        padding-left: 1.5rem;
         line-height: 1.5;
         max-width: 80ch;
         overflow-x: auto;
@@ -831,6 +830,10 @@ main ol li {
     }
 
     @media (width > 575px) {
+
+        div.highlighter-rouge {
+            padding-left: 1.5rem;
+        }
 
         #comments {
             margin-left: 0;
