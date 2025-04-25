@@ -271,9 +271,9 @@ main ol li {
     }
 
     #index {
-        width: 95%;
+        width: 92.5%;
         position: relative;
-        min-width:260px;
+        min-width:240px;
         max-width: 1200px;
     }
 
