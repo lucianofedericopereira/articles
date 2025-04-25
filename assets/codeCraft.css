@@ -728,6 +728,8 @@ main ol li {
 
     #comments {
         padding-bottom: 2rem;
+        margin-left: -1.2rem;
+        scale: .9;
     }
     
     #comments-utteranc {
@@ -829,6 +831,11 @@ main ol li {
     }
 
     @media (width > 575px) {
+
+        #comments {
+            margin-left: 0;
+            scale: 1;
+        }
 
         main h2 {
             padding-left: 2ch;
