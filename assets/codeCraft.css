@@ -237,6 +237,7 @@ main ol li {
     }
 
     label[for="toc"] {
+        left: calc(50% - 2.7rem);
         position: absolute;
         z-index: 10;
         height: 4rem;
@@ -250,7 +251,6 @@ main ol li {
         background-position: center -.25rem;
         background-size: 4rem;
         filter: brightness(0) saturate(100%) invert(91%) sepia(15%) saturate(192%) hue-rotate(36deg) brightness(87%) contrast(84%);
-        left: calc(50% - 2rem);
         top: 5.75rem;
     }
 
@@ -833,6 +833,10 @@ main ol li {
     }
 
     @media (width > 575px) {
+
+        label[for="toc"] {
+            left: calc(50% - 2rem);
+        }
 
         main h1 {
             padding-right: 0;
