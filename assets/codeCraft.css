@@ -277,7 +277,8 @@ main ol li {
     }
 
     #index {
-        width: 92.5%;
+        padding-left: 2ch;
+        width: 90%;
         position: relative;
         min-width:240px;
         max-width: 1200px;
@@ -681,6 +682,7 @@ main ol li {
         max-width: min(80ch, 100%);
         padding-right: 2ch;
         overflow-x: auto;
+        margin-left:-1ch;
     }
 
     table {
@@ -840,6 +842,10 @@ main ol li {
     }
 
     @media (width > 575px) {
+        
+        div.highlighter-rouge {
+            margin-left:0ch;
+        }
 
         label[for="toc"] {
             left: calc(50% - 2rem);
@@ -851,6 +857,7 @@ main ol li {
 
 
         #index {
+            padding-left: 0;
             margin: 0 auto;
             width: 77.5%;
         }
