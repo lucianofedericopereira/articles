@@ -390,7 +390,7 @@ main ol li {
     #menu~label {
         position: absolute;
         z-index: 10;
-        top: 2.25rem;
+        top: 2rem;
         right: 1.75rem;
         width: 48px;
         height: 48px;
@@ -686,6 +686,7 @@ main ol li {
     }
 
     table {
+        left: -.55rem;
         border-collapse: collapse;
         font-size: 0.9em;
         min-width: 280px;
@@ -694,6 +695,7 @@ main ol li {
         overflow: hidden;
         max-width: 70%;
         margin: 0 auto;
+        position: relative;
     }
         
     table thead tr {
@@ -852,7 +854,11 @@ main ol li {
 
 
     @media (width > 575px) {
-        
+
+        table {
+            left: 0;
+        }
+
         div.highlighter-rouge div.highlight {
 
             margin-left: 0!important;

@@ -78,7 +78,7 @@ Rating | before | after
 
 ## Example
 
-<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="VwELpPO" data-user="lucianofullstack" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="VwELpPO" data-user="lucianofullstack" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0">
   <span>See the Pen <a href="https://codepen.io/lucianofullstack/pen/VwELpPO">
   star rating</a> by Luciano Pereira (<a href="https://codepen.io/lucianofullstack">@lucianofullstack</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
