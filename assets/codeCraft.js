@@ -11,7 +11,7 @@ export const codeCraft = {
         this.startObserver(() => this.removeFontTags());
         window.translate = codeCraft.translate;
         codeCraft.js('https://translate.google.com/translate_a/element.js?cb=translate');
-        this.clock();
+        setInterval(codeCraft.clock(), 1000);        
     },
     translate: function () {
         new google.translate.TranslateElement({
