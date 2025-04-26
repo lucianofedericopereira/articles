@@ -12,6 +12,32 @@ export const codeCraft = {
         window.translate = codeCraft.translate;
         codeCraft.js('https://translate.google.com/translate_a/element.js?cb=translate');
         setInterval(codeCraft.clock.bind(codeCraft), 1000);
+        this.createCustomElement();
+    },
+    createCustomElement: function () {
+        class CodePenElement extends HTMLElement {
+            constructor() {
+                super();
+                if (!this.hasAttribute('data-height')) {
+                    this.setAttribute('data-height', '300');
+                }
+                if (!this.hasAttribute('data-default-tab')) {
+                    this.setAttribute('data-default-tab', 'html,result');
+                }
+                if (!this.hasAttribute('data-user')) {
+                    this.setAttribute('data-user', 'lucianofullstack');
+                }
+            };
+            connectedCallback() {
+                this.innerHTML = `<div class="codepen" 
+                    data-height="${this.getAttribute('data-height')}" 
+                    data-default-tab="${this.getAttribute('data-default-tab')}" 
+                    data-slug-hash="${this.getAttribute('data-slug-hash')}" 
+                    data-user="${this.getAttribute('data-user')}">
+                  </div>`;
+            };
+        };
+        customElements.define('code-pen', CodePenElement);
     },
     translate: function () {
         new google.translate.TranslateElement({

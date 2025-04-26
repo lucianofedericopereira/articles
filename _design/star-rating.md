@@ -1,5 +1,5 @@
 ---
-title: "Star Rating"
+title: "CSS: Star Rating"
 date: 2023-04-10
 codepen: true
 ---
@@ -79,4 +79,7 @@ Rating | before | after
 
 ## Example
 
+<code-pen data-slug-hash="VwELpPO"></code-pen>
+<!--
 <div class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="VwELpPO" data-user="lucianofullstack"></div>
+-->
