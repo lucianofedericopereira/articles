@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>{% assign folder = "https://" | append: site.base.url | append: "/" | append: site.base.folder %}{% assign all_items = "" | split: "," %}{% for collection in site.collections %}{% assign items = site[collection.label] | sort: "date" %}{% if items.size > 0 %}{% for item in items %}{% if item.title and item.date %}{% assign all_items = all_items | push: item %}{% endif %}{% endfor %}{% endif %}{% endfor %}{% assign sorted_items = all_items | sort: "date" | reverse %}
+{% capture _unused %}
+    {% assign folder = "https://" | append: site.base.url | append: "/" | append: site.base.folder %}
+    {% assign all_items = "" | split: "," %}
+    {% for collection in site.collections %}
+        {% assign items = site[collection.label] | sort: "date" %}
+        {% if items.size > 0 %}
+            {% for item in items %}
+                {% if item.title and item.date %}
+                    {% assign all_items = all_items | push: item %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+    {% assign sorted_items = all_items | sort: "date" | reverse %}
+{% endcapture %}<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
     <title>{{ site.meta.title }}</title>
