@@ -91,6 +91,7 @@ main ol li {
     .cp_embed_wrapper {
         margin:0;
         width:100%;
+        min-width: 100%;
         margin-left: -1.3rem;
     }
 
