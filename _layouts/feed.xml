@@ -20,7 +20,7 @@
     <description>{{ site.meta.tagline }}</description>
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>{% for item in sorted_items %}{% assign collection_name = item.url | split: "/" | slice: 1, 1 | first | capitalize %}
       <item>
-        <title>{{ collection_name }}. {{ item.title }}</title>
+        <title>{{ collection_name }} › {{ item.title }}</title>
         <link>{{ folder }}{{ item.url }}"</link>
         <pubDate>{{ item.date | date_to_rfc822 }}</pubDate>
       </item>{% endfor %}
