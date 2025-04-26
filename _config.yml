@@ -48,6 +48,7 @@ defaults:
       toc: false
       comments: false
       mermaid: false
+      codepen: false
   - scope:
       path: "category"
     values:
@@ -56,6 +57,7 @@ defaults:
       toc: false
       comments: false
       mermaid: false
+      codepen: false
   - scope:
       path: "_design"
     values:
@@ -63,6 +65,7 @@ defaults:
       toc: true
       comments: false
       mermaid: false
+      codepen: false
   - scope:
       path: "_code"
     values:
@@ -70,6 +73,7 @@ defaults:
       toc: true
       comments: false
       mermaid: false
+      codepen: false
   - scope:
       path: "_project"
     values:
@@ -77,6 +81,7 @@ defaults:
       toc: true
       comments: false
       mermaid: false
+      codepen: false
 utteranc:
   theme: github-light
   issue: title
@@ -87,4 +92,3 @@ version:
   lunr: 2.3.9
 #gh_edit_branch: "main" # the branch that your docs is served from
 ## gh_edit_source: docs # the source that your files originate from
-

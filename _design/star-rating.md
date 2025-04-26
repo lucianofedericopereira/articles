@@ -1,6 +1,7 @@
 ---
 title: "Star Rating"
 date: 2023-04-10
+codepen: true
 ---
 
 Learn how to create a simple **star rating** look with only CSS and minimum HTML. We are going to use the data attribute and the before and after selectors. Check this step-by-step guide.
@@ -79,4 +80,3 @@ Rating | before | after
 ## Example
 
 <div class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="VwELpPO" data-user="lucianofullstack"></div>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>

@@ -5,7 +5,9 @@
     <link rel="preload" href="{{folder}}/style.css" as="style" onload="this.rel='stylesheet'">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" crossorigin="anonymous" href="https://cdn.jsdelivr.net">
-    <link rel="dns-prefetch" href="https://utteranc.es">
+    <link rel="dns-prefetch" href="https://utteranc.es">{% if page.codepen %}
+    <link rel="dns-prefetch" href="https://cpwebassets.codepen.io">
+    <link rel="preconnect" crossorigin="anonymous" href="https://cpwebassets.codepen.io">{% endif %}
     <title>{%- include title.html -%}</title>
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=contain">
