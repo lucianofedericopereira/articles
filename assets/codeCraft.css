@@ -88,6 +88,12 @@ main ol li {
 
 @media screen {
 
+    .cp_embed_wrapper {
+        margin:0;
+        width:100%;
+    }
+
+
     h2::before {
         display: none;
     }
@@ -672,7 +678,8 @@ main ol li {
 
     div.highlighter-rouge {
         line-height: 1.5;
-        max-width: min(80ch, 86%);
+        max-width: min(80ch, 100%);
+        padding-right: 2ch;
         overflow-x: auto;
     }
 
