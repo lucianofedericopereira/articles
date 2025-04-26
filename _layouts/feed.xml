@@ -1,22 +1,14 @@
-
-
-
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>{% assign folder = "https://" | append: site.base.url | append: "/" | append: site.base.folder %}{% assign all_items = "" | split: "," %}{% for collection in site.collections %}{% assign items = site[collection.label] | sort: "date" %}{% if items.size > 0 %}{% for item in items %}{% if item.title and item.date %}{% assign all_items = all_items | push: item %}{% endif %}{% endfor %}{% endif %}{% endfor %}{% assign sorted_items = all_items | sort: "date" | reverse %}
 <rss version="2.0">
   <channel>
-    <title>{{ site.title }}</title>
-    <link>{{ site.url }}</link>
-    <description>{{ site.description }}</description>
-    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
-
-    {% for collection in site.collections %}
-      {% for post in collection.docs %}
+    <title>{{ site.meta.title }}</title>
+    <link>{{ folder }}</link>
+    <description>{{ site.meta.tagline }}</description>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>{% for item in sorted_items %}{% assign collection_name = item.url | split: "/" | slice: 1, 1 %}
       <item>
-        <title>{{ post.title }}</title>
-        <link>{{ site.url }}{{ post.url }}</link>
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-      </item>
-      {% endfor %}
-    {% endfor %}
+        <title>{{ collection_name | capitalize }}: {{ item.title }}</title>
+        <link>{{ folder }}{{ item.url }}"</link>
+        <pubDate>{{ item.date | date_to_rfc822 }}</pubDate>
+      </item>{% endfor %}
   </channel>
 </rss>
