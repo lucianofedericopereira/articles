@@ -839,10 +839,25 @@ main ol li {
 
     main h1 {
         padding-right: 2rem;
+        margin-left: -.25rem;
     }
+
+    div.highlighter-rouge div.highlight {
+        overflow-x: auto;
+        padding: 0.75rem;
+        margin: 0;
+        margin-left: -1ch;
+        border: 0
+    }
+
 
     @media (width > 575px) {
         
+        div.highlighter-rouge div.highlight {
+
+            margin-left: 0!important;
+        }
+
         div.highlighter-rouge {
             margin-left:0ch;
         }
@@ -853,6 +868,7 @@ main ol li {
 
         main h1 {
             padding-right: 0;
+            margin-left:0;
         }
 
 
@@ -1330,12 +1346,6 @@ main ol li {
         opacity: 1
     }
 
-    div.highlighter-rouge div.highlight {
-        overflow-x: auto;
-        padding: 0.75rem;
-        margin: 0;
-        border: 0
-    }
 
     div.highlighter-rouge pre.highlight,
     div.highlighter-rouge code {
