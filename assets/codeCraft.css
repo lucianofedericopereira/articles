@@ -815,9 +815,12 @@ main ol li {
 
     main p.title {
         font-size: 1.5rem;
+    }
+
+    main p.title b {
         font-family: var(--font-title), var(--font-basic);
     }
-    
+
     .collection-tag {
         background-color: var(--c5);
         padding: 0 .9ch 0 .85ch;
