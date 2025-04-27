@@ -417,6 +417,9 @@ export const codeCraft = {
         .entry:hover .date-tag {
             color: var(--c1);
         }
+        .entry:hover p {
+            color: var(--c0);
+        }
         `;
         this.css(styles);
         setTimeout(() => {
