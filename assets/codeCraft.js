@@ -25,7 +25,7 @@ export const codeCraft = {
                     this.setAttribute('data-default-tab', 'html,result');
                 }
                 if (!this.hasAttribute('data-user')) {
-                    this.setAttribute('data-user', 'lucianofullstack');
+                    this.setAttribute('data-user', 'lucianofedericopereira');
                 }
             };
             connectedCallback() {

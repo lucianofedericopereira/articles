@@ -79,4 +79,4 @@ Rating | before | after
 
 ## Example
 
-<code-pen data-slug-hash="VwELpPO"></code-pen>
+<code-pen data-slug-hash="LEEerPQ"></code-pen>
