@@ -1,6 +1,6 @@
 ---
 title: "Js: Email Obsfrustration"
-date: 2023-04-15
+date: 2025-10-24
 comments: true
 ---
 
@@ -116,9 +116,20 @@ const validEmail = email => {
 
 In terms of design we will use Simple CSS<a href="#footnote2"></a> a minimal CSS semantic framework.
 
-## Final Code
+## Working Example
 
 You can visit the page with the final result<a href="#footnote3"></a>.
+
+## Final Code
+
+```js
+  // Luciano Federico Pereira - GPL v2.1 - github.com/lucianofedericopereira
+  // Decodes a hex-encoded email string using XOR with the initial key byte
+  // Applies decoding to all elements with class "eml"
+  // ES6+ ≈486bytes (≈285 Gzip Level 9 ≈260 Brotli Level 11)
+  (()=>{const h=new Uint8Array(256).fill(255);for(let i=48;i<58;i++)h[i]=i-48;for(let i=65;i<71;i++)h[i]=i-55;for(let i=97;i<103;i++)h[i]=i-87;const T=new TextDecoder();let B=new Uint8Array(256),D=e=>{if(typeof e!="string"||e.length<4||(e.length&1))return"";let L=e.length,a=h[e.charCodeAt(0)],c=h[e.charCodeAt(1)];if(a>15||c>15)return"";let k=(a<<4)|c,n=(L-2)>>1;if(B.length<n)B=new Uint8Array(n);for(let i=0,s=2;i<n;i++,s+=2){let x=h[e.charCodeAt(s)],y=h[e.charCodeAt(s+1)];if(x>15||y>15)return"";B[i]=((x<<4)|y)^k}if(n<=64){let o="";for(let i=0;i<n;i++)o+=String.fromCharCode(B[i]);return o}return T.decode(B.subarray(0,n))};document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".eml").forEach(e=>{let r=e?.dataset?.encoded;if(!r)return;let d=D(r);if(!d)return;e.textContent=d;e.href="mailto:"+d})})})();
+ ```
+
 
 <h3>Footnotes</h3>    
 <footer>
