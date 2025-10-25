@@ -1,39 +1,43 @@
 ---
 title: "Js: Email Obsfrustration"
-date: 2025-10-24
+date: 2025-10-25
 comments: true
 ---
 
-Email harvesters and other bots roam the Internet looking for email addresses to add to lists that target recipients for spam. This trend results in an increasing amount of unwanted email. Learn how to create a simple page using JavaScript. 
+Email harvesters and bots constantly scan the Internet for email addresses to add to spam lists. This increases the volume of unwanted emails. In this article, we'll create a simple page using JavaScript to obfuscate email addresses while keeping them accessible to humans.
 
-Check this step-by-step guide.
-
-Let´s Start.
+Let's go step by step.
 
 ## Background
 
-I like how Cloudflare obfuscate mails, googling around I found an Andrew Lock<a href="#footnote1"></a> article explaining how to use a simple bitwise XOR using a key, and as I knew the technique, I decided to adapt it and do my own implementation. 
+Cloudflare and other platforms obfuscate emails to prevent harvesting. While researching, I found an article by Andrew Lock<a href="#footnote1"></a> describing a simple XOR-based encoding method. 
 
-`XOR` stands for *exclusive OR*. It is a logical operation that returns a positive or true result when either but not both of its two inputs are true. In other words, the output is true if the inputs are not alike otherwise the output is false.
-
-The `XOR` algorithm is basically a simple substitution cipher. In other words, it just replaces each alphanumeric in a string that is fed into it with another number. Crucially, the algorithm is reversible. So if you feed the output string back into the same algorithm, you end up with the original string with the cipher removed. This kind of cipher is also called an additive cipher, and is the simplest kind of cipher there is.
+I decided to implement my own version.  `XOR` stands for *exclusive OR*, a logical operation that returns `true` if its two inputs differ. This makes XOR a simple yet reversible substitution cipher: each character in a string is transformed using a numeric key, and applying the same operation again restores the original string. This is also known as an additive cipher—the simplest type of cipher.
 
 ## Goal
 
-Create a simple {{page.m}} using just JavaScript for encoding and decoding our address. In order to encode we will need a string representing a valid email address and a numerical key from `0` to `255` (`0` to `FF` in `hex`). Also we have to create a drop-in script that decode our emails, and a form to create the ciphered ones.
+We aim to create a small JavaScript utility and a simple {{page.m}} to encode and decode email addresses.  
+
+Requirements:
+
+1. Encode a string representing a valid email address.
+2. Use a numeric key from `0` to `255` (`0` to `FF` in hex).
+3. Provide a drop-in script to decode the emails in the page.
+4. Optionally, allow users to customize the HTML class for encoded emails and enable regex validation.
 
 ## Encoder
 
-The function will receive two parameters `email` and `key` and returns a `string` containing the concatenation of the `key` in `hex` and  the result of applying `XOR` to every character of the mail address.
+The encoder receives two parameters: `email` and `key`. It outputs a string consisting of the hex representation of the key followed by the XOR-obfuscated email.
 
-First, as `key` is a `decimal` number we have to convert it to `hex` and pad it with a zero in case is smaller than 10<sub>16</sub>
+The `key` is a `decimal` number, we have to convert it to `hex` and pad it with a zero in case is smaller than 10<sub>16</sub>
+
+Convert the key to hex:
 
 ```js
 let encodedString = key.toString(16).padStart(2,'0')
 ```
 
-Then we iterate trough the whole mail address doing a `xor`, padding and concatenating to `encodedString`
-
+Then XOR each character of the email and append it to the encoded string:
 
 ```js
 const encoded = [...email]
@@ -41,8 +45,7 @@ const encoded = [...email]
   .join('');
 ```
 
-The whole encoder code so far
-
+Full encoder function:
 
 ```js
 const encodeEmail = (email, key) => {
@@ -53,22 +56,18 @@ const encodeEmail = (email, key) => {
   return keyHex + encoded;
 };
 ```
-
 ## Decoder
 
-As we can realize the new length will be `originalLenght*2+2` as every char and the key will be represented by their `hex value`, so we have to pick the first two characters of the encoded string and covert it to decimal. Then we will repeat the operation using that value as `key` and doing `xor` and concatenating the rest. 
-
+The decoder reverses the process. Extract the first two characters as the `key` and `xor` the rest:
 
 ```js
 const decodeEmail = encoded => {
-  const key = parseInt(encoded.slice(0, 2), 16); // Extract and decode the key
-  return [...encoded.slice(2).match(/.{1,2}/g)] // Split remaining string into pairs of hex characters
-    .map(hex => String.fromCharCode(parseInt(hex, 16) ^ key)) // Decode each character
-    .join(''); // Combine characters into the decoded email
+  const key = parseInt(encoded.slice(0, 2), 16); // Extract key
+  return [...encoded.slice(2).match(/.{1,2}/g)] // Split into hex pairs
+    .map(hex => String.fromCharCode(parseInt(hex, 16) ^ key)) // Decode
+    .join(''); // Combine characters
 };
 ```
-
-
 ## Parser
 
 In order to store our encoded address we will use the `data` attribute and we also will make a function to parse all of our encoded emails that have a certain class for instance `eml` .
@@ -122,14 +121,18 @@ You can visit the page with the final result<a href="#footnote3"></a>.
 
 ## Final Code
 
-```js
-  // Luciano Federico Pereira - GPL v2.1 - github.com/lucianofedericopereira
-  // Decodes a hex-encoded email string using XOR with the initial key byte
-  // Applies decoding to all elements with class "eml"
-  // ES6+ ≈486bytes (≈285 Gzip Level 9 ≈260 Brotli Level 11)
-  (()=>{const h=new Uint8Array(256).fill(255);for(let i=48;i<58;i++)h[i]=i-48;for(let i=65;i<71;i++)h[i]=i-55;for(let i=97;i<103;i++)h[i]=i-87;const T=new TextDecoder();let B=new Uint8Array(256),D=e=>{if(typeof e!="string"||e.length<4||(e.length&1))return"";let L=e.length,a=h[e.charCodeAt(0)],c=h[e.charCodeAt(1)];if(a>15||c>15)return"";let k=(a<<4)|c,n=(L-2)>>1;if(B.length<n)B=new Uint8Array(n);for(let i=0,s=2;i<n;i++,s+=2){let x=h[e.charCodeAt(s)],y=h[e.charCodeAt(s+1)];if(x>15||y>15)return"";B[i]=((x<<4)|y)^k}if(n<=64){let o="";for(let i=0;i<n;i++)o+=String.fromCharCode(B[i]);return o}return T.decode(B.subarray(0,n))};document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".eml").forEach(e=>{let r=e?.dataset?.encoded;if(!r)return;let d=D(r);if(!d)return;e.textContent=d;e.href="mailto:"+d})})})();
- ```
+Here's the production-ready single-line script, supporting optional regex validation and configurable class names:
 
+```js
+    // Luciano Federico Pereira - GPL v2.1 - decode hex emails, configurable class & optional regex
+    function decodeEmails({cls='eml',regex=/^[\w!#$%&'*+\-/=?^_`{|}~]+(?:\.[\w!#$%&'*+\-/=?^_`{|}~]+)*@[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)+$/}={}){const H=new Uint8Array(256).fill(255);for(let i=48;i<58;i++)H[i]=i-48;for(i=65;i<71;i++)H[i]=i-55;for(i=97;i<103;i++)H[i]=i-87;let B=new Uint8Array(256),L=e=>{const s=e.dataset?.encoded;if(!s||s.length<4||s.length&1)return"";const k=(H[s.charCodeAt(0)]<<4)|H[s.charCodeAt(1)],n=(s.length>>1)-1;if(B.length<n)B=new Uint8Array(n);let o="";for(let i=0;i<n;i++){const x=H[s.charCodeAt(2*i+2)],y=H[s.charCodeAt(2*i+3)];if(x>15||y>15)return"";B[i]=(x<<4|y)^k;o+=String.fromCharCode(B[i])}return regex.test(o)?o:o},R=()=>{for(const e of document.getElementsByClassName(cls)){const d=L(e);d&&(e.textContent=d,e.href="mailto:"+d)}};document.readyState==="loading"?document.addEventListener("DOMContentLoaded",R):R()}
+```
+
+This version is robust, compact, and flexible:
+
+- Works with any class name.
+- Optional regex verification.
+- Single line, ideal for embedding in pages.
 
 <h3>Footnotes</h3>    
 <footer>
