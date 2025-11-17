@@ -94,7 +94,7 @@ If a name appears three times, append:
 
 Example:
 
-```
+```mermaid
 graph TD
     A[LightSkyBlue3] --> B[LightSkyBlue3 Dark]
     A[LightSkyBlue3] --> C[LightSkyBlue3 Medium]
