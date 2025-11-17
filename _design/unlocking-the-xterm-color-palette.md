@@ -91,13 +91,12 @@ Light — highest brightness
 
 Example:
 
-LightSkyBlue3 →
-
-LightSkyBlue3 Dark
-
-LightSkyBlue3 Medium
-
-LightSkyBlue3 Light
+```
+graph TD
+    A[LightSkyBlue3] --> B[LightSkyBlue3 Dark]
+    A[LightSkyBlue3] --> C[LightSkyBlue3 Medium]
+    A[LightSkyBlue3] --> D[LightSkyBlue3 Light]
+```
 
 ### More than three occurrences
 
@@ -113,7 +112,7 @@ This keeps the system extensible without losing clarity.
 
 Brightness sorting uses a standard perceived-luminance formula:
 
-brightness=0.2126R+0.7152G+0.0722B
+```brightness=0.2126R+0.7152G+0.0722B```
 
 Where R, G, and B are the palette’s 8-bit RGB values.
 Lower numeric brightness = “darker,” higher = “lighter.”
