@@ -5,13 +5,13 @@ comments: true
 codepen: false
 ---
 
-## A Proposal for a Clearer Naming Convention
+# A Proposal for a Clearer Naming Convention
 
-### Overview
+## Overview
 
 The Xterm 256-color palette contains several entries that map to the same X11 color name. These repetitions occur because multiple palette slots are mathematically close to the same X11 color value. To improve clarity and reduce ambiguity, this document proposes a simple, deterministic naming convention for repeated names.
 
-### Goals
+## Goals
 
 - Provide unique, human-readable names for all palette entries.
 - Preserve the original X11-derived base names when possible.
@@ -57,13 +57,9 @@ Because the Xterm palette is smaller and more coarse-grained than X11’s, the m
 
 ### ANSI legacy overlap
 
-The first 16 slots already had classic names like red and bright red.
-
-- RGB cube collisions: Many cube colors are close matches to multiple X11 colors, so different slots inherited the same name.
-Example: IndianRed1 appears twice; both entries sit near the same X11 hue.
-
-- Grayscale ambiguity
-The 24 grayscale values are all mapped to generic names such as Gray or White, even though each slot is distinct.
+- The first 16 slots already had classic names like red and bright red.
+- RGB cube collisions: Many cube colors are close matches to multiple X11 colors, so different slots inherited the same name. Example: IndianRed1 appears twice; both entries sit near the same X11 hue.
+- Grayscale ambiguity; The 24 grayscale values are all mapped to generic names such as Gray or White, even though each slot is distinct.
 
 These repetitions aren’t errors in Xterm’s design — they’re side effects of grafting the X11 naming ecosystem onto a palette originally intended to be numeric only.
 
