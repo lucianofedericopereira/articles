@@ -1,6 +1,7 @@
 ---
-title: "Unlocking the Xterm Color Palette"
+title: "Bash: Unlocking the Xterm Color Palette"
 date: 2025-11-17
+codepen: false
 ---
 
 ## A Proposal for a Clearer Naming Convention
