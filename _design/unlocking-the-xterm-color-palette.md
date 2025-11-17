@@ -17,13 +17,13 @@ The Xterm 256-color palette contains several entries that map to the same X11 co
 - Avoid introducing arbitrary numbering or opaque suffixes.
 - Maintain backward clarity without requiring full renaming of the palette.
 
-### History
+## History
 
 In the early days of computing, terminals offered no color at all. Monochrome screens — green or amber phosphor glowing against a dark backdrop — were built for efficiency, not aesthetics. Their purpose was straightforward: provide a fast, reliable interface to powerful mainframes and minicomputers.
 
 As UNIX spread through universities and research labs in the 1970s and ’80s, the terminal became a symbol of elegant minimalism: a keyboard, a screen, and a steady stream of text. Functional, durable, and visually austere.
 
-#### The Shift Toward Color
+### The Shift Toward Color
 
 By the late 1980s and early 1990s, ANSI escape codes introduced basic color output, giving software the ability to highlight warnings, errors, and important messages. But the palette was tiny — just 16 system colors. Useful, yes, but far from expressive.
 
@@ -44,17 +44,17 @@ This structure reflects a time when terminals relied entirely on numeric color s
 
 By contrast, Xterm’s palette stayed purely numerical. The names we commonly associate with it today came later — retrofits meant to make the palette more approachable.
 
-### X11: Where the Color Names Actually Came From
+## X11: Where the Color Names Actually Came From
 
 Xterm itself did not define names such as IndianRed1, LightSkyBlue3, or DarkOliveGreen2. These labels were borrowed from the X11 color database, a long-standing collection of descriptive color names used in the X Window System.
 
 As libraries and tools sought more readable identifiers, they mapped Xterm’s numeric entries to the closest X11 equivalents. This provided familiar labels, but introduced inconsistencies.
 
-#### Why So Many Names Repeat
+### Why So Many Names Repeat
 
 Because the Xterm palette is smaller and more coarse-grained than X11’s, the mapping from numbers to names was never one-to-one. This created several quirks:
 
-#### ANSI legacy overlap
+### ANSI legacy overlap
 
 The first 16 slots already had classic names like red and bright red.
 
@@ -67,11 +67,11 @@ The 24 grayscale values are all mapped to generic names such as Gray or White, e
 
 These repetitions aren’t errors in Xterm’s design — they’re side effects of grafting the X11 naming ecosystem onto a palette originally intended to be numeric only.
 
-### Proposal
+## Proposal
 
 - If a color name occurs multiple times in the Xterm 256-color palette, suffixes are added based on the number of occurrences and their relative brightness.
 
-#### Two occurrences of the same base name
+### Two occurrences of the same base name
 
 If a name appears exactly twice, append:
 
@@ -83,7 +83,7 @@ Example:
 IndianRed1 → IndianRed1 Dark
 IndianRed1 Light
 
-#### Three occurrences of the same base name
+### Three occurrences of the same base name
 
 If a name appears three times, append:
 
@@ -103,7 +103,7 @@ LightSkyBlue3 Medium
 
 LightSkyBlue3 Light
 
-#### More than three occurrences
+### More than three occurrences
 
 (Not currently observed in the Xterm palette, but included for completeness.)
 
@@ -113,17 +113,16 @@ Darkest, Darker, Dark, Light, Lighter, Lightest
 
 This keeps the system extensible without losing clarity.
 
-#### Brightness Metric
+### Brightness Metric
 
 Brightness sorting uses a standard perceived-luminance formula:
 
-brightness=0.2126𝑅+0.7152𝐺+0.0722𝐵
 brightness=0.2126R+0.7152G+0.0722B
 
 Where R, G, and B are the palette’s 8-bit RGB values.
 Lower numeric brightness = “darker,” higher = “lighter.”
 
-#### Backward Compatibility
+### Backward Compatibility
 
 This proposal does not remove or overwrite any existing names.
 It only adds distinguishing suffixes where duplicates occur, preserving the original base name for searchability and documentation compatibility.
