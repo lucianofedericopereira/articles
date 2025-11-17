@@ -3,9 +3,10 @@ title: "Bash: Unlocking the Xterm Color Palette"
 date: 2025-11-17
 comments: true
 codepen: false
+mermaid: true
 ---
 
-# A Proposal for a Clearer Naming Convention
+A Proposal for a Clearer Naming Convention
 
 ## Overview
 
@@ -45,7 +46,7 @@ This structure reflects a time when terminals relied entirely on numeric color s
 
 By contrast, Xterm’s palette stayed purely numerical. The names we commonly associate with it today came later — retrofits meant to make the palette more approachable.
 
-## X11: Where the Color Names Actually Came From
+### X11: Where the Color Names Actually Came From
 
 Xterm itself did not define names such as IndianRed1, LightSkyBlue3, or DarkOliveGreen2. These labels were borrowed from the X11 color database, a long-standing collection of descriptive color names used in the X Window System.
 
@@ -76,18 +77,20 @@ If a name appears exactly twice, append:
 
 Example:
 
-IndianRed1 → IndianRed1 Dark
-IndianRed1 Light
+```mermaid
+graph TD
+    A[IndianRed1] --> B[IndianRed1 Dark]
+    A[IndianRed1] --> C[IndianRed1 Light]
+```
+
 
 ### Three occurrences of the same base name
 
 If a name appears three times, append:
 
-Dark — lowest brightness
-
-Medium — middle brightness
-
-Light — highest brightness
+- Dark — lowest brightness
+- Medium — middle brightness
+- Light — highest brightness
 
 Example:
 
