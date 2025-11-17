@@ -24,7 +24,7 @@ In the early days of computing, terminals offered no color at all. Monochrome sc
 
 As UNIX spread through universities and research labs in the 1970s and ’80s, the terminal became a symbol of elegant minimalism: a keyboard, a screen, and a steady stream of text. Functional, durable, and visually austere.
 
-#### The Shift Toward Color
+### The Shift Toward Color
 
 By the late 1980s and early 1990s, ANSI escape codes introduced basic color output, giving software the ability to highlight warnings, errors, and important messages. But the palette was tiny — just 16 system colors. Useful, yes, but far from expressive.
 
